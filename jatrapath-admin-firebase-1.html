@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>যাত্রাপথ অ্যাডমিন</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5ede1;--cd:#f9f4ec;--tx:#2a1b14;--mu:#7a6a5e;--pr:#7a1a00;--ac:#7a1a00;--bd:#e4d8c6;--ok:#1b8454;--er:#c93545;--wr:#a87000;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#1e1612;--cd:#2a1f19;--tx:#f3e8dc;--mu:#b9a898;--pr:#f0a27f;--ac:#a63a14;--bd:#42332a;--ok:#4cc58a;--er:#ff7b88;--wr:#e0b040;color-scheme:dark}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{font-size:var(--fs,16px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Hind Siliguri',sans-serif;line-height:1.5}
+#app{max-width:760px;margin:auto;min-height:100vh}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:8px;padding:calc(10px + env(safe-area-inset-top)) 14px 10px;background:var(--bg);color:var(--tx);border-bottom:1px solid var(--bd)}
+header h1{font-size:1.15rem;margin:0;font-weight:700}
+main{padding:14px 14px calc(92px + env(safe-area-inset-bottom))}
+.pg{animation:in .22s ease}@keyframes in{from{opacity:0;transform:translateY(8px)}}
+nav{position:fixed;bottom:0;left:0;right:0;max-width:760px;margin:auto;display:flex;background:var(--cd);border-top:1px solid var(--bd);padding:6px 4px calc(6px + env(safe-area-inset-bottom));z-index:6;box-shadow:0 -4px 16px #0001}
+nav button{flex:1;border:0;background:none;color:var(--mu);font:inherit;font-size:.7rem;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;border-radius:12px;transition:.2s}
+nav button.on{color:var(--pr);font-weight:700;background:color-mix(in srgb,var(--ac) 14%,transparent)}
+svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px #1b1f3a0d}
+.row{display:flex;align-items:center;gap:12px}.fx{flex:1;min-width:0}.fx small{display:block;color:var(--mu)}
+.ac{display:flex;gap:2px}
+.ib{border:0;background:none;color:inherit;padding:8px;border-radius:50%;display:inline-flex;cursor:pointer}.ib:active{background:#8883}.ib.dn{color:var(--er)}header .ib{color:inherit}
+.btn{border:0;background:var(--ac);color:#fff;font:inherit;font-weight:600;padding:10px 16px;border-radius:12px;cursor:pointer;transition:.15s}.btn:active{transform:scale(.97)}
+.btn.s{background:color-mix(in srgb,var(--ac) 14%,transparent);color:var(--pr)}.btn.d{background:var(--er);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btns .btn{flex:1}
+.cv{width:56px;height:78px;border-radius:8px;flex:none;display:grid;place-items:center;color:#fff;font-weight:700;font-size:1.2rem;overflow:hidden;position:relative;box-shadow:0 3px 8px #0003}
+.cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.cv.l{width:84px;height:118px}
+.bg{font-size:.72rem;padding:2px 9px;border-radius:99px;font-weight:600}.bg.ok{background:#1b845422;color:var(--ok)}.bg.wr{background:#a8700022;color:var(--wr)}
+.st{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:8px}
+.st .card{margin:0;display:flex;gap:10px;align-items:center}.st b{font-size:1.4rem;display:block;line-height:1.1}.st small{color:var(--mu)}
+.st i{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--ac) 16%,transparent);color:var(--pr)}
+.qa{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:8px}
+h3{font-size:1rem;margin:16px 2px 8px}
+.fl{display:block;margin-bottom:12px;font-size:.85rem;color:var(--mu);font-weight:500}
+input[type=text],input[type=number],input[type=url],select,textarea,input:not([type]){width:100%;margin-top:4px;font:inherit;color:var(--tx);background:var(--bg);border:1.5px solid var(--bd);border-radius:12px;padding:10px 12px}
+textarea{resize:vertical;line-height:1.8}input:focus,select:focus,textarea:focus{outline:0;border-color:var(--ac)}
+.g2{display:grid;grid-template-columns:90px 1fr;gap:10px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{border:1.5px solid var(--bd);border-radius:99px;padding:4px 12px;color:var(--tx);font-size:.85rem;display:flex;gap:6px;align-items:center}
+.er{color:var(--er);font-size:.85rem;margin:4px 0}.ok{color:var(--ok)}
+.bar{height:6px;background:var(--bd);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac);transition:width .2s}
+.cnt{display:flex;justify-content:space-between;margin-top:6px;font-size:.9rem}
+.mg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.mg .card{margin:0;text-align:center;cursor:pointer;padding:16px 8px}.mg .card:active{transform:scale(.97)}.mg small{display:block;color:var(--mu);font-size:.72rem}
+.mg i{width:44px;height:44px;margin:0 auto 6px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--ac) 16%,transparent);color:var(--pr)}
+.emp{text-align:center;color:var(--mu);padding:32px 12px}.emp svg{width:44px;height:44px;opacity:.5}
+.ban{background:#a8700022;color:var(--wr);border:1px dashed var(--wr);border-radius:12px;padding:8px 12px;font-weight:600;margin-bottom:12px;font-size:.9rem}
+.note{font-size:.8rem;color:var(--mu);margin:0 2px 10px}
+.strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}.strip div{text-align:center;font-size:.7rem;width:70px;flex:none}
+.strip .cv{width:70px;height:98px;margin-bottom:4px}
+#mod .ov{position:fixed;inset:0;background:#0008;z-index:20;display:flex;align-items:flex-end;justify-content:center;animation:in .15s}
+#mod .sh{background:var(--cd);width:100%;max-width:560px;border-radius:20px 20px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto}
+#mod h2{margin:0 0 8px;font-size:1.1rem}.rd{line-height:2;font-size:1.05rem}
+#toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#1b1f3a;color:#fff;padding:10px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:30;max-width:90%;text-align:center}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+.sk{height:78px;border-radius:16px;background:linear-gradient(90deg,var(--bd),var(--cd),var(--bd));background-size:200%;animation:sh 1.1s infinite;margin-bottom:12px}@keyframes sh{to{background-position:-200%}}
+audio{width:100%;margin-top:8px}
+.fl{color:var(--tx);font-weight:600}
+.fc{display:inline-flex;align-items:center;gap:6px}.fc svg{width:16px;height:16px}
+.num{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--bd);display:grid;place-items:center;font-weight:700;flex:none}
+.ob{border:1.5px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;font-weight:600;border-radius:99px;padding:8px 16px;cursor:pointer}.ob.x{background:#ffe0e0;color:#a01b1b;border-color:#f5a0a0}
+.vw{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:.85rem;flex-wrap:wrap}.vw svg{width:16px;height:16px}
+.sw{position:relative;width:52px;height:30px;flex:none}.sw input{opacity:0;position:absolute;inset:0;width:100%;height:100%;margin:0;z-index:1}.sw i{position:absolute;inset:0;background:var(--bd);border-radius:99px;transition:.2s}.sw i:after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}.sw input:checked+i{background:var(--ac)}.sw input:checked+i:after{left:25px}
+.tb{position:relative;display:flex;flex-wrap:wrap;gap:6px 2px;padding:8px;background:var(--bg);border:1.5px solid var(--bd);border-radius:14px 14px 0 0}
+.tb button{border:0;background:none;color:var(--mu);font:inherit;font-size:.68rem;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 6px;min-width:50px;cursor:pointer}.tb button b,.tb button u,.tb button i{font-size:1.1rem;color:var(--tx)}
+.ed{min-height:280px;max-height:60vh;overflow:auto;padding:14px;background:#fff;color:#222;border:1.5px solid #e4d8c6;border-top:0;border-radius:0 0 14px 14px;line-height:1.9;font-size:16px;outline:0}.ed:empty:before{content:attr(data-ph);color:#999;font-style:italic}
+.big{width:100%;border:0;background:#7a1a00;color:#fff;font:inherit;font-size:1.1rem;font-weight:700;padding:16px;border-radius:99px;box-shadow:0 6px 16px #7a1a004d;margin-top:12px;cursor:pointer}.big:active{transform:scale(.98)}.big:disabled{opacity:.4;cursor:not-allowed}
+.dz{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px dashed var(--bd);border-radius:20px;padding:28px 12px;text-align:center;background:var(--cd);cursor:pointer;margin-top:6px}.dz svg{width:56px;height:56px;color:#7a1a00}.dz small{color:var(--mu);font-weight:400}
+.rad{display:flex;gap:6px;align-items:center;font-weight:600}input[type=radio]{accent-color:#7a1a00;width:20px;height:20px;margin:0}
+
+.srch{display:flex;align-items:center;gap:8px;background:var(--cd);border:1.5px solid var(--bd);border-radius:99px;padding:4px 14px}.srch input{border:0!important;margin:0!important;background:none!important;padding:8px 0!important}
+.addb{width:100%;border:1.5px solid #7a1f00;background:color-mix(in srgb,#c9a090 35%,var(--cd));color:var(--tx);font:inherit;font-weight:600;padding:12px;border-radius:99px;margin-top:10px}
+.fcs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.fc{border:1.5px solid var(--bd);background:var(--cd);color:var(--tx);font:inherit;border-radius:99px;padding:6px 14px}.fc.on{background:#6b1d00;color:#fff;border-color:#6b1d00}
+.pill{background:#dbe8ff;color:#1b3a7a;border-radius:99px;padding:3px 12px;font-size:.8rem;white-space:nowrap}.tg{font-size:.72rem;padding:2px 10px;border-radius:99px;background:var(--bg);border:1px solid var(--bd)}.tg.g{background:#d6f5e3;color:#14633d;border-color:#d6f5e3}
+.sts{display:inline-flex;gap:14px;align-items:center;border:1.5px solid var(--bd);border-radius:99px;padding:6px 14px;margin-top:8px}.sts span{display:flex;gap:4px;align-items:center}.sts svg{width:18px;height:18px}
+.ba{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--bd)}.ba button{border:1.5px solid var(--bd);font:inherit;border-radius:99px;padding:8px;background:var(--bg);color:var(--tx)}.ba .p{background:#dbe8ff;color:#1b3a7a;border-color:#b4cdfc}.ba .x{background:#ffe0e0;color:#a01b1b;border-color:#f5a0a0}
+
+.tb{flex-wrap:nowrap;overflow-x:auto;align-items:center;gap:2px}.tb button{min-width:40px;padding:8px;font-size:1rem;flex:none}.tb svg{width:20px;height:20px}
+.fcs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.fc{flex:none;white-space:nowrap;font-size:.85rem;padding:6px 12px}
+button.tg{font:inherit;font-size:.72rem;cursor:pointer;color:inherit}button.tg.g{color:#14633d}
+.st2{display:flex!important;gap:12px;align-items:center;margin-top:6px}.st2 span{display:flex;gap:4px;align-items:center}.st2 svg{width:15px;height:15px}
+.col{display:flex;flex-direction:column;gap:6px}.col .ob{padding:6px 14px}
+.card{padding:12px}h3{font-size:.95rem;color:var(--mu)}
+input[type=email],input[type=password]{width:100%;margin-top:4px;font:inherit;color:var(--tx);background:var(--bg);border:1.5px solid var(--bd);border-radius:12px;padding:10px 12px}
+</style></head><body>
+<div id="app"><header><button class="ib" id="bk" onclick="back()"></button><h1 id="ttl" style="flex:1"></h1><button class="ib" onclick="logout()" title="লগআউট">⎋</button></header><main id="main"></main><nav id="nav"></nav></div>
+<div id="mod"></div><div id="toast"></div>
+<script>
+/* ===== Helpers ===== */
+const $=s=>document.querySelector(s),bn=n=>Number(n).toLocaleString('bn-BD'),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const P={home:'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',book:'M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h11',tag:'M3 12V4h8l10 10-8 8zM7.5 7.5h.01',file:'M6 2h9l5 5v15H6zM14 2v6h6M9 13h6M9 17h6',grid:'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',plus:'M12 5v14M5 12h14',back:'M15 5l-7 7 7 7',edit:'M4 20h4L19 9l-4-4L4 16z',trash:'M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13',eye:'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6',star:'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z',up:'M6 14l6-6 6 6',down:'M6 10l6 6 6-6',audio:'M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z',img:'M3 5h18v14H3zM3 16l5-5 4 4 3-3 6 6',bell:'M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4',dl:'M12 3v12M7 10l5 5 5-5M4 21h16',gear:'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2',x:'M6 6l12 12M18 6L6 18',swap:'M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7',trend:'M3 17l6-6 4 4 8-8M15 7h6v6',cal:'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',chk:'M5 12l5 5 9-10',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14M20 20l-4-4'};
+const I=n=>`<svg viewBox="0 0 24 24"><path d="${P[n]}"/></svg>`;
+const W=['নদীর','ধারে','ভোরের','আলো','ছড়িয়ে','পড়ছিল','আর','গ্রামের','পথ','ধরে','ধীরে','এগিয়ে','চলছিল','সে'];
+const gen=n=>Array.from({length:n},(_,i)=>W[i%W.length]).join(' ');
+const MIN=1000,wc=t=>{t=t.trim();return t?t.split(/\s+/).length:0};
+const GR=['#2d3a8c,#6a7cf0','#7a2d6b,#d46aa5','#0f6b6b,#4ac2b0','#8a4b10,#e0a050','#2d6b2d,#7ac27a','#3a3a5c,#8a8ab0'];
+const nid=()=>Date.now()*10+Math.floor(Math.random()*10);
+const cov=(b,c='')=>`<div class="cv ${c}" style="background:linear-gradient(145deg,${GR[b.id%6]})">${b.cover?`<img src="${b.cover}" alt="">`:`<span>${esc(b.title.slice(0,2))}</span>`}</div>`;
+const badge=p=>p?'<span class="bg ok">প্রকাশিত</span>':'<span class="bg wr">খসড়া</span>';
+const empty=t=>`<div class="emp">${I('book')}<p>${t}</p></div>`;
+const fld=(l,id,v='',t='text')=>`<label class="fl">${l}<input id="${id}" type="${t}" value="${esc(v)}"></label>`;
+
+let S={cats:[],books:[],chapters:[],lists:{feat:[],w:[],m:[],y:[]},notifs:[],upd:{vc:'1',vn:'1.0.0',notes:'',url:'',min:'1',must:false},log:[]};const log=t=>{S.log.unshift(t);sync()};
+const bk=id=>S.books.find(b=>b.id==id),ct=id=>S.cats.find(c=>c.id==id);
+/* ===== Navigation stack ===== */
+let stack=[{r:'dash',p:{}}],dirty=false,mdirty=false,modals=[],lastBack=0,V={};
+const cur=()=>stack[stack.length-1];
+const TABS=[['dash','ড্যাশবোর্ড','home'],['books','বইসমূহ','book'],['cats','ক্যাটাগরি','tag'],['more','আরও','grid']];
+const TO={dash:'dash',books:'books',bookDetail:'books',bookForm:'books',read:'books',cats:'cats',catDetail:'cats',chs:'chs',editor:'chs'};
+function guard(f){dirty?confirmDlg('অসংরক্ষিত পরিবর্তন আছে। পরিবর্তন বাতিল করে বের হবেন?','থাকুন','বাতিল করুন',()=>{dirty=false;f()}):f()}
+function go(r,p={}){guard(()=>{stack.push({r,p});draw()})}
+function tab(r){guard(()=>{const i=stack.findIndex(x=>x.r===r);i>=0?stack.length=i+1:stack.push({r,p:{}});draw()})}
+function back(){
+ if(modals.length)return closeModal();
+ if(dirty)return confirmDlg('অসংরক্ষিত পরিবর্তন আছে। পরিবর্তন বাতিল করে বের হবেন?','থাকুন','বাতিল করুন',()=>{dirty=false;back()});
+ if(stack.length>1){stack.pop();return draw()}
+ const t=Date.now();
+ if(t-lastBack<2200){lastBack=0;exitDlg()}else{lastBack=t;toast('অ্যাপ থেকে বের হতে আবার ব্যাক চাপুন')}
+}
+let armed=0;const arm=()=>{if(armed)return;armed=1;try{history.pushState({s:1},'')}catch(e){}}; // sentinel entry is created after the first user gesture (Chrome ignores history entries made without one)
+['pointerdown','touchstart','keydown'].forEach(t=>addEventListener(t,arm,{passive:true}));
+window.onNativeBack=()=>back(); // for an Android wrapper: webView.evaluateJavascript("window.onNativeBack&&window.onNativeBack()",null)
+addEventListener('popstate',()=>{if(!armed)return;try{history.pushState({s:1},'')}catch(e){}back()}); // single listener, sentinel entry re-pushed
+addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key=='s'){e.preventDefault();if(cur().r=='editor'&&!modals.length)saveCh(cur().p.id||0)}});
+/* ===== Modals / toast ===== */
+function openModal(h,g){const el=document.createElement('div');el.className='ov';el.innerHTML=`<div class="sh">${h}</div>`;el.onclick=e=>{if(e.target===el)closeModal()};$('#mod').append(el);const m={el,g};modals.push(m);return el}
+function closeModal(force){const m=modals[modals.length-1];if(!m)return;
+ if(!force&&m.g&&mdirty)return confirmDlg('সংরক্ষণ না করা পরিবর্তন বাতিল করবেন?','থাকুন','বাতিল করুন',()=>{mdirty=false;closeModal(true)});
+ m.el.remove();modals.pop();if(!modals.length)mdirty=false}
+let fn1;function confirmDlg(msg,no,yes,fn,danger=1){fn1=fn;openModal(`<h2>নিশ্চিত করুন</h2><p>${msg}</p><div class="btns"><button class="btn s" onclick="closeModal(true)">${no}</button><button class="btn ${danger?'d':''}" onclick="closeModal(true);fn1()">${yes}</button></div>`)}
+function exitDlg(){openModal(`<h2>আপনি কি অ্যাপ থেকে বের হতে চান?</h2><div class="btns"><button class="btn s" onclick="closeModal(true)">বাতিল</button><button class="btn d" onclick="doExit()">বের হোন</button></div>`)}
+function doExit(){closeModal(true);const B=window.AndroidBridge||window.Android;
+ if(B&&typeof B.exitApp=='function')B.exitApp();
+ else openModal(`<h2>বের হওয়া সম্ভব নয়</h2><p>এই ব্রাউজার/WebView-এ অ্যাপ বন্ধ করার ব্রিজ (exitApp) নেই, তাই অ্যাপ বন্ধ হয়নি। Android র‍্যাপারে <code>AndroidBridge.exitApp()</code> যুক্ত করতে হবে।</p><button class="btn" onclick="closeModal(true)">ঠিক আছে</button>`)}
+let tt;function toast(m){sync();const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200)}
+/* ===== Render ===== */
+function draw(keep){sync();const{r,p}=cur(),v=V[r](p);$('#ttl').textContent=v.t;$('#bk').style.display=stack.length>1?'':'none';
+ $('#main').innerHTML=`<div class="pg">${v.h}</div>`;if(!keep)scrollTo(0,0);v.i&&v.i();
+ const on=TO[r]||'more';$('#nav').innerHTML=TABS.map(([k,l,ic])=>`<button class="${k==on?'on':''}" onclick="tab('${k}')">${I(ic)}${l}</button>`).join('')}
+/* Dashboard */
+V.dash=()=>{const s=[['মোট বই',S.books.length,'book'],['প্রকাশিত',S.books.filter(b=>b.pub).length,'chk'],['খসড়া',S.books.filter(b=>!b.pub).length,'edit'],['অধ্যায়',S.chapters.length,'file'],['অডিও ফাইল',S.chapters.filter(c=>c.audio).length,'audio'],['ক্যাটাগরি',S.cats.length,'tag']];
+ return{t:'ড্যাশবোর্ড',h:`<div class="ban">Firebase সংযুক্ত — লাইভ ডেটা</div><div class="st">${s.map(([l,n,i])=>`<div class="card"><i>${I(i)}</i><div><b>${bn(n)}</b><small>${l}</small></div></div>`).join('')}</div><h3>দ্রুত কাজ</h3><div class="qa"><button class="btn" onclick="go('bookForm')">+ নতুন বই</button><button class="btn" onclick="pickBook()">+ নতুন অধ্যায়</button><button class="btn s" onclick="go('list',{k:'feat'})">নির্বাচিত উপন্যাস</button><button class="btn s" onclick="go('notifs')">নোটিফিকেশন</button></div><h3>সাম্প্রতিক কার্যক্রম</h3><div class="card">${S.log.slice(0,4).map(l=>`<div style="padding:6px 0;border-bottom:1px solid var(--bd)">• ${esc(l)}</div>`).join('')}</div>`}};
+/* Books */
+const bcardOld=b=>`<div class="card row"><div onclick="go('bookDetail',{id:${b.id}})">${cov(b)}</div><div class="fx" onclick="go('bookDetail',{id:${b.id}})"><b>${esc(b.title)}</b><small>${esc(b.author)}</small>${badge(b.pub)}</div><div class="ac"><button class="ib" onclick="go('read',{b:${b.id}})">${I('eye')}</button><button class="ib" onclick="go('bookForm',{id:${b.id}})">${I('edit')}</button><button class="ib dn" onclick="delBook(${b.id})">${I('trash')}</button></div></div>`;
+function blOld(){const q=$('#q').value.trim().toLowerCase(),s=$('#fs').value,c=$('#fc').value;const a=S.books.filter(b=>(!q||(b.title+b.author).toLowerCase().includes(q))&&(!s||(s=='p')==b.pub)&&(!c||b.cats.includes(+c)));$('#bl').innerHTML=a.length?a.map(bcard).join(''):empty('কোনো বই পাওয়া যায়নি')}
+V.booksOld=()=>({t:'বইসমূহ',h:`<div class="card"><input id="q" placeholder="বই বা লেখক খুঁজুন…" oninput="bl()"><div class="g2" style="grid-template-columns:1fr 1fr;margin-top:8px"><select id="fs" onchange="bl()"><option value="">সব অবস্থা</option><option value="p">প্রকাশিত</option><option value="d">খসড়া</option></select><select id="fc" onchange="bl()"><option value="">সব ক্যাটাগরি</option>${S.cats.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></div></div><button class="btn" style="width:100%;margin-bottom:12px" onclick="go('bookForm')">+ নতুন বই যোগ করুন</button><div id="bl"></div>`,i:bl});
+P.heart='M12 21s-8-5-8-11a5 5 0 0 1 8-3 5 5 0 0 1 8 3c0 6-8 11-8 11z';P.like='M7 11v9H4v-9zM7 11l4-8c2 0 3 1 3 3v3h5a2 2 0 0 1 2 2l-1 7a2 2 0 0 1-2 2H7';
+let FT='all',SO='new';const chn=b=>S.chapters.filter(c=>c.b==b.id),kf=n=>n>=1000?(n/1000).toFixed(1)+'k':n;
+const FL=[['all','সব বই',()=>true],['ep','অধ্যায়ের বই',b=>chn(b).length>0],['au','অডিও',b=>chn(b).some(c=>c.audio)],['live','লাইভ',b=>b.pub],['rev','রিভিউ চলছে',b=>b.st=='review'],['re','পুনরায় আবেদন (বই)',b=>b.st=='reapply']];
+const bcard=b=>{const cs=chn(b),g=ct(b.cats[0])?.name;return `<div class="card"><div class="row" style="align-items:flex-start"><div onclick="go('bookDetail',{id:${b.id}})">${cov(b,'l')}</div><div class="fx" onclick="go('bookDetail',{id:${b.id}})"><b>${esc(b.title)}</b><small>${esc(b.author)}${g?' • '+esc(g):''}</small><div class="chips">${b.pub?'<span class="tg g">লাইভ</span>':'<span class="tg">খসড়া</span>'}<span class="tg">${bn(cs.length)} টি অধ্যায়${b.done?' • সমাপ্ত':''}</span></div><small class="st2"><span>${I('eye')} ${kf(b.v||0)}</span><span>${I('like')} ${b.l||0}</span><span>${I('heart')} ${b.h||0}</span></small></div></div><div class="ba"><button onclick="go('bookForm',{id:${b.id}})">এডিট</button><button class="p" onclick="go('bchs',{id:${b.id}})">অধ্যায়সমূহ</button><button class="x" onclick="delBook(${b.id})">ডিলিট</button></div></div>`};
+function chips(){$('#fch').innerHTML=FL.map(([k,l,f])=>`<button class="fc ${k==FT?'on':''}" onclick="FT='${k}';chips();bl()">${l} ${bn(S.books.filter(f).length)}</button>`).join('')}
+function bl(){const q=$('#q').value.trim().toLowerCase(),c=$('#fc').value;let a=S.books.filter(b=>(!q||(b.title+b.author).toLowerCase().includes(q))&&FL.find(f=>f[0]==FT)[2](b)&&(!c||b.cats.includes(+c)));
+ if(SO=='new')a=a.slice().reverse();else if(SO=='az')a=a.slice().sort((x,y)=>x.title.localeCompare(y.title,'bn'));else if(SO=='pop')a=a.slice().sort((x,y)=>(y.v||0)-(x.v||0));
+ $('#bl').innerHTML=a.length?a.map(bcard).join(''):empty('কোনো বই পাওয়া যায়নি')}
+V.books=()=>({t:'বইসমূহ',h:`<div class="srch">${I('search')}<input id="q" placeholder="বই বা লেখক খুঁজুন…" oninput="bl()"></div><button class="addb" onclick="go('bookForm')">নতুন বই যুক্ত করুন +</button><div class="fcs" id="fch" style="margin-top:14px"></div><div class="g2" style="grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"><select id="so" style="margin:0" onchange="SO=this.value;bl()"><option value="new">নতুন আগে</option><option value="old">পুরনো আগে</option><option value="az">নাম অনুযায়ী</option><option value="pop">বেশি পঠিত</option></select><select id="fc" style="margin:0" onchange="bl()"><option value="">সব ক্যাটাগরি</option>${S.cats.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></div><div id="bl"></div>`,i:()=>{$('#so').value=SO;chips();bl()}});
+function delBook(id){confirmDlg('বইটি ও এর সব অধ্যায় মুছে ফেলবেন?','বাতিল','মুছুন',()=>{S.books=S.books.filter(b=>b.id!=id);S.chapters=S.chapters.filter(c=>c.b!=id);Object.keys(S.lists).forEach(k=>S.lists[k]=S.lists[k].filter(x=>x!=id));stack=stack.filter(x=>!['bookDetail','bookForm','read','editor'].includes(x.r));if(!stack.length)stack=[{r:'dash',p:{}}];log('একটি বই মুছে ফেলা হয়েছে');toast('বই মুছে ফেলা হয়েছে');draw(true)})}
+V.bookDetail=p=>{const b=bk(p.id);if(!b)return{t:'বই',h:empty('বইটি পাওয়া যায়নি')};const n=chn(b).length;
+ return{t:'বইয়ের বিবরণ',h:`<div class="card row" style="align-items:flex-start">${cov(b,'l')}<div class="fx"><h2 style="margin:0 0 4px;font-size:1.15rem">${esc(b.title)}</h2><small>${esc(b.author)}</small><div class="chips">${badge(b.pub)}${b.cats.map(c=>`<span class="tg">${esc(ct(c)?.name||'')}</span>`).join('')}</div></div></div><button class="big" style="margin:0 0 12px" onclick="go('bchs',{id:${b.id}})">অধ্যায়সমূহ (${bn(n)})</button><div class="btns" style="margin-top:0"><button class="btn s" onclick="go('read',{b:${b.id}})">পড়ুন</button><button class="btn s" onclick="go('bookForm',{id:${b.id}})">সম্পাদনা</button><button class="btn s" onclick="togBook(${b.id})">${b.pub?'অপ্রকাশিত':'প্রকাশ'}</button></div><button class="ob x" style="width:100%;margin-top:14px" onclick="delBook(${b.id})">বই ডিলিট করুন</button>`}};
+function togBook(id){const b=bk(id);b.pub=!b.pub;log(`"${b.title}" ${b.pub?'প্রকাশিত':'অপ্রকাশিত'}`);toast(b.pub?'প্রকাশিত':'খসড়া করা হয়েছে');draw(true)}
+let tc=null;
+V.bookFormOld=p=>{const b=p.id?bk(p.id):{title:'',author:'',desc:'',cover:null,cats:[]};tc=b.cover;
+ return{t:p.id?'বই সম্পাদনা':'নতুন বই',h:`<div class="card" oninput="dirty=true" onchange="dirty=true">${fld('শিরোনাম *','f1',b.title)}${fld('লেখক','f2',b.author)}<label class="fl">বিবরণ<textarea id="f3" rows="4">${esc(b.desc)}</textarea></label><div class="fl">প্রচ্ছদ (স্থানীয় প্রিভিউ)<div class="row" style="margin-top:6px"><div id="fcv"></div><label class="btn s">ছবি বাছাই<input type="file" accept="image/*" hidden onchange="pickCov(this)"></label><button class="btn s" onclick="tc=null;dirty=true;fcv()">সরান</button></div></div><div class="fl">ক্যাটাগরি (একাধিক)<div class="chips">${S.cats.map(c=>`<label class="chip"><input type="checkbox" value="${c.id}" ${b.cats.includes(c.id)?'checked':''}>${esc(c.name)}</label>`).join('')}</div></div><p class="er" id="fe"></p><div class="btns"><button class="btn s" onclick="saveBook(${p.id||0},0)">খসড়া হিসেবে সংরক্ষণ</button><button class="btn" onclick="saveBook(${p.id||0},1)">সংরক্ষণ ও প্রকাশ</button></div></div>`,i:fcv}};
+function fcv(){$('#fcv').innerHTML=cov({id:1,title:'প্র',cover:tc})}
+function pickCov(i){const f=i.files[0];if(f)img2data(f).then(u=>{tc=u;fcv()}).catch(()=>toast("ছবি পড়া যায়নি"))}
+function saveBookOld(id,pb){const t=$('#f1').value.trim(),a=$('#f2').value.trim(),d=$('#f3').value.trim(),cs=[...document.querySelectorAll('.chip input:checked')].map(x=>+x.value);
+ const e=!t?'শিরোনাম লিখুন।':pb&&(!a||!d)?'প্রকাশ করতে লেখক ও বিবরণ দিন।':pb&&!cs.length?'প্রকাশ করতে অন্তত একটি ক্যাটাগরি দিন।':'';if(e){$('#fe').textContent=e;return}
+ let b=id?bk(id):null;if(!b){b={id:nid()};S.books.push(b)}Object.assign(b,{title:t,author:a,cover:tc,cats:cs,pub:!!pb});
+ log(`বই সংরক্ষিত: ${t}`);toast('সংরক্ষিত');dirty=false;stack.pop();if(!id)stack.push({r:'bookDetail',p:{id:b.id}});draw()}
+V.read=p=>{const b=bk(p.b),cs=S.chapters.filter(c=>c.b==p.b).sort((x,y)=>x.n-y.n);if(!b)return{t:'পাঠ',h:empty('বই নেই')};const c=cs.find(x=>x.id==p.c)||cs[0];
+ return{t:'পাঠ প্রিভিউ',h:`<div class="card"><h2 style="margin:0">${esc(b.title)}</h2>${cs.length?`<select onchange="cur().p.c=this.value;draw(true)">${cs.map(x=>`<option value="${x.id}" ${x==c?'selected':''}>${esc('অধ্যায় '+bn(x.n)+': '+x.title)}${x.pub?'':' (খসড়া)'}</option>`).join('')}</select><div class="rd">${c.html||esc(c.text)}</div>`:empty('কোনো অধ্যায় নেই')}</div>`}};
+/* Categories */
+V.cats=()=>({t:'ক্যাটাগরি',h:`<button class="btn" style="width:100%;margin-bottom:12px" onclick="catForm(0)">+ নতুন ক্যাটাগরি</button>${S.cats.map(c=>`<div class="card row"><div class="fx" onclick="go('catDetail',{id:${c.id}})"><b>${esc(c.name)}</b><small>${bn(S.books.filter(b=>b.cats.includes(c.id)).length)} টি বই</small></div><button class="ib" onclick="catForm(${c.id})">${I('edit')}</button><button class="ib dn" onclick="delCat(${c.id})">${I('trash')}</button></div>`).join('')||empty('কোনো ক্যাটাগরি নেই')}`});
+function catForm(id){const c=id?ct(id):{name:''};mdirty=false;const el=openModal(`<h2>${id?'ক্যাটাগরি সম্পাদনা':'নতুন ক্যাটাগরি'}</h2><label class="fl">নাম<input id="cn1" value="${esc(c.name)}" oninput="mdirty=true"></label><p class="er" id="ce"></p><div class="btns"><button class="btn s" onclick="closeModal()">বাতিল</button><button class="btn" onclick="saveCat(${id})">সংরক্ষণ</button></div>`,true)}
+function saveCat(id){const n=$('#cn1').value.trim();if(!n)return $('#ce').textContent='নাম লিখুন।';if(S.cats.some(c=>c.name==n&&c.id!=id))return $('#ce').textContent='এই নামে ক্যাটাগরি আছে।';
+ if(id)ct(id).name=n;else S.cats.push({id:nid(),name:n});log('ক্যাটাগরি সংরক্ষিত: '+n);mdirty=false;closeModal(true);toast('সংরক্ষিত');draw(true)}
+function delCat(id){confirmDlg('ক্যাটাগরি মুছবেন? বইগুলো মুছবে না।','বাতিল','মুছুন',()=>{S.cats=S.cats.filter(c=>c.id!=id);S.books.forEach(b=>b.cats=b.cats.filter(x=>x!=id));stack=stack.filter(x=>x.r!='catDetail');draw(true)})}
+V.catDetail=p=>{const c=ct(p.id);if(!c)return{t:'ক্যাটাগরি',h:empty('পাওয়া যায়নি')};const In=S.books.filter(b=>b.cats.includes(c.id)),Out=S.books.filter(b=>!b.cats.includes(c.id));
+ return{t:c.name,h:`<div class="card"><label class="fl">বই যোগ করুন<select id="ca">${Out.map(b=>`<option value="${b.id}">${esc(b.title)}</option>`).join('')}</select></label><button class="btn" ${Out.length?'':'disabled'} onclick="bk(+$('#ca').value).cats.push(${c.id});draw(true)">যোগ করুন</button></div>${In.map(b=>`<div class="card row">${cov(b)}<div class="fx"><b>${esc(b.title)}</b></div><button class="ib dn" onclick="bk(${b.id}).cats=bk(${b.id}).cats.filter(x=>x!=${c.id});draw(true)">${I('x')}</button></div>`).join('')||empty('এই ক্যাটাগরিতে বই নেই')}`}};
+/* Chapters */
+const chRow=c=>`<div class="card row"><div class="fx"><b>${bn(c.n)}. ${esc(c.title)}</b><small>${bn(wc(c.text))} শব্দ ${c.audio?'• 🎧':''}</small>${badge(c.pub)}</div><button class="ib" onclick="prevTxt(${c.id})">${I('eye')}</button><button class="ib" onclick="go('editor',{id:${c.id}})">${I('edit')}</button><button class="ib" onclick="togglePub(${c.id})">${I(c.pub?'x':'chk')}</button><button class="ib" onclick="go('audio',{ch:${c.id}})">${I('audio')}</button></div>`;
+V.chs=()=>({t:'অধ্যায়',h:`<button class="btn" style="width:100%;margin-bottom:12px" onclick="go('editor',{})">+ নতুন অধ্যায়</button>${S.books.map(b=>`<h3>${esc(b.title)}</h3>${S.chapters.filter(c=>c.b==b.id).sort((x,y)=>x.n-y.n).map(chRow).join('')||'<p class="note">কোনো অধ্যায় নেই</p>'}`).join('')||empty('কোনো বই নেই')}`});
+function togglePub(id){if(dirty&&cur().r=='editor')return toast('আগে অধ্যায় সংরক্ষণ করুন');const c=S.chapters.find(x=>x.id==id);c.pub=!c.pub;log(`অধ্যায় ${c.pub?'প্রকাশিত':'খসড়া'}: ${c.title}`);toast(c.pub?'প্রকাশিত':'খসড়া করা হয়েছে');draw(true)}
+function prevTxt(id){const c=S.chapters.find(x=>x.id==id);openModal(`<h2>${esc(c.title)}</h2><div class="rd">${c.html||esc(c.text)}</div><button class="btn" onclick="closeModal()">বন্ধ করুন</button>`)}
+V.editorOld=p=>{const c=p.id?S.chapters.find(x=>x.id==p.id):null;if(!S.books.length)return{t:'অধ্যায় সম্পাদক',h:empty('আগে একটি বই যোগ করুন')};const bid=c?c.b:(p.b||S.books[0].id),nn=c?c.n:S.chapters.filter(x=>x.b==bid).length+1;
+ return{t:c?'অধ্যায় সম্পাদনা':'নতুন অধ্যায়',h:`<div class="card" oninput="dirty=true" onchange="dirty=true"><label class="fl">উপন্যাস<select id="e1" ${c?'disabled':''}>${S.books.map(b=>`<option value="${b.id}" ${b.id==bid?'selected':''}>${esc(b.title)}</option>`).join('')}</select></label><div class="g2">${fld('নং','e2',nn,'number')}${fld('অধ্যায়ের শিরোনাম','e3',c?c.title:'')}</div><label class="fl">লেখা<textarea id="e4" rows="14" oninput="upd()" placeholder="এখানে লিখুন…">${esc(c?c.text:'')}</textarea></label><div class="bar"><i id="pb"></i></div><div class="cnt"><b id="cn"></b>${c?badge(c.pub):'<span class="bg wr">নতুন (খসড়া)</span>'}</div><p class="er" id="fe"></p><div class="btns"><button class="btn s" onclick="prevCh()">রিডিং প্রিভিউ</button>${c?`<button class="btn s" onclick="togglePub(${c.id})">${c.pub?'খসড়া করুন':'প্রকাশ করুন'}</button>`:''}<button id="sv" class="btn" onclick="saveCh(${p.id||0})">সংরক্ষণ</button></div></div>`,i:upd}};
+function updOld(){const n=wc($('#e4').value),ok=n>=MIN;$('#cn').textContent=`শব্দসংখ্যা: ${bn(n)} / ${bn(MIN)}`;$('#cn').className=ok?'ok':'er';$('#pb').style.width=Math.min(100,n/MIN*100)+'%';$('#sv').disabled=!ok;$('#fe').textContent=ok?'':'অধ্যায় সেভ করতে কমপক্ষে ১,০০০ শব্দ লিখতে হবে।'}
+function prevChOld(){openModal(`<h2>${esc($('#e3').value||'শিরোনামহীন')}</h2><p class="rd">${esc($('#e4').value)||'<small>কিছু লেখা হয়নি</small>'}</p><button class="btn" onclick="closeModal()">বন্ধ করুন</button>`)}
+function saveChOld(id){const t=$('#e4').value;if(wc(t)<MIN){upd();return} // hard guard: blocks button, Ctrl+S, any other path
+ const b=+$('#e1').value,n=+$('#e2').value,ti=$('#e3').value.trim();
+ if(!ti)return $('#fe').textContent='অধ্যায়ের শিরোনাম লিখুন।';if(!(n>=1))return $('#fe').textContent='সঠিক অধ্যায় নম্বর দিন।';
+ if(S.chapters.some(c=>c.b==b&&c.n==n&&c.id!=id))return $('#fe').textContent='এই নম্বরে অধ্যায় আছে।';
+ let c=id?S.chapters.find(x=>x.id==id):null;if(!c){c={id:nid(),b,pub:false,audio:null};S.chapters.push(c);id=c.id}
+ Object.assign(c,{n,title:ti,text:t});log('অধ্যায় সংরক্ষিত: '+ti);toast('অধ্যায় সংরক্ষিত (খসড়া/প্রকাশ আলাদা)');dirty=false;stack[stack.length-1]={r:'editor',p:{id}};draw(true)}
+/* ===== Book form, chapter manager & rich editor (reference-style) ===== */
+Object.assign(P,{cloud:'M7 18a5 5 0 0 1-.5-9.9A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9M12 12v8M9 15l3-3 3 3',al:'M4 6h16M4 10h10M4 14h16M4 18h10',ac:'M4 6h16M7 10h10M4 14h16M7 18h10',ar:'M4 6h16M10 10h10M4 14h16M10 18h10',aj:'M4 6h16M4 10h16M4 14h16M4 18h16',ul:'M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01',ol:'M10 6h10M10 12h10M10 18h10M4 5h1v4M4 11h2l-2 3h2',un:'M9 14L4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3',re:'M15 14l5-5-5-5M20 9H10a6 6 0 0 0 0 12h3'});
+TO.bchs=TO.editor='books';
+const ORD={1:'১ম',2:'২য়',3:'৩য়',4:'৪র্থ',5:'৫ম',6:'৬ষ্ঠ',7:'৭ম',8:'৮ম',9:'৯ম',10:'১০ম'},ord=n=>ORD[n]||bn(n)+'তম';
+const fd=t=>new Date(t).toLocaleDateString('bn-BD',{day:'numeric',month:'long',year:'numeric',weekday:'long'});
+function san(h){const d=new DOMParser().parseFromString(h,'text/html');d.body.querySelectorAll('*').forEach(e=>{if(!/^(B|I|U|STRONG|EM|FONT|SPAN|DIV|P|BR|UL|OL|LI)$/.test(e.tagName)){e.replaceWith(...e.childNodes);return}[...e.attributes].forEach(a=>{if(!['style','color','size'].includes(a.name))e.removeAttribute(a.name)})});return d.body.innerHTML}
+function newCh(id){if(bk(id).done)return toast('বইটি সমাপ্ত — আর নতুন অধ্যায় যোগ করা যাবে না');guard(()=>{const t=cur();if(!(t.r=='bchs'&&t.p.id==id))stack.push({r:'bchs',p:{id}});stack.push({r:'editor',p:{b:id}});draw()})}
+function pickBook(){openModal(`<h2>কোন বইয়ে অধ্যায় যোগ করবেন?</h2>${S.books.map(b=>`<div class="card row" onclick="closeModal(true);newCh(${b.id})">${cov(b)}<b>${esc(b.title)}</b></div>`).join('')||empty('আগে একটি বই যোগ করুন')}`)}
+function reopen(id){confirmDlg('বইয়ের "সমাপ্ত" অবস্থা তুলে নিয়ে আবার নতুন অধ্যায় যোগ করার অনুমতি দেবেন?','বাতিল','পুনরায় চালু করুন',()=>{bk(id).done=false;draw(true)},0)}
+function delCh(id){confirmDlg('অধ্যায়টি মুছে ফেলবেন?','বাতিল','ডিলিট',()=>{S.chapters=S.chapters.filter(c=>c.id!=id);toast('অধ্যায় মুছে ফেলা হয়েছে');draw(true)})}
+/* Chapter management page */
+V.bchs=p=>{const b=bk(p.id);if(!b)return{t:'অধ্যায়',h:empty('বইটি পাওয়া যায়নি')};const cs=chn(b).sort((x,y)=>x.n-y.n),tv=cs.reduce((s,c)=>s+(c.v||0),0);
+ return{t:'অধ্যায় ব্যবস্থাপনা',h:`<div class="card row" onclick="go('bookDetail',{id:${b.id}})">${cov(b)}<div class="fx"><b>${esc(b.title)}</b><small>${bn(cs.length)} টি অধ্যায় • মোট ভিউ ${bn(tv)}</small>${b.done?'<span class="tg g">সমাপ্ত বই</span>':''}</div></div>${b.done?`<div class="ban">✓ বইটি সমাপ্ত — নতুন অধ্যায় যোগ করা যাবে না। <button class="ob" onclick="reopen(${b.id})">পুনরায় চালু করুন</button></div>`:`<button class="big" style="margin:0 0 14px" onclick="newCh(${b.id})">+ নতুন অধ্যায় যোগ করুন</button>`}${cs.map(c=>`<div class="card row"><div class="num">${bn(c.n)}</div><div class="fx"><b>${ord(c.n)} অধ্যায়</b><small>${c.d?fd(c.d):''}</small><span class="vw">${I('eye')}${bn(c.v||0)} <button class="tg ${c.pub?'g':''}" onclick="togglePub(${c.id})">${c.pub?'● লাইভ':'খসড়া'}</button><button class="tg" onclick="go('audio',{ch:${c.id}})">${c.audio?'🎧 অডিও আছে':'🎧 অডিও'}</button></span></div><div class="col"><button class="ob" onclick="go('editor',{id:${c.id}})">এডিট</button><button class="ob x" onclick="delCh(${c.id})">ডিলিট</button></div></div>`).join('')||empty('এখনো কোনো অধ্যায় নেই')}`}};
+/* New book form */
+V.bookForm=p=>{const b=p.id?bk(p.id):{title:'',author:'',desc:'',cover:null,cats:[],type:'book'};tc=b.cover;
+ return{t:p.id?'বই সম্পাদনা':'নতুন বই প্রকাশ',h:`<div oninput="dirty=true" onchange="dirty=true"><div class="row" style="justify-content:space-between;flex-wrap:wrap;margin-bottom:6px"><b>বইয়ের নাম *</b><span class="row" style="gap:14px">${[['book','বই'],['voice','ভয়েস'],['both','দুটোই']].map(([v,l])=>`<label class="rad"><input type="radio" name="bt" value="${v}" ${(b.type||'book')==v?'checked':''}>${l}</label>`).join('')}</span></div><input id="f1" placeholder="আপনার বইয়ের নাম লিখুন…" value="${esc(b.title)}"><label class="fl" style="margin-top:14px">বই লেখকের নাম *<input id="f2" value="${esc(b.author)}"></label><label class="fl">ক্যাটাগরি *<select id="f4">${S.cats.length?'':'<option value="">আগে ক্যাটাগরি যোগ করুন</option>'}${S.cats.map(c=>`<option value="${c.id}" ${b.cats[0]==c.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label><div class="fl">প্রচ্ছদ / কভার ছবি *<label class="dz">${I('cloud')}<b>কভার ফটো আপলোড করুন</b><small>ক্লিক করুন অথবা কভার সিলেক্ট করুন</small><input type="file" accept="image/*" hidden onchange="pickCov(this)"></label><div class="row" style="margin-top:10px"><div id="fcv"></div><button class="btn s" onclick="tc=null;dirty=true;fcv()">কভার সরান</button></div></div><p class="er" id="fe"></p><button class="big" onclick="saveBook(${p.id||0},1)">বই সাবমিট করুন</button><button class="btn s" style="width:100%;margin-top:10px" onclick="saveBook(${p.id||0},0)">খসড়া হিসেবে সংরক্ষণ</button></div>`,i:()=>{fcv()}}};
+function saveBook(id,pb){const t=$('#f1').value.trim(),a=$('#f2').value.trim(),ca=+$('#f4').value,ty=document.querySelector('[name=bt]:checked').value;
+ const e=!t?'বইয়ের নাম লিখুন।':pb&&!a?'লেখকের নাম লিখুন।':pb&&!ca?'ক্যাটাগরি বাছাই করুন।':pb&&!tc?'কভার ছবি দিন।':'';if(e){$('#fe').textContent=e;return}
+ let b=id?bk(id):null;if(!b){b={id:nid(),v:0,l:0,h:0};S.books.push(b)}const old=(b.cats||[]).slice(1).filter(x=>x!=ca);
+ Object.assign(b,{title:t,author:a,cover:tc,cats:ca?[ca,...old]:[],type:ty,pub:!!pb});
+ log('বই সংরক্ষিত: '+t);toast(id?(pb?'বই সাবমিট হয়েছে':'খসড়া সংরক্ষিত'):'বই তৈরি হয়েছে — এবার নতুন অধ্যায় যোগ করুন');dirty=false;stack.pop();if(!id)stack.push({r:'bchs',p:{id:b.id}});draw()}
+/* Chapter editor with rich-text toolbar */
+let rng=null;
+const TB=[['bold','<b>B</b>','বোল্ড'],['italic','<i>I</i>','ইটালিক'],['underline','<u>U</u>','আন্ডারলাইন'],['foreColor','<span style="color:#c0392b;font-weight:700">A</span>','কালার'],['justifyLeft',I('al'),'বাম'],['justifyCenter',I('ac'),'মাঝ'],['justifyRight',I('ar'),'ডান'],['justifyFull',I('aj'),'সমান'],['insertUnorderedList',I('ul'),'বুলেট'],['insertOrderedList',I('ol'),'নম্বর'],['undo',I('un'),'আন্ডু'],['redo',I('re'),'রিডু'],['removeFormat','Tx','মুছুন']];
+function sr(){const s=getSelection(),e=$('#e4');if(e&&s.rangeCount&&e.contains(s.anchorNode))rng=s.getRangeAt(0).cloneRange()}
+function rs(){const e=$('#e4');e.focus();if(rng){const s=getSelection();s.removeAllRanges();s.addRange(rng)}}
+function ex(c){rs();if(c=='foreColor')return $('#clr').click();document.execCommand(c);sr();upd();dirty=true}
+function fsz(px){rs();document.execCommand('fontSize',false,'7');$('#e4').querySelectorAll('font[size="7"]').forEach(f=>{f.removeAttribute('size');f.style.fontSize=px+'px'});upd();dirty=true}
+V.editor=p=>{const c=p.id?S.chapters.find(x=>x.id==p.id):null;if(!S.books.length)return{t:'অধ্যায় লিখুন',h:empty('আগে একটি বই যোগ করুন')};
+ const bid=c?c.b:(p.b||S.books[0].id),b=bk(bid),nn=c?c.n:chn(b).length+1,fixed=c||p.b;rng=null;
+ return{t:fixed?b.title:'অধ্যায় লিখুন',h:`<div class="row" style="margin-bottom:10px;gap:8px"><small class="fx">নতুন অধ্যায় আপলোড ও প্রকাশন</small><button class="fc" onclick="go('bchs',{id:${bid}})">সকল অধ্যায় (${bn(chn(b).length)})</button><button class="fc" onclick="newCh(${bid})">নতুন অধ্যায়</button></div><div class="card" oninput="dirty=true" onchange="dirty=true"><div class="row" style="justify-content:space-between;align-items:flex-start"><h2 style="margin:0;font-size:1.2rem">${c?'অধ্যায় সম্পাদনা':'নতুন অধ্যায় লিখুন'}</h2><label class="row" style="gap:8px;font-size:.78rem;font-weight:600;text-align:right">এটি বইয়ের শেষ অধ্যায় (সমাপ্ত)<span class="sw"><input type="checkbox" id="e5" ${b.done?'checked':''}><i></i></span></label></div>${!c&&b.done?'<p class="er">বইটি সমাপ্ত — নতুন অধ্যায় যোগ করা যাবে না।</p>':''}${fixed?`<input type="hidden" id="e1" value="${bid}">`:`<label class="fl" style="margin-top:10px">উপন্যাস<select id="e1">${S.books.map(x=>`<option value="${x.id}" ${x.id==bid?'selected':''}>${esc(x.title)}</option>`).join('')}</select></label>`}<div class="g2" style="margin-top:10px"><label class="fl">অধ্যায় নম্বর<input id="e2" type="number" value="${nn}" style="text-align:center"></label><label class="fl"><span class="row" style="justify-content:space-between">অধ্যায়ের শিরোনাম<button type="button" class="ob" style="padding:2px 8px;font-size:.72rem" onclick="$('#e3').focus();$('#e3').select()">✎ নাম পরিবর্তন</button></span><input id="e3" value="${esc(c?c.title:ord(nn)+' অধ্যায়')}"></label></div><div class="row" style="justify-content:space-between;margin-bottom:8px"><b>অধ্যায়ের বিষয়বস্তু (Content)</b><small id="wcs"></small></div><div class="tb"><input id="fs2" title="সাইজ" type="number" value="16" min="10" max="48" style="width:58px;text-align:center;margin:0;padding:6px" onchange="fsz(this.value)">${TB.map(([c2,ic,l])=>`<button type="button" onmousedown="event.preventDefault()" title="${l}" onclick="ex('${c2}')">${ic}</button>`).join('')}<input type="color" id="clr" style="position:absolute;opacity:0;width:0;height:0" onchange="rs();document.execCommand('foreColor',false,this.value);upd()"></div><div id="e4" class="ed" contenteditable="true" data-ph="এখানে আপনার চমৎকার গল্পের অংশটি লিখুন..." oninput="upd()" onkeyup="sr()" onmouseup="sr()" ontouchend="sr()">${c?(c.html||esc(c.text)):''}</div><div class="bar" style="margin-top:12px"><i id="pb"></i></div><div class="cnt"><b id="cn"></b></div><p class="er" id="fe"></p><button id="sv" class="big" onclick="saveCh(${p.id||0},1)">অধ্যায় সাবমিট করুন</button><div class="btns"><button id="sv2" class="btn s" onclick="saveCh(${p.id||0},0)">খসড়া সংরক্ষণ</button><button class="btn s" onclick="prevCh()">রিডিং প্রিভিউ</button></div></div>`,i:upd}};
+function upd(){const t=$('#e4').innerText,n=wc(t),ok=n>=MIN;$('#cn').textContent=`শব্দসংখ্যা: ${bn(n)} / ${bn(MIN)}`;$('#cn').className=ok?'ok':'er';$('#wcs').textContent=`শব্দ: ${bn(n)} | অক্ষর: ${bn(t.trim().length)}`;$('#pb').style.width=Math.min(100,n/MIN*100)+'%';$('#sv').disabled=$('#sv2').disabled=!ok;$('#fe').textContent=ok?'':'অধ্যায় সেভ করতে কমপক্ষে ১,০০০ শব্দ লিখতে হবে।'}
+function prevCh(){openModal(`<h2>${esc($('#e3').value||'শিরোনামহীন')}</h2><div class="rd">${san($('#e4').innerHTML)||'<small>কিছু লেখা হয়নি</small>'}</div><button class="btn" onclick="closeModal()">বন্ধ করুন</button>`)}
+function saveCh(id,pb){const ed=$('#e4'),t=ed.innerText;if(wc(t)<MIN){upd();return} // hard guard: submit, draft, Ctrl+S all pass through here
+ const b=+$('#e1').value,n=+$('#e2').value,ti=$('#e3').value.trim(),fin=$('#e5').checked,fe=$('#fe');let c=id?S.chapters.find(x=>x.id==id):null;
+ if(!c&&bk(b).done)return fe.textContent='বইটি সমাপ্ত — নতুন অধ্যায় যোগ করা যাবে না।';
+ if(!ti)return fe.textContent='অধ্যায়ের শিরোনাম লিখুন।';if(!(n>=1))return fe.textContent='সঠিক অধ্যায় নম্বর দিন।';
+ if(S.chapters.some(x=>x.b==b&&x.n==n&&x.id!=id))return fe.textContent='এই নম্বরে অধ্যায় আছে।';
+ if(!c){c={id:nid(),b,pub:false,audio:null,d:Date.now(),v:0};S.chapters.push(c);id=c.id}
+ Object.assign(c,{n,title:ti,text:t.trim(),html:san(ed.innerHTML)});if(pb)c.pub=true;bk(b).done=fin;
+ log('অধ্যায় সংরক্ষিত: '+ti);toast(pb?'অধ্যায় সাবমিট হয়েছে':'খসড়া সংরক্ষিত');dirty=false;
+ if(pb){stack.pop();draw()}else{stack[stack.length-1]={r:'editor',p:{id}};draw(true)}}
+
+/* Featured & popular lists */
+const LT={feat:'নির্বাচিত উপন্যাস',w:'সাপ্তাহিক জনপ্রিয়',m:'মাসিক জনপ্রিয়',y:'বাৎসরিক জনপ্রিয়'};
+V.list=p=>{const k=p.k;S.lists[k]=(S.lists[k]||[]).filter(id=>bk(id));const L=S.lists[k],Out=S.books.filter(b=>!L.includes(b.id));
+ return{t:LT[k],h:`<p class="note">${k=='feat'?'তালিকা থেকে সরালে মূল বই মুছে যায় না। সংখ্যার কোনো সীমা নেই।':'এই তালিকা ইউজার অ্যাপের জনপ্রিয় অংশে দেখাবে। খালি রাখলে অ্যাপ নিজেই পাঠক সংখ্যা দেখে সাজাবে।'}</p><div class="card"><b>প্রিভিউ</b><div class="strip">${L.map((id,i)=>`<div>${cov(bk(id))}${bn(i+1)}. ${esc(bk(id).title)}</div>`).join('')||'<small>খালি</small>'}</div></div><div class="card row"><select id="la" style="margin:0">${Out.map(b=>`<option value="${b.id}">${esc(b.title)}</option>`).join('')}</select><button class="btn" ${Out.length?'':'disabled'} onclick="S.lists.${k}.push(+$('#la').value);draw(true)">যোগ</button></div>${L.map((id,i)=>`<div class="card"><div class="row"><b>${bn(i+1)}</b><div class="fx">${esc(bk(id).title)}</div></div><div class="row" style="gap:8px;margin-top:10px;flex-wrap:wrap"><button class="ob" ${i?'':'disabled'} onclick="lmv('${k}',${i},-1)">↑ উপরে</button><button class="ob" ${i<L.length-1?'':'disabled'} onclick="lmv('${k}',${i},1)">↓ নিচে</button><button class="ob" onclick="lrep('${k}',${i})">বদলান</button><button class="ob x" onclick="remL('${k}',${i})">সরান</button></div></div>`).join('')}`}};
+function remL(k,i){S.lists[k].splice(i,1);toast('তালিকা থেকে সরানো হয়েছে');draw(true)}
+function lmv(k,i,d){const L=S.lists[k];[L[i],L[i+d]]=[L[i+d],L[i]];draw(true)}
+function lrep(k,i){const O=S.books.filter(b=>!S.lists[k].includes(b.id));if(!O.length)return toast('বদলানোর মতো বই নেই');openModal(`<h2>বই বদলান</h2>${O.map(b=>`<div class="card row" onclick="S.lists.${k}[${i}]=${b.id};closeModal(true);draw(true)">${cov(b)}<b>${esc(b.title)}</b></div>`).join('')}`)}
+/* Audio / Covers */
+V.audio=p=>({t:'অডিও ম্যানেজমেন্ট',h:`${S.chapters.map(c=>`<div class="card" ${c.id==p.ch?'style="border-color:var(--ac)"':''}><b>${esc(bk(c.b)?.title||'')} — ${bn(c.n)}. ${esc(c.title)}</b>${c.audio?`<small style="display:block;color:var(--mu)">${esc(c.audio.name)}</small><audio controls src="${c.audio.url}"></audio>`:'<small style="display:block;color:var(--mu)">অডিও নেই</small>'}<div class="btns"><label class="btn s" style="text-align:center">${c.audio?'বদলান':'অডিও বাছাই'}<input type="file" accept="audio/*" hidden onchange="setAud(${c.id},this)"></label>${c.audio?`<button class="btn d" onclick="rmAud(${c.id})">সরান</button>`:''}</div></div>`).join('')||empty('কোনো অধ্যায় নেই')}`});
+async function setAud(id,i){const f=i.files[0];if(!f)return;const c=S.chapters.find(x=>x.id==id);toast('আপলোড হচ্ছে…');try{const r=firebase.storage().ref('audio/'+id+'_'+Date.now()+'_'+f.name.replace(/[^\w.-]/g,'_'));await r.put(f);c.audio={name:f.name,url:await r.getDownloadURL()};log('অডিও যুক্ত: '+c.title);toast('অডিও আপলোড হয়েছে');draw(true)}catch(e){toast('আপলোড ব্যর্থ — Firebase Storage চালু আছে?')}}
+function rmAud(id){confirmDlg('অডিও সরাবেন?','বাতিল','সরান',()=>{S.chapters.find(x=>x.id==id).audio=null;draw(true)})}
+V.covers=()=>({t:'প্রচ্ছদ ব্যবস্থাপনা',h:`${S.books.map(b=>`<div class="card row">${cov(b,'l')}<div class="fx"><b>${esc(b.title)}</b><small>${b.cover?'প্রচ্ছদ নির্বাচিত':'প্রচ্ছদ নেই (প্লেসহোল্ডার)'}</small><div class="btns"><label class="btn s" style="text-align:center">${b.cover?'বদলান':'বাছাই'}<input type="file" accept="image/*" hidden onchange="setCov(${b.id},this)"></label>${b.cover?`<button class="btn d" onclick="rmCov(${b.id})">সরান</button>`:''}</div></div></div>`).join('')||empty('কোনো বই নেই')}`});
+function setCov(id,i){const f=i.files[0];if(f)img2data(f).then(u=>{bk(id).cover=u;draw(true)}).catch(()=>toast("ছবি পড়া যায়নি"))}
+function rmCov(id){confirmDlg('প্রচ্ছদ সরাবেন?','বাতিল','সরান',()=>{bk(id).cover=null;draw(true)})}
+/* Notifications */
+const NT=['নতুন বই','নতুন অধ্যায়','ঘোষণা','আপডেট'];
+V.notifs=()=>({t:'নোটিফিকেশন',h:`<p class="note">এগুলো ইউজার অ্যাপের নোটিশ তালিকায় দেখাবে (পুশ নয়)।</p><button class="btn" style="width:100%;margin-bottom:12px" onclick="nForm(0)">+ নতুন নোটিফিকেশন</button>${S.notifs.map(n=>`<div class="card"><div class="row"><div class="fx"><small>${esc(n.type)}${n.b&&bk(n.b)?' • '+esc(bk(n.b).title):''}</small><b>${esc(n.title)}</b><div>${esc(n.msg)}</div></div><button class="ib" onclick="nForm(${n.id})">${I('edit')}</button><button class="ib dn" onclick="delN(${n.id})">${I('trash')}</button></div></div>`).join('')||empty('কোনো নোটিফিকেশন নেই')}`});
+function nForm(id){const n=id?S.notifs.find(x=>x.id==id):{title:'',msg:'',type:NT[2],b:0,c:0};mdirty=false;
+ openModal(`<div oninput="mdirty=true" onchange="mdirty=true"><h2>${id?'সম্পাদনা':'নতুন নোটিফিকেশন'}</h2>${fld('শিরোনাম','n1',n.title)}<label class="fl">বার্তা<textarea id="n2" rows="3">${esc(n.msg)}</textarea></label><label class="fl">ধরন<select id="n3">${NT.map(t=>`<option ${t==n.type?'selected':''}>${t}</option>`).join('')}</select></label><label class="fl">বই (ঐচ্ছিক)<select id="n4" onchange="nc()"><option value="0">—</option>${S.books.map(b=>`<option value="${b.id}" ${b.id==n.b?'selected':''}>${esc(b.title)}</option>`).join('')}</select></label><label class="fl">অধ্যায় (ঐচ্ছিক)<select id="n5"></select></label><div class="card" id="np"></div><p class="er" id="ce"></p><div class="btns"><button class="btn s" onclick="closeModal()">বাতিল</button><button class="btn" onclick="saveN(${id})">সংরক্ষণ</button></div></div>`,true);
+ window._nc=n.c;nc();$('#n1').oninput=$('#n2').oninput=npv;npv()}
+function nc(){const b=+$('#n4').value;$('#n5').innerHTML='<option value="0">—</option>'+S.chapters.filter(c=>c.b==b).map(c=>`<option value="${c.id}" ${c.id==window._nc?'selected':''}>${esc(c.title)}</option>`).join('')}
+function npv(){$('#np').innerHTML=`<small>প্রিভিউ</small><br><b>${esc($('#n1').value||'শিরোনাম')}</b><br>${esc($('#n2').value||'বার্তা')}`}
+function saveN(id){const t=$('#n1').value.trim(),m=$('#n2').value.trim();if(!t||!m)return $('#ce').textContent='শিরোনাম ও বার্তা দিন।';const o={title:t,msg:m,type:$('#n3').value,b:+$('#n4').value,c:+$('#n5').value};
+ id?Object.assign(S.notifs.find(x=>x.id==id),o):S.notifs.unshift({id:nid(),...o});mdirty=false;closeModal(true);toast('সংরক্ষিত');draw(true)}
+function delN(id){confirmDlg('নোটিফিকেশন মুছবেন?','বাতিল','মুছুন',()=>{S.notifs=S.notifs.filter(n=>n.id!=id);draw(true)})}
+/* App update */
+V.update=()=>{const u=S.upd;return{t:'অ্যাপ আপডেট',h:`<div class="card" oninput="dirty=true;upv()" onchange="dirty=true;upv()"><div class="g2" style="grid-template-columns:1fr 1fr">${fld('ভার্সন কোড','u1',u.vc,'number')}${fld('ভার্সন নাম','u2',u.vn)}</div><label class="fl">রিলিজ নোট<textarea id="u3" rows="3">${esc(u.notes)}</textarea></label>${fld('ডাউনলোড URL','u4',u.url,'url')}${fld('ন্যূনতম সমর্থিত ভার্সন','u5',u.min,'number')}<label class="chip" style="margin-bottom:10px"><input type="checkbox" id="u6" ${u.must?'checked':''}> বাধ্যতামূলক আপডেট</label><p class="er" id="fe"></p><button class="btn" style="width:100%" onclick="saveU()">সংরক্ষণ</button></div><div class="card" id="upv"></div><p class="note">এই তথ্য সংরক্ষিত হয়, তবে ইউজার অ্যাপে এখনো দেখানো হয় না।</p>`,i:upv}};
+function upv(){$('#upv').innerHTML=`<b>আপডেট ঘোষণা প্রিভিউ</b><br>নতুন সংস্করণ ${esc($('#u2').value)} (${esc($('#u1').value)})<br>${esc($('#u3').value)}<br><small>${$('#u6').checked?'বাধ্যতামূলক':'ঐচ্ছিক'} • ন্যূনতম ভার্সন ${esc($('#u5').value)}</small>`}
+function saveU(){const url=$('#u4').value.trim();if(url&&!/^https?:\/\//.test(url))return $('#fe').textContent='সঠিক URL দিন।';if(!$('#u2').value.trim())return $('#fe').textContent='ভার্সন নাম দিন।';
+ S.upd={vc:$('#u1').value,vn:$('#u2').value,notes:$('#u3').value,url,min:$('#u5').value,must:$('#u6').checked};dirty=false;toast('সংরক্ষিত')}
+/* Settings */
+V.settings=()=>({t:'সেটিংস',h:`<div class="ban">Firebase সংযুক্ত — লাইভ ডেটা</div><div class="card"><label class="fl">লেখার আকার<select onchange="document.documentElement.style.setProperty('--fs',this.value)"><option value="16px">স্বাভাবিক</option><option value="18px">বড়</option><option value="14px">ছোট</option></select></label><label class="fl">অ্যাকসেন্ট রং<select onchange="document.documentElement.style.setProperty('--ac',this.value)"><option value="#4a5bd4">ইন্ডিগো</option><option value="#0f7f7f">টিল</option><option value="#8a3a9a">বেগুনি</option></select></label></div><div class="card"><b>অ্যাডমিন অ্যাপ সম্পর্কে</b><p>যাত্রাপথ বাংলা উপন্যাস — অ্যাডমিন অ্যাপ।</p></div>`});
+/* More */
+V.more=()=>{const c=[['feat','নির্বাচিত উপন্যাস','star','list'],['w','সাপ্তাহিক জনপ্রিয়','trend','list'],['m','মাসিক জনপ্রিয়','cal','list'],['y','বাৎসরিক জনপ্রিয়','cal','list'],[0,'অডিও ম্যানেজমেন্ট','audio','audio'],[0,'প্রচ্ছদ ব্যবস্থাপনা','img','covers'],[0,'নোটিফিকেশন','bell','notifs'],[0,'অ্যাপ আপডেট','dl','update'],[0,'সেটিংস','gear','settings']];
+ return{t:'আরও',h:`<div class="mg">${c.map(([k,l,i,r])=>`<div class="card" onclick="go('${r}',${k?`{k:'${k}'}`:'{}'})"><i>${I(i)}</i><b>${l}</b></div>`).join('')}</div>`}};
+/* Boot */
+$('#bk').innerHTML=I('back');
+$('#main').innerHTML='<div class="sk"></div><div class="sk"></div><div class="sk"></div>';$('#ttl').textContent='লোড হচ্ছে…';$('#bk').style.display='none';
+
+const FBCFG={apiKey:"AIzaSyChJazuEIsUbRjfULzalX9-DK5nL58afYA",authDomain:"novelread-4ab43.firebaseapp.com",projectId:"novelread-4ab43",storageBucket:"novelread-4ab43.firebasestorage.app",messagingSenderId:"373192250091",appId:"1:373192250091:web:2aa4faecbeaed491f3e4ae"};
+function loadFB(l){if(window.firebase&&firebase.firestore)return Promise.resolve();const one=n=>new Promise((ok,no)=>{const t=['https://www.gstatic.com/firebasejs/10.12.2/firebase-'+n+'-compat.js','https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-'+n+'-compat.js'];let i=0;(function go(){const s=document.createElement('script');s.src=t[i];s.onload=ok;s.onerror=()=>{s.remove();++i<t.length?go():no(new Error('firebase-'+n))};document.head.append(s)})()});return one('app').then(()=>Promise.all(l.map(one)))}
+let auth,fs;
+let CACHE={},LOADED=0,ST=null;
+function img2data(f){return new Promise((ok,no)=>{const i=new Image(),u=URL.createObjectURL(f);i.onload=()=>{const k=Math.min(1,300/i.width),c=document.createElement('canvas');c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',.7))};i.onerror=no;i.src=u})}
+const bdoc=b=>{const cs=S.chapters.filter(c=>c.b==b.id).sort((x,y)=>x.n-y.n),{v,l,h,reads,likes,dislikes,...r}=b;if(b.pub&&!b.publishedAt)b.publishedAt=new Date().toISOString();
+ return{...r,id:String(b.id),cat:ct(b.cats[0])?.name||'',status:b.done?'সমাপ্ত':'চলমান',featured:S.lists.feat.includes(b.id),publishedAt:b.publishedAt||null,cover:b.cover||null,
+ chs:cs.map(c=>({id:c.id,n:c.n,t:c.title,p:!!c.pub,w:wc(c.text||'')})),audio:cs.filter(c=>c.audio&&c.audio.url).map(c=>({n:c.n,title:c.title,url:c.audio.url,p:!!c.pub}))}};
+function want(){const w={};S.cats.forEach(c=>w['categories/'+c.id]={name:c.name});S.books.forEach(b=>w['books/'+b.id]=bdoc(b));
+ S.chapters.forEach(c=>{const{b,...r}=c;w['books/'+b+'/chapters/'+c.id]={...r,b,text:(c.text||'').replace(/\n+/g,'\n\n'),audio:c.audio||null}});
+ S.notifs.forEach(n=>{n.createdAt=n.createdAt||new Date().toISOString();w['notices/'+n.id]={title:n.title,body:n.msg,type:n.type,bookId:n.b?String(n.b):'',chapter:n.c||0,createdAt:n.createdAt}});
+ w['config/lists']={...S.lists};w['config/update']={...S.upd};return w}
+function sync(){clearTimeout(ST);ST=setTimeout(doSync,400)}
+async function doSync(){if(!LOADED||!auth.currentUser)return;const w=want(),ops=[];
+ for(const p in w){const j=JSON.stringify(w[p]);if(CACHE[p]!==j){const d={...w[p]};if(/^books\/\d+$/.test(p)&&!(p in CACHE))Object.assign(d,{reads:0,likes:0,dislikes:0});ops.push(['s',p,d,j])}}
+ for(const p in CACHE)if(!(p in w)){ops.push(['d',p]);if(/^books\/\d+$/.test(p))ops.push(['d','stats/'+p.split('/')[1]])}
+ for(let i=0;i<ops.length;i+=400){const bt=fs.batch(),ch=ops.slice(i,i+400);ch.forEach(o=>o[0]=='s'?bt.set(fs.doc(o[1]),o[2],{merge:true}):bt.delete(fs.doc(o[1])));
+  try{await bt.commit();ch.forEach(o=>o[0]=='s'?CACHE[o[1]]=o[3]:delete CACHE[o[1]])}catch(e){toast(e.code=='permission-denied'?'অনুমতি নেই — অ্যাডমিন ইমেইলে লগইন করুন':'সংরক্ষণ ব্যর্থ: '+(e.code||e.message));return}}}
+async function loadAll(){const g=n=>fs.collection(n).get(),[c,b,n,cf]=await Promise.all([g('categories'),g('books'),g('notices'),g('config')]);
+ S.cats=c.docs.map(d=>({id:+d.id,name:d.data().name}));
+ S.books=b.docs.map(d=>{const x=d.data();return{...x,id:+d.id,cats:x.cats||[],v:x.reads||0,l:x.likes||0,h:x.dislikes||0}});
+ const cs=await Promise.all(S.books.map(k=>fs.collection('books/'+k.id+'/chapters').get()));S.chapters=[];
+ cs.forEach((q,i)=>q.forEach(d=>S.chapters.push({...d.data(),id:+d.id,b:S.books[i].id})));
+ S.notifs=n.docs.map(d=>{const x=d.data();return{id:+d.id,title:x.title,msg:x.body,type:x.type,b:+x.bookId||0,c:x.chapter||0,createdAt:x.createdAt}});
+ cf.forEach(d=>{if(d.id=='lists')S.lists={feat:[],w:[],m:[],y:[],...d.data()};if(d.id=='update')S.upd={...S.upd,...d.data()}});
+ CACHE={};const w=want();for(const p in w)CACHE[p]=JSON.stringify(w[p])}
+function showLogin(){let o=$('#lg');if(!o){o=document.createElement('div');o.id='lg';o.style.cssText='position:fixed;inset:0;z-index:50;background:var(--bg);display:grid;place-items:center;padding:20px';
+ o.innerHTML=`<div class="card" style="width:100%;max-width:380px"><h2 style="margin:0 0 10px">অ্যাডমিন লগইন</h2>${fld('ইমেইল','lge','','email')}${fld('পাসওয়ার্ড','lgp','','password')}<p class="er" id="lgr"></p><button class="btn" style="width:100%" onclick="login()">লগইন</button><button class="btn s" style="width:100%;margin-top:10px" onclick="glogin()">Google দিয়ে চালিয়ে যান</button></div>`;document.body.append(o)}o.style.display='grid'}
+function lerr(e){const H={'auth/operation-not-allowed':'Console → Authentication → Sign-in method-এ Email/Password চালু করুন','auth/unauthorized-domain':'Authentication → Settings → Authorized domains-এ এই ডোমেইন যোগ করুন','auth/network-request-failed':'ইন্টারনেট/ব্লক সমস্যা','auth/invalid-credential':'ইমেইল বা পাসওয়ার্ড ঠিক নয়','auth/invalid-email':'ইমেইল ফরম্যাট ভুল','auth/user-not-found':'এই ইমেইলে ইউজার নেই','auth/wrong-password':'পাসওয়ার্ড ভুল','auth/popup-blocked':'ব্রাউজারে পপআপ অনুমতি দিন','auth/popup-closed-by-user':'Google উইন্ডো বন্ধ হয়েছে','auth/operation-not-supported-in-this-environment':'file:// বা WebView-তে Google লগইন চলে না — https লিংক থেকে খুলুন','auth/too-many-requests':'অনেকবার চেষ্টা — কিছুক্ষণ পরে আবার'};$('#lgr').textContent='লগইন ব্যর্থ ['+(e.code||e.message)+'] '+(H[e.code]||'')}
+function glogin(){$('#lgr').textContent='';const gp=new firebase.auth.GoogleAuthProvider();auth.signInWithPopup(gp).catch(e=>e.code=='auth/popup-blocked'?auth.signInWithRedirect(gp):lerr(e))}
+function login(){$('#lgr').textContent='';auth.signInWithEmailAndPassword($('#lge').value.trim(),$('#lgp').value).catch(lerr)}
+function logout(){auth.signOut().then(()=>location.reload())}
+let STEP='১. Firebase লাইব্রেরি লোড';
+async function boot(){setTimeout(()=>{const lg=$('#lg');if(!LOADED&&!(lg&&lg.style.display=='grid')&&!document.querySelector('#main .card')){$('#ttl').textContent='আটকে গেছে';$('#main').innerHTML='<div class="card" style="margin:16px"><p><b>আটকে গেছে</b></p><p>ধাপ: '+STEP+'</p><p>ঠিকানা: '+location.protocol+'//</p><p>ফাইল content:// বা file:// থেকে খুললে লগইন চলে না। https ঠিকানা থেকে খুলতে হবে।</p></div>'}},12000);try{await loadFB(['auth','firestore','storage'])}catch(e){$('#main').innerHTML='<div class="emp"><p>Firebase লোড হয়নি — ইন্টারনেট ঠিক আছে কি? ফাইলটি Chrome বা অ্যাপে সরাসরি খুলুন।</p></div>';$('#ttl').textContent='ত্রুটি';return}STEP='২. লগইন যাচাই';firebase.initializeApp(FBCFG);auth=firebase.auth();fs=firebase.firestore();fs.settings({experimentalAutoDetectLongPolling:true,merge:true});auth.onAuthStateChanged(async u=>{if(!u){showLogin();return}STEP='৩. ডেটা লোড';try{await Promise.race([loadAll(),new Promise((_,no)=>setTimeout(()=>no({code:'timeout'}),25000))]);LOADED=1;const o=$('#lg');if(o)o.style.display='none';draw()}catch(e){const c=e.code||e.message,H={'permission-denied':'Firestore Rules প্রকাশ করেছেন কি? লগইন ইমেইল Rules-এর ইমেইলের সাথে মিলতে হবে।','timeout':'Firestore ডাটাবেজ তৈরি করা আছে কি? ইন্টারনেট ঠিক আছে কি?','unavailable':'Firestore ডাটাবেজ তৈরি করা আছে কি? ইন্টারনেট ঠিক আছে কি?','failed-precondition':'Firestore ডাটাবেজ তৈরি করা আছে কি?'};$('#ttl').textContent='ত্রুটি';$('#main').innerHTML='<div class="card" style="margin:16px"><p><b>ডেটা লোড হয়নি</b> ['+c+']</p><p>'+(H[c]||'')+'</p><button class="btn" onclick="location.reload()">আবার চেষ্টা</button></div>'}})}
+boot();
+</script></body></html>
