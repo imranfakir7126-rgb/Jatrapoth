@@ -189,15 +189,16 @@ html:not([data-theme=dark]) .freshb{color:var(--red2)}
 .cbt.on{background:var(--red);color:var(--on-red)}.cbt.on svg{fill:currentColor}.cbt.busy{opacity:.6;pointer-events:none}
 .cbg{position:absolute;top:-5px;right:-5px;background:var(--red);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;padding:1px 6px;border-radius:10px;min-width:18px;text-align:center}
 .bstats{display:flex;gap:24px;margin-top:12px}.bstats small{display:block;color:var(--muted);font-size:12.5px}.bstats b{font-size:17px;font-weight:700}
+.cmform input::placeholder{color:var(--muted);opacity:1}.cmb p,.cmh b{color:var(--text)}
 .cmwrap{display:flex;flex-direction:column;height:76vh}.cmlist{flex:1;overflow-y:auto;margin:0 -4px;padding:0 4px;-webkit-overflow-scrolling:touch}
-.cmi{display:flex;gap:10px;background:#2a2a2d;border-radius:16px;padding:12px;margin-bottom:10px}.cmi .sav{width:40px;height:40px;flex:0 0 auto}
-.cmb{min-width:0;flex:1}.cmh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.cmh b{font-size:15px}.cmh small,.cmr small{color:#9a9a9f;font-size:12px}
+.cmi{display:flex;gap:10px;background:var(--card2);color:var(--text);border-radius:16px;padding:12px;margin-bottom:10px}.cmi .sav{width:40px;height:40px;flex:0 0 auto}
+.cmb{min-width:0;flex:1}.cmh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.cmh b{font-size:15px}.cmh small,.cmr small{color:var(--muted);font-size:12px}
 .cmb p{margin:3px 0 0;line-height:1.55;font-size:15px;word-break:break-word}
-.cmr{margin-top:8px;padding:8px 10px;border-left:3px solid var(--red);background:rgba(255,255,255,.05);border-radius:8px}.cmr .lk{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:1px 8px;border-radius:9px;margin-right:6px}
+.cmr{margin-top:8px;padding:8px 10px;border-left:3px solid var(--red);background:rgba(128,128,128,.14);border-radius:8px}.cmr .lk{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:1px 8px;border-radius:9px;margin-right:6px}
 .cmform{display:flex;gap:8px;align-items:center;margin-top:8px}.cmform .sav{width:40px;height:40px;flex:0 0 auto}
-.cmform input{flex:1;min-width:0;background:#2a2a2d;color:#fff;border:1px solid #444;border-radius:999px;padding:12px 16px;font:inherit;font-size:15px}
+.cmform input{flex:1;min-width:0;background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:999px;padding:12px 16px;font:inherit;font-size:15px}
 .cmform button{width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;flex:0 0 auto}.cmform button svg{width:22px;height:22px}
-.cmcnt{display:flex;justify-content:space-between;font-size:12px;color:#9a9a9f;margin:6px 6px 0}
+.cmcnt{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin:6px 6px 0}
 .icon-btn.bmh svg{width:22px;height:22px}.icon-btn.bmh.on{color:var(--teal)}.icon-btn.bmh.on svg{fill:var(--teal)}
 .reacts{display:flex;gap:8px;margin:10px 0 4px}
 .reacts .btn{padding:8px 16px;font-size:14px}
@@ -1326,23 +1327,34 @@ let curPath = (location.hash || '#/').slice(1) || '/';
 const navStack = [];
 const scrollMem = {};
 let keepScrollOnce = false; let restoreOnce = false; let leaving = false;
-function setUrl(p, replace) { try { history[replace ? 'replaceState' : 'pushState']({ jp: 1 }, '', '#' + p); } catch (e) { /* ignore */ } }
+// ইতিহাসে সবসময় মাত্র দুটো এন্ট্রি থাকে ([গার্ড, বর্তমান]); পেজের ব্যাক-স্ট্যাক অ্যাপ নিজে সামলায়
+function setUrl(p) { try { if (leaving) { leaving = false; initExitGuard(); } history.replaceState({ jp: 1 }, '', '#' + p); } catch (e) { /* ignore */ } }
+const TABS = ['/', '/feed', '/cat', '/lib'];
 function nav(path, replace) {
   path = String(path || '/').replace(/^#/, ''); if (path.charAt(0) !== '/') path = '/' + path;
   if (path === curPath) { route(); return; }
   scrollMem[curPath] = window.scrollY;
-  if (!replace) navStack.push(curPath);
+  if (TABS.indexOf(curPath) >= 0 && TABS.indexOf(path) >= 0) navStack.length = 0; // ট্যাব বদলালে স্ট্যাকে জমবে না
+  else if (!replace) navStack.push(curPath);
   curPath = path; setUrl(path, replace); route();
 }
 function goBack() {
   if (navStack.length) { restoreOnce = true; curPath = navStack.pop(); setUrl(curPath, true); route(); } else nav('/', true);
 }
+function backAction() {
+  if (!$('#dlg').hidden) { hideDialog(); return; }            // সতর্কবার্তা খোলা থাকলে ব্যাক = "না"
+  if (sheetOpen() || drawerOpen()) { closeSheet(); closeDrawer(); return; }
+  const home = curPath === '/' || curPath === '';
+  if (navStack.length || !home) { goBack(); return; }       // আগের পেজে, নাহলে হোমে
+  askExit();                                                // হোমে ব্যাক = বের হওয়ার প্রশ্ন
+}
 function onPop(ev) {
   if (ev && ev.state && ev.state.g) {
-    if (!leaving) { askExit(); try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ } }
+    if (leaving) return;
+    backAction();
+    try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ }
     return;
   }
-  if (sheetOpen() || drawerOpen()) { closeSheet(); closeDrawer(); try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ } return; }
   const p = (location.hash || '#/').slice(1) || '/';
   if (p === curPath) return;
   restoreOnce = true;
@@ -2944,9 +2956,10 @@ function askExit() {
 }
 function doExit() {
   try { const ca = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App; if (ca && ca.exitApp) { ca.exitApp(); return; } } catch (e) { /* ignore */ }
+  try { if (navigator.app && navigator.app.exitApp) { navigator.app.exitApp(); return; } } catch (e) { /* ignore */ }
   leaving = true;
-  try { history.go(-2); } catch (e) { /* ignore */ }
-  setTimeout(() => { try { window.close(); } catch (e) { /* ignore */ } leaving = false; if (!document.hidden) toast('অ্যাপ বন্ধ করতে ফোনের হোম বাটন চাপুন'); }, 600);
+  try { history.go(-1); } catch (e) { /* ignore */ }
+  setTimeout(() => { try { window.close(); } catch (e) { /* ignore */ } if (!document.hidden) toast('অ্যাপ বন্ধ করতে আরেকবার ব্যাক চাপুন'); }, 400);
 }
 function initExitGuard() { try { history.replaceState({ g: 1 }, '', location.href); history.pushState({ jp: 1 }, '', location.href); } catch (e) { /* ইতিহাস বদলানো নাও যেতে পারে */ } }
 
@@ -3213,6 +3226,7 @@ function boot() {
   }, { passive: true, capture: true }));
   if (ttsOK() && SS.addEventListener) SS.addEventListener('voiceschanged', () => { if (sheetOpen() && rsTab === 'voice') rsRender(); });
   window.addEventListener('popstate', onPop); window.addEventListener('hashchange', onPop);
+  try { if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(() => {}); } catch (e) { /* ignore */ }
   window.addEventListener('scroll', onScrollProgress, { passive: true });
   startTimeTracker();
   initExitGuard();
