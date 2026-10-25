@@ -470,6 +470,30 @@ body.chrome-off .rfoot,body.chrome-off .spk-bar{transform:translateY(130%);opaci
 body.lmode .lplayer{display:flex}
 body.lmode .reader,body.lmode .rnav,body.lmode .rfoot,body.lmode .spk-bar{display:none!important}
 body.lmode .rtop [data-act=rs-open]{visibility:hidden}
+
+
+.splash{overflow:hidden}.splash-tag{display:none}
+.splash::before{content:'';position:absolute;top:-130px;right:-130px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(196,38,44,.38),transparent 70%);animation:glowp 4s ease-in-out infinite}
+.splash::after{content:'';position:absolute;left:7%;top:17%;width:6px;height:6px;border-radius:50%;background:#c4506a;box-shadow:78vw 40vh 0 #c4506a,38vw 74vh 0 rgba(196,80,106,.7),86vw 9vh 0 rgba(196,80,106,.6),-2vw 52vh 0 rgba(196,80,106,.8);animation:dotf 6s ease-in-out infinite}
+@keyframes glowp{50%{transform:scale(1.18);opacity:.7}}@keyframes dotf{50%{transform:translateY(-14px)}}
+.splash-logo{border-radius:30px;padding:0}.splash-quote{font-style:normal;font-weight:600;color:var(--text);max-width:320px;margin-top:12px;font-size:14.5px}
+.arc{width:46px;height:46px;animation:arcrot 1.4s linear infinite}.arc circle{fill:none;stroke:#f4a3b8;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 120;animation:arcd 1.4s ease-in-out infinite}
+@keyframes arcrot{to{transform:rotate(360deg)}}@keyframes arcd{0%{stroke-dasharray:1 120;stroke-dashoffset:0}50%{stroke-dasharray:72 120;stroke-dashoffset:-18}100%{stroke-dasharray:72 120;stroke-dashoffset:-112}}
+.splash-load{font-weight:600;margin-top:12px;animation:sp-up .5s .9s ease both}.splash-ver{font-size:12px;color:var(--muted);margin-top:4px;animation:sp-up .5s 1s ease both}
+.skx{padding:14px}.skb,.skrow i,.sklist b{display:block;border-radius:14px;background:linear-gradient(110deg,var(--card2) 35%,rgba(255,255,255,.5) 50%,var(--card2) 65%);background-size:260% 100%;animation:metal 1.3s linear infinite}
+html:not([data-theme=dark]) .skb,html:not([data-theme=dark]) .skrow i,html:not([data-theme=dark]) .sklist b{background:linear-gradient(110deg,#e6dfd6 35%,#fff 50%,#e6dfd6 65%);background-size:260% 100%}
+.skb.hd{height:150px;margin-bottom:16px}.skrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}.skrow i{aspect-ratio:2/3}.sklist b{height:62px;margin-bottom:10px}
+@keyframes metal{from{background-position:130% 0}to{background-position:-130% 0}}
+.sgsk i{background:linear-gradient(110deg,var(--card2) 35%,rgba(255,255,255,.45) 50%,var(--card2) 65%);background-size:260% 100%;animation:metal 1.3s linear infinite}
+.cover{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Ccircle cx='22' cy='22' r='18' fill='none' stroke='%23f4a3b8' stroke-width='4' stroke-linecap='round' stroke-dasharray='60 60'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 22 22' to='360 22 22' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E") center/30px no-repeat,var(--card2);animation:none}
+.dlg{animation:dpop .25s ease both}.dlg-wrap:not([hidden]){animation:dfade .2s ease both}@keyframes dpop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}@keyframes dfade{from{opacity:0}to{opacity:1}}
+.goalc{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.gbtn{width:100%;padding:13px;border-radius:12px;background:var(--red);color:#fff;font-weight:700;font-size:15px;margin-bottom:10px}.gstats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.gstats div{background:var(--card2);border-radius:12px;padding:10px 12px}.gstats .wide{grid-column:1/-1}.gstats small{display:block;color:var(--muted);font-size:13px}.gstats b{font-size:16px;word-break:break-word}
+.toast:not(.show){visibility:hidden}
+body.lmode .lplayer{background:linear-gradient(180deg,#7a2038 0%,#4d1428 100%);color:#fff}
+.lplayer .lcover{border-radius:18px}.lplayer .ltitle{font-size:22px}
+.lctl2{display:flex;justify-content:center;align-items:center;gap:26px;margin-top:18px;width:100%}
+.lctl2 button{min-width:48px;min-height:48px;padding:8px 16px;border-radius:24px;color:#fff;background:rgba(255,255,255,.14);font-size:15px;font-weight:600}
+body.lmode .lplayer .lctl .big{background:#fff;color:#4d1428;border-radius:50%}
 .lcover{width:max(150px,min(58vw,290px,calc((100vh - 500px) * .667)));aspect-ratio:2/3;border-radius:22px;overflow:hidden;background:var(--card2);box-shadow:0 10px 30px rgba(0,0,0,.45)}
 .lcover img{width:100%;height:100%;object-fit:cover;display:block}
 .ltitle{font-size:27px;font-weight:600;margin:26px 0 6px}
@@ -740,8 +764,34 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .wp .wpw input{padding-right:50px}
 .detail .achip{display:flex;width:100%;justify-content:flex-start}.detail .achip .an{flex:1;text-align:left}
 .achip{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(176,34,48,.32),rgba(176,34,48,.14))!important;border:1px solid rgba(232,77,115,.45)!important}
-.achip::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:38%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-20deg);animation:achsh 1.5s ease-in-out infinite;pointer-events:none}
+.achip::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:38%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-20deg);animation:achsh .9s ease-in-out infinite;pointer-events:none}
 @keyframes achsh{0%{left:-60%}55%,100%{left:130%}}
+.auth2 .aprow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:6px 2px 14px}.apinfo{flex:1;min-width:0}
+.apinfo h2{margin:0 0 12px;font-size:26px;font-weight:800;display:flex;align-items:center;gap:6px;flex-wrap:wrap;word-break:break-word}
+.apst{display:flex;gap:22px}.apst span{display:flex;flex-direction:column;font-size:14px;color:var(--muted)}.apst b{font-size:20px;color:var(--text)}
+.aptot{margin-top:10px;color:var(--muted);font-size:14px}.aptot b{color:var(--text);font-size:16px}
+.auth2 .sav.big{width:104px;height:104px;font-size:40px;flex:0 0 auto}
+.folbtn.wide{width:100%;min-width:0;border-radius:10px;margin:2px 0 12px}.apbio{color:var(--muted);line-height:1.75;margin:0 2px 16px;white-space:pre-wrap}
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 0}
+.bkl{position:relative;width:48px;height:32px;perspective:300px}.bkl:before{content:'';position:absolute;inset:0;border:2px solid #c4262c;border-radius:4px;background:rgba(196,38,44,.12)}
+.bkl i{position:absolute;left:50%;top:3px;width:21px;height:26px;background:#f1e3d3;border-radius:0 3px 3px 0;transform-origin:left center;animation:bkflip 1.5s ease-in-out infinite}
+.bkl i:nth-child(2){animation-delay:.25s}.bkl i:nth-child(3){animation-delay:.5s}
+@keyframes bkflip{0%{transform:rotateY(0);opacity:1}60%,100%{transform:rotateY(-170deg);opacity:.15}}
+#app>*{animation:pgin .35s ease both}@keyframes pgin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.splash-book{margin-top:28px;animation:sp-up .5s .75s ease both}
+.splash-quote{max-width:300px;text-align:center;line-height:1.7;font-size:15px;font-style:italic;color:var(--muted);margin-top:22px;animation:sp-up .8s 1s ease both}
+.splash-logo{animation:sp-pop .7s cubic-bezier(.2,.9,.3,1.2) both,sp-glow 2.4s 1s ease-in-out infinite}@keyframes sp-glow{50%{box-shadow:0 0 28px rgba(196,38,44,.55)}}
+.sgchips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}.sgchip{padding:9px 14px;border-radius:18px;background:var(--card2);border:1px solid var(--line);color:var(--text);display:inline-flex;gap:6px;align-items:center}.sgchip svg{width:16px;height:16px;opacity:.7}
+.sgsk{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.sgsk i{aspect-ratio:2/3;border-radius:12px;background:linear-gradient(100deg,var(--card2) 30%,var(--card) 50%,var(--card2) 70%);background-size:200% 100%;animation:skl 1.2s linear infinite}@keyframes skl{to{background-position:-200% 0}}
+.cover{background:linear-gradient(100deg,var(--card2) 30%,var(--card) 50%,var(--card2) 70%);background-size:200% 100%;animation:skl 1.4s linear infinite}
+.nttabs{display:flex;background:var(--card2);border-radius:22px;padding:6px;gap:4px;margin:4px 0 14px}.nttabs button{flex:1;padding:12px 4px;border-radius:18px;font-weight:700;color:var(--text);position:relative}.nttabs button.on{background:var(--card);box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.nttabs em{position:absolute;top:0;right:4px;min-width:18px;height:18px;border-radius:9px;background:#e53935;color:#fff;font-size:11px;font-style:normal;display:grid;place-items:center}
+.ntc{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px}.ntc .th{width:70px;height:96px;border-radius:6px;object-fit:cover;flex:0 0 auto;background:var(--card2)}
+.ntc .ti{flex:1;min-width:0}.ntc h4{margin:0 0 6px;font-size:17px}.ntc p{margin:0 0 10px;line-height:1.55}.ntc .ntm{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:14px}.ntc .pl{padding:6px 16px;border-radius:16px;background:#f3ead7;color:#222;font-weight:700}
+.goalc .gtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.gbody{position:relative;width:200px;margin:0 auto}.gsvg{width:100%;display:block}.gnum{position:absolute;left:0;right:0;bottom:2px;text-align:center}.gnum b{font-size:26px;display:block}.gnum small{color:var(--muted)}.gleg{text-align:center;color:var(--muted);margin-top:6px}
+.gopt{display:flex;align-items:center;gap:16px;padding:14px 4px;width:100%;text-align:left;font-size:17px;color:var(--text)}.gopt i{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);flex:0 0 auto}.gopt.on i{border-color:#ff7fa6;background:radial-gradient(circle,#ff7fa6 45%,transparent 50%)}
+.gsave{width:100%;padding:16px;border-radius:14px;background:#f0a7b8;color:#222;font-weight:700;margin-top:10px}
+
 @media (prefers-reduced-motion:reduce){.achip::after{animation:none;display:none}}
 .achip{display:inline-flex;align-items:center;gap:8px;max-width:100%;margin-top:8px;padding:5px 10px 5px 5px;border-radius:999px;background:var(--card2);border:1px solid var(--line);color:var(--text);font-weight:600;font-size:15px}
 .achip .ava,.sav{width:32px;height:32px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;overflow:hidden;background:var(--red);color:#fff;font-weight:700}
@@ -767,6 +817,100 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .acirc .sav.big{width:64px;height:64px;font-size:24px}
 .acirc .nm{font-size:12.5px;line-height:1.25;max-width:76px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 </style>
+
+<style id="jp-motion">
+/* ===== নির্বাচিত উপন্যাস: ভিডিওর অ্যাপের মতো কার্ড (পাশে পাশের কার্ডের একটু অংশ দেখা যায়) ===== */
+.rail.feat{margin:6px -14px 2px;padding:2px 9% 6px;gap:10px;scroll-snap-type:x mandatory;scroll-padding:0 9%;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}
+.rail.feat .fcard{flex:0 0 82%;height:138px;min-height:0;padding:12px 14px;gap:14px;border-radius:20px;align-items:center;scroll-snap-align:center;scroll-snap-stop:always;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,0) 55%),linear-gradient(135deg,#0c1a33,#16294a);border:1px solid rgba(255,255,255,.06);box-shadow:0 8px 20px -12px rgba(0,0,0,.8);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .35s}
+.rail.feat .fcard:active{transform:scale(.975)}
+.fcard .cover{width:76px;flex:0 0 76px;aspect-ratio:3/4;border-radius:10px}
+.fcard .ft{font-size:17px;line-height:1.25;-webkit-line-clamp:1;font-weight:700}
+.fcard .fa{font-size:14px;margin-top:3px}
+.fcard .fs{font-size:12.5px;margin-top:5px;gap:5px;flex-wrap:nowrap;white-space:nowrap;overflow:hidden}
+.fcard .fs .ey svg{width:14px;height:14px}
+.fcard .frow{margin-top:10px;gap:10px;flex-wrap:nowrap;align-items:center}
+.fcard .fbtn,.fcard .fbtn:not(.alt){padding:7px 22px;font-size:14.5px;border-radius:20px;background-image:none;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.28);box-shadow:none}
+.fcard .fav{width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
+.fcard .fav svg{width:18px;height:18px}
+.fcard .rank{top:10px;right:12px;padding:2px 12px;font-size:12px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.25)}
+.fdots{margin:6px 0 4px}
+
+/* ===== ভিডিওর অ্যানিমেশন ===== */
+@keyframes jp-cardin{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes jp-fade{from{opacity:0}to{opacity:1}}
+@keyframes jp-minin{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes jp-pop{0%{transform:scale(.8)}60%{transform:scale(1.14)}100%{transform:scale(1)}}
+@keyframes jp-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes jp-gfill{from{stroke-dasharray:0 100}}
+@keyframes jp-grow{from{width:0}}
+@keyframes jp-bell{0%,100%{transform:rotate(0)}20%{transform:rotate(14deg)}40%{transform:rotate(-12deg)}60%{transform:rotate(8deg)}80%{transform:rotate(-5deg)}}
+.rail:not(.feat)>*{animation:jp-cardin .5s cubic-bezier(.2,.8,.2,1) both}
+.rail:not(.feat)>*:nth-child(2){animation-delay:.05s}.rail:not(.feat)>*:nth-child(3){animation-delay:.1s}.rail:not(.feat)>*:nth-child(4){animation-delay:.15s}.rail:not(.feat)>*:nth-child(5){animation-delay:.2s}.rail:not(.feat)>*:nth-child(n+6){animation-delay:.25s}
+.rail.feat .fcard{animation:jp-fade .5s ease both}
+.sec-title{animation:jp-fade .5s ease both}
+.rail:not(.feat) .bkc,.rail:not(.feat) .gcard,.books.grid .bkc,.ntc,.gbk{transition:transform .18s ease}
+.rail:not(.feat) .bkc:active,.rail:not(.feat) .gcard:active,.books.grid .bkc:active,.ntc:active{transform:scale(.96)}
+.mini:not([hidden]){animation:jp-minin .45s cubic-bezier(.2,.9,.3,1) both}
+.nav [data-nav] .ico{transition:background .25s ease,color .25s ease,transform .2s}
+.nav [data-nav]:active .ico{transform:scale(.9)}
+.nav [data-nav].on .ico svg{animation:jp-pop .4s ease both}
+.bell em:not([hidden]){animation:jp-pop .5s ease both}
+.bell:not(:active) span[data-i]{transform-origin:50% 10%;animation:jp-bell 1.2s .8s ease both}
+.fav.on svg{animation:jp-pop .35s ease both}
+.icon-btn,.fbtn,.more,.btn{transition:transform .15s ease,background .2s}
+.icon-btn:active,.fbtn:active,.more:active,.btn:active{transform:scale(.92)}
+@media (prefers-reduced-motion:reduce){.rail>*,.mini,.gbk,.gline,.ggarc,.gdot,.gpb i,.gbb i{animation:none!important}}
+
+/* ===== “গত ৭ দিনে” বাটন ===== */
+.tmr.wk7{display:flex;flex-direction:column;align-items:flex-end;gap:2px;position:relative;padding:10px 30px 10px 16px;border-radius:16px;background:var(--card2);border:1px solid var(--line);color:var(--text);text-align:right;transition:transform .15s,background .2s}
+.tmr.wk7:active{transform:scale(.95)}
+.tmr.wk7 .wk7c{position:absolute;right:11px;top:50%;transform:translateY(-52%);font-style:normal;font-size:26px;line-height:1;color:var(--muted)}
+.wk7h{margin-top:10px;font-size:12.5px;color:var(--muted)}
+
+/* ===== পড়ার লক্ষ্য পেজ ===== */
+.gpg{padding-top:0}
+.gtabs{display:flex;margin:0 -14px 14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:3}
+.gtabs button{flex:1;padding:14px 2px 12px;font-size:15px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .25s,border-color .25s}
+.gtabs button.on{color:var(--text);font-weight:700;border-bottom-color:#29b6f6}
+.gc1{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px;animation:jp-cardin .5s cubic-bezier(.2,.8,.2,1) both}
+.gc1.gcc{padding:12px 8px 6px;animation-delay:.08s}
+.gtp{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.gtp b{font-size:15px}
+.gstk{padding:5px 12px;border-radius:14px;background:var(--card2);border:1px solid var(--line);font-size:13px;font-weight:700}
+.ggrid{display:flex;align-items:center;gap:14px;margin:8px 0 6px}
+.gg{position:relative;flex:0 0 150px;width:150px}
+.ggsvg{width:100%;display:block}
+.ggarc{animation:jp-gfill 1s .15s cubic-bezier(.2,.8,.2,1) both;filter:drop-shadow(0 0 4px rgba(196,38,44,.45))}
+.ggn{position:absolute;left:0;right:0;top:44%;text-align:center}
+.ggn b{display:block;font-size:30px;line-height:1.1}
+.ggn small{color:var(--muted);font-size:12.5px}
+.gleg2{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;font-weight:600;font-size:15px}
+.gleg2 li{display:flex;align-items:center;gap:10px}.gleg2 i{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
+.gprog{margin-top:8px;padding:10px 12px;border-radius:14px;background:var(--card2);border:1px solid var(--line)}
+.gpl{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;font-weight:600;margin-bottom:8px}
+.gpb{height:8px;border-radius:5px;background:var(--line);overflow:hidden}
+.gpb i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,#29b6f6,#6c8cff);animation:jp-grow .9s .2s cubic-bezier(.2,.8,.2,1) both}
+.gft{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px;font-weight:700;font-size:14.5px}
+.gft button{padding:8px 14px;border-radius:14px;background:var(--red);color:#fff;font-weight:700;font-size:13.5px}
+.gch-svg{width:100%;display:block;overflow:visible}
+.gline{stroke-dasharray:1;animation:jp-draw 1.1s .1s ease both}
+.gdot{animation:jp-fade .4s ease both;transform-box:fill-box;transform-origin:center}
+.gdash{animation:jp-fade .6s ease both}
+.gh{margin:20px 2px 10px;font-size:19px}
+.gbk{display:flex;align-items:center;gap:12px;padding:6px 2px;animation:jp-cardin .5s cubic-bezier(.2,.8,.2,1) both}
+.gbc{width:46px;height:62px;border-radius:7px;overflow:hidden;background:var(--card2);flex:0 0 auto}
+.gbc img{width:100%;height:100%;object-fit:cover;display:block}
+.gbm{flex:1;min-width:0}
+.gbt{font-weight:600;font-size:15px;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gbb{height:6px;border-radius:4px;background:var(--line);overflow:hidden}
+.gbb i{display:block;height:100%;border-radius:4px;background:#ff5a00;animation:jp-grow .9s .25s cubic-bezier(.2,.8,.2,1) both}
+.gbs{flex:0 0 auto;font-size:13.5px}
+/* বইয়ের বিবরণ পেজে কভার ফ্লেক্সে টেনে লম্বা হতো */
+.detail .cover{align-self:flex-start;height:auto;aspect-ratio:2/3}
+.detail .cover img{height:100%}
+</style>
 </head>
 <body>
 <script>try{var __t=JSON.parse(localStorage.getItem('jp_theme'));document.documentElement.setAttribute('data-theme',__t==='light'?'light':'dark');var __m=document.querySelector('meta[name=theme-color]');if(__m)__m.setAttribute('content',__t==='light'?'#f5f2ec':'#121212')}catch(e){}</script>
@@ -774,7 +918,7 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
   <div class="splash-wrap"><i class="splash-ring"></i><img class="splash-logo" src="data:image/jpeg;base64,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" alt="যাত্রাপথ লোগো"></div>
   <div class="splash-name">যাত্রাপথ</div>
   <div class="splash-tag">আপনার উপন্যাস পড়ার এক সুন্দর ঠিকানা</div>
-  <div class="splash-spin"><i></i></div>
+  <div class="splash-quote" id="splashQuote">শব্দের ভাঁজে জেগে উঠুক গল্প, পাতার ওপারে খুঁজে নিন মনের এক টুকরো আকাশ।</div><div class="splash-book"><svg class="arc" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18"/></svg></div><div class="splash-load">উপন্যাস লোড হচ্ছে…</div><div class="splash-ver">ভার্সন ২.১</div>
 </div>
 
 <script>window.__t0=Date.now();</script>
@@ -811,7 +955,7 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
   <div class="orow"><button class="btn" data-act="off-lib">ডাউনলোড</button><button class="btn ghost" data-act="off-retry">রিলোড পেজ</button></div>
   <small class="otip">💡 ডাউনলোড করা অধ্যায় ইন্টারনেট ছাড়াই পড়া যায়</small>
 </div>
-<div id="toast" class="toast" role="status"></div>
+<div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true"></div>
 <script>'use strict';
 // ডেমো ডেটা — শুধু অ্যাপ পরীক্ষার জন্য। এগুলো আসল প্রকাশিত উপন্যাস নয়।
 const CATEGORIES = [
@@ -1002,7 +1146,7 @@ function coverUri(b) {
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 function pub(b, full) {
-  const o = { id: b.id, title: b.title, author: b.author, authorId: b.authorId || '', cat: b.cat, status: b.status, desc: b.desc, cover: coverUri(b), featured: b.featured, demo: !!b.demo, publishedAt: b.publishedAt, reads: b.reads, likes: b.likes, dislikes: b.dislikes, favs: b.favs || 0, cmts: b.cmts || 0, chapterCount: b.chapters.length, audioCount: b.audio.length, type: b.type || 'text' };
+  const o = { id: b.id, title: b.title, author: b.author, authorId: b.authorId || '', authorPhoto: b.authorPhoto || '', cat: b.cat, status: b.status, desc: b.desc, cover: coverUri(b), featured: b.featured, demo: !!b.demo, publishedAt: b.publishedAt, reads: b.reads, likes: b.likes, dislikes: b.dislikes, favs: b.favs || 0, cmts: b.cmts || 0, chapterCount: b.chapters.length, audioCount: b.audio.length, type: b.type || 'text' };
   if (full) {
     o.chapters = b.chapters.map((c) => ({ n: c.n, title: c.title, at: c.d ? new Date(c.d).toISOString() : b.publishedAt }));
     o.audio = b.audio.map((a) => ({ n: a.n, title: a.title, demo: !!a.demo, url: a.src || toneUrl(a.notes) }));
@@ -1083,7 +1227,7 @@ function handleSync(method, full, body, user) {
   if (method === 'GET' && p === '/books') {
     let list = q.get('audio') ? db.books.filter((b) => !isText(b)) : texts(); const cat = q.get('cat'); const s = (q.get('q') || '').trim().toLowerCase(); const ids = q.get('ids');
     if (cat) list = list.filter((b) => b.cat === cat);
-    const au = q.get('author'); if (au) list = list.filter((b) => (b.authorId || ('n:' + b.author)) === au);
+    const au = q.get('author'); if (au) { const tg = keyToCanon(au); list = list.filter((b) => canonKey(b) === tg); }
     if (q.get('audio')) list = list.filter((b) => b.audio.length > 0);
     if (ids) { const set = ids.split(',').filter(Boolean); list = list.filter((b) => set.indexOf(b.id) >= 0); }
     if (s) list = list.filter((b) => b.title.toLowerCase().indexOf(s) >= 0 || b.author.toLowerCase().indexOf(s) >= 0 || b.cat.toLowerCase().indexOf(s) >= 0);
@@ -1129,7 +1273,7 @@ async function loadDb() {
   const [cs, bs, ns, ss, cf] = await Promise.all([g(C('categories')), g(C('books').where('pub', '==', true)), g(C('notices')), g(C('stats')), g(C('config'))]);
   const cfg = {}; cf.forEach((d) => { cfg[d.id] = d.data(); }); const stats = {}; ss.forEach((d) => { stats[d.id] = d.data().days || {}; });
   const books = bs.docs.map((d) => { const x = d.data(); const voice = x.type === 'voice';
-    return { id: d.id, title: x.title || '', author: x.author || '', authorId: x.ownerUid || '', cat: x.cat || '', status: x.status || 'চলমান', desc: x.desc || '', cover: x.cover || null, featured: !!x.featured,
+    return { id: d.id, title: x.title || '', author: x.author || '', authorId: x.ownerUid || '', authorPhoto: x.authorPhoto || '', cat: x.cat || '', status: x.status || 'চলমান', desc: x.desc || '', cover: x.cover || null, featured: !!x.featured,
       publishedAt: x.publishedAt || new Date().toISOString(), reads: x.reads || 0, likes: x.likes || 0, dislikes: x.dislikes || 0, favs: x.favs || 0, cmts: x.cmts || 0, type: voice ? 'audio' : 'text',
       chapters: voice ? [] : (x.chs || []).filter((c) => c.p).sort((a, b) => a.n - b.n).map((c) => ({ n: c.n, cid: c.id, title: c.t, d: c.d || 0 })),
       audio: (x.audio || []).filter((a) => a.p).sort((a, b) => a.n - b.n).map((a) => ({ n: a.n, title: a.title, src: a.url })) }; });
@@ -1291,8 +1435,9 @@ async function api(path, opts) {
 /* ---------- টোস্ট ---------- */
 let toastT = null;
 function toast(msg) {
-  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
-  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2200);
+  const t = $('#toast'); clearTimeout(toastT); t.textContent = ''; t.removeAttribute('aria-hidden');
+  setTimeout(() => { t.textContent = msg; t.classList.add('show'); }, 60);
+  toastT = setTimeout(() => { t.classList.remove('show'); t.textContent = ''; t.setAttribute('aria-hidden', 'true'); }, 2400);
 }
 
 /* ---------- থিম ও রিডার সেটিংস ---------- */
@@ -1391,7 +1536,7 @@ function clearAuto() { if (timerAuto) { clearInterval(timerAuto); timerAuto = nu
 function setNavActive(key) { $$('#nav [data-nav]').forEach((a) => a.classList.toggle('on', a.dataset.nav === key)); }
 const appEl = () => $('#app');
 function setView(html) { appEl().innerHTML = html; fillIcons(appEl()); a11yFix(appEl()); }
-function loadingView() { setView('<div class="loading">লোড হচ্ছে…</div>'); }
+function loadingView() { setView('<div class="skx" role="status" aria-label="লোড হচ্ছে"><div class="skb hd"></div><div class="skrow"><i></i><i></i><i></i></div><div class="sklist"><b></b><b></b><b></b><b></b></div></div>'); }
 function errorView(msg) {
   setView('<div class="errbox"><p>⚠️ ' + esc(msg || 'কিছু একটা ভুল হয়েছে') + '</p><button class="btn" data-act="retry">আবার চেষ্টা করুন</button> <button class="btn ghost" data-act="go" data-href="/">হোমে যান</button></div>');
 }
@@ -1801,8 +1946,39 @@ document.addEventListener('keydown', (e) => {
 /* ========== লেখক ফলো, লেখক পেজ ও বই রিপোর্ট ========== */
 const SFB = () => window.__JPFS || null;
 const SINC = (n) => (window.__JPINC ? window.__JPINC(n) : n);
-const akey = (b) => (b.authorId ? b.authorId : 'n:' + (b.author || ''));
-const getFollow = () => store.get('jp_follow', {});
+/* ---- লেখক শনাক্তকরণ: একই লেখকের সব বই এক প্রোফাইলে ----
+   একই লেখক ধরা হয় যদি: (১) লেখক-অ্যাকাউন্ট (ownerUid) এক হয়, অথবা (২) নাম স্পেস/চিহ্ন/বানান-ভেদ (ী/ি, শ/ষ/স, ণ/ন…) বাদ দিলে এক হয়,
+   অথবা (৩) নামের শব্দের ক্রম আলাদা হলেও শব্দগুলো এক হয় (মো./ড. ইত্যাদি উপাধি বাদে)। এগুলো একসাথে জোড়া লেগে এক ক্লাস্টার হয়। */
+function nameFold(s) { return String(s || '').normalize('NFC').replace(/[\u200b-\u200f\u202a-\u202e\u2060\ufeff\u00ad]/g, '').replace(/\u09f0/g, '\u09b0').replace(/\u09c0/g, '\u09bf').replace(/\u09c2/g, '\u09c1').replace(/\u0988/g, '\u0987').replace(/\u098a/g, '\u0989').replace(/[\u09b6\u09b7]/g, '\u09b8').replace(/\u09a3/g, '\u09a8').replace(/\u09ce/g, '\u09a4').replace(/[\u09bc\u0983]/g, '').toLowerCase(); }
+const AU_HON = ['মো', 'মোঃ', 'মোহাম্মদ', 'মুহাম্মদ', 'মোহাম্মাদ', 'মুহাম্মাদ', 'ড'].map(nameFold).map((x) => x.replace(/[\s\p{P}\p{S}]+/gu, ''));
+function nameTokens(n) {
+  let t = nameFold(n).split(/[\s\p{P}\p{S}]+/u).filter(Boolean); const k = t.filter((x) => AU_HON.indexOf(x) < 0); if (k.length) t = k;
+  return { c: t.join(''), s: t.slice().sort().join('') };
+}
+function nameNorm(s) { return nameTokens(s).c; }
+const AUC = { src: null, n: -1, par: {}, canon: {} };
+function ufF(x) { const p = AUC.par; if (!(x in p)) p[x] = x; while (p[x] !== x) { p[x] = p[p[x]]; x = p[x]; } return x; }
+function ufU(a, b) { const ra = ufF(a), rb = ufF(b); if (ra !== rb) AUC.par[ra] = rb; }
+function auBuild() {
+  const bs = (typeof db !== 'undefined' && db && db.books) || []; if (AUC.src === bs && AUC.n === bs.length) return;
+  AUC.src = bs; AUC.n = bs.length; AUC.par = {}; AUC.canon = {};
+  bs.forEach((b) => { const id = 'b:' + b.id; ufF(id); const t = nameTokens(b.author); if (t.c) { ufU(id, 'k:' + t.c); ufU(id, 't:' + t.s); } if (b.authorId) ufU(id, 'u:' + b.authorId); });
+  bs.forEach((b) => { const c = nameTokens(b.author).c; if (!c) return; const r = ufF('b:' + b.id); if (!(r in AUC.canon) || c < AUC.canon[r]) AUC.canon[r] = c; });
+}
+function canonKey(b) {
+  auBuild(); const id = 'b:' + b.id, c = nameTokens(b.author).c;
+  if (b.id != null && id in AUC.par) { const k = AUC.canon[ufF(id)]; if (k) return 'n:' + k; }
+  if (c && ('k:' + c) in AUC.par) { const k = AUC.canon[ufF('k:' + c)]; if (k) return 'n:' + k; }
+  return 'n:' + c;
+}
+function keyToCanon(key) {
+  auBuild(); key = String(key || '');
+  if (key.indexOf('n:') === 0) { const c = nameTokens(key.slice(2)).c; if (('k:' + c) in AUC.par) { const k = AUC.canon[ufF('k:' + c)]; if (k) return 'n:' + k; } return 'n:' + c; }
+  if (('u:' + key) in AUC.par) { const k = AUC.canon[ufF('u:' + key)]; if (k) return 'n:' + k; }
+  return key;
+}
+const akey = (b) => canonKey(b);
+const getFollow = () => { const f = store.get('jp_follow', {}), o = {}; Object.keys(f).forEach((k) => { const nk = keyToCanon(k); if (!o[nk]) o[nk] = f[k]; }); return o; };
 const isFollow = (k) => !!getFollow()[k];
 const PROFC = {};
 async function getProfile(uid) {
@@ -1814,7 +1990,7 @@ async function getProfile(uid) {
 const avInit = (n) => esc(Array.from((n || 'ল').trim() || 'ল')[0]);
 const avBox = (photo, name, cls) => '<span class="sav ' + (cls || '') + '">' + (photo ? '<img src="' + esc(photo) + '" alt="">' : avInit(name)) + '</span>';
 function authorChip(b) {
-  return '<button class="achip" data-s="author" data-k="' + esc(akey(b)) + '" aria-label="লেখক ' + esc(b.author) + ' — লেখকের পেজ দেখুন"><span class="ava" data-aid="' + esc(b.authorId || '') + '">' + avInit(b.author) + '</span><span class="an">' + esc(b.author) + '</span>' + VER + '<span class="ch">' + IC.chev + '</span></button>';
+  return '<button class="achip" data-s="author" data-k="' + esc(akey(b)) + '" aria-label="লেখক ' + esc(b.author) + ' — লেখকের পেজ দেখুন"><span class="ava" data-aid="' + esc(b.authorId || '') + '">' + (b.authorPhoto && !b.authorId ? '<img src="' + esc(b.authorPhoto) + '" alt="">' : avInit(b.author)) + '</span><span class="an">' + esc(b.author) + '</span>' + VER + '<span class="ch">' + IC.chev + '</span></button>';
 }
 async function fillAuthorAv() {
   const el = $('.achip .ava[data-aid]'); if (!el || !el.dataset.aid) return;
@@ -1825,15 +2001,16 @@ let auTab = 'books', auSt = 'সব', auBooks = [], auKey = '';
 async function viewAuthor(key) {
   auKey = key; auTab = 'books'; auSt = 'সব';
   let list = []; try { list = await api('/books?author=' + enc(key)); } catch (e) { return headerPage('লেখক', true) + '<main class="page"><div class="errbox"><p>লেখকের তথ্য পাওয়া যায়নি।</p></div></main>'; }
-  auBooks = list; const name = list[0] ? list[0].author : (getFollow()[key] || {}).n || 'লেখক';
-  const uid = key.indexOf('n:') === 0 ? '' : key; const p = await getProfile(uid);
-  const reads = list.reduce((a, b) => a + (b.reads || 0), 0);
+  auBooks = list; const name = list[0] ? String(list[0].author).trim() : (getFollow()[key] || {}).n || 'লেখক';
+  const uid = (list.find((b) => b.authorId) || {}).authorId || ''; window.__auUid = uid; window.__auKey = key;
+  const p = await getProfile(uid); window.__auP = p;
+  const reads = list.reduce((a, b) => a + (b.reads || 0), 0), likes = list.reduce((a, b) => a + (b.likes || 0), 0);
   const fol = isFollow(key);
-  const stats = '<div class="aust"><span><b>' + bn(list.length) + '</b> গল্প</span><i></i><span><b>' + fmtN(reads) + '</b> পাঠ</span>' + (p ? '<i></i><span><b id="folN">' + bn(Math.max(0, p.followers || 0)) + '</b> ফলোয়ার</span>' : '') + '</div>';
-  window.__auP = p;
-  return headerPage('লেখক', true) + '<main class="page auth"><div class="auhead">' + avBox(p && p.photo, name, 'big') + '<h2>' + esc(name) + VER + '</h2>' + stats +
-    '<button class="folbtn' + (fol ? ' on' : '') + '" data-s="follow" data-k="' + esc(key) + '" data-n="' + esc(name) + '" aria-pressed="' + fol + '">' + (fol ? '✓ ফলো করছেন' : '+ ফলো করুন') + '</button></div>' +
-    '<div class="autabs" role="tablist"><button role="tab" class="on" data-s="au-tab" data-v="books">গল্প</button><button role="tab" data-s="au-tab" data-v="about">সম্পর্কে</button></div><div id="auBody">' + auBody() + '</div></main>';
+  return headerPage('লেখক', true) + '<main class="page auth2"><div class="aprow"><div class="apinfo"><h2>' + esc(name) + VER + '</h2>' +
+    '<div class="apst"><span><b id="folN">' + bn(Math.max(0, (p && p.followers) || 0)) + '</b>ফলোয়ার</span><span><b>' + fmtN(likes) + '</b>লাইক</span><span><b>' + fmtN(reads) + '</b>ভিউ</span></div>' +
+    '<div class="aptot"><b>' + bn(list.length) + '</b> মোট বই</div></div>' + avBox((p && p.photo) || (list.find((b) => b.authorPhoto) || {}).authorPhoto, name, 'big') + '</div>' +
+    '<button class="folbtn wide' + (fol ? ' on' : '') + '" data-s="follow" data-k="' + esc(key) + '" data-n="' + esc(name) + '" aria-pressed="' + fol + '">' + (fol ? '✓ ফলো করছেন' : '+ ফলো করুন') + '</button>' +
+    '<div class="apbio">' + (p && p.bio ? esc(p.bio) : '<span style="opacity:.7">লেখক এখনো নিজের সম্পর্কে কিছু লেখেননি।</span>') + '</div><div id="auBody">' + auBody() + '</div></main>';
 }
 function auBody() {
   if (auTab === 'about') {
@@ -1846,9 +2023,9 @@ function auBody() {
 }
 async function doFollow(key, name) {
   const f = getFollow(); const on = !f[key];
-  if (on) { const uid = key.indexOf('n:') === 0 ? '' : key; const p = uid ? await getProfile(uid) : null; f[key] = { n: name, u: uid, ph: (p && p.photo) || '' }; } else delete f[key];
+  if (on) { const uid = (window.__auKey === key ? window.__auUid : ''); const p = uid ? await getProfile(uid) : null; f[key] = { n: name, u: uid, ph: (p && p.photo) || ((auBooks.find((b) => b.authorPhoto) || {}).authorPhoto) || '' }; } else delete f[key];
   store.set('jp_follow', f);
-  const uid = key.indexOf('n:') === 0 ? '' : key;
+  const uid = (window.__auKey === key ? window.__auUid : '');
   if (uid && SFB()) { try { await SFB().doc('profiles/' + uid).update({ followers: SINC(on ? 1 : -1) }); if (PROFC[uid]) PROFC[uid].followers = Math.max(0, (PROFC[uid].followers || 0) + (on ? 1 : -1)); } catch (e) { /* ignore */ } }
   toast(on ? 'ফলো করা হয়েছে' : 'ফলো বাতিল করা হয়েছে');
   const b = $('.folbtn'); if (b) { b.classList.toggle('on', on); b.textContent = on ? '✓ ফলো করছেন' : '+ ফলো করুন'; b.setAttribute('aria-pressed', on); }
@@ -1861,18 +2038,18 @@ function followedHtml() {
 }
 /* ---- সব লেখক ---- */
 function authorsOf(books) {
-  const m = {}; books.forEach((b) => { if (!b.author) return; const k = akey(b); (m[k] = m[k] || { k, n: b.author, id: b.authorId || '', c: 0 }).c++; });
+  const m = {}; books.forEach((b) => { if (!b.author) return; const k = akey(b); const o = (m[k] = m[k] || { k, n: String(b.author).trim(), id: '', c: 0, ph: '' }); if (b.authorId && !o.id) o.id = b.authorId; if (b.authorPhoto && !o.ph) o.ph = b.authorPhoto; o.c++; });
   return Object.keys(m).map((k) => m[k]).sort((a, b) => b.c - a.c);
 }
 async function fillListAv() {
   const els = $$('[data-aid]'); for (const el of els) { const id = el.dataset.aid; if (!id) continue; const p = await getProfile(id); if (!el.isConnected) continue; if (el.classList.contains('sav') && p && p.photo) el.innerHTML = '<img src="' + esc(p.photo) + '" alt="">'; else if (el.classList.contains('fol') && p) el.textContent = fmtN(p.followers || 0); }
 }
 function authRail(list) {
-  return '<div class="arail">' + list.map((a) => '<button class="acard" data-s="author" data-k="' + esc(a.k) + '" aria-label="লেখক ' + esc(a.n) + '"><span class="top"></span><span class="sav big" data-aid="' + esc(a.id) + '">' + avInit(a.n) + '</span><span class="nm">' + esc(a.n) + '</span><span class="st">' + IC.read + bn(a.c) + ' গল্প' + (a.id ? ' <i>•</i> ' + IC.user + '<b class="fol" data-aid="' + esc(a.id) + '">০</b>' : '') + '</span></button>').join('') + '</div>';
+  return '<div class="arail">' + list.map((a) => '<button class="acard" data-s="author" data-k="' + esc(a.k) + '" aria-label="লেখক ' + esc(a.n) + '"><span class="top"></span><span class="sav big" data-aid="' + esc(a.id) + '">' + (a.ph && !a.id ? '<img src="' + esc(a.ph) + '" alt="">' : avInit(a.n)) + '</span><span class="nm">' + esc(a.n) + '</span><span class="st">' + IC.read + bn(a.c) + ' গল্প' + (a.id ? ' <i>•</i> ' + IC.user + '<b class="fol" data-aid="' + esc(a.id) + '">০</b>' : '') + '</span></button>').join('') + '</div>';
 }
 async function viewAuthors() {
   const all = await api('/books'); const list = authorsOf(all);
-  return headerPage('জনপ্রিয় লেখক', true) + '<main class="page">' + (list.length ? '<div class="agrid">' + list.map((a) => '<button class="acirc" data-s="author" data-k="' + esc(a.k) + '" aria-label="লেখক ' + esc(a.n) + '"><span class="sav big" data-aid="' + esc(a.id) + '">' + avInit(a.n) + '</span><span class="nm">' + esc(a.n) + '</span></button>').join('') + '</div>' : '<div class="empty">কোনো লেখক নেই।</div>') + '</main>';
+  return headerPage('জনপ্রিয় লেখক', true) + '<main class="page">' + (list.length ? '<div class="agrid">' + list.map((a) => '<button class="acirc" data-s="author" data-k="' + esc(a.k) + '" aria-label="লেখক ' + esc(a.n) + '"><span class="sav big" data-aid="' + esc(a.id) + '">' + (a.ph && !a.id ? '<img src="' + esc(a.ph) + '" alt="">' : avInit(a.n)) + '</span><span class="nm">' + esc(a.n) + '</span></button>').join('') + '</div>' : '<div class="empty">কোনো লেখক নেই।</div>') + '</main>';
 }
 /* ---- রিপোর্ট ---- */
 const REPORT_REASONS = ['স্প্যাম বা বিজ্ঞাপন', 'যৌন বা অশ্লীল কনটেন্ট', 'মিথ্যা বা বিভ্রান্তিকর তথ্য', 'অন্যের লেখা চুরি/কপি করা', 'সহিংসতা বা ঘৃণামূলক কনটেন্ট', 'ধর্মীয় বা সামাজিক অবমাননা', 'বইয়ে ত্রুটি (ভুল পর্ব, অসম্পূর্ণ)', 'অন্য কারণ'];
@@ -1963,6 +2140,7 @@ document.addEventListener('click', (ev) => {
   if (a === 'rv-send') { rvSend(); return; }
   if (a === 'author') { closeSheet(); nav('/author/' + enc(el.dataset.k)); }
   else if (a === 'follow') doFollow(el.dataset.k, el.dataset.n);
+  else if (a === 'nt-tab') { ntTab = el.dataset.v; $$('.nttabs button').forEach((x) => x.classList.toggle('on', x === el)); $('#ntBody').innerHTML = ntBody(); }
   else if (a === 'au-tab') { auTab = el.dataset.v; $$('.autabs button').forEach((x) => x.classList.toggle('on', x === el)); $('#auBody').innerHTML = auBody(); }
   else if (a === 'au-st') { auSt = el.dataset.v; $('#auBody').innerHTML = auBody(); }
   else if (a === 'book-menu') bookMenu(el.dataset.id, el.dataset.t);
@@ -1971,12 +2149,87 @@ document.addEventListener('click', (ev) => {
   else if (a === 'rp-send') sendReport();
 });
 
+
+/* ---------- পড়ার লক্ষ্য পেজ (প্রোফাইলের “গত ৭ দিনে” থেকে খোলে) ---------- */
+let goalTab = 'd';
+const GMN = ['জানু', 'ফেব্রু', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টে', 'অক্টো', 'নভে', 'ডিসে'];
+const GWD = ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহঃ', 'শুক্র', 'শনি'];
+function goalDays() { const t = store.get('jp_time', {}); t[secsKey] = secs; return t; }
+function goalSeries(tab) {
+  const t = goalDays(), out = [], now = new Date();
+  const sumR = (a, b) => { let q = 0; for (const d = new Date(a); d <= b; d.setDate(d.getDate() + 1)) q += t[dayKey(d)] || 0; return q; };
+  if (tab === 'd') { for (let i = 6; i >= 0; i--) { const d = new Date(); d.setDate(d.getDate() - i); out.push({ l: GWD[d.getDay()], s: t[dayKey(d)] || 0 }); } }
+  else if (tab === 'w') { for (let i = 7; i >= 0; i--) { const e = new Date(); e.setDate(e.getDate() - i * 7); const b = new Date(e); b.setDate(b.getDate() - 6); out.push({ l: bn(e.getDate()) + '/' + bn(e.getMonth() + 1), s: sumR(b, e) }); } }
+  else if (tab === 'm') { for (let i = 5; i >= 0; i--) { const b = new Date(now.getFullYear(), now.getMonth() - i, 1); out.push({ l: GMN[b.getMonth()], s: sumR(b, new Date(b.getFullYear(), b.getMonth() + 1, 0)) }); } }
+  else { for (let i = 2; i >= 0; i--) { const y = now.getFullYear() - i; out.push({ l: bn(y), s: sumR(new Date(y, 0, 1), new Date(y, 11, 31)) }); } }
+  return out;
+}
+function goalTop() {
+  const ct = store.get('jp_ctime', {}), c = getCache();
+  return Object.keys(ct).map((id) => ({ id, s: Object.keys(ct[id] || {}).reduce((q, k) => q + (+ct[id][k] || 0), 0) })).filter((x) => x.s > 0).sort((a, b) => b.s - a.s).slice(0, 5)
+    .map((x) => ({ id: x.id, s: x.s, title: (c[x.id] || {}).title || '', cover: (c[x.id] || {}).cover || '' }));
+}
+function goalChart(ser, goalMin) {
+  const W = 330, H = 190, pl = 26, pr = 26, pt = 30, pb = 30, n = ser.length;
+  const vals = ser.map((x) => x.s / 60); const mx = Math.max(1, goalMin || 0, ...vals) * 1.12;
+  const X = (i) => pl + (n < 2 ? (W - pl - pr) / 2 : i * (W - pl - pr) / (n - 1)), Y = (v) => pt + (H - pt - pb) * (1 - v / mx);
+  const pts = vals.map((v, i) => [X(i), Y(v)]);
+  let g = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="gch-svg" role="img" aria-label="পড়ার সময়ের গ্রাফ">';
+  g += '<line x1="' + pl + '" x2="' + (W - pr) + '" y1="' + Y(0) + '" y2="' + Y(0) + '" stroke="var(--muted)" stroke-width="1.5" opacity=".6"/>';
+  if (goalMin) g += '<line class="gdash" x1="' + (pl - 10) + '" x2="' + (W - pr + 10) + '" y1="' + Y(goalMin) + '" y2="' + Y(goalMin) + '" stroke="#f5a623" stroke-width="2" stroke-dasharray="9 7"/>';
+  g += '<path class="gline" pathLength="1" d="M' + pts.map((p) => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L') + '" fill="none" stroke="#29b6f6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>';
+  pts.forEach((p, i) => {
+    const v = vals[i], end = i === 0 || i === n - 1;
+    g += '<circle class="gdot" style="animation-delay:' + (0.5 + i * 0.09).toFixed(2) + 's" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="' + (v > 0 && !end ? 5 : 4.5) + '" fill="' + (v > 0 && !end ? 'var(--card)' : '#29b6f6') + '" stroke="' + (v > 0 && !end ? '#ff7a1a' : '#29b6f6') + '" stroke-width="3"/>';
+    if (v > 0) g += '<text class="gdot" style="animation-delay:' + (0.55 + i * 0.09).toFixed(2) + 's" x="' + p[0].toFixed(1) + '" y="' + (p[1] - 10).toFixed(1) + '" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">' + bn(Math.round(v)) + 'মি</text>';
+    g += '<text x="' + p[0].toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="12" fill="var(--muted)">' + ser[i].l + '</text>';
+  });
+  return g + '</svg>';
+}
+function viewGoals() {
+  const g = getGoal(), t = goalDays(), tab = ['d', 'w', 'm', 'y'].indexOf(goalTab) >= 0 ? goalTab : 'd';
+  const span = { d: 1, w: 7, m: 30, y: 365 }[tab];
+  let tot = 0, act = 0; for (let i = 0; i < span; i++) { const d = new Date(); d.setDate(d.getDate() - i); const v = t[dayKey(d)] || 0; tot += v; if (v > 0) act++; }
+  const totM = Math.floor(tot / 60), avgM = act ? Math.round(tot / act / 60) : 0, goalTot = g * span, pr = Math.min(1, totM / goalTot);
+  const ct = store.get('jp_ctime', {}); const nBooks = Object.keys(ct).filter((id) => Object.keys(ct[id] || {}).some((k) => ct[id][k] > 0)).length;
+  const online = navigator.onLine !== false;
+  const TABS = [['d', 'আজ'], ['w', 'সাপ্তাহিক'], ['m', 'মাসিক'], ['y', 'বার্ষিক']];
+  const ser = goalSeries(tab); const gm = tab === 'd' ? g : tab === 'w' ? g * 7 : tab === 'm' ? g * 30 : 0;
+  const top = goalTop(); const mxT = top.length ? top[0].s : 1;
+  const A = 207.3;
+  let date = ''; try { date = new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { date = bn(new Date().getDate()); }
+  const gauge = '<div class="gg"><svg viewBox="0 0 120 100" class="ggsvg"><path d="M28.9 87.1A44 44 0 1 1 91.1 87.1" fill="none" stroke="var(--line)" stroke-width="10" stroke-linecap="round" pathLength="100"/>' +
+    '<path class="ggarc" d="M28.9 87.1A44 44 0 1 1 91.1 87.1" fill="none" stroke="' + (pr >= 1 ? '#2fbf71' : 'var(--red)') + '" stroke-width="10" stroke-linecap="round" pathLength="100" style="stroke-dasharray:' + (pr * 100).toFixed(1) + ' 100' + (pr <= 0 ? ';opacity:0' : '') + '"/></svg>' +
+    '<div class="ggn"><b>' + bn(totM) + '</b><small>/ ' + bn(goalTot) + ' মিনিট</small></div></div>';
+  const leg = '<ul class="gleg2"><li><i style="background:#10b981"></i>' + bn(nBooks) + ' টি বই</li><li><i style="background:#f59e0b"></i>' + bn(avgM) + ' মিনিট গড়/দিন</li><li><i style="background:#0ea5e9"></i>' + bn(totM) + ' মিনিট মোট</li></ul>';
+  const msg = totM >= goalTot ? 'লক্ষ্য সম্পন্ন! 🎉' : 'আর ' + bn(goalTot - totM) + ' মিনিট বাকি';
+  const books = top.length ? top.map((x, i) => '<div class="gbk" data-bid="' + esc(x.id) + '" style="animation-delay:' + (i * 70) + 'ms"><div class="gbc">' + (x.cover ? '<img src="' + esc(x.cover) + '" alt="">' : '') + '</div><div class="gbm"><div class="gbt">' + esc(x.title || 'লোড হচ্ছে…') + '</div><div class="gbb"><i style="width:' + Math.max(6, Math.round(x.s / mxT * 100)) + '%"></i></div></div><b class="gbs">' + fmtTime(x.s) + '</b></div>').join('') : '<div class="empty" style="margin:8px 0">এখনো কোনো বই পড়া হয়নি।</div>';
+  return headerPage('পড়ার লক্ষ্য', true) + '<main class="page gpg">' +
+    '<div class="gtabs">' + TABS.map((x) => '<button class="' + (tab === x[0] ? 'on' : '') + '" data-act="gtab" data-v="' + x[0] + '">' + x[1] + '</button>').join('') + '</div>' +
+    '<div class="gc1"><div class="gtp"><b>' + date + '</b><span class="gstk">' + bn(streakInfo()) + ' দিনের রিডিং স্ট্রিক 🔥</span></div>' +
+    '<div class="ggrid">' + gauge + leg + '</div>' +
+    '<div class="gprog"><div class="gpl"><span>' + (online ? '🌐 ' : '📴 ') + (tab === 'd' ? 'আজকের অগ্রগতি' : 'এই সময়ের অগ্রগতি') + '</span><span>' + msg + '</span></div><div class="gpb"><i style="width:' + (pr * 100).toFixed(1) + '%"></i></div></div>' +
+    '<div class="gft"><span>দৈনিক লক্ষ্য: ' + bn(g) + ' মিনিট</span><button data-act="goal-open">🎯 লক্ষ্য নির্ধারণ করুন</button></div></div>' +
+    '<div class="gc1 gcc">' + goalChart(ser, gm) + '</div>' +
+    '<h3 class="gh">শীর্ষ বই</h3>' + books + '</main>';
+}
+function fillGoalBooks() {
+  const rows = $$('.gbk[data-bid]'); const miss = rows.filter((r) => !((getCache()[r.dataset.bid] || {}).title)).map((r) => r.dataset.bid);
+  if (!miss.length) return;
+  (async () => { try { const l = await api('/books?ids=' + enc(miss.join(','))); l.forEach((b) => { const r = $('.gbk[data-bid="' + b.id + '"]'); if (!r) return; const tt = r.querySelector('.gbt'); if (tt) tt.textContent = b.title; const c = r.querySelector('.gbc'); if (c && !c.firstChild && b.cover) c.innerHTML = '<img src="' + esc(b.cover) + '" alt="">'; }); } catch (e) { /* ignore */ } })();
+}
+document.addEventListener('click', (e) => {
+  const t = e.target.closest ? e.target.closest('[data-act="gtab"]') : null; if (!t) return;
+  goalTab = t.dataset.v; const y = window.scrollY; setView(viewGoals()); fillGoalBooks(); window.scrollTo(0, y);
+});
+
 async function route() {
   try { hlClose(); } catch (e) { /* ignore */ }
   const token = ++renderToken;
   clearAuto(); audioStop(); speakStop(); wakeOff(); closeSheet(); closeDrawer();
   const { seg, params } = parseHash();
   const page = seg[0] || 'home';
+  if (page !== 'read') { try { sleepClear(); } catch (e) { /* ignore */ } }
   if (navigator.onLine !== false) offShow(false);
   document.body.classList.toggle('reading', page === 'read'); document.body.classList.remove('lmode', 'chrome-off'); clearTimeout(chromeT);
   document.body.style.overflow = ''; document.body.style.position = ''; document.documentElement.style.overflow = '';
@@ -2002,6 +2255,7 @@ async function route() {
     else if (page === 'following') { html = headerPage('ফলো করা লেখক', true) + '<main class="page">' + followedHtml() + '</main>'; }
     else if (page === 'w') { loadingView(); html = await viewWriter(seg); }
     else if (page === 'profile') { html = viewProfile(); }
+    else if (page === 'goals') { html = viewGoals(); }
     else if (page === 'privacy') { html = viewPrivacy(); }
     else if (page === 'notices') { loadingView(); html = await viewNotices(); }
     else if (page === 'about') { loadingView(); html = await viewAbout(); }
@@ -2028,6 +2282,8 @@ function afterRender(page, seg, params) {
   }
   if (page === 'audio' && seg[1]) apIcon();
   if (page === 'profile') refreshTime();
+  if (page === 'goals') fillGoalBooks();
+  if (page === 'read') sleepLabel();
   if (page === 'w') wAfter(seg);
   if (page === 'book') fillAuthorAv();
   if (page === 'home' || page === 'authors') fillListAv();
@@ -2131,9 +2387,9 @@ function featGo(rail, idx) {
   const rr = rail.getBoundingClientRect(); const cr = cs[idx].getBoundingClientRect();
   const max = rail.scrollWidth - rail.clientWidth; const to = Math.max(0, Math.min(max, rail.scrollLeft + (cr.left + cr.width / 2) - (rr.left + rr.width / 2)));
   const from = rail.scrollLeft; const dist = to - from; if (Math.abs(dist) < 1) return;
-  const id = ++featAnim; const dur = Math.min(420, 260 + Math.abs(dist) * 0.1); const t0 = performance.now();
+  const id = ++featAnim; const dur = Math.min(380, 280 + Math.abs(dist) * 0.06); const t0 = performance.now();
   rail.style.scrollSnapType = 'none'; rail.style.scrollBehavior = 'auto';
-  const ease = (t) => 0.5 - Math.cos(Math.PI * t) / 2;
+  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
   (function fr(now) {
     if (id !== featAnim) return;
     const t = Math.min(1, (now - t0) / dur); rail.scrollLeft = from + dist * ease(t);
@@ -2154,7 +2410,7 @@ function startAuto(rail) {
     if (!document.body.contains(rail) || document.hidden) return;
     if (Date.now() < pauseAutoUntil) return;
     const ci = featCur(rail); featGo(rail, ci >= rail.children.length - 1 ? 0 : ci + 1);
-  }, 1800);
+  }, 1000);
   if (!(rail.nextElementSibling && rail.nextElementSibling.classList.contains('fdots'))) {
     const dots = document.createElement('div'); dots.className = 'fdots';
     dots.innerHTML = new Array(rail.children.length).fill('<i></i>').join(''); rail.after(dots);
@@ -2199,6 +2455,15 @@ function viewSearchShell(q) {
 }
 let searchSeq = 0;
 function addHistory(q) { const h = store.get('jp_sh', []).filter((x) => x !== q); h.unshift(q); store.set('jp_sh', h.slice(0, 8)); }
+async function fillSuggest(my) {
+  if (!$('#sgBox')) return; $('#sgBox').innerHTML = '<div class="sgsk"><i></i><i></i><i></i><i></i><i></i><i></i></div>';
+  try {
+    const all = await api('/books'); if (my !== searchSeq || !$('#sgBox')) return;
+    const top = all.slice().sort((a, b) => (b.reads || 0) - (a.reads || 0));
+    $('#sgBox').innerHTML = (top.length ? '<div class="shhead"><b>জনপ্রিয় অনুসন্ধান</b></div><div class="sgchips">' + top.slice(0, 6).map((b) => '<button class="sgchip" data-act="go" data-replace="1" data-href="/search?q=' + enc(b.title) + '">' + IC.search + esc(b.title) + '</button>').join('') + '</div><div class="shhead"><b>সাজেস্টেড বই</b></div>' + booksBlock(top.slice(0, 12), '') : '');
+    fillIcons($('#sgBox'));
+  } catch (e) { if ($('#sgBox')) $('#sgBox').innerHTML = ''; }
+}
 async function runSearch(q) {
   const my = ++searchSeq; const box = $('#searchRes'); const info = $('#searchInfo');
   if (!box) return;
@@ -2206,7 +2471,7 @@ async function runSearch(q) {
   if (!q) {
     info.textContent = ''; const sh = store.get('jp_sh', []);
     box.innerHTML = (sh.length ? '<div class="shhead"><b>সাম্প্রতিক অনুসন্ধান</b><button class="link-btn" data-act="sh-clear">সব মুছুন</button></div><div class="shlist">' + sh.map((x) =>
-      '<div class="shitem"><button class="shq" data-act="go" data-replace="1" data-href="/search?q=' + enc(x) + '">' + IC.search + '<span>' + esc(x) + '</span></button><button class="shx" data-act="sh-del" data-q="' + esc(x) + '" aria-label="মুছুন">' + IC.close + '</button></div>').join('') + '</div>' : '<div class="empty">বইয়ের নাম, লেখকের নাম বা ক্যাটাগরি লিখে খুঁজুন।</div>'); return;
+      '<div class="shitem"><button class="shq" data-act="go" data-replace="1" data-href="/search?q=' + enc(x) + '">' + IC.search + '<span>' + esc(x) + '</span></button><button class="shx" data-act="sh-del" data-q="' + esc(x) + '" aria-label="মুছুন">' + IC.close + '</button></div>').join('') + '</div>' : '') + '<div id="sgBox"></div>'; fillSuggest(my); return;
   }
   try {
     const list = await api('/books?q=' + enc(q));
@@ -2347,7 +2612,7 @@ async function viewBook(id) {
 }
 function cacheBook(b) {
   const c = getCache();
-  c[b.id] = { id: b.id, title: b.title, author: b.author, authorId: b.authorId || '', cat: b.cat, status: b.status, desc: b.desc, cover: b.cover, demo: b.demo, reads: b.reads, likes: b.likes, dislikes: b.dislikes, chapterCount: b.chapters ? b.chapters.length : b.chapterCount, audioCount: b.audio ? b.audio.length : (b.audioCount || 0) };
+  c[b.id] = { id: b.id, title: b.title, author: b.author, authorId: b.authorId || '', authorPhoto: b.authorPhoto || '', cat: b.cat, status: b.status, desc: b.desc, cover: b.cover, demo: b.demo, reads: b.reads, likes: b.likes, dislikes: b.dislikes, chapterCount: b.chapters ? b.chapters.length : b.chapterCount, audioCount: b.audio ? b.audio.length : (b.audioCount || 0) };
   store.set('jp_cache', c);
 }
 /* ---------- ডাউনলোড ---------- */
@@ -2406,7 +2671,7 @@ async function viewReader(bookId, n) {
     '<div class="lseek"><input type="range" id="lSeek" min="1" max="' + tot + '" value="' + (idx + 1) + '" aria-label="অধ্যায় বাছুন"><div class="lnums"><span>' + bn(1) + '</span><span id="lCur">' + bn(idx + 1) + '</span><span>' + bn(tot) + '</span></div></div>' +
     '<div class="lctl"><button class="lspd" id="lSpd" data-act="lp-speed" aria-label="গতি">' + spdTxt() + '</button><button data-act="lp-prev" aria-label="আগের অধ্যায়"' + (c.prev ? '' : ' disabled') + '>' + IC.prev + '</button>' +
     '<button class="big" id="lPlay" data-act="lp-play" aria-label="চালান">' + IC.play + '</button><button data-act="lp-next" aria-label="পরের অধ্যায়"' + (c.next ? '' : ' disabled') + '>' + IC.next + '</button><span class="lgap"></span></div>' +
-    '<div class="lst" id="lSt"></div></section>' +
+    '<div class="lctl2"><button data-act="lp-back" aria-label="আগের অনুচ্ছেদে ফিরুন">⟲ পিছনে</button><button id="lTmr" data-act="lp-timer" aria-label="ঘুমানোর টাইমার">☾ টাইমার</button><button data-act="lp-fwd" aria-label="পরের অনুচ্ছেদে যান">সামনে ⟳</button></div><div class="lst" id="lSt" aria-live="off"></div></section>' +
     '<div class="rnav"><button class="btn ghost" ' + (c.prev ? 'data-act="read" data-id="' + esc(bookId) + '" data-n="' + c.prev + '"' : 'disabled') + '>‹ আগের অধ্যায়</button>' +
     '<button class="btn" ' + (c.next ? 'data-act="read" data-id="' + esc(bookId) + '" data-n="' + c.next + '"' : 'disabled') + '>পরের অধ্যায় ›</button></div>' +
     '<div class="spk-bar" id="spkBar" hidden><button data-act="spk-prev" aria-label="আগের অনুচ্ছেদ">' + IC.prev + '</button><button id="spkPlay" data-act="spk-pp" aria-label="বিরতি">' + IC.pause + '</button><button data-act="spk-next" aria-label="পরের অনুচ্ছেদ">' + IC.next + '</button><div class="st" id="spkSt"></div><button data-act="spk-stop" aria-label="বন্ধ">' + IC.close + '</button></div>' +
@@ -2629,11 +2894,22 @@ function fmtDate(iso) {
   const two = (x) => ('0' + x).slice(-2);
   return bn(d.getDate()) + ' ' + MONTHS[d.getMonth()] + ' ' + bn(d.getFullYear()) + ', ' + bn(two(d.getHours())) + ':' + bn(two(d.getMinutes()));
 }
+let ntTab = 'all', ntList = [], ntCov = {}, ntSeen = 0;
+const ntType = (n) => (String(n.id).indexOf('nb-') === 0 ? 'book' : String(n.id).indexOf('nc-') === 0 ? 'ep' : 'notice');
+function ntAgo(iso) { const d = Date.parse(iso); if (isNaN(d)) return ''; const k = Math.floor((Date.now() - d) / 86400000); if (k < 1) return 'আজ'; if (k < 7) return bn(k) + ' দিন আগে'; const x = new Date(d); return bn(x.getDate()) + ' ' + MONTHS[x.getMonth()] + ' ' + bn(x.getFullYear()); }
+function ntBody() {
+  const L = ntList.filter((n) => ntTab === 'all' || ntType(n) === ntTab);
+  if (!L.length) return '<div class="empty">এখনো কিছু নেই।</div>';
+  return L.map((n) => { const t = ntType(n), cv = n.bookId && ntCov[n.bookId]; const lk = n.link || n.url;
+    return '<div class="ntc"' + (n.bookId ? ' data-act="go" data-href="/book/' + esc(n.bookId) + '"' : '') + '>' + (cv ? '<img class="th" src="' + esc(cv) + '" alt="">' : '<div class="th"></div>') +
+      '<div class="ti"><h4>' + esc(n.title) + '</h4>' + (n.body ? '<p>' + esc(n.body) + '</p>' : '') + '<div class="ntm">' + (lk ? '<a class="pl" href="' + esc(lk) + '" target="_blank" rel="noopener">লিংক</a>' : t === 'book' ? '<span class="pl">বই</span>' : t === 'ep' ? '<span class="pl">পর্ব</span>' : '') + '<time>' + ntAgo(n.createdAt) + '</time></div></div></div>'; }).join('');
+}
 async function viewNotices() {
-  const list = await api('/notices'); const seen = store.get('jp_noticeseen', 0);
-  const h = headerPage('নোটিশ', true) + '<main class="page">' + (list.length ? list.map((n) =>
-    '<div class="notice' + (Date.parse(n.createdAt) > seen ? ' new' : '') + '"><h4>' + esc(n.title) + '</h4><time>' + fmtDate(n.createdAt) + '</time>' + (n.body ? '<p>' + esc(n.body) + '</p>' : '') + '</div>').join('')
-    : '<div class="empty">এখনো কোনো নোটিশ নেই।</div>') + '</main>';
+  ntList = await api('/notices'); ntSeen = store.get('jp_noticeseen', 0); ntTab = 'all'; ntCov = {};
+  try { (await api('/books')).forEach((b) => { ntCov[b.id] = b.cover; }); } catch (e) { /* ignore */ }
+  const nw = ntList.filter((n) => ntType(n) === 'notice' && Date.parse(n.createdAt) > ntSeen).length;
+  const tab = (v, l, c) => '<button class="' + (v === 'all' ? 'on' : '') + '" data-s="nt-tab" data-v="' + v + '">' + l + (c ? '<em>' + bn(c) + '</em>' : '') + '</button>';
+  const h = headerPage('নোটিফিকেশন', true) + '<main class="page"><div class="nttabs">' + tab('all', 'সব') + tab('notice', 'নোটিস', nw) + tab('ep', 'পর্ব') + tab('book', 'বই') + '</div><div id="ntBody">' + ntBody() + '</div></main>';
   store.set('jp_noticeseen', Date.now());
   return h;
 }
@@ -2945,9 +3221,8 @@ function viewProfile() {
   const cbk = getRS().chbar in CHB ? getRS().chbar : 'red';
   const chbOpts = '<div class="swatches" style="padding:6px 2px">' + Object.keys(CHB).map((k) => '<button class="swatch' + (cbk === k ? ' on' : '') + '" data-act="prof-chbar" data-v="' + k + '" aria-label="' + CHB[k][0] + '" style="background:' + CHB[k][1] + '">' + (cbk === k ? IC.check : '') + '</button>').join('') + '</div><div class="chbprev"><span style="background:' + CHB[cbk][1] + '">১</span> অধ্যায় ১ — নমুনা</div>';
   return headerPage('প্রোফাইল ও মেনু', true) + '<main class="page">' + who +
-    '<div class="pcard"><div class="tmrow"><div><small>আজকের পড়ার সময়</small><div class="tm" id="todayTime">' + fmtTime(secs) + '</div></div><div class="tmr"><small>গত ৭ দিনে</small><b>' + fmtTime(weekTotal) + '</b></div></div>' +
-    '<div class="chart">' + days.map((x, i) => '<div class="col' + (i === 6 ? ' today' : '') + '"><span class="v">' + shortT(x.s) + '</span><div class="bar" style="height:' + Math.round(10 + x.s / mx * 100) + 'px"></div><span class="d">' + WD[x.d.getDay()] + '</span></div>').join('') + '</div>' +
-    '<div class="streak" style="margin:10px 0 0"><span>' + bn(streakInfo()) + ' দিনের রিডিং স্ট্রিক 🔥</span></div></div>' +
+    '<div class="pcard"><div class="tmrow"><div><small>আজকের পড়ার সময়</small><div class="tm" id="todayTime">' + fmtTime(secs) + '</div></div><button class="tmr wk7" data-act="go" data-href="/goals" aria-label="গত ৭ দিনের পড়া ও লক্ষ্য"><small>গত ৭ দিনে</small><b>' + fmtTime(weekTotal) + '</b><i class="wk7c">›</i></button></div>' +
+    '<div class="wk7h">রিডিং স্ট্রিক, লক্ষ্য ও গ্রাফ দেখতে “গত ৭ দিনে” চাপুন</div></div>' +
     '<div class="grp">লেখক প্যানেল</div><div class="pcard" style="padding:4px 12px">' + mrow('pen', 'লেখক প্যানেল', 'নিজের গল্প লিখুন ও প্রকাশের জন্য পাঠান', '', 'data-act="go" data-href="/w"') + '</div>' +
     '<div class="grp">ফলো করা লেখক</div><div class="pcard" style="padding:4px 12px">' + mrow('user', 'ফলো করা লেখক দেখুন', bn(Object.keys(getFollow()).length) + ' জন', '', 'data-act="go" data-href="/following"') + '</div>' +
     '<div class="grp">পড়া ও খোঁজা</div><div class="pcard" style="padding:4px 12px">' +
@@ -2968,7 +3243,62 @@ function viewProfile() {
     '<div class="ver"><span>ভার্সন</span><span>' + bn('2.1') + '</span></div></div>' +
     '<div class="center" style="margin-top:14px;font-weight:600">আমাদের সাথে যুক্ত থাকুন</div><div class="social"><button class="icon-btn" style="background:#1fa855;color:#fff;width:48px;height:48px" data-act="wa" aria-label="হোয়াটসঅ্যাপ">' + IC.wa + '</button></div></main>';
 }
-function profRerender() { if (!/^\/profile/.test(curPath)) return; const y = window.scrollY; setView(viewProfile()); window.scrollTo(0, y); }
+const getGoal = () => store.get('jp_goal', 30); let goalSel = 30;
+function goalStats() {
+  const t = store.get('jp_time', {}); t[secsKey] = secs; const ks = Object.keys(t).filter((k) => t[k] > 0);
+  const tot = ks.reduce((q, k) => q + t[k], 0); const ct = store.get('jp_ctime', {}); let best = '', bs = 0;
+  Object.keys(ct).forEach((id) => { const v = Object.keys(ct[id]).reduce((q, n) => q + (ct[id][n] || 0), 0); if (v > bs) { bs = v; best = id; } });
+  return { days: ks.length, tot, best, bs };
+}
+function goalCard() {
+  const g = getGoal(), m = Math.floor(secs / 60), C = Math.PI * 52, pr = Math.min(1, m / g), st = goalStats();
+  const c = st.best ? ((getCache()[st.best] || {}).title || '') : '';
+  if (st.best && !c) setTimeout(async () => { try { const l = await api('/books?ids=' + enc(st.best)); const e = $('#topBook'); if (e && l[0]) e.textContent = l[0].title; } catch (x) { /* ignore */ } }, 0);
+  return '<div class="goalc"><button class="gbtn" data-act="goal-open">🎯 লক্ষ্য নির্ধারণ করুন (' + bn(g) + ' মিনিট / দিন)</button><div class="gbody"><svg viewBox="0 0 120 70" class="gsvg"><path d="M8 62A52 52 0 0 1 112 62" fill="none" stroke="var(--line)" stroke-width="10" stroke-linecap="round"/><path d="M8 62A52 52 0 0 1 112 62" fill="none" stroke="var(--red)" stroke-width="10" stroke-linecap="round" stroke-dasharray="' + (C * pr).toFixed(1) + ' ' + C.toFixed(1) + '"/></svg><div class="gnum"><b>' + bn(m) + '</b><small>/' + bn(g) + ' মিনিট</small></div></div><div class="gleg">' + (m >= g ? 'আজকের চ্যালেঞ্জ সম্পন্ন! 🎉' : 'চ্যালেঞ্জ চলছে — আর ' + bn(g - m) + ' মিনিট বাকি') + '</div>' +
+    '<div class="gstats"><div><small>মোট পড়েছেন</small><b>' + bn(st.days) + ' দিন</b></div><div><small>মোট সময়</small><b>' + fmtTime(st.tot) + '</b></div><div class="wide"><small>সবচেয়ে বেশি পড়া বই</small><b id="topBook">' + (st.best ? esc(c || 'লোড হচ্ছে…') + ' · ' + fmtTime(st.bs) : 'এখনো কোনো বই পড়া হয়নি') + '</b></div></div></div>';
+}
+function goalSheet() {
+  const O = [[15, ''], [30, ' (প্রস্তাবিত)'], [45, ''], [60, ' (১ ঘণ্টা)'], [90, ' (১.৫ ঘণ্টা)'], [120, ' (২ ঘণ্টা)']];
+  return '<div style="padding:8px 18px 20px"><h3 style="text-align:center;margin:6px 0 10px">দৈনিক পড়ার লক্ষ্য নির্ধারণ করুন</h3>' + O.map((o) => '<button class="gopt' + (goalSel === o[0] ? ' on' : '') + '" data-goal="' + o[0] + '"><i></i><span>' + bn(o[0]) + ' মিনিট / দিন' + o[1] + '</span></button>').join('') + '<button class="gsave" data-act="goal-save">লক্ষ্য সংরক্ষণ করুন</button></div>';
+}
+document.addEventListener('click', (e) => {
+  const t = e.target.closest ? e.target.closest('[data-act="goal-open"],[data-act="goal-save"],[data-goal]') : null; if (!t) return;
+  if (t.dataset.act === 'goal-open') { goalSel = getGoal(); openSheet(goalSheet()); }
+  else if (t.dataset.act === 'goal-save') { store.set('jp_goal', goalSel); closeSheet(); profRerender(); toast('লক্ষ্য সংরক্ষণ হয়েছে'); }
+  else { goalSel = +t.dataset.goal; $$('.gopt').forEach((x) => x.classList.toggle('on', x === t)); }
+});
+let sleepAt = 0, sleepI = 0, sleepIv = null;
+const SLEEP_O = [0, 15, 30, 60];
+function sleepLabel() {
+  const b = $('#lTmr'); if (!b) return;
+  if (!sleepAt) { b.textContent = '☾ টাইমার'; b.classList.remove('on'); return; }
+  const r = Math.max(0, Math.ceil((sleepAt - Date.now()) / 1000));
+  b.textContent = '☾ ' + bn(Math.floor(r / 60)) + ':' + bn(String(r % 60).padStart(2, '0')); b.classList.add('on');
+}
+function sleepClear() { sleepAt = 0; sleepI = 0; if (sleepIv) { clearInterval(sleepIv); sleepIv = null; } sleepLabel(); }
+function sleepTick() {
+  if (!sleepAt) return;
+  if (Date.now() >= sleepAt) {
+    sleepClear();
+    try { speakStop(); } catch (x) { /* ignore */ }
+    try { player.pause(); } catch (x) { /* ignore */ }
+    toast('ঘুমানোর টাইমার শেষ — শোনা বন্ধ হয়েছে'); return;
+  }
+  sleepLabel();
+}
+document.addEventListener('visibilitychange', sleepTick);
+document.addEventListener('click', (e) => {
+  const t = e.target.closest ? e.target.closest('[data-act="lp-back"],[data-act="lp-fwd"],[data-act="lp-timer"]') : null; if (!t) return;
+  if (t.dataset.act === 'lp-back') { if (tts.on) speakSkip(-1); } else if (t.dataset.act === 'lp-fwd') { if (tts.on) speakSkip(1); }
+  else {
+    sleepI = (sleepI + 1) % SLEEP_O.length; const m = SLEEP_O[sleepI];
+    if (sleepIv) { clearInterval(sleepIv); sleepIv = null; }
+    if (!m) { sleepAt = 0; sleepLabel(); toast('ঘুমানোর টাইমার বন্ধ'); return; }
+    sleepAt = Date.now() + m * 60000; sleepIv = setInterval(sleepTick, 1000); sleepLabel();
+    toast(bn(m) + ' মিনিট পরে শোনা বন্ধ হবে');
+  }
+});
+function profRerender() { if (/^\/goals/.test(curPath)) { const y0 = window.scrollY; setView(viewGoals()); fillGoalBooks(); window.scrollTo(0, y0); return; } if (!/^\/profile/.test(curPath)) return; const y = window.scrollY; setView(viewProfile()); window.scrollTo(0, y); }
 function toggleSaved(id) {
   const ids = getSaved(); const i = ids.indexOf(id);
   if (i >= 0) ids.splice(i, 1); else ids.push(id);
@@ -2990,7 +3320,7 @@ function showDialog(o) {
 const confirmDel = (title, text, fn) => showDialog({ title, text, no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: fn });
 function hideDialog() { $('#dlg').hidden = true; dlgYes = null; exitOpen = false; }
 function askExit() {
-  if (exitOpen) return; exitOpen = true;
+  doExit(); return;
   showDialog({ emoji: '⚠️', title: 'আপনি কি সত্যিই বের হতে চান?', text: '', no: 'না', yes: 'হ্যাঁ', onYes: doExit });
 }
 function doExit() {
@@ -3267,13 +3597,13 @@ function boot() {
   startTimeTracker();
   initExitGuard();
   route(); offCheck();
-  const wait = Math.max(300, 2200 - (Date.now() - (window.__t0 || Date.now())));
+  const wait = Math.max(300, 2800 - (Date.now() - (window.__t0 || Date.now())));
   setTimeout(() => { const s = $('#splash'); if (s) { s.classList.add('hide'); setTimeout(() => s.remove(), 400); } }, wait);
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 
 /* ---------- ভাষা: বাংলা / English ---------- */
-const EN = {"অধ্যায়ের বার কালার": "Chapter bar colour", "সবুজ": "Green", "নীল": "Blue", "বেগুনি": "Purple", "কমলা": "Orange", "গোলাপি": "Pink", "অধ্যায় বারের রং": "Chapter bar colour", "হোম": "Home", "ফিড": "Feed", "ক্যাটাগরি": "Categories", "লাইব্রেরি": "Library", "সব ক্যাটাগরি": "All categories", "সবগুলি": "All", "পড়ুন": "Read", "শুনুন": "Listen", "অধ্যায়": "Chapters", "অটো": "Auto", "সব দেখুন": "See all", "লোড হচ্ছে…": "Loading…", "আবার চেষ্টা করুন": "Try again", "হোমে যান": "Go home", "নির্বাচিত উপন্যাস": "Featured novels", "সম্প্রতি যোগ করা": "Recently added", "নতুন বই": "New books", "সর্বশেষ এপিসোড": "Latest episodes", "সাপ্তাহিক জনপ্রিয়": "Popular this week", "মাসিক জনপ্রিয়": "Popular this month", "বাৎসরিক জনপ্রিয়": "Popular this year", "ইসলামিক উপন্যাস": "Islamic novels", "আজকের আপডেট পর্ব": "Today’s updates", "নতুন পর্ব": "New episode", "চলমান": "Ongoing", "সমাপ্ত": "Completed", "সব": "All", "রোমান্টিক": "Romantic", "পারিবারিক": "Family", "ইসলামিক": "Islamic", "থ্রিলার": "Thriller", "রহস্য": "Mystery", "ভৌতিক": "Horror", "সামাজিক": "Social", "বিরহ": "Heartbreak", "ঐতিহাসিক": "Historical", "কিশোর উপন্যাস": "Teen novels", "জীবনমুখী": "Life stories", "কল্পবিজ্ঞান": "Sci-fi", "অ্যাকশন": "Action", "অনুপ্রেরণামূলক": "Inspirational", "প্রোফাইল ও মেনু": "Profile & menu", "আজকের পড়ার সময়": "Reading time today", "গত ৭ দিনে": "Last 7 days", "পড়া ও খোঁজা": "Read & discover", "সব গল্পের তালিকা": "All stories", "নোটিশ": "Notices", "ডিসপ্লে ও থিম": "Display & theme", "ভাষা": "Language", "অ্যাপ থিম ও মোড": "App theme & mode", "ডার্ক মোড": "Dark mode", "লাইট মোড": "Light mode", "☀️ লাইট মোড": "☀️ Light mode", "🌙 ডার্ক মোড": "🌙 Dark mode", "বইয়ের ডিসপ্লে প্রিভিউ": "Book display", "গ্রিড ভিউ": "Grid view", "কার্ড ভিউ": "Card view", "বটম প্লেয়ার চালু রাখুন": "Keep bottom player on", "স্টোরেজ": "Storage", "ক্যাশ মুছুন": "Clear cache", "সার্চ হিস্ট্রি মুছুন": "Clear search history", "ডাউনলোড স্টোরেজ": "Download storage", "সব ডাউনলোড মুছুন": "Delete all downloads", "অন্যান্য": "Other", "অ্যাপ সম্পর্কে": "About the app", "যোগাযোগ করুন": "Contact us", "ভার্সন": "Version", "আমাদের সাথে যুক্ত থাকুন": "Stay connected", "অতিথি পাঠক": "Guest reader", "অ্যাকাউন্ট তৈরি করুন": "Create account", "লগইন": "Log in", "লগ আউট": "Log out", "সম্পাদনা": "Edit", "অ্যাকাউন্ট মুছুন": "Delete account", "রিডার সেটিংস": "Reader settings", "লেখা ও ডিসপ্লে": "Text & display", "ভয়েস ও উচ্চারণ": "Voice", "নোটপ্যাড": "Notepad", "পেইজের ব্যাকগ্রাউন্ড": "Page background", "অধ্যায়ের কালার": "Chapter colour", "লেখার সাইজ": "Text size", "প্যারাগ্রাফের ফাঁক": "Paragraph spacing", "ফন্ট পরিবর্তন করুন": "Change font", "অটো স্ক্রল": "Auto scroll", "স্ক্রিন অন রাখুন": "Keep screen on", "এখন থেকে শুনুন": "Listen from here", "শোনা বন্ধ করুন": "Stop listening", "খুঁজুন": "Search", "সাম্প্রতিক অনুসন্ধান": "Recent searches", "সব মুছুন": "Clear all", "বইয়ের নাম, লেখক বা ক্যাটাগরি": "Book, author or category", "এই বিভাগে এখন কোনো বই নেই।": "No books here yet.", "এই তালিকায় কোনো বই পাওয়া যায়নি।": "No books found in this list.", "এখনো কোনো বই যোগ করা হয়নি।": "No books added yet.", "এই পেজ পাওয়া যায়নি।": "Page not found.", "⚠️ তালিকা পাওয়া যায়নি": "⚠️ List not found", "তালিকা পাওয়া যায়নি": "List not found", "লেখক": "Author"};
+const EN = {"অধ্যায়ের বার কালার": "Chapter bar colour", "সবুজ": "Green", "নীল": "Blue", "বেগুনি": "Purple", "কমলা": "Orange", "গোলাপি": "Pink", "অধ্যায় বারের রং": "Chapter bar colour", "হোম": "Home", "ফিড": "Feed", "ক্যাটাগরি": "Categories", "লাইব্রেরি": "Library", "সব ক্যাটাগরি": "All categories", "সবগুলি": "All", "পড়ুন": "Read", "শুনুন": "Listen", "অধ্যায়": "Chapters", "অটো": "Auto", "সব দেখুন": "See all", "লোড হচ্ছে…": "Loading…", "আবার চেষ্টা করুন": "Try again", "হোমে যান": "Go home", "নির্বাচিত উপন্যাস": "Featured novels", "পড়ার লক্ষ্য": "Reading goal", "আজ": "Today", "সাপ্তাহিক": "Weekly", "মাসিক": "Monthly", "বার্ষিক": "Yearly", "শীর্ষ বই": "Top books", "লক্ষ্য নির্ধারণ করুন": "Set goal", "সম্প্রতি যোগ করা": "Recently added", "নতুন বই": "New books", "সর্বশেষ এপিসোড": "Latest episodes", "সাপ্তাহিক জনপ্রিয়": "Popular this week", "মাসিক জনপ্রিয়": "Popular this month", "বাৎসরিক জনপ্রিয়": "Popular this year", "ইসলামিক উপন্যাস": "Islamic novels", "আজকের আপডেট পর্ব": "Today’s updates", "নতুন পর্ব": "New episode", "চলমান": "Ongoing", "সমাপ্ত": "Completed", "সব": "All", "রোমান্টিক": "Romantic", "পারিবারিক": "Family", "ইসলামিক": "Islamic", "থ্রিলার": "Thriller", "রহস্য": "Mystery", "ভৌতিক": "Horror", "সামাজিক": "Social", "বিরহ": "Heartbreak", "ঐতিহাসিক": "Historical", "কিশোর উপন্যাস": "Teen novels", "জীবনমুখী": "Life stories", "কল্পবিজ্ঞান": "Sci-fi", "অ্যাকশন": "Action", "অনুপ্রেরণামূলক": "Inspirational", "প্রোফাইল ও মেনু": "Profile & menu", "আজকের পড়ার সময়": "Reading time today", "গত ৭ দিনে": "Last 7 days", "পড়া ও খোঁজা": "Read & discover", "সব গল্পের তালিকা": "All stories", "নোটিশ": "Notices", "ডিসপ্লে ও থিম": "Display & theme", "ভাষা": "Language", "অ্যাপ থিম ও মোড": "App theme & mode", "ডার্ক মোড": "Dark mode", "লাইট মোড": "Light mode", "☀️ লাইট মোড": "☀️ Light mode", "🌙 ডার্ক মোড": "🌙 Dark mode", "বইয়ের ডিসপ্লে প্রিভিউ": "Book display", "গ্রিড ভিউ": "Grid view", "কার্ড ভিউ": "Card view", "বটম প্লেয়ার চালু রাখুন": "Keep bottom player on", "স্টোরেজ": "Storage", "ক্যাশ মুছুন": "Clear cache", "সার্চ হিস্ট্রি মুছুন": "Clear search history", "ডাউনলোড স্টোরেজ": "Download storage", "সব ডাউনলোড মুছুন": "Delete all downloads", "অন্যান্য": "Other", "অ্যাপ সম্পর্কে": "About the app", "যোগাযোগ করুন": "Contact us", "ভার্সন": "Version", "আমাদের সাথে যুক্ত থাকুন": "Stay connected", "অতিথি পাঠক": "Guest reader", "অ্যাকাউন্ট তৈরি করুন": "Create account", "লগইন": "Log in", "লগ আউট": "Log out", "সম্পাদনা": "Edit", "অ্যাকাউন্ট মুছুন": "Delete account", "রিডার সেটিংস": "Reader settings", "লেখা ও ডিসপ্লে": "Text & display", "ভয়েস ও উচ্চারণ": "Voice", "নোটপ্যাড": "Notepad", "পেইজের ব্যাকগ্রাউন্ড": "Page background", "অধ্যায়ের কালার": "Chapter colour", "লেখার সাইজ": "Text size", "প্যারাগ্রাফের ফাঁক": "Paragraph spacing", "ফন্ট পরিবর্তন করুন": "Change font", "অটো স্ক্রল": "Auto scroll", "স্ক্রিন অন রাখুন": "Keep screen on", "এখন থেকে শুনুন": "Listen from here", "শোনা বন্ধ করুন": "Stop listening", "খুঁজুন": "Search", "সাম্প্রতিক অনুসন্ধান": "Recent searches", "সব মুছুন": "Clear all", "বইয়ের নাম, লেখক বা ক্যাটাগরি": "Book, author or category", "এই বিভাগে এখন কোনো বই নেই।": "No books here yet.", "এই তালিকায় কোনো বই পাওয়া যায়নি।": "No books found in this list.", "এখনো কোনো বই যোগ করা হয়নি।": "No books added yet.", "এই পেজ পাওয়া যায়নি।": "Page not found.", "⚠️ তালিকা পাওয়া যায়নি": "⚠️ List not found", "তালিকা পাওয়া যায়নি": "List not found", "লেখক": "Author"};
 const TPL = [[/^বর্তমান: (.*)$/, (a) => 'Current: ' + trText(a)], [/^স্বাগতম, (.*)$/, (a) => 'Welcome, ' + a], [/^মোট (\d+)টি বই$/, (n) => 'Total ' + n + ' books'], [/^(\d+)টি বই$/, (n) => n + ' books'], [/^(\d+) দিনের রিডিং স্ট্রিক 🔥$/, (n) => n + '-day reading streak 🔥'], [/^লেখক: (.*)$/, (a) => 'Author: ' + a], [/^(\d+)টি ফলাফল$/, (n) => n + ' results']];
 function trText(t) {
   const k = t.trim(); if (!k) return t;
