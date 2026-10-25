@@ -174,10 +174,10 @@ html:not([data-theme=dark]) .freshb{color:var(--red2)}
 .ep .dlb svg{width:22px;height:22px}
 
 /* ----- বইয়ের বিস্তারিত ----- */
-.detail{display:flex;gap:16px;margin:8px 0 14px}
-.detail .cover{width:134px;border-radius:10px}
+.detail{display:flex;gap:14px;margin:8px 0 14px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px}
+.detail .cover{width:104px;flex:0 0 104px;border-radius:10px}
 .detail .di{min-width:0;flex:1}
-.detail h1{margin:0;font-size:24px;line-height:1.25}
+.detail h1{margin:0;font-size:21px;line-height:1.3}.detail h1 .lbl{font-weight:700}.detail .pr .dh{font-weight:700}.detail .pr{align-items:center;font-size:15px}
 .detail .au{display:flex;align-items:center;gap:6px;color:var(--teal);margin-top:6px;font-size:15px}
 .detail .au svg{width:15px;height:15px}
 .detail .pr{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
@@ -188,23 +188,24 @@ html:not([data-theme=dark]) .freshb{color:var(--red2)}
 .cbt{position:relative;width:46px;height:46px;border-radius:50%;background:var(--card2);color:var(--text);display:grid;place-items:center;flex:0 0 auto}.cbt svg{width:22px;height:22px}
 .cbt.on{background:var(--red);color:var(--on-red)}.cbt.on svg{fill:currentColor}.cbt.busy{opacity:.6;pointer-events:none}
 .cbg{position:absolute;top:-5px;right:-5px;background:var(--red);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;padding:1px 6px;border-radius:10px;min-width:18px;text-align:center}
+.btabs{display:flex;margin-top:14px;border-bottom:1.5px solid var(--line)}.btabs button{flex:1;padding:13px 6px;font-weight:700;font-size:15px;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1.5px}.btabs button.on{color:var(--text);border-bottom-color:var(--pur,#8b5cf6)}
+.rvform{background:var(--card2);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:14px}.rvform h3{margin:0 0 10px;font-size:17px}.rvform.done{text-align:center;font-weight:700;color:var(--teal)}
+.rvst{display:flex;gap:6px;margin-bottom:10px}.rvst button{font-size:38px;line-height:1;color:var(--muted);opacity:.55;padding:2px 3px}.rvst button.on{color:#ffc107;opacity:1}
+.rvform textarea{width:100%;box-sizing:border-box;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit;font-size:15px;line-height:1.5;resize:vertical}
+.rvcnt{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin:6px 2px 4px}
+.rvh3{font-size:17px;margin:6px 2px 10px}.rvh3 small{color:#e0a100;font-size:14px;margin-left:6px}
+.rvi{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:10px}.rvh{display:flex;align-items:center;gap:10px}.rvh .sav{width:40px;height:40px;flex:0 0 auto}.rvn{flex:1;min-width:0}.rvn b{display:block;font-size:15px;color:var(--text)}.rvh small{color:var(--muted);font-size:12px;flex:0 0 auto}
+.rvi p{margin:8px 0 0;line-height:1.6;font-size:15px;color:var(--text);word-break:break-word}
+.stz i{font-style:normal;color:var(--line);font-size:15px}.stz i.on{color:#ffc107}
+.cmr{margin-top:8px;padding:8px 10px;border-left:3px solid var(--red);background:var(--card);border-radius:8px}.cmr small{color:var(--muted);font-size:12px}.cmr .lk{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:1px 8px;border-radius:9px;margin-right:6px}.cmr p{margin:4px 0 0!important}
 .bstats{display:flex;gap:24px;margin-top:12px}.bstats small{display:block;color:var(--muted);font-size:12.5px}.bstats b{font-size:17px;font-weight:700}
-.cmform input::placeholder{color:var(--muted);opacity:1}.cmb p,.cmh b{color:var(--text)}
-.cmwrap{display:flex;flex-direction:column;height:76vh}.cmlist{flex:1;overflow-y:auto;margin:0 -4px;padding:0 4px;-webkit-overflow-scrolling:touch}
-.cmi{display:flex;gap:10px;background:var(--card2);color:var(--text);border-radius:16px;padding:12px;margin-bottom:10px}.cmi .sav{width:40px;height:40px;flex:0 0 auto}
-.cmb{min-width:0;flex:1}.cmh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.cmh b{font-size:15px}.cmh small,.cmr small{color:var(--muted);font-size:12px}
-.cmb p{margin:3px 0 0;line-height:1.55;font-size:15px;word-break:break-word}
-.cmr{margin-top:8px;padding:8px 10px;border-left:3px solid var(--red);background:rgba(128,128,128,.14);border-radius:8px}.cmr .lk{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:1px 8px;border-radius:9px;margin-right:6px}
-.cmform{display:flex;gap:8px;align-items:center;margin-top:8px}.cmform .sav{width:40px;height:40px;flex:0 0 auto}
-.cmform input{flex:1;min-width:0;background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:999px;padding:12px 16px;font:inherit;font-size:15px}
-.cmform button{width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;flex:0 0 auto}.cmform button svg{width:22px;height:22px}
-.cmcnt{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin:6px 6px 0}
 .icon-btn.bmh svg{width:22px;height:22px}.icon-btn.bmh.on{color:var(--teal)}.icon-btn.bmh.on svg{fill:var(--teal)}
 .reacts{display:flex;gap:8px;margin:10px 0 4px}
 .reacts .btn{padding:8px 16px;font-size:14px}
 .startrow{display:flex;gap:10px;margin:14px 0 6px}
 .startrow .btn{flex:1;font-size:16px;padding:13px 10px}
-.startrow .btn.pur{flex:0 0 36%}
+.startrow .btn.pur{flex:1;background:#e84d73!important;color:#fff!important;border:0}
+.startrow .dlall{border:1.5px solid #7a2a36!important;background:transparent!important;color:var(--text)!important}.startrow .dlall.fin,.startrow .dlall.busy{color:#fff!important}
 .bdesc{margin-top:8px;font-size:14px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .desc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:14px 0;line-height:1.75;font-size:14.5px}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:14px}
@@ -504,6 +505,25 @@ body.lmode .rtop [data-act=rs-open]{visibility:hidden}
 .pbtn{display:flex;gap:10px;margin-top:12px}.pbtn .btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
 .pbtn .btn svg{width:20px;height:20px}
 .page.feed{padding-top:6px}
+.post.pz{padding:0;overflow:hidden;border:1px solid var(--line)}
+.pzh{position:relative;padding:16px 14px 14px;overflow:hidden}
+.pzbg{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(22px) saturate(1.3);opacity:.55;transform:scale(1.2)}
+.pzov{position:absolute;inset:0;background:linear-gradient(180deg,hsla(var(--hue),55%,12%,.35),hsla(var(--hue),55%,10%,.78))}
+.pzin{position:relative;display:flex;gap:14px;align-items:flex-end}
+.pzc{position:relative;flex:0 0 112px;border-radius:12px;overflow:hidden;box-shadow:0 12px 26px rgba(0,0,0,.55);transform:rotate(-3deg);background:var(--card2)}
+.pzc img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover}
+.pzn{position:absolute;left:0;top:10px;background:var(--red);color:#fff;font-size:11.5px;font-weight:700;padding:3px 10px 3px 8px;border-radius:0 10px 10px 0}
+.pzt{min-width:0;flex:1;color:#fff;padding-bottom:2px}
+.pzbd{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.pzbd .pill{background:rgba(255,255,255,.18)!important;color:#fff!important;border:0!important}
+.pzk{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.18);color:#fff}
+.pzti{display:block;font-size:21px;line-height:1.25;text-shadow:0 2px 10px rgba(0,0,0,.5);word-break:break-word}
+.pzau{display:flex;align-items:center;gap:8px;margin-top:8px}.pzav{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;color:#fff;border:1.5px solid rgba(255,255,255,.7);flex:0 0 auto}.pzan{font-size:14px;font-weight:600;opacity:.95;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pzst{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;font-size:12.5px;opacity:.9}.pzst span{display:flex;align-items:center;gap:4px}.pzst svg{width:15px;height:15px}
+.pzds{margin:0;padding:12px 16px 4px;line-height:1.65;font-size:14.5px;color:var(--muted);border-left:3px solid hsl(var(--hue),60%,50%);margin:12px 14px 0;padding:2px 0 2px 12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pzac{display:flex;align-items:center;gap:10px;padding:14px}
+.pzac .pl,.pzac .pzsh{display:flex;align-items:center;gap:6px;height:46px;padding:0 14px;border-radius:999px;background:var(--card2);color:var(--text);font-weight:700;flex:0 0 auto}
+.pzac svg{width:21px;height:21px}.pzac .pl.on{color:var(--red)}.pzac .pl.on svg{fill:var(--red)}.pzac i{font-style:normal;font-size:14px}
+.pzac .pzgo{flex:1;height:46px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700}
 .fhead{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 10px}.fhead h2{margin:0;font-size:26px}
 .fsort{display:flex;background:var(--card2);border-radius:20px;padding:3px}.fsort button{padding:6px 16px;border-radius:17px;font-size:14px;font-weight:700;color:var(--muted)}.fsort button.on{background:var(--pur-soft);color:var(--pur-on)}
 .fchips{display:flex;gap:8px;overflow-x:auto;margin:0 -14px 14px;padding:2px 14px;scrollbar-width:none}.fchips::-webkit-scrollbar{display:none}.fchips .chip{flex:0 0 auto;padding:7px 16px;font-size:14px}
@@ -688,6 +708,7 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .wp .wchart .c div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px;font-size:12px;color:var(--muted)}
 .wp .wchart .c i{display:block;width:100%;max-width:34px;border-radius:8px 8px 4px 4px;background:var(--wa);min-height:4px}
 .wp .whero .hbtn{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}.wp .whero .hbtn button{background:#fff;color:#111;border:0;border-radius:999px;font:inherit;font-weight:700;font-size:14.5px;padding:10px 18px;cursor:pointer}
+.wp .wact{display:flex;gap:10px;margin:2px 0 6px}.wp .wact .wbtn{flex:1;font-size:15px}
 .wp .wst .wic svg{width:30px;height:30px}.wp .wst .wic{flex:0 0 auto;display:grid}
 .wp .wh2{font-size:19px;margin:18px 2px 10px;display:flex;align-items:center;gap:8px}.wp .wh2::before{content:'';width:4px;height:20px;border-radius:2px;background:var(--wa)}
 .wp .wsc{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card);margin-bottom:12px}
@@ -717,6 +738,11 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .wp .wgate{text-align:center;padding:30px 10px}.wp .wgate .big{font-size:52px}
 .wp .wpw{position:relative}.wp .wpw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--muted);width:44px;height:44px;display:grid;place-items:center}
 .wp .wpw input{padding-right:50px}
+.detail .achip{display:flex;width:100%;justify-content:flex-start}.detail .achip .an{flex:1;text-align:left}
+.achip{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(176,34,48,.32),rgba(176,34,48,.14))!important;border:1px solid rgba(232,77,115,.45)!important}
+.achip::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:38%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-20deg);animation:achsh 1.5s ease-in-out infinite;pointer-events:none}
+@keyframes achsh{0%{left:-60%}55%,100%{left:130%}}
+@media (prefers-reduced-motion:reduce){.achip::after{animation:none;display:none}}
 .achip{display:inline-flex;align-items:center;gap:8px;max-width:100%;margin-top:8px;padding:5px 10px 5px 5px;border-radius:999px;background:var(--card2);border:1px solid var(--line);color:var(--text);font-weight:600;font-size:15px}
 .achip .ava,.sav{width:32px;height:32px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;overflow:hidden;background:var(--red);color:#fff;font-weight:700}
 .achip .ava img,.sav img{width:100%;height:100%;object-fit:cover}
@@ -1327,34 +1353,27 @@ let curPath = (location.hash || '#/').slice(1) || '/';
 const navStack = [];
 const scrollMem = {};
 let keepScrollOnce = false; let restoreOnce = false; let leaving = false;
-// ইতিহাসে সবসময় মাত্র দুটো এন্ট্রি থাকে ([গার্ড, বর্তমান]); পেজের ব্যাক-স্ট্যাক অ্যাপ নিজে সামলায়
-function setUrl(p) { try { if (leaving) { leaving = false; initExitGuard(); } history.replaceState({ jp: 1 }, '', '#' + p); } catch (e) { /* ignore */ } }
-const TABS = ['/', '/feed', '/cat', '/lib'];
+function setUrl(p, replace) { try { history[replace ? 'replaceState' : 'pushState']({ jp: 1 }, '', '#' + p); } catch (e) { /* ignore */ } }
 function nav(path, replace) {
   path = String(path || '/').replace(/^#/, ''); if (path.charAt(0) !== '/') path = '/' + path;
   if (path === curPath) { route(); return; }
   scrollMem[curPath] = window.scrollY;
-  if (TABS.indexOf(curPath) >= 0 && TABS.indexOf(path) >= 0) navStack.length = 0; // ট্যাব বদলালে স্ট্যাকে জমবে না
-  else if (!replace) navStack.push(curPath);
+  if (!replace) navStack.push(curPath);
   curPath = path; setUrl(path, replace); route();
 }
 function goBack() {
   if (navStack.length) { restoreOnce = true; curPath = navStack.pop(); setUrl(curPath, true); route(); } else nav('/', true);
 }
-function backAction() {
-  if (!$('#dlg').hidden) { hideDialog(); return; }            // সতর্কবার্তা খোলা থাকলে ব্যাক = "না"
-  if (sheetOpen() || drawerOpen()) { closeSheet(); closeDrawer(); return; }
-  const home = curPath === '/' || curPath === '';
-  if (navStack.length || !home) { goBack(); return; }       // আগের পেজে, নাহলে হোমে
-  askExit();                                                // হোমে ব্যাক = বের হওয়ার প্রশ্ন
-}
 function onPop(ev) {
   if (ev && ev.state && ev.state.g) {
-    if (leaving) return;
-    backAction();
-    try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ }
+    if (!leaving) {
+      try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ }
+      if (exitOpen) { hideDialog(); if (curPath !== '/') { navStack.length = 0; nav('/', true); } } // সতর্কবার্তা থাকা অবস্থায় আবার ব্যাক = "না" → হোমে ফেরা
+      else askExit();
+    }
     return;
   }
+  if (sheetOpen() || drawerOpen()) { closeSheet(); closeDrawer(); try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ } return; }
   const p = (location.hash || '#/').slice(1) || '/';
   if (p === curPath) return;
   restoreOnce = true;
@@ -1570,10 +1589,11 @@ async function wDash() {
   const recent = books.slice(0, 5).map((b, k) => '<div class="wsc"><div class="cv">' + (b.cover ? '<img src="' + esc(b.cover) + '" alt="">' : '') + '</div><div class="in"><button class="tt" data-w="go" data-href="/w/book/' + esc(b.id) + '">' + esc(b.title) + '</button><div class="sb">লেখক: ' + esc(b.author || nm) + '</div><div class="chs">' + wChip(b) + '<span class="wchip">মোট পর্ব: ' + bn(D.chc[k]) + '</span></div>' +
     '<div class="wpill"><span aria-label="' + bn(b.reads || 0) + ' ভিউ">' + WI.eye + fmtN(b.reads || 0) + '</span><span aria-label="' + bn(b.likes || 0) + ' লাইক">' + WI.like + fmtN(b.likes || 0) + '</span><span aria-label="' + bn(b.favs || 0) + ' ফেভারিট">' + WI.heart + fmtN(b.favs || 0) + '</span><span aria-label="' + bn(b.cmts || 0) + ' মন্তব্য">' + WI.chat + fmtN(b.cmts || 0) + '</span></div></div></div>').join('');
   return wPage('রাইটার স্টুডিও', '<div class="whero"><small>স্বাগতম, ' + esc(nm) + '</small><b class="big">' + bn(D.tv) + '</b><small>মোট পঠিত/ভিউ • এ সপ্তাহে ' + bn(week) + '</small>' +
-    '<div class="hbtn"><button data-w="go" data-href="/w/graphs">গ্রাফ দেখুন</button><button data-w="go" data-href="/w/likes">লাইক ও কমেন্ট</button></div></div>' +
+    '</div>' +
     '<div class="wgrid">' + tile(WI.book, '#3b82f6', bn(books.length), 'মোট বই', '/w/books') + tile(WI.user, '#8b5cf6', fmtN(D.prof.followers || 0), 'ফলোয়ার') +
     tile(WI.graph, '#10b981', bn(D.tc), 'মোট পর্ব') + tile(WI.like, '#f43f5e', fmtN(D.tl), 'লাইক ও প্রতিক্রিয়া', '/w/likes') +
     tile(WI.chat, '#f59e0b', bn(D.cms.length), 'মন্তব্য', '/w/likes/cm') + tile(WI.flag, '#ef4444', bn(D.rps.length), 'রিপোর্ট', '/w/likes/rp') + '</div>' +
+    '<div class="wact"><button class="wbtn ghost" data-w="go" data-href="/w/graphs">' + WI.graph + 'গ্রাফ</button><button class="wbtn ghost" data-w="go" data-href="/w/likes">' + WI.like + 'লাইক ও কমেন্ট</button></div>' +
     '<h2 class="wh2">সাম্প্রতিক গল্প</h2>' + (recent || '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>') +
     '<button class="wbtn" data-w="go" data-href="/w/book">' + WI.plus + 'নতুন গল্প যোগ করুন</button>', 'dash', false, out);
 }
@@ -1586,7 +1606,7 @@ async function wLikes(tab) {
   const tabs = '<div class="wtabs3" role="tablist">' + [['bk', 'বই (' + bn(D.books.length) + ')'], ['cm', 'কমেন্ট (' + bn(D.cms.length) + ')'], ['rp', 'রিপোর্ট (' + bn(D.rps.length) + ')']].map((t) => '<button role="tab" aria-selected="' + (tab === t[0]) + '" class="' + (tab === t[0] ? 'on' : '') + '" data-w="rep" data-href="/w/likes/' + t[0] + '">' + t[1] + '</button>').join('') + '</div>';
   let body = '';
   if (tab === 'bk') body = D.books.map((b) => '<div class="wsc"><div class="cv">' + (b.cover ? '<img src="' + esc(b.cover) + '" alt="">' : '') + '</div><div class="in"><b class="tt2">' + esc(b.title) + '</b><div class="wpill"><span aria-label="' + bn(b.likes || 0) + ' লাইক">' + WI.like + fmtN(b.likes || 0) + '</span><span aria-label="' + bn(b.dislikes || 0) + ' ডিসলাইক">' + WI.dis + fmtN(b.dislikes || 0) + '</span><span aria-label="' + bn(b.favs || 0) + ' ফেভারিট">' + WI.heart + fmtN(b.favs || 0) + '</span><span aria-label="' + bn(b.cmts || 0) + ' মন্তব্য">' + WI.chat + fmtN(b.cmts || 0) + '</span></div></div></div>').join('') || '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>';
-  else if (tab === 'cm') body = D.cms.map((c) => '<div class="wcm" data-ck="' + esc(c.bid + '|' + c.id) + '"><div class="top"><div class="cv">' + (c.cv ? '<img src="' + esc(c.cv) + '" alt="">' : '') + '</div><div class="in"><b>' + esc(c.bt) + '</b><small>' + esc(c.name) + ' | ' + cmDate(c.at) + '</small></div></div><div class="tx">' + esc(c.text) + '</div>' +
+  else if (tab === 'cm') body = D.cms.map((c) => '<div class="wcm" data-ck="' + esc(c.bid + '|' + c.id) + '"><div class="top"><div class="cv">' + (c.cv ? '<img src="' + esc(c.cv) + '" alt="">' : '') + '</div><div class="in"><b>' + esc(c.bt) + '</b><small>' + esc(c.name) + ' | ' + cmDate(c.at) + '</small>' + (c.rate ? '<div style="color:#ffc107;font-size:16px;letter-spacing:1px" aria-label="' + bn(c.rate) + ' স্টার">' + '★'.repeat(c.rate) + '<span style="opacity:.3">' + '★'.repeat(5 - c.rate) + '</span></div>' : '') + '</div></div><div class="tx">' + esc(c.text) + '</div>' +
     (c.reply && c.reply.text ? '<div class="rpl"><span class="lk">আপনার উত্তর</span><small>' + cmDate(c.reply.at) + '</small><p>' + esc(c.reply.text) + '</p></div>' : '') +
     '<div class="rpslot"><button class="wbtn sm ghost" data-w="rp-open">' + (c.reply && c.reply.text ? 'উত্তর সম্পাদনা' : 'রিপ্লাই দিন') + '</button></div></div>').join('') || '<div class="wgate"><p>এখনো কোনো মন্তব্য নেই</p></div>';
   else body = '<p class="wnote" style="margin:0 2px 10px">এখানে শুধু দেখা যাবে। রিপোর্ট নিয়ে সিদ্ধান্ত অ্যাডমিন নেন।</p>' + (D.rps.map((r) => '<div class="wcm"><div class="top"><div class="in"><b>' + esc(r.bookTitle || '') + '</b><small>' + cmDate(r.createdAt) + '</small></div><span class="wchip ' + (r.status === 'dismissed' ? 'ok' : r.status === 'seen' ? '' : 'rv') + '">' + (r.status === 'dismissed' ? 'অ্যাডমিন বাতিল করেছেন' : r.status === 'seen' ? 'অ্যাডমিন দেখেছেন' : 'অ্যাডমিনের অপেক্ষায়') + '</span></div><div class="tx"><b>কারণ:</b> ' + esc(r.reason || '') + (r.text ? '<br>' + esc(r.text) : '') + '</div></div>').join('') || '<div class="wgate"><p>আপনার কোনো গল্পে রিপোর্ট নেই 🎉</p></div>');
@@ -1895,32 +1915,52 @@ function cmDraw() {
   const l = $('#cmList'), h = $('#cmH'); if (h) h.textContent = 'মন্তব্য (' + bn(cmList.length) + ')';
   if (l) l.innerHTML = cmList.length ? cmList.map(cmItem).join('') : '<div class="empty">এখনো কোনো মন্তব্য নেই। প্রথম মন্তব্যটি আপনি করুন।</div>';
 }
-async function cmOpen(id, t) {
-  cmBook = { id, t }; const a = getAcct();
-  openSheet('<div class="cmwrap"><div class="grab"></div><h3 id="cmH">মন্তব্য</h3><div class="cmlist" id="cmList"><div class="empty">লোড হচ্ছে…</div></div>' +
-    '<form class="cmform" data-form="cm-send"><span class="sav">' + avInit(a ? a.name : 'অ') + '</span><input id="cmInp" maxlength="200" placeholder="আপনার মন্তব্য লিখুন..." autocomplete="off" aria-label="আপনার মন্তব্য"><button type="submit" aria-label="মন্তব্য পাঠান">' + SENDI + '</button></form>' +
-    '<div class="cmcnt"><span>সর্বোচ্চ ২০০ অক্ষরের মধ্যে লিখুন</span><span id="cmN">০/২০০</span></div></div>');
-  const f = SFB(); cmList = [];
-  if (!f) { const l = $('#cmList'); if (l) l.innerHTML = '<div class="empty">মন্তব্য লোড করা যায়নি।</div>'; return; }
-  try { const q = await f.collection('books/' + id + '/comments').orderBy('at', 'desc').limit(100).get(); cmList = q.docs.map((d) => Object.assign({ id: d.id }, d.data())); cmDraw(); }
-  catch (e) { const l = $('#cmList'); if (l) l.innerHTML = '<div class="empty">মন্তব্য লোড করা যায়নি। ইন্টারনেট দেখুন।</div>'; }
+/* ---- রিভিউ (৫ স্টার + মন্তব্য, একজন একবার) ---- */
+const myUid = () => store.get('jp_user', '') || 'anon';
+let rvBook = null, rvList = [], rvRate = 0, rvOk = false;
+const stars = (n) => '<span class="stz" aria-label="' + bn(n) + ' স্টার">' + [1, 2, 3, 4, 5].map((i) => '<i class="' + (i <= n ? 'on' : '') + '">★</i>').join('') + '</span>';
+function rvItem(c) {
+  return '<div class="rvi"><div class="rvh"><span class="sav">' + avInit(c.name) + '</span><div class="rvn"><b>' + esc(c.name) + '</b>' + (c.rate ? stars(c.rate) : '') + '</div><small>' + cmDate(c.at) + '</small></div>' +
+    '<p>' + esc(c.text) + '</p>' + (c.reply && c.reply.text ? '<div class="cmr"><span class="lk">লেখক</span><small>' + cmDate(c.reply.at) + '</small><p>' + esc(c.reply.text) + '</p></div>' : '') + '</div>';
 }
-async function cmSend() {
-  const inp = $('#cmInp'); if (!inp || !cmBook) return; const text = (inp.value || '').trim(); if (!text) return;
-  const a = getAcct(); if (!a) { cmPend = cmBook; closeSheet(); toast('মন্তব্য করতে আগে আপনার নাম দিন'); openSheet(acctSheet()); return; }
-  if (Date.now() - cmLast < 15000) { toast('একটু পরে আবার মন্তব্য করুন'); return; }
-  const f = SFB(); if (!f) { toast('ইন্টারনেট সংযোগ নেই'); return; }
-  const c = { name: a.name, text: text.slice(0, 200), at: Date.now() }; const id = String(Date.now()) + Math.floor(Math.random() * 1000); const bid = cmBook.id;
+function rvForm() {
+  if (rvOk) return '<div class="rvform done">✓ আপনার রিভিউ জমা হয়েছে। ধন্যবাদ!</div>';
+  return '<div class="rvform"><h3>আপনার মতামত দিন</h3><div class="rvst" role="radiogroup" aria-label="স্টার রেটিং">' + [1, 2, 3, 4, 5].map((i) => '<button type="button" role="radio" aria-checked="false" aria-label="' + bn(i) + ' স্টার" data-s="rv-star" data-v="' + i + '">★</button>').join('') + '</div>' +
+    '<textarea id="rvTxt" maxlength="200" rows="3" placeholder="বইটি সম্পর্কে কিছু লিখুন..." aria-label="আপনার মন্তব্য"></textarea><div class="rvcnt"><span>একবার রিভিউ দিলে আর বদলানো যাবে না</span><span id="rvN">০/২০০</span></div><p class="acerr" id="rvErr" role="alert"></p><button class="bigbtn" data-s="rv-send">রিভিউ সাবমিট করুন</button></div>';
+}
+function rvDraw() {
+  const w = $('#tabRv'); if (!w) return; const avg = rvList.filter((x) => x.rate).length ? rvList.reduce((a, x) => a + (x.rate || 0), 0) / rvList.filter((x) => x.rate).length : 0;
+  w.innerHTML = rvForm() + '<h3 class="rvh3">সব রিভিউ' + (avg ? ' <small>★ ' + bn(avg.toFixed(1)) + '</small>' : '') + '</h3>' + (rvList.length ? rvList.map(rvItem).join('') : '<div class="empty">এখনো কোনো রিভিউ নেই। প্রথম রিভিউটি আপনি দিন।</div>');
+  const c = $('#rvCnt'); if (c) c.textContent = bn(rvList.length);
+}
+async function rvLoad(id) {
+  rvBook = id; rvRate = 0; const w = $('#tabRv'); const f = SFB();
+  rvOk = !!(store.get('jp_reviewed', {})[id]);
+  if (!f) { if (w) w.innerHTML = '<div class="empty">রিভিউ লোড করা যায়নি।</div>'; return; }
+  if (w) w.innerHTML = '<div class="empty">লোড হচ্ছে…</div>';
+  try { const q = await f.collection('books/' + id + '/comments').orderBy('at', 'desc').limit(100).get(); rvList = q.docs.map((d) => Object.assign({ id: d.id }, d.data())); if (rvList.some((x) => x.id === myUid())) rvOk = true; rvDraw(); }
+  catch (e) { if (w) w.innerHTML = '<div class="empty">রিভিউ লোড করা যায়নি। ইন্টারনেট দেখুন।</div>'; }
+}
+async function rvSend() {
+  const err = (m) => { const e = $('#rvErr'); if (e) e.textContent = m; };
+  const t = ($('#rvTxt').value || '').trim(); if (!rvRate) return err('আগে স্টার রেটিং দিন'); if (!t) return err('মন্তব্য লিখুন');
+  const a = getAcct(); if (!a) { toast('রিভিউ দিতে আগে আপনার নাম দিন'); openSheet(acctSheet()); return; }
+  const f = SFB(); if (!f) return err('ইন্টারনেট সংযোগ নেই'); const btn = $('[data-s=rv-send]'); if (btn) btn.disabled = true; const bid = rvBook;
+  const c = { name: a.name, text: t.slice(0, 200), at: Date.now(), rate: rvRate };
   try {
-    await f.doc('books/' + bid + '/comments/' + id).set(c); cmLast = Date.now(); inp.value = ''; const n = $('#cmN'); if (n) n.textContent = '০/২০০';
-    cmList.unshift(Object.assign({ id }, c)); cmDraw(); f.doc('books/' + bid).update({ cmts: SINC(1) }).catch(() => {});
-    const bg = $('#cmBadge'); if (bg) { const cur = (+bg.dataset.n || (parseInt((bg.textContent || '0').replace(/[০-৯]/g, (x) => '০১২৩৪৫৬৭৮৯'.indexOf(x)), 10) || 0)) + 1; bg.dataset.n = cur; bg.textContent = fmtN(cur); bg.hidden = false; }
-  } catch (e) { toast('মন্তব্য পাঠানো যায়নি'); }
+    await f.doc('books/' + bid + '/comments/' + myUid()).set(c);
+    const m = store.get('jp_reviewed', {}); m[bid] = 1; store.set('jp_reviewed', m); rvOk = true; rvList.unshift(Object.assign({ id: myUid() }, c)); rvDraw(); f.doc('books/' + bid).update({ cmts: SINC(1) }).catch(() => {}); toast('রিভিউ জমা হয়েছে');
+  } catch (e) { if (btn) btn.disabled = false; err('রিভিউ জমা দেওয়া যায়নি (হয়তো আগেই দিয়েছেন)'); }
 }
-document.addEventListener('input', (e) => { if (e.target && e.target.id === 'cmInp') { const n = $('#cmN'); if (n) n.textContent = bn(e.target.value.length) + '/২০০'; } });
+document.addEventListener('input', (e) => { if (e.target && e.target.id === 'rvTxt') { const n = $('#rvN'); if (n) n.textContent = bn(e.target.value.length) + '/২০০'; } });
 document.addEventListener('click', (ev) => {
   const el = ev.target.closest('[data-s]'); if (!el) return; const a = el.dataset.s;
-  if (a === 'cm-open') { cmOpen(el.dataset.id, el.dataset.t); return; }
+  if (a === 'btab') {
+    const rv = el.dataset.v === 'rv'; $$('.btabs button').forEach((x) => { x.classList.toggle('on', x === el); x.setAttribute('aria-selected', x === el); });
+    const c1 = $('#tabCh'), c2 = $('#tabRv'); if (c1) c1.hidden = rv; if (c2) c2.hidden = !rv; if (rv && rvBook !== el.dataset.id || (rv && !c2.innerHTML)) rvLoad(el.dataset.id); return;
+  }
+  if (a === 'rv-star') { rvRate = +el.dataset.v; $$('.rvst button').forEach((x, i) => { x.classList.toggle('on', i < rvRate); x.setAttribute('aria-checked', i + 1 === rvRate); }); return; }
+  if (a === 'rv-send') { rvSend(); return; }
   if (a === 'author') { closeSheet(); nav('/author/' + enc(el.dataset.k)); }
   else if (a === 'follow') doFollow(el.dataset.k, el.dataset.n);
   else if (a === 'au-tab') { auTab = el.dataset.v; $$('.autabs button').forEach((x) => x.classList.toggle('on', x === el)); $('#auBody').innerHTML = auBody(); }
@@ -2219,19 +2259,18 @@ function hlInit() {
 const getFL = () => store.get('jp_flike', {});
 function feedHue(s) { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360; return h; }
 function feedPost(x) {
-  const b = x.b; const au = !!x.audio; const liked = !!getFL()[b.id]; const i = (b.author || b.title || '?').trim().charAt(0);
-  let desc = (b.desc || '').replace(/\s+/g, ' ').trim(); if (desc.length > 220) desc = desc.slice(0, 220).replace(/\s+\S*$/, '') + '…';
-  const msg = esc(b.author) + '-এর নতুন ' + (au ? 'অডিও বই' : 'বই') + ' \'<b>' + esc(b.title) + '</b>\' এখন ' + (au ? 'শোনার' : 'পড়ার') + ' জন্য উন্মুক্ত।' + (desc ? ' ' + esc(desc) : '') + ' <span class="ph-heart">❤️</span>';
-  const open = au ? 'data-act="abook"' : 'data-act="book"';
-  return '<article class="post"><div class="ph"><span class="pav" style="background:hsl(' + feedHue(b.author || b.title) + ',48%,34%)">' + esc(i) + '</span><div class="pn"><b>' + esc(b.author) + '</b><small>' + fmtDate(b.publishedAt) + ' • ' + (au ? 'অডিও' : 'লেখা') + '</small></div>' + (Date.now() - Date.parse(b.publishedAt) < 7 * 86400000 ? '<span class="pnew">নতুন</span>' : '') + '</div>' +
-    '<p class="pmsg">' + msg + '</p>' +
-    '<div class="ptags">' + (b.cat ? '<span class="pill">' + esc(b.cat) + '</span>' : '') + statusPill(b.status) + (b.chapterCount ? '<span class="pcnt">' + bn(b.chapterCount) + 'টি অধ্যায়</span>' : '') + '</div>' +
-    '<button class="pcover" ' + open + ' data-id="' + esc(b.id) + '" aria-label="' + esc(b.title) + '"><span class="pbg" style="background-image:url(\'' + esc(b.cover) + '\')"></span><img src="' + esc(b.cover) + '" alt="' + esc(b.title) + '" loading="lazy"></button>' +
-    '<div class="pact"><span>' + ic('eye') + '<i data-reads>' + fmtN(b.reads || 0) + '</i></span>' +
-    '<button class="pl' + (liked ? ' on' : '') + '" data-act="feed-like" data-id="' + esc(b.id) + '">' + IC.heart + '<i>' + bn((b.likes || 0)) + '</i></button>' +
-    '<button data-act="share" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '">' + IC.share + 'শেয়ার</button></div>' +
-    '<div class="pbtn">' + (au ? '<button class="btn pur" data-act="abook" data-id="' + esc(b.id) + '">' + IC.headphone + 'অডিও শুনুন</button>' :
-      '<button class="btn" data-act="read-book" data-id="' + esc(b.id) + '">' + IC.read + 'পড়ুন</button>') + '</div></article>';
+  const b = x.b; const au = !!x.audio; const liked = !!getFL()[b.id]; const i = (b.author || b.title || '?').trim().charAt(0); const hue = feedHue(b.author || b.title);
+  let desc = (b.desc || '').replace(/\s+/g, ' ').trim(); if (desc.length > 200) desc = desc.slice(0, 200).replace(/\s+\S*$/, '') + '…';
+  const open = au ? 'data-act="abook"' : 'data-act="book"'; const isNew = Date.now() - Date.parse(b.publishedAt) < 7 * 86400000;
+  return '<article class="post pz" style="--hue:' + hue + '"><div class="pzh"><span class="pzbg" style="background-image:url(\'' + esc(b.cover) + '\')"></span><span class="pzov"></span>' +
+    '<div class="pzin"><button class="pzc" ' + open + ' data-id="' + esc(b.id) + '" aria-label="' + esc(b.title) + '"><img src="' + esc(b.cover) + '" alt="' + esc(b.title) + '" loading="lazy">' + (isNew ? '<span class="pzn">নতুন</span>' : '') + '</button>' +
+    '<div class="pzt"><div class="pzbd">' + (au ? '<span class="pzk">🎧 অডিও</span>' : '') + (b.cat ? '<span class="pzk">' + esc(b.cat) + '</span>' : '') + statusPill(b.status) + '</div>' +
+    '<b class="pzti">' + esc(b.title) + '</b><div class="pzau"><span class="pzav" style="background:hsl(' + hue + ',50%,38%)">' + esc(i) + '</span><span class="pzan">' + esc(b.author) + '</span></div>' +
+    '<div class="pzst"><span>' + ic('eye') + '<i data-reads>' + fmtN(b.reads || 0) + '</i></span>' + (b.chapterCount ? '<span>' + IC.read + bn(b.chapterCount) + ' অধ্যায়</span>' : '') + '<span class="pzd">' + fmtDate(b.publishedAt) + '</span></div></div></div></div>' +
+    (desc ? '<p class="pzds">' + esc(desc) + '</p>' : '') +
+    '<div class="pzac"><button class="pl' + (liked ? ' on' : '') + '" data-act="feed-like" data-id="' + esc(b.id) + '" aria-label="পছন্দ">' + IC.heart + '<i>' + bn((b.likes || 0)) + '</i></button>' +
+    '<button class="pzsh" data-act="share" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '" aria-label="শেয়ার">' + IC.share + '</button>' +
+    (au ? '<button class="btn pur pzgo" data-act="abook" data-id="' + esc(b.id) + '">' + IC.headphone + 'অডিও শুনুন</button>' : '<button class="btn pur pzgo" data-act="read-book" data-id="' + esc(b.id) + '">' + IC.read + 'পড়া শুরু করুন</button>') + '</div></article>';
 }
 let feedAll = []; let feedCat = 'সব'; let feedSort = 'new';
 function feedBody() {
@@ -2287,14 +2326,14 @@ async function viewBook(id) {
   const startN = last && b.chapters.some((c) => c.n === last) ? last : firstN;
   const votes = (b.likes || 0) + (b.dislikes || 0);
   let h = headerPage(b.title, true, '<button class="icon-btn bmh' + (saved ? ' on' : '') + '" data-act="bm" data-id="' + esc(b.id) + '" id="bmBtn" aria-label="' + (saved ? 'পছন্দের তালিকায় আছে' : 'পছন্দের তালিকায় যোগ করুন') + '">' + IC.save + '</button><button class="icon-btn" data-s="book-menu" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '" aria-label="আরও অপশন">' + P('<circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/>') + '</button>') + '<main class="page">' +
-    '<div class="detail">' + coverImg(b) + '<div class="di"><h1>' + esc(b.title) + '</h1>' + authorChip(b) +
+    '<div class="detail">' + coverImg(b) + '<div class="di"><h1><span class="lbl">বইটির নাম:</span> ' + esc(b.title) + '</h1>' + authorChip(b) +
     ((b.desc || '').trim() ? '<div class="bdesc"><b>বিস্তারিত:</b> ' + esc(b.desc.trim()) + '</div>' : '') +
-    '<div class="pr"><span class="pill">' + esc(b.cat) + '</span>' + statusPill(b.status) + demoPill(b) + '</div>' +
+    '<div class="pr"><b class="dh">ধরণ :</b> <span>' + esc(b.cat) + '</span>' + statusPill(b.status) + demoPill(b) + '</div>' +
     '<div class="bstats"><div><small>ভিউ</small><b id="readsN">' + fmtN(b.reads || 0) + '</b></div><div><small>পছন্দ</small><b id="likeN" data-n="' + (b.likes || 0) + '">' + fmtN(b.likes || 0) + '</b></div><div><small>অপছন্দ</small><b id="dislikeN" data-n="' + (b.dislikes || 0) + '">' + fmtN(b.dislikes || 0) + '</b></div></div></div></div>';
   if (startN != null) { const allDl = b.chapters.length && b.chapters.every((c) => dl[c.n]);
-    h += '<div class="startrow"><button class="btn dlall' + (allDl ? ' fin' : '') + '"' + (allDl ? ' disabled' : '') + ' data-act="dl-all" data-id="' + esc(b.id) + '"><span class="dlf" style="width:' + (allDl ? 100 : 0) + '%"></span><span class="dlt">' + (allDl ? IC.check + 'ডাউনলোড হয়েছে' : IC.download + 'ডাউনলোড') + '</span></button>' +
-    '<button class="btn pur" data-act="read" data-id="' + esc(b.id) + '" data-n="' + firstN + '">' + IC.read + 'পড়ুন</button></div>'; }
-  h += '<div class="panel"><div class="phd"><h3>অধ্যায়সমূহ (' + bn(b.chapters.length) + ')</h3><div class="pbt"><button class="cbt' + (b.myReaction === 'like' ? ' on' : '') + '" data-act="react" data-r="like" data-id="' + esc(b.id) + '" id="likeBtn" aria-label="পছন্দ করুন">' + IC.like + '</button><button class="cbt' + (b.myReaction === 'dislike' ? ' on' : '') + '" data-act="react" data-r="dislike" data-id="' + esc(b.id) + '" id="dislikeBtn" aria-label="অপছন্দ করুন">' + IC.dislike + '</button><button class="cbt" data-s="cm-open" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '" aria-label="মন্তব্য">' + IC.chat + '<i class="cbg" id="cmBadge"' + (b.cmts > 0 ? '' : ' hidden') + '>' + fmtN(b.cmts || 0) + '</i></button></div></div>';
+    h += '<div class="startrow"><button class="btn pur" data-act="read" data-id="' + esc(b.id) + '" data-n="' + startN + '">' + (last && startN === last ? 'পড়া চালিয়ে যান' : 'পড়া শুরু করুন') + '</button>' +
+    '<button class="btn dlall' + (allDl ? ' fin' : '') + '"' + (allDl ? ' disabled' : '') + ' data-act="dl-all" data-id="' + esc(b.id) + '"><span class="dlf" style="width:' + (allDl ? 100 : 0) + '%"></span><span class="dlt">' + (allDl ? IC.check + 'ডাউনলোড হয়েছে' : 'অফলাইনে ডাউনলোড') + '</span></button></div>'; }
+  h += '<div class="btabs" role="tablist"><button role="tab" class="on" data-s="btab" data-v="ch">অধ্যায়সমূহ (' + bn(b.chapters.length) + ')</button><button role="tab" data-s="btab" data-v="rv" data-id="' + esc(b.id) + '">রিভিউ (<span id="rvCnt">' + bn(b.cmts || 0) + '</span>)</button></div><div class="panel" id="tabCh"><div class="phd"><h3>সব অধ্যায়</h3><div class="pbt"><button class="cbt' + (b.myReaction === 'like' ? ' on' : '') + '" data-act="react" data-r="like" data-id="' + esc(b.id) + '" id="likeBtn" aria-label="পছন্দ করুন">' + IC.like + '</button><button class="cbt' + (b.myReaction === 'dislike' ? ' on' : '') + '" data-act="react" data-r="dislike" data-id="' + esc(b.id) + '" id="dislikeBtn" aria-label="অপছন্দ করুন">' + IC.dislike + '</button></div></div>';
   if (!b.chapters.length) h += '<div class="empty">এই বইয়ে এখনো কোনো অধ্যায় যোগ করা হয়নি।</div>';
   b.chapters.forEach((c) => {
     const p = cpOf(b.id, c.n); const fin = isDone(b.id, c.n); const tm = ctOf(b.id, c.n); const cur = last === c.n; const st = cur ? ' rd' : '';
@@ -2304,7 +2343,7 @@ async function viewBook(id) {
       '<button class="chdl' + (done ? ' done' : '') + '"' + (done ? ' disabled' : '') + ' data-act="dl-ch" data-id="' + esc(b.id) + '" data-n="' + c.n + '" aria-label="ডাউনলোড">' + (done ? IC.check : IC.download) + '</button></div>';
   });
   cacheBook(b);
-  return h + '</div></main>';
+  return h + '</div><div class="panel" id="tabRv" hidden></div></main>';
 }
 function cacheBook(b) {
   const c = getCache();
@@ -2956,10 +2995,9 @@ function askExit() {
 }
 function doExit() {
   try { const ca = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App; if (ca && ca.exitApp) { ca.exitApp(); return; } } catch (e) { /* ignore */ }
-  try { if (navigator.app && navigator.app.exitApp) { navigator.app.exitApp(); return; } } catch (e) { /* ignore */ }
   leaving = true;
-  try { history.go(-1); } catch (e) { /* ignore */ }
-  setTimeout(() => { try { window.close(); } catch (e) { /* ignore */ } if (!document.hidden) toast('অ্যাপ বন্ধ করতে আরেকবার ব্যাক চাপুন'); }, 400);
+  try { history.go(-2); } catch (e) { /* ignore */ }
+  setTimeout(() => { try { window.close(); } catch (e) { /* ignore */ } leaving = false; if (!document.hidden) toast('অ্যাপ বন্ধ করতে ফোনের হোম বাটন চাপুন'); }, 600);
 }
 function initExitGuard() { try { history.replaceState({ g: 1 }, '', location.href); history.pushState({ jp: 1 }, '', location.href); } catch (e) { /* ইতিহাস বদলানো নাও যেতে পারে */ } }
 
@@ -3154,13 +3192,12 @@ async function onClick(ev) {
 async function handleAcct(fm) {
   if (fm !== 'acct-save') return;
   const name = $('#acName').value.trim(); if (name.length < 2) return acErr('নাম কমপক্ষে ২ অক্ষরের হতে হবে');
-  const a = getAcct() || {}; store.set('jp_acct', { name, photo: acPhoto || '', at: a.at || Date.now() }); closeSheet(); toast('প্রোফাইল সংরক্ষিত হয়েছে'); profRerender(); if (cmPend) { const p = cmPend; cmPend = null; setTimeout(() => cmOpen(p.id, p.t), 300); }
+  const a = getAcct() || {}; store.set('jp_acct', { name, photo: acPhoto || '', at: a.at || Date.now() }); closeSheet(); toast('প্রোফাইল সংরক্ষিত হয়েছে'); profRerender(); 
 }
 function onSubmit(ev) {
   const f = ev.target.closest('form[data-form]'); if (!f) return;
   ev.preventDefault();
   if (/^acct-/.test(f.dataset.form)) { handleAcct(f.dataset.form); return; }
-  if (f.dataset.form === 'cm-send') { cmSend(); return; }
   if (f.dataset.form === 'name') {
     const v = ($('#nameInp').value || '').trim(); if (!v) { toast('নাম খালি রাখা যাবে না'); return; }
     store.set('jp_name', v); toast('নাম পরিবর্তন হয়েছে'); keepScrollOnce = true; route(); return;
@@ -3226,7 +3263,6 @@ function boot() {
   }, { passive: true, capture: true }));
   if (ttsOK() && SS.addEventListener) SS.addEventListener('voiceschanged', () => { if (sheetOpen() && rsTab === 'voice') rsRender(); });
   window.addEventListener('popstate', onPop); window.addEventListener('hashchange', onPop);
-  try { if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(() => {}); } catch (e) { /* ignore */ }
   window.addEventListener('scroll', onScrollProgress, { passive: true });
   startTimeTracker();
   initExitGuard();
