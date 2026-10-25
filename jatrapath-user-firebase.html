@@ -184,11 +184,27 @@ html:not([data-theme=dark]) .freshb{color:var(--red2)}
 .bm{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:15px;color:var(--text);text-align:left}
 .bm svg{width:18px;height:18px;color:var(--teal)}
 .bm.on svg{fill:var(--teal)}
+.phd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}.phd h3{margin:0}.pbt{display:flex;gap:10px}
+.cbt{position:relative;width:46px;height:46px;border-radius:50%;background:var(--card2);color:var(--text);display:grid;place-items:center;flex:0 0 auto}.cbt svg{width:22px;height:22px}
+.cbt.on{background:var(--red);color:var(--on-red)}.cbt.on svg{fill:currentColor}.cbt.busy{opacity:.6;pointer-events:none}
+.cbg{position:absolute;top:-5px;right:-5px;background:var(--red);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;padding:1px 6px;border-radius:10px;min-width:18px;text-align:center}
+.bstats{display:flex;gap:24px;margin-top:12px}.bstats small{display:block;color:var(--muted);font-size:12.5px}.bstats b{font-size:17px;font-weight:700}
+.cmwrap{display:flex;flex-direction:column;height:76vh}.cmlist{flex:1;overflow-y:auto;margin:0 -4px;padding:0 4px;-webkit-overflow-scrolling:touch}
+.cmi{display:flex;gap:10px;background:#2a2a2d;border-radius:16px;padding:12px;margin-bottom:10px}.cmi .sav{width:40px;height:40px;flex:0 0 auto}
+.cmb{min-width:0;flex:1}.cmh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.cmh b{font-size:15px}.cmh small,.cmr small{color:#9a9a9f;font-size:12px}
+.cmb p{margin:3px 0 0;line-height:1.55;font-size:15px;word-break:break-word}
+.cmr{margin-top:8px;padding:8px 10px;border-left:3px solid var(--red);background:rgba(255,255,255,.05);border-radius:8px}.cmr .lk{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:1px 8px;border-radius:9px;margin-right:6px}
+.cmform{display:flex;gap:8px;align-items:center;margin-top:8px}.cmform .sav{width:40px;height:40px;flex:0 0 auto}
+.cmform input{flex:1;min-width:0;background:#2a2a2d;color:#fff;border:1px solid #444;border-radius:999px;padding:12px 16px;font:inherit;font-size:15px}
+.cmform button{width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;flex:0 0 auto}.cmform button svg{width:22px;height:22px}
+.cmcnt{display:flex;justify-content:space-between;font-size:12px;color:#9a9a9f;margin:6px 6px 0}
+.icon-btn.bmh svg{width:22px;height:22px}.icon-btn.bmh.on{color:var(--teal)}.icon-btn.bmh.on svg{fill:var(--teal)}
 .reacts{display:flex;gap:8px;margin:10px 0 4px}
 .reacts .btn{padding:8px 16px;font-size:14px}
 .startrow{display:flex;gap:10px;margin:14px 0 6px}
 .startrow .btn{flex:1;font-size:16px;padding:13px 10px}
 .startrow .btn.pur{flex:0 0 36%}
+.bdesc{margin-top:8px;font-size:14px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .desc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:14px 0;line-height:1.75;font-size:14.5px}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:14px}
 .panel h3{margin:2px 0 12px;font-size:17px}
@@ -670,6 +686,28 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .wp .wchart .c{display:flex;align-items:flex-end;gap:8px;height:130px;margin-top:10px}
 .wp .wchart .c div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px;font-size:12px;color:var(--muted)}
 .wp .wchart .c i{display:block;width:100%;max-width:34px;border-radius:8px 8px 4px 4px;background:var(--wa);min-height:4px}
+.wp .whero .hbtn{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}.wp .whero .hbtn button{background:#fff;color:#111;border:0;border-radius:999px;font:inherit;font-weight:700;font-size:14.5px;padding:10px 18px;cursor:pointer}
+.wp .wst .wic svg{width:30px;height:30px}.wp .wst .wic{flex:0 0 auto;display:grid}
+.wp .wh2{font-size:19px;margin:18px 2px 10px;display:flex;align-items:center;gap:8px}.wp .wh2::before{content:'';width:4px;height:20px;border-radius:2px;background:var(--wa)}
+.wp .wsc{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card);margin-bottom:12px}
+.wp .wsc .cv{width:84px;flex:0 0 auto;background:var(--card2)}.wp .wsc .cv img{width:100%;height:100%;object-fit:cover;display:block}
+.wp .wsc .in{flex:1;min-width:0;padding:12px;display:flex;flex-direction:column;gap:6px}.wp .wsc .tt,.wp .wsc .tt2{font-weight:700;font-size:17px;line-height:1.3;background:none;border:0;color:var(--text);text-align:left;font-family:inherit;padding:0}
+.wp .wsc .sb{color:var(--muted);font-size:13.5px}
+.wp .wpill{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:1px solid var(--line);border-radius:14px;padding:8px 12px;font-size:14px;font-weight:600;align-self:flex-start}
+.wp .wpill span{display:flex;align-items:center;gap:5px}.wp .wpill svg{width:18px;height:18px;color:var(--muted)}
+.wp .wtabs,.wp .wtabs3{display:flex;gap:8px;margin-bottom:14px}.wp .wtabs button,.wp .wtabs3 button{flex:1;padding:11px 6px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--text);font:inherit;font-weight:700;font-size:14.5px;cursor:pointer}
+.wp .wtabs button.on,.wp .wtabs3 button.on{background:var(--wa);color:var(--wa-on);border-color:var(--wa)}
+.wp .wcard2{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px}.wp .wsmall{color:var(--muted);font-size:14px}.wp .wbig{display:block;font-size:38px;line-height:1.15;margin:2px 0 8px}
+.wp .wleg{display:flex;flex-direction:column;gap:6px;font-size:14.5px}.wp .wleg span{display:flex;align-items:center;gap:8px}.wp .wleg i{width:14px;height:14px;border-radius:3px;display:inline-block}
+.wp .wtop{display:flex;align-items:center;gap:12px;margin-bottom:12px}.wp .wtop .cv{width:44px;height:60px;border-radius:8px;overflow:hidden;background:var(--card2);flex:0 0 auto}.wp .wtop .cv img{width:100%;height:100%;object-fit:cover}
+.wp .wtop .in{flex:1;min-width:0}.wp .wtop b{display:block;font-size:15.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:6px}.wp .wtop .bar{height:7px;border-radius:4px;background:var(--card2)}.wp .wtop .bar i{display:block;height:100%;border-radius:4px;background:#f26a1b}.wp .wtop .v{font-size:13.5px;font-weight:700;flex:0 0 auto}
+.wp .wsub{color:var(--muted);font-size:14px;margin:0 2px 12px}
+.wp .wgrid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.wp .wst2{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;position:relative}.wp .wst2 b{display:block;font-size:26px;line-height:1.1}.wp .wst2>span:last-child{font-size:13.5px;color:var(--muted)}.wp .wst2 .wic{position:absolute;right:12px;top:12px}.wp .wst2 .wic svg{width:26px;height:26px}
+.wp .wcm{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;margin-bottom:12px}.wp .wcm .top{display:flex;gap:10px;align-items:center;justify-content:space-between}.wp .wcm .cv{width:48px;height:64px;border-radius:8px;overflow:hidden;background:var(--card2);flex:0 0 auto}.wp .wcm .cv img{width:100%;height:100%;object-fit:cover}
+.wp .wcm .in{flex:1;min-width:0}.wp .wcm .in b{display:block;font-size:16px}.wp .wcm small{color:var(--muted);font-size:13px}
+.wp .wcm .tx{margin-top:10px;padding:10px 12px;border-left:4px solid var(--wa);background:var(--card2);border-radius:8px;line-height:1.6;word-break:break-word}
+.wp .wcm .rpl{margin-top:8px;padding:8px 12px;border-left:4px solid #1fb57a;background:var(--card2);border-radius:8px}.wp .wcm .rpl p{margin:4px 0 0;line-height:1.55}.wp .wcm .lk{background:#1fb57a;color:#fff;font-size:11.5px;font-weight:700;padding:1px 9px;border-radius:9px;margin-right:6px}
+.wp .rpslot{margin-top:10px}.wp .rpta{width:100%;font:inherit;font-size:16px;color:var(--text);background:transparent;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;line-height:1.5}.wp .rpta:focus{outline:0;border-color:var(--wa)}.wp .rpbt{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
 .wnav{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;max-width:720px;margin:0 auto;background:var(--card2);border:1px solid var(--line);border-bottom:0;border-radius:24px 24px 0 0;padding:10px 10px calc(10px + env(safe-area-inset-bottom))}
 .wnav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;color:var(--muted);font:inherit;font-size:13px;font-weight:600;padding:6px 0;border-radius:20px;cursor:pointer}
 .wnav button svg{width:24px;height:24px}
@@ -691,6 +729,16 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .rpopt{display:flex;align-items:center;gap:12px;width:100%;padding:14px 14px;border-radius:14px;background:#2a2a2d;color:#f2f2f2;font-size:16px;font-weight:600;margin-bottom:8px;text-align:left}
 .rpopt svg{width:22px;height:22px}.rpr{width:20px;height:20px;border-radius:50%;border:2px solid #888;flex:0 0 auto}.rr.on{background:#3a2326}.rr.on .rpr{border-color:var(--red);background:radial-gradient(var(--red) 45%,transparent 50%)}
 .mrow .sav{width:40px;height:40px;margin-right:12px}
+.arail{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}.arail::-webkit-scrollbar{display:none}
+.acard{flex:0 0 auto;width:150px;display:flex;flex-direction:column;align-items:center;background:var(--card,#fff);border:1px solid var(--line);border-radius:22px;overflow:hidden;position:relative;padding:0 8px 14px;text-align:center}
+.acard .top{align-self:stretch;height:44px;background:rgba(128,128,128,.14);margin:0 -8px}
+.acard .sav.big{width:62px;height:62px;font-size:24px;margin-top:-30px;border:3px solid var(--card,#fff);box-sizing:content-box}
+.acard .nm{margin-top:8px;font-weight:600;font-size:14px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acard .st{margin-top:8px;display:flex;align-items:center;gap:4px;font-size:12px;color:var(--muted)}.acard .st svg{width:14px;height:14px}.acard .st i{font-style:normal}
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 6px;padding-top:6px}.agrid .acirc{width:auto}
+.acirc{flex:0 0 auto;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.acirc .sav.big{width:64px;height:64px;font-size:24px}
+.acirc .nm{font-size:12.5px;line-height:1.25;max-width:76px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 </style>
 </head>
 <body>
@@ -927,7 +975,7 @@ function coverUri(b) {
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 function pub(b, full) {
-  const o = { id: b.id, title: b.title, author: b.author, authorId: b.authorId || '', cat: b.cat, status: b.status, desc: b.desc, cover: coverUri(b), featured: b.featured, demo: !!b.demo, publishedAt: b.publishedAt, reads: b.reads, likes: b.likes, dislikes: b.dislikes, chapterCount: b.chapters.length, audioCount: b.audio.length, type: b.type || 'text' };
+  const o = { id: b.id, title: b.title, author: b.author, authorId: b.authorId || '', cat: b.cat, status: b.status, desc: b.desc, cover: coverUri(b), featured: b.featured, demo: !!b.demo, publishedAt: b.publishedAt, reads: b.reads, likes: b.likes, dislikes: b.dislikes, favs: b.favs || 0, cmts: b.cmts || 0, chapterCount: b.chapters.length, audioCount: b.audio.length, type: b.type || 'text' };
   if (full) {
     o.chapters = b.chapters.map((c) => ({ n: c.n, title: c.title, at: c.d ? new Date(c.d).toISOString() : b.publishedAt }));
     o.audio = b.audio.map((a) => ({ n: a.n, title: a.title, demo: !!a.demo, url: a.src || toneUrl(a.notes) }));
@@ -1055,7 +1103,7 @@ async function loadDb() {
   const cfg = {}; cf.forEach((d) => { cfg[d.id] = d.data(); }); const stats = {}; ss.forEach((d) => { stats[d.id] = d.data().days || {}; });
   const books = bs.docs.map((d) => { const x = d.data(); const voice = x.type === 'voice';
     return { id: d.id, title: x.title || '', author: x.author || '', authorId: x.ownerUid || '', cat: x.cat || '', status: x.status || 'চলমান', desc: x.desc || '', cover: x.cover || null, featured: !!x.featured,
-      publishedAt: x.publishedAt || new Date().toISOString(), reads: x.reads || 0, likes: x.likes || 0, dislikes: x.dislikes || 0, type: voice ? 'audio' : 'text',
+      publishedAt: x.publishedAt || new Date().toISOString(), reads: x.reads || 0, likes: x.likes || 0, dislikes: x.dislikes || 0, favs: x.favs || 0, cmts: x.cmts || 0, type: voice ? 'audio' : 'text',
       chapters: voice ? [] : (x.chs || []).filter((c) => c.p).sort((a, b) => a.n - b.n).map((c) => ({ n: c.n, cid: c.id, title: c.t, d: c.d || 0 })),
       audio: (x.audio || []).filter((a) => a.p).sort((a, b) => a.n - b.n).map((a) => ({ n: a.n, title: a.title, src: a.url })) }; });
   const home = [];
@@ -1418,6 +1466,8 @@ async function viewWriter(seg) {
     if (!s1) return await wDash();
     if (s1 === 'books') return await wBooks();
     if (s1 === 'profile') return wProfile();
+    if (s1 === 'likes') return await wLikes(seg[2]);
+    if (s1 === 'graphs') return await wGraphs(seg[2]);
     if (s1 === 'book') return await wBookForm(seg[2] || '');
     if (s1 === 'chs') return await wChs(seg[2] || '');
     if (s1 === 'ch') return await wEditor(seg[2] || '', seg[3] || '');
@@ -1444,19 +1494,91 @@ function wSignup() {
 }
 
 /* ---- ড্যাশবোর্ড ---- */
+Object.assign(WI, {
+  chat: P('<path d="M4 5h16v11H9l-5 4z"/>'),
+  heart: P('<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/>'),
+  graph: P('<path d="M3 17l6-6 4 4 8-9M15 6h6v6"/>'),
+  dis: P('<path d="M17 13V4h3v9zM17 13l-4 8c-2 0-3-1-3-3v-3H5a2 2 0 0 1-2-2l1-7a2 2 0 0 1 2-2h11"/>'),
+  note: P('<path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7"/>'),
+  flag: P('<path d="M5 21V4M5 4h12l-2 4 2 4H5"/>')
+});
+const WMON = ['জানু', 'ফেব্রু', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টে', 'অক্টো', 'নভে', 'ডিসে'];
+const WDAY = ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহঃ', 'শুক্র', 'শনি'];
+async function wLoad(force) {
+  if (!force && WR.cache && Date.now() - WR.cache.t < 20000) return WR.cache;
+  const books = await wMyBooks(), uid = WR.user.uid, fs = WR.fs;
+  const [prof, chc, cms, rps, sts] = await Promise.all([
+    fs.doc('profiles/' + uid).get().then((d) => (d.exists ? d.data() : {})).catch(() => ({})),
+    Promise.all(books.map((b) => fs.collection('books/' + b.id + '/chapters').get().then((q) => (q.size != null ? q.size : q.docs.length)).catch(() => (b.chs || []).length))),
+    Promise.all(books.map((b) => fs.collection('books/' + b.id + '/comments').get().then((q) => q.docs.map((d) => Object.assign({}, d.data(), { id: d.id, bid: b.id, bt: b.title, cv: b.cover }))).catch(() => []))),
+    fs.collection('reports').where('ownerUid', '==', uid).get().then((q) => q.docs.map((d) => d.data())).catch(() => []),
+    Promise.all(books.map((b) => fs.doc('stats/' + b.id).get().then((d) => (d.exists ? (d.data().days || {}) : {})).catch(() => ({}))))
+  ]);
+  const C = [].concat(...cms).sort((a, b) => (b.at || 0) - (a.at || 0)); rps.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  const sum = (k) => books.reduce((a, b) => a + (b[k] || 0), 0);
+  WR.cache = { t: Date.now(), books, prof, chc, cms: C, rps, stats: sts, tv: sum('reads'), tl: sum('likes'), td: sum('dislikes'), tf: sum('favs'), tc: chc.reduce((a, b) => a + b, 0) };
+  return WR.cache;
+}
+function wSeries(D, tab) {
+  const keys = [], labels = [];
+  if (tab === 'y') { const now = new Date(); for (let i = 11; i >= 0; i--) { const d = new Date(now.getFullYear(), now.getMonth() - i, 1); keys.push(d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0')); labels.push(WMON[d.getMonth()]); } }
+  else { const n = tab === 'm' ? 30 : 7; for (let i = n - 1; i >= 0; i--) { const k = wIso(Date.now() - i * 864e5); keys.push(k); labels.push(tab === 'm' ? bn(+k.slice(8)) : WDAY[new Date(k + 'T12:00:00').getDay()]); } }
+  const per = D.books.map((b, bi) => { const days = D.stats[bi] || {}; return keys.map((k) => { let t = 0; for (const dk in days) { if (tab === 'y' ? dk.slice(0, 7) === k : dk === k) t += +days[dk] || 0; } return t; }); });
+  return { labels, vals: keys.map((_, i) => per.reduce((a, p) => a + p[i], 0)), per };
+}
+function wLine(L, V) {
+  const W = 340, H = 190, pl = 18, pr = 18, pt = 30, pb = 30, n = V.length, mx = Math.max(1, ...V);
+  const x = (i) => pl + (n === 1 ? 0 : i * (W - pl - pr) / (n - 1)), y = (v) => H - pb - v / mx * (H - pt - pb), avg = V.reduce((a, b) => a + b, 0) / n;
+  const step = n <= 12 ? 1 : 5; let g = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="color:var(--muted)" aria-hidden="true">';
+  g += '<line x1="' + pl + '" x2="' + (W - pr) + '" y1="' + y(avg) + '" y2="' + y(avg) + '" stroke="#f5a623" stroke-width="2" stroke-dasharray="7 6"/>';
+  g += '<line x1="' + pl + '" x2="' + (W - pr) + '" y1="' + (H - pb) + '" y2="' + (H - pb) + '" stroke="currentColor" stroke-opacity=".35"/>';
+  g += '<polyline fill="none" stroke="#38b6ff" stroke-width="3" stroke-linejoin="round" points="' + V.map((v, i) => x(i) + ',' + y(v)).join(' ') + '"/>';
+  V.forEach((v, i) => {
+    g += '<circle cx="' + x(i) + '" cy="' + y(v) + '" r="' + (n <= 12 ? 5.5 : 3.2) + '" fill="#fff" stroke="#f26a1b" stroke-width="' + (n <= 12 ? 3 : 2) + '"/>';
+    if (v > 0 && (i % step === 0 || i === n - 1) && (n <= 12 || i % 5 === 0)) g += '<text x="' + x(i) + '" y="' + (y(v) - 10) + '" text-anchor="middle" font-size="12.5" fill="currentColor">' + fmtN(v) + '</text>';
+    if (i % step === 0) g += '<text x="' + x(i) + '" y="' + (H - 9) + '" text-anchor="middle" font-size="11.5" fill="currentColor">' + L[i] + '</text>';
+  });
+  return g + '</svg>';
+}
+async function wGraphs(tab) {
+  tab = ['w', 'm', 'y'].indexOf(tab) >= 0 ? tab : 'w'; const D = await wLoad(), S = wSeries(D, tab);
+  const tot = S.vals.reduce((a, b) => a + b, 0), unit = tab === 'y' ? 'মাসে' : 'দিনে', avg = Math.round(tot / S.vals.length), cap = { w: 'গত ৭ দিন', m: 'গত ৩০ দিন', y: 'গত ১২ মাস' }[tab];
+  const best = Math.max(0, ...S.vals), bi = S.vals.indexOf(best);
+  const tabs = '<div class="wtabs" role="tablist">' + [['w', 'সাপ্তাহিক'], ['m', 'মাসিক'], ['y', 'বার্ষিক']].map((t) => '<button role="tab" aria-selected="' + (tab === t[0]) + '" class="' + (tab === t[0] ? 'on' : '') + '" data-w="rep" data-href="/w/graphs/' + t[0] + '">' + t[1] + '</button>').join('') + '</div>';
+  const top = D.books.map((b, k) => ({ b, v: S.per[k].reduce((a, c) => a + c, 0) })).sort((a, c) => c.v - a.v), tmx = Math.max(1, ...top.map((t) => t.v));
+  return wPage('গ্রাফ ও পরিসংখ্যান', tabs +
+    '<div class="wcard2"><div class="wsmall">' + cap + 'র মোট ভিউ</div><b class="wbig">' + bn(tot) + '</b><div class="wleg"><span><i style="background:#f5a623"></i>' + bn(avg) + ' গড় ভিউ / ' + (tab === 'y' ? 'মাস' : 'দিন') + '</span><span><i style="background:#1fb57a"></i>' + bn(D.books.length) + 'টি গল্প</span>' + (best ? '<span><i style="background:#38b6ff"></i>সর্বোচ্চ ' + bn(best) + ' (' + S.labels[bi] + ')</span>' : '') + '</div></div>' +
+    '<div class="wchart" role="img" aria-label="' + cap + 'র ভিউ: ' + S.labels.map((l, i) => l + ' ' + bn(S.vals[i])).join(', ') + '">' + wLine(S.labels, S.vals) + '</div>' +
+    '<h2 class="wh2">শীর্ষ গল্প</h2>' + (top.length ? top.map((t) => '<div class="wtop"><div class="cv">' + (t.b.cover ? '<img src="' + esc(t.b.cover) + '" alt="">' : '') + '</div><div class="in"><b>' + esc(t.b.title) + '</b><div class="bar"><i style="width:' + Math.round(t.v / tmx * 100) + '%"></i></div></div><span class="v">' + bn(t.v) + ' ভিউ</span></div>').join('') : '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>'), null, true);
+}
 async function wDash() {
-  const books = await wMyBooks();
-  const tv = books.reduce((a, b) => a + (b.reads || 0), 0), tl = books.reduce((a, b) => a + (b.likes || 0), 0), rv = books.filter((b) => !b.pub).length;
-  const days = []; for (let i = 6; i >= 0; i--) { const d = new Date(Date.now() - i * 864e5); days.push({ k: wIso(d), l: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহঃ', 'শুক্র', 'শনি'][new Date(wIso(d) + 'T12:00:00').getDay()], n: 0 }); }
-  await Promise.all(books.map(async (b) => { try { const d = await WR.fs.doc('stats/' + b.id).get(); const m = (d.exists && d.data().days) || {}; days.forEach((x) => { x.n += +m[x.k] || 0; }); } catch (e) { /* ignore */ } }));
-  const week = days.reduce((a, x) => a + x.n, 0), mx = Math.max(1, ...days.map((x) => x.n));
-  const nm = (WR.prof && WR.prof.name) || 'লেখক';
-  const out = '<button class="icon-btn" data-w="logout" aria-label="লগ আউট">' + WI.out + '</button>';
-  return wPage('রাইটার ড্যাশবোর্ড', '<div class="whero"><small>স্বাগতম, ' + esc(nm) + '</small><b class="big">' + bn(tv) + '</b><small>মোট পঠিত/ভিউ • এ সপ্তাহে ' + bn(week) + '</small></div>' +
-    '<div class="wgrid"><div class="wst">' + WI.book + '<div><b>' + bn(books.length) + '</b><span>মোট ই-বুক</span></div></div><div class="wst">' + WI.hist + '<div><b>' + bn(rv) + '</b><span>রিভিউয়ের অপেক্ষায়</span></div></div>' +
-    '<div class="wst">' + WI.eye + '<div><b>' + bn(tv) + '</b><span>মোট পঠিত/ভিউ</span></div></div><div class="wst">' + WI.like + '<div><b>' + bn(tl) + '</b><span>মোট লাইক</span></div></div></div>' +
-    '<div class="wchart"><b>গত ৭ দিনের ভিউজ</b><div class="c" role="img" aria-label="গত সাত দিনের ভিউ: ' + days.map((x) => x.l + ' ' + bn(x.n)).join(', ') + '">' + days.map((x) => '<div aria-hidden="true"><span>' + bn(x.n) + '</span><i style="height:' + Math.round(4 + x.n / mx * 90) + '%"></i><span>' + x.l + '</span></div>').join('') + '</div></div>' +
+  const D = await wLoad(), books = D.books, S = wSeries(D, 'w'), week = S.vals.reduce((a, b) => a + b, 0), nm = (WR.prof && WR.prof.name) || 'লেখক';
+  const out = '<button class="icon-btn" data-w="go" data-href="/w/likes/cm" aria-label="মন্তব্য">' + WI.chat + '</button><button class="icon-btn" data-w="logout" aria-label="লগ আউট">' + WI.out + '</button>';
+  const tile = (ic, c, n, l, href) => '<' + (href ? 'button data-w="go" data-href="' + href + '"' : 'div') + ' class="wst" style="text-align:left;font:inherit;color:inherit"><span class="wic" style="color:' + c + '">' + ic + '</span><div><b>' + n + '</b><span>' + l + '</span></div></' + (href ? 'button' : 'div') + '>';
+  const recent = books.slice(0, 5).map((b, k) => '<div class="wsc"><div class="cv">' + (b.cover ? '<img src="' + esc(b.cover) + '" alt="">' : '') + '</div><div class="in"><button class="tt" data-w="go" data-href="/w/book/' + esc(b.id) + '">' + esc(b.title) + '</button><div class="sb">লেখক: ' + esc(b.author || nm) + '</div><div class="chs">' + wChip(b) + '<span class="wchip">মোট পর্ব: ' + bn(D.chc[k]) + '</span></div>' +
+    '<div class="wpill"><span aria-label="' + bn(b.reads || 0) + ' ভিউ">' + WI.eye + fmtN(b.reads || 0) + '</span><span aria-label="' + bn(b.likes || 0) + ' লাইক">' + WI.like + fmtN(b.likes || 0) + '</span><span aria-label="' + bn(b.favs || 0) + ' ফেভারিট">' + WI.heart + fmtN(b.favs || 0) + '</span><span aria-label="' + bn(b.cmts || 0) + ' মন্তব্য">' + WI.chat + fmtN(b.cmts || 0) + '</span></div></div></div>').join('');
+  return wPage('রাইটার স্টুডিও', '<div class="whero"><small>স্বাগতম, ' + esc(nm) + '</small><b class="big">' + bn(D.tv) + '</b><small>মোট পঠিত/ভিউ • এ সপ্তাহে ' + bn(week) + '</small>' +
+    '<div class="hbtn"><button data-w="go" data-href="/w/graphs">গ্রাফ দেখুন</button><button data-w="go" data-href="/w/likes">লাইক ও কমেন্ট</button></div></div>' +
+    '<div class="wgrid">' + tile(WI.book, '#3b82f6', bn(books.length), 'মোট বই', '/w/books') + tile(WI.user, '#8b5cf6', fmtN(D.prof.followers || 0), 'ফলোয়ার') +
+    tile(WI.graph, '#10b981', bn(D.tc), 'মোট পর্ব') + tile(WI.like, '#f43f5e', fmtN(D.tl), 'লাইক ও প্রতিক্রিয়া', '/w/likes') +
+    tile(WI.chat, '#f59e0b', bn(D.cms.length), 'মন্তব্য', '/w/likes/cm') + tile(WI.flag, '#ef4444', bn(D.rps.length), 'রিপোর্ট', '/w/likes/rp') + '</div>' +
+    '<h2 class="wh2">সাম্প্রতিক গল্প</h2>' + (recent || '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>') +
     '<button class="wbtn" data-w="go" data-href="/w/book">' + WI.plus + 'নতুন গল্প যোগ করুন</button>', 'dash', false, out);
+}
+
+/* ---- লাইক, মন্তব্য ও রিপোর্ট ---- */
+async function wLikes(tab) {
+  tab = ['bk', 'cm', 'rp'].indexOf(tab) >= 0 ? tab : 'bk'; const D = await wLoad();
+  const tiles = [[WI.like, '#f59e0b', D.tl, 'মোট লাইক'], [WI.heart, '#f43f5e', D.tf, 'মোট ফেভারিট'], [WI.dis, '#94a3b8', D.td, 'মোট ডিসলাইক'], [WI.eye, '#3b82f6', D.tv, 'মোট ভিউজ']]
+    .map((t) => '<div class="wst2"><span class="wic" style="color:' + t[1] + '">' + t[0] + '</span><b>' + fmtN(t[2]) + '</b><span>' + t[3] + '</span></div>').join('');
+  const tabs = '<div class="wtabs3" role="tablist">' + [['bk', 'বই (' + bn(D.books.length) + ')'], ['cm', 'কমেন্ট (' + bn(D.cms.length) + ')'], ['rp', 'রিপোর্ট (' + bn(D.rps.length) + ')']].map((t) => '<button role="tab" aria-selected="' + (tab === t[0]) + '" class="' + (tab === t[0] ? 'on' : '') + '" data-w="rep" data-href="/w/likes/' + t[0] + '">' + t[1] + '</button>').join('') + '</div>';
+  let body = '';
+  if (tab === 'bk') body = D.books.map((b) => '<div class="wsc"><div class="cv">' + (b.cover ? '<img src="' + esc(b.cover) + '" alt="">' : '') + '</div><div class="in"><b class="tt2">' + esc(b.title) + '</b><div class="wpill"><span aria-label="' + bn(b.likes || 0) + ' লাইক">' + WI.like + fmtN(b.likes || 0) + '</span><span aria-label="' + bn(b.dislikes || 0) + ' ডিসলাইক">' + WI.dis + fmtN(b.dislikes || 0) + '</span><span aria-label="' + bn(b.favs || 0) + ' ফেভারিট">' + WI.heart + fmtN(b.favs || 0) + '</span><span aria-label="' + bn(b.cmts || 0) + ' মন্তব্য">' + WI.chat + fmtN(b.cmts || 0) + '</span></div></div></div>').join('') || '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>';
+  else if (tab === 'cm') body = D.cms.map((c) => '<div class="wcm" data-ck="' + esc(c.bid + '|' + c.id) + '"><div class="top"><div class="cv">' + (c.cv ? '<img src="' + esc(c.cv) + '" alt="">' : '') + '</div><div class="in"><b>' + esc(c.bt) + '</b><small>' + esc(c.name) + ' | ' + cmDate(c.at) + '</small></div></div><div class="tx">' + esc(c.text) + '</div>' +
+    (c.reply && c.reply.text ? '<div class="rpl"><span class="lk">আপনার উত্তর</span><small>' + cmDate(c.reply.at) + '</small><p>' + esc(c.reply.text) + '</p></div>' : '') +
+    '<div class="rpslot"><button class="wbtn sm ghost" data-w="rp-open">' + (c.reply && c.reply.text ? 'উত্তর সম্পাদনা' : 'রিপ্লাই দিন') + '</button></div></div>').join('') || '<div class="wgate"><p>এখনো কোনো মন্তব্য নেই</p></div>';
+  else body = '<p class="wnote" style="margin:0 2px 10px">এখানে শুধু দেখা যাবে। রিপোর্ট নিয়ে সিদ্ধান্ত অ্যাডমিন নেন।</p>' + (D.rps.map((r) => '<div class="wcm"><div class="top"><div class="in"><b>' + esc(r.bookTitle || '') + '</b><small>' + cmDate(r.createdAt) + '</small></div><span class="wchip ' + (r.status === 'dismissed' ? 'ok' : r.status === 'seen' ? '' : 'rv') + '">' + (r.status === 'dismissed' ? 'অ্যাডমিন বাতিল করেছেন' : r.status === 'seen' ? 'অ্যাডমিন দেখেছেন' : 'অ্যাডমিনের অপেক্ষায়') + '</span></div><div class="tx"><b>কারণ:</b> ' + esc(r.reason || '') + (r.text ? '<br>' + esc(r.text) : '') + '</div></div>').join('') || '<div class="wgate"><p>আপনার কোনো গল্পে রিপোর্ট নেই 🎉</p></div>');
+  return wPage('লাইক ও প্রতিক্রিয়া', '<div class="wsub">আপনার গল্পগুলোর রেটিং ও পাঠকের প্রতিক্রিয়া</div><div class="wgrid2">' + tiles + '</div>' + tabs + body, null, true);
 }
 
 /* ---- গল্পের তালিকা ---- */
@@ -1534,7 +1656,14 @@ async function wClick(ev) {
   try {
     switch (a) {
       case 'go': nav(el.dataset.href); break;
-      case 'retry': WR.ready = null; route(); break;
+      case 'rep': nav(el.dataset.href, true); break;
+      case 'rp-open': { const card = el.closest('[data-ck]'), slot = card.querySelector('.rpslot'); const old = card.querySelector('.rpl p'); slot.innerHTML = '<textarea class="rpta" maxlength="200" rows="3" aria-label="আপনার উত্তর" placeholder="পাঠকের মন্তব্যের উত্তর লিখুন (সর্বোচ্চ ২০০ অক্ষর)">' + esc(old ? old.textContent : '') + '</textarea><div class="rpbt"><button class="wbtn sm ghost" data-w="rp-cancel">বাতিল</button><button class="wbtn sm" data-w="rp-send">পাঠান</button></div>'; slot.querySelector('textarea').focus(); break; }
+      case 'rp-cancel': route(); break;
+      case 'rp-send': {
+        const card = el.closest('[data-ck]'), k = card.dataset.ck.split('|'), t = card.querySelector('textarea').value.trim(); if (!t) { toast('উত্তর লিখুন'); break; }
+        el.disabled = true; try { await WR.fs.doc('books/' + k[0] + '/comments/' + k[1]).update({ reply: { text: t.slice(0, 200), at: Date.now(), name: (WR.prof && WR.prof.name) || '' } }); WR.cache = null; toast('উত্তর পাঠানো হয়েছে'); route(); } catch (x) { el.disabled = false; toast(wErr(x)); } break;
+      }
+      case 'retry': WR.ready = null; WR.cache = null; route(); break;
       case 'pw': { const i = document.getElementById(el.dataset.id); if (i) i.type = i.type === 'password' ? 'text' : 'password'; break; }
       case 'pick-av': { const f = document.getElementById('wavF'); if (f) f.click(); break; }
       case 'pick-cov': { const f = document.getElementById('wCovF'); if (f) f.click(); break; }
@@ -1698,6 +1827,21 @@ function followedHtml() {
   if (!ks.length) return '<div class="pcard" style="color:var(--muted);text-align:center;padding:16px">এখনো কোনো লেখককে ফলো করেননি। বইয়ের পেজে লেখকের নামে ট্যাপ করে ফলো করুন।</div>';
   return '<div class="pcard" style="padding:4px 12px">' + ks.map((k) => '<button class="mrow" data-s="author" data-k="' + esc(k) + '">' + avBox(f[k].ph, f[k].n) + '<span class="mt">' + esc(f[k].n) + '<small>লেখকের গল্প দেখুন</small></span><span class="ar">' + IC.chev + '</span></button>').join('') + '</div>';
 }
+/* ---- সব লেখক ---- */
+function authorsOf(books) {
+  const m = {}; books.forEach((b) => { if (!b.author) return; const k = akey(b); (m[k] = m[k] || { k, n: b.author, id: b.authorId || '', c: 0 }).c++; });
+  return Object.keys(m).map((k) => m[k]).sort((a, b) => b.c - a.c);
+}
+async function fillListAv() {
+  const els = $$('[data-aid]'); for (const el of els) { const id = el.dataset.aid; if (!id) continue; const p = await getProfile(id); if (!el.isConnected) continue; if (el.classList.contains('sav') && p && p.photo) el.innerHTML = '<img src="' + esc(p.photo) + '" alt="">'; else if (el.classList.contains('fol') && p) el.textContent = fmtN(p.followers || 0); }
+}
+function authRail(list) {
+  return '<div class="arail">' + list.map((a) => '<button class="acard" data-s="author" data-k="' + esc(a.k) + '" aria-label="লেখক ' + esc(a.n) + '"><span class="top"></span><span class="sav big" data-aid="' + esc(a.id) + '">' + avInit(a.n) + '</span><span class="nm">' + esc(a.n) + '</span><span class="st">' + IC.read + bn(a.c) + ' গল্প' + (a.id ? ' <i>•</i> ' + IC.user + '<b class="fol" data-aid="' + esc(a.id) + '">০</b>' : '') + '</span></button>').join('') + '</div>';
+}
+async function viewAuthors() {
+  const all = await api('/books'); const list = authorsOf(all);
+  return headerPage('জনপ্রিয় লেখক', true) + '<main class="page">' + (list.length ? '<div class="agrid">' + list.map((a) => '<button class="acirc" data-s="author" data-k="' + esc(a.k) + '" aria-label="লেখক ' + esc(a.n) + '"><span class="sav big" data-aid="' + esc(a.id) + '">' + avInit(a.n) + '</span><span class="nm">' + esc(a.n) + '</span></button>').join('') + '</div>' : '<div class="empty">কোনো লেখক নেই।</div>') + '</main>';
+}
 /* ---- রিপোর্ট ---- */
 const REPORT_REASONS = ['স্প্যাম বা বিজ্ঞাপন', 'যৌন বা অশ্লীল কনটেন্ট', 'মিথ্যা বা বিভ্রান্তিকর তথ্য', 'অন্যের লেখা চুরি/কপি করা', 'সহিংসতা বা ঘৃণামূলক কনটেন্ট', 'ধর্মীয় বা সামাজিক অবমাননা', 'বইয়ে ত্রুটি (ভুল পর্ব, অসম্পূর্ণ)', 'অন্য কারণ'];
 let repSel = -1, repBook = null;
@@ -1718,12 +1862,53 @@ async function sendReport() {
   const b = $('[data-s=rp-send]'); if (b) b.disabled = true;
   try {
     const rid = String(Date.now()) + Math.floor(Math.random() * 1000);
-    await f.doc('reports/' + rid).set({ id: rid, bookId: String(repBook.id), bookTitle: repBook.t || '', reason: REPORT_REASONS[repSel], text: ($('#rpTxt').value || '').trim().slice(0, 500), status: 'new', createdAt: Date.now(), reporter: (store.get('jp_acct', null) || {}).name || 'অতিথি' });
+    await f.doc('reports/' + rid).set({ id: rid, bookId: String(repBook.id), bookTitle: repBook.t || '', reason: REPORT_REASONS[repSel], text: ($('#rpTxt').value || '').trim().slice(0, 500), status: 'new', createdAt: Date.now(), ownerUid: ((getCache()[k] || {}).authorId) || '', reporter: (store.get('jp_acct', null) || {}).name || 'অতিথি' });
     done[k] = Date.now(); store.set('jp_reported', done); closeSheet(); toast('রিপোর্ট জমা হয়েছে — ধন্যবাদ');
   } catch (e) { if (b) b.disabled = false; acErr('জমা দেওয়া যায়নি — ইন্টারনেট ঠিক আছে কি?'); }
 }
+/* ========== মন্তব্য ========== */
+function favInc(id, n) { const f = SFB(); if (f) f.doc('books/' + id).update({ favs: SINC(n) }).catch(() => {}); }
+const SENDI = P('<path d="M3 11l18-8-8 18-2-8z"/>');
+let cmBook = null, cmList = [], cmLast = 0, cmPend = null;
+const CMON = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+function cmDate(t) {
+  const s = (Date.now() - t) / 1000; if (!(s >= 0) || s < 60) return 'এইমাত্র'; if (s < 3600) return bn(Math.floor(s / 60)) + ' মিনিট আগে'; if (s < 86400) return bn(Math.floor(s / 3600)) + ' ঘণ্টা আগে';
+  if (s < 604800) return bn(Math.floor(s / 86400)) + ' দিন আগে'; const d = new Date(t); return bn(d.getDate()) + ' ' + CMON[d.getMonth()] + ', ' + bn(d.getFullYear());
+}
+function cmItem(c) {
+  return '<div class="cmi"><span class="sav">' + avInit(c.name) + '</span><div class="cmb"><div class="cmh"><b>' + esc(c.name) + '</b><small>' + cmDate(c.at) + '</small></div><p>' + esc(c.text) + '</p>' +
+    (c.reply && c.reply.text ? '<div class="cmr"><span class="lk">লেখক</span><small>' + cmDate(c.reply.at) + '</small><p>' + esc(c.reply.text) + '</p></div>' : '') + '</div></div>';
+}
+function cmDraw() {
+  const l = $('#cmList'), h = $('#cmH'); if (h) h.textContent = 'মন্তব্য (' + bn(cmList.length) + ')';
+  if (l) l.innerHTML = cmList.length ? cmList.map(cmItem).join('') : '<div class="empty">এখনো কোনো মন্তব্য নেই। প্রথম মন্তব্যটি আপনি করুন।</div>';
+}
+async function cmOpen(id, t) {
+  cmBook = { id, t }; const a = getAcct();
+  openSheet('<div class="cmwrap"><div class="grab"></div><h3 id="cmH">মন্তব্য</h3><div class="cmlist" id="cmList"><div class="empty">লোড হচ্ছে…</div></div>' +
+    '<form class="cmform" data-form="cm-send"><span class="sav">' + avInit(a ? a.name : 'অ') + '</span><input id="cmInp" maxlength="200" placeholder="আপনার মন্তব্য লিখুন..." autocomplete="off" aria-label="আপনার মন্তব্য"><button type="submit" aria-label="মন্তব্য পাঠান">' + SENDI + '</button></form>' +
+    '<div class="cmcnt"><span>সর্বোচ্চ ২০০ অক্ষরের মধ্যে লিখুন</span><span id="cmN">০/২০০</span></div></div>');
+  const f = SFB(); cmList = [];
+  if (!f) { const l = $('#cmList'); if (l) l.innerHTML = '<div class="empty">মন্তব্য লোড করা যায়নি।</div>'; return; }
+  try { const q = await f.collection('books/' + id + '/comments').orderBy('at', 'desc').limit(100).get(); cmList = q.docs.map((d) => Object.assign({ id: d.id }, d.data())); cmDraw(); }
+  catch (e) { const l = $('#cmList'); if (l) l.innerHTML = '<div class="empty">মন্তব্য লোড করা যায়নি। ইন্টারনেট দেখুন।</div>'; }
+}
+async function cmSend() {
+  const inp = $('#cmInp'); if (!inp || !cmBook) return; const text = (inp.value || '').trim(); if (!text) return;
+  const a = getAcct(); if (!a) { cmPend = cmBook; closeSheet(); toast('মন্তব্য করতে আগে আপনার নাম দিন'); openSheet(acctSheet()); return; }
+  if (Date.now() - cmLast < 15000) { toast('একটু পরে আবার মন্তব্য করুন'); return; }
+  const f = SFB(); if (!f) { toast('ইন্টারনেট সংযোগ নেই'); return; }
+  const c = { name: a.name, text: text.slice(0, 200), at: Date.now() }; const id = String(Date.now()) + Math.floor(Math.random() * 1000); const bid = cmBook.id;
+  try {
+    await f.doc('books/' + bid + '/comments/' + id).set(c); cmLast = Date.now(); inp.value = ''; const n = $('#cmN'); if (n) n.textContent = '০/২০০';
+    cmList.unshift(Object.assign({ id }, c)); cmDraw(); f.doc('books/' + bid).update({ cmts: SINC(1) }).catch(() => {});
+    const bg = $('#cmBadge'); if (bg) { const cur = (+bg.dataset.n || (parseInt((bg.textContent || '0').replace(/[০-৯]/g, (x) => '০১২৩৪৫৬৭৮৯'.indexOf(x)), 10) || 0)) + 1; bg.dataset.n = cur; bg.textContent = fmtN(cur); bg.hidden = false; }
+  } catch (e) { toast('মন্তব্য পাঠানো যায়নি'); }
+}
+document.addEventListener('input', (e) => { if (e.target && e.target.id === 'cmInp') { const n = $('#cmN'); if (n) n.textContent = bn(e.target.value.length) + '/২০০'; } });
 document.addEventListener('click', (ev) => {
   const el = ev.target.closest('[data-s]'); if (!el) return; const a = el.dataset.s;
+  if (a === 'cm-open') { cmOpen(el.dataset.id, el.dataset.t); return; }
   if (a === 'author') { closeSheet(); nav('/author/' + enc(el.dataset.k)); }
   else if (a === 'follow') doFollow(el.dataset.k, el.dataset.n);
   else if (a === 'au-tab') { auTab = el.dataset.v; $$('.autabs button').forEach((x) => x.classList.toggle('on', x === el)); $('#auBody').innerHTML = auBody(); }
@@ -1761,8 +1946,11 @@ async function route() {
     else if (page === 'audio' || page === 'alist') { nav('/', true); return; }
     else if (false) { loadingView(); html = seg[1] ? await viewAudioBook(seg[1]) : await viewAudio(); }
     else if (page === 'author') { loadingView(); html = await viewAuthor(seg[1]); }
+    else if (page === 'authors') { loadingView(); html = await viewAuthors(); }
+    else if (page === 'following') { html = headerPage('ফলো করা লেখক', true) + '<main class="page">' + followedHtml() + '</main>'; }
     else if (page === 'w') { loadingView(); html = await viewWriter(seg); }
     else if (page === 'profile') { html = viewProfile(); }
+    else if (page === 'privacy') { html = viewPrivacy(); }
     else if (page === 'notices') { loadingView(); html = await viewNotices(); }
     else if (page === 'about') { loadingView(); html = await viewAbout(); }
     else if (page === 'contact') { loadingView(); html = await viewContact(); }
@@ -1790,6 +1978,7 @@ function afterRender(page, seg, params) {
   if (page === 'profile') refreshTime();
   if (page === 'w') wAfter(seg);
   if (page === 'book') fillAuthorAv();
+  if (page === 'home' || page === 'authors') fillListAv();
   if (page === 'read') afterReader(params.get('listen') === '1');
 }
 
@@ -1866,13 +2055,17 @@ async function viewHome() {
   if (feat) h += feat.books.length ? '<div class="rail feat" id="featuredRail">' + feat.books.map((b, i) => featCard(b, i)).join('') + '</div>' : '<div class="empty">নির্বাচিত উপন্যাস এখনো ঠিক করা হয়নি।</div>';
   const rec = data.sections.find((x) => x.key === 'recent');
   if (rec && rec.books.length) h += secTitle(SEC_TITLES.recent || rec.title, '/list/recent') + '' + shelfOpen() + lim(rec.books).map((b) => CARD(b)).join('') + '</div>';
+  let authBlk = ''; try { const ab = await api('/books'); const al = authorsOf(ab); if (al.length) authBlk = secTitle('জনপ্রিয় লেখক', '/authors') + authRail(al.slice(0, 12)); } catch (e) { /* ignore */ }
+  const secs = data.sections.filter((x) => x.key !== 'recent' && x.key !== 'featured'); const midI = Math.floor(secs.length / 2); let sk = 0;
   if (upd.length) {
     h += secTitle('আজকের আপডেট পর্ব', '/episodes') + shelfOpen() + lim(upd.slice(0, 10)).map((e) =>
       CARD({ id: e.bookId, title: e.bookTitle, author: e.author, cover: e.cover, cat: e.cat, status: e.status, reads: e.reads, likes: e.likes, dislikes: e.dislikes, chapterCount: 1 }, 'নতুন পর্ব')).join('') + '</div>';
   }
+  if (!secs.length) h += authBlk;
   data.sections.forEach((s) => {
     if (s.key === 'recent') return;
     if (s.key === 'featured') return;
+    if (sk++ === midI) h += authBlk;
     h += secTitle(SEC_TITLES[s.key] || s.title, '/list/' + enc(s.key));
     if (!s.books.length) h += '<div class="empty">' + (s.key === 'islamic' ? 'ইসলামিক ক্যাটাগরিতে এখনো কোনো বই নেই।' : 'এই বিভাগে এখন কোনো বই নেই।') + '</div>';
     else h += shelfOpen() + lim(s.books).map((b) => CARD(b)).join('') + '</div>';
@@ -2081,17 +2274,15 @@ async function viewBook(id) {
   const firstN = b.chapters.length ? b.chapters[0].n : null;
   const startN = last && b.chapters.some((c) => c.n === last) ? last : firstN;
   const votes = (b.likes || 0) + (b.dislikes || 0);
-  let h = headerPage(b.title, true, '<button class="icon-btn" data-act="share" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '" aria-label="শেয়ার" data-i="share"></button><button class="icon-btn" data-s="book-menu" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '" aria-label="আরও অপশন">' + P('<circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/>') + '</button>') + '<main class="page">' +
+  let h = headerPage(b.title, true, '<button class="icon-btn bmh' + (saved ? ' on' : '') + '" data-act="bm" data-id="' + esc(b.id) + '" id="bmBtn" aria-label="' + (saved ? 'পছন্দের তালিকায় আছে' : 'পছন্দের তালিকায় যোগ করুন') + '">' + IC.save + '</button><button class="icon-btn" data-s="book-menu" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '" aria-label="আরও অপশন">' + P('<circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/>') + '</button>') + '<main class="page">' +
     '<div class="detail">' + coverImg(b) + '<div class="di"><h1>' + esc(b.title) + '</h1>' + authorChip(b) +
+    ((b.desc || '').trim() ? '<div class="bdesc"><b>বিস্তারিত:</b> ' + esc(b.desc.trim()) + '</div>' : '') +
     '<div class="pr"><span class="pill">' + esc(b.cat) + '</span>' + statusPill(b.status) + demoPill(b) + '</div>' +
-    '<div class="stats"><span><b class="star">★</b>' + ratingTxt(b) + ' (' + bn(votes) + ')</span><i class="sep"></i><span>' + ic('eye') + '<span id="readsN">' + fmtN(b.reads || 0) + '</span> পঠিত</span></div>' +
-    '<button class="bm' + (saved ? ' on' : '') + '" data-act="bm" data-id="' + esc(b.id) + '" id="bmBtn">' + IC.save + '<span>' + (saved ? 'পছন্দের তালিকায় আছে' : 'পছন্দের তালিকায় যোগ করুন') + '</span></button></div></div>' +
-    '<div class="reacts"><button class="btn ghost' + (b.myReaction === 'like' ? ' on' : '') + '" data-act="react" data-r="like" data-id="' + esc(b.id) + '" id="likeBtn">' + IC.like + '<span id="likeN">' + bn(b.likes) + '</span> পছন্দ</button>' +
-    '<button class="btn ghost' + (b.myReaction === 'dislike' ? ' on' : '') + '" data-act="react" data-r="dislike" data-id="' + esc(b.id) + '" id="dislikeBtn">' + IC.dislike + '<span id="dislikeN">' + bn(b.dislikes) + '</span> অপছন্দ</button></div>';
+    '<div class="bstats"><div><small>ভিউ</small><b id="readsN">' + fmtN(b.reads || 0) + '</b></div><div><small>পছন্দ</small><b id="likeN" data-n="' + (b.likes || 0) + '">' + fmtN(b.likes || 0) + '</b></div><div><small>অপছন্দ</small><b id="dislikeN" data-n="' + (b.dislikes || 0) + '">' + fmtN(b.dislikes || 0) + '</b></div></div></div></div>';
   if (startN != null) { const allDl = b.chapters.length && b.chapters.every((c) => dl[c.n]);
     h += '<div class="startrow"><button class="btn dlall' + (allDl ? ' fin' : '') + '"' + (allDl ? ' disabled' : '') + ' data-act="dl-all" data-id="' + esc(b.id) + '"><span class="dlf" style="width:' + (allDl ? 100 : 0) + '%"></span><span class="dlt">' + (allDl ? IC.check + 'ডাউনলোড হয়েছে' : IC.download + 'ডাউনলোড') + '</span></button>' +
     '<button class="btn pur" data-act="read" data-id="' + esc(b.id) + '" data-n="' + firstN + '">' + IC.read + 'পড়ুন</button></div>'; }
-  h += '<div class="panel"><h3>অধ্যায়সমূহ (' + bn(b.chapters.length) + ')</h3>';
+  h += '<div class="panel"><div class="phd"><h3>অধ্যায়সমূহ (' + bn(b.chapters.length) + ')</h3><div class="pbt"><button class="cbt' + (b.myReaction === 'like' ? ' on' : '') + '" data-act="react" data-r="like" data-id="' + esc(b.id) + '" id="likeBtn" aria-label="পছন্দ করুন">' + IC.like + '</button><button class="cbt' + (b.myReaction === 'dislike' ? ' on' : '') + '" data-act="react" data-r="dislike" data-id="' + esc(b.id) + '" id="dislikeBtn" aria-label="অপছন্দ করুন">' + IC.dislike + '</button><button class="cbt" data-s="cm-open" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '" aria-label="মন্তব্য">' + IC.chat + '<i class="cbg" id="cmBadge"' + (b.cmts > 0 ? '' : ' hidden') + '>' + fmtN(b.cmts || 0) + '</i></button></div></div>';
   if (!b.chapters.length) h += '<div class="empty">এই বইয়ে এখনো কোনো অধ্যায় যোগ করা হয়নি।</div>';
   b.chapters.forEach((c) => {
     const p = cpOf(b.id, c.n); const fin = isDone(b.id, c.n); const tm = ctOf(b.id, c.n); const cur = last === c.n; const st = cur ? ' rd' : '';
@@ -2232,7 +2423,7 @@ function wakeOff() { try { if (wl) wl.release(); } catch (e) { /* ignore */ } wl
 const SS = window.speechSynthesis; let tts = { on: false, paused: false, chunks: [], i: 0, tok: 0, hold: false };
 function ttsOK() { return !!(SS && window.SpeechSynthesisUtterance); }
 function buildChunks(paras) {
-  const out = []; const MAX = 3600; let buf = ''; let pi0 = 0;
+  const out = []; const MAX = 220; let buf = ''; let pi0 = 0;
   paras.forEach((p, pi) => {
     const parts = p.match(/[^।.!?]+[।.!?]*/g) || [p];
     parts.forEach((sn) => { if (buf && (buf + ' ' + sn).length > MAX) { out.push({ pi: pi0, t: buf }); buf = sn.trim(); pi0 = pi; } else { if (!buf) pi0 = pi; buf = buf ? buf + ' ' + sn.trim() : sn.trim(); } });
@@ -2267,9 +2458,16 @@ function speakAt(i) {
   if (v) { u.voice = v; u.lang = v.lang; } else u.lang = 'bn-BD';
   u.rate = 0.5 + getRS().rate * 0.1;
   u.onend = () => { if (tok === tts.tok && tts.on && !tts.paused) speakAt(i + 1); };
-  u.onerror = (e) => { if (tok === tts.tok && tts.on && e.error !== 'canceled' && e.error !== 'interrupted') { speakStop(); toast('শুনুন চালু করা যায়নি'); } };
-  try { SS.cancel(); SS.speak(u); } catch (e) { speakStop(); toast('শুনুন চালু করা যায়নি'); }
+  u.onerror = (e) => { if (tok === tts.tok && tts.on && e.error !== 'canceled' && e.error !== 'interrupted') { if ((tts.fail = (tts.fail || 0) + 1) > 3) { tts.fail = 0; speakStop(); toast('শুনুন চালু করা যায়নি'); } else setTimeout(() => { if (tok === tts.tok && tts.on && !tts.paused) speakAt(i + 1); }, 150); } };
+  u.onstart = () => { tts.fail = 0; tts.idle = 0; };
+  try { if (SS.speaking || SS.pending) SS.cancel(); SS.speak(u); } catch (e) { speakStop(); toast('শুনুন চালু করা যায়নি'); }
 }
+setInterval(() => {
+  if (!tts.on || tts.paused || !SS) return;
+  try { if (SS.speaking || SS.pending) { tts.idle = 0; if (SS.paused) SS.resume(); return; } } catch (e) { return; }
+  if (++tts.idle >= 3) { tts.idle = 0; speakAt(tts.i); }
+}, 1000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden && tts.on && !tts.paused) { try { if (SS.paused) SS.resume(); else if (!SS.speaking && !SS.pending) speakAt(tts.i); } catch (e) { /* ignore */ } } });
 function speakStart() {
   if (!rd) return;
   if (!ttsOK()) { toast('এই ডিভাইসে "শুনুন" সুবিধা পাওয়া যায়নি'); return; }
@@ -2289,9 +2487,7 @@ function speakStop() {
 }
 function speakDone() {
   if (rd) { markDone(rd.id, rd.n); const pr = getCP(); (pr[rd.id] = pr[rd.id] || {})[rd.n] = 100; store.set('jp_cprog', pr); }
-  const nextN = rd && rd.next; const id = rd && rd.id;
-  speakStop();
-  if (nextN) { toast('পরের অধ্যায় শুরু হচ্ছে'); nav('/read/' + enc(id) + '/' + nextN + '?listen=1', true); } else toast('শোনা শেষ হয়েছে');
+  speakStop(); toast('অধ্যায়ের শোনা শেষ হয়েছে');
 }
 const RATES = [3, 5, 7, 10];
 const spdTxt = () => bn((0.5 + getRS().rate * 0.1).toFixed(1)) + 'x';
@@ -2672,6 +2868,17 @@ function accRow(key, icon, title, cur, opts) {
   return '<button class="mrow" data-act="acc-toggle" data-v="' + key + '"><span class="mi">' + IC[icon] + '</span><span class="mt">' + title + '<small>বর্তমান: ' + cur + '</small></span><span class="ar' + (open ? ' up' : '') + '">' + IC.chev + '</span></button>' +
     (open ? '<div class="accopts">' + opts + '</div>' : '');
 }
+function viewPrivacy() {
+  const sec = (t, p) => '<div class="pcard" style="margin-bottom:12px"><div style="font-weight:700;margin-bottom:6px">' + t + '</div><div style="color:var(--muted);line-height:1.75">' + p + '</div></div>';
+  return headerPage('প্রাইভেসি পলিসি', true) + '<main class="page">' +
+    sec('আমরা কী তথ্য সংগ্রহ করি', 'পাঠক হিসেবে অ্যাপ ব্যবহারে আপনার কোনো ইমেইল, ফোন বা পাসওয়ার্ড লাগে না। পছন্দের তালিকা, ডাউনলোড, পড়ার অগ্রগতি, সেটিং ও ফলো করা লেখকের তথ্য শুধু আপনার ফোনেই সংরক্ষিত থাকে।') +
+    sec('লেখকদের তথ্য', 'লেখক প্যানেলে নাম, ইমেইল, মোবাইল নাম্বার ও ছবি নেওয়া হয়। এগুলো শুধু লেখকের অ্যাকাউন্ট চালাতে ও যাচাইয়ের জন্য ব্যবহৃত হয়। ইমেইল ও ফোন নাম্বার কখনো অন্য পাঠকদের দেখানো হয় না; শুধু নাম ও ছবি লেখকের পেজে প্রকাশ পায়।') +
+    sec('পরিসংখ্যান', 'বইয়ের পঠিত সংখ্যা, লাইক-ডিসলাইক ও ফলোয়ার সংখ্যা নাম-পরিচয় ছাড়া গণনা করা হয়।') +
+    sec('রিপোর্ট', 'কোনো বই রিপোর্ট করলে বইয়ের তথ্য, কারণ ও আপনার লেখা মন্তব্য অ্যাডমিনের কাছে যায়। সাথে আপনার অ্যাকাউন্টের নাম (না থাকলে “অতিথি”) যায়; ইমেইল বা ফোন যায় না।') +
+    sec('তথ্য সংরক্ষণ ও নিরাপত্তা', 'অ্যাপের বই ও লেখক-তথ্য Google Firebase-এ সংরক্ষিত থাকে। আমরা আপনার কোনো তথ্য বিক্রি বা তৃতীয় পক্ষকে বিজ্ঞাপনের জন্য দিই না।') +
+    sec('আপনার নিয়ন্ত্রণ', 'ফোনের ডেটা অ্যাপ থেকে মুছলে বা অ্যাপ আনইনস্টল করলে আপনার স্থানীয় তথ্য মুছে যাবে। লেখক অ্যাকাউন্ট মুছতে চাইলে অ্যাডমিনের সাথে যোগাযোগ করুন।') +
+    sec('পরিবর্তন', 'এই নীতি প্রয়োজনে বদলানো হতে পারে। পরিবর্তন হলে এই পেজেই দেখানো হবে।') + '</main>';
+}
 function viewProfile() {
   const a = getAcct(); const t = store.get('jp_time', {}); t[secsKey] = secs;
   const days = []; for (let i = 6; i >= 0; i--) { const d = new Date(); d.setDate(d.getDate() - i); days.push({ d, s: t[dayKey(d)] || 0 }); }
@@ -2691,7 +2898,7 @@ function viewProfile() {
     '<div class="chart">' + days.map((x, i) => '<div class="col' + (i === 6 ? ' today' : '') + '"><span class="v">' + shortT(x.s) + '</span><div class="bar" style="height:' + Math.round(10 + x.s / mx * 100) + 'px"></div><span class="d">' + WD[x.d.getDay()] + '</span></div>').join('') + '</div>' +
     '<div class="streak" style="margin:10px 0 0"><span>' + bn(streakInfo()) + ' দিনের রিডিং স্ট্রিক 🔥</span></div></div>' +
     '<div class="grp">লেখক প্যানেল</div><div class="pcard" style="padding:4px 12px">' + mrow('pen', 'লেখক প্যানেল', 'নিজের গল্প লিখুন ও প্রকাশের জন্য পাঠান', '', 'data-act="go" data-href="/w"') + '</div>' +
-    '<div class="grp">ফলো করা লেখক</div>' + followedHtml() +
+    '<div class="grp">ফলো করা লেখক</div><div class="pcard" style="padding:4px 12px">' + mrow('user', 'ফলো করা লেখক দেখুন', bn(Object.keys(getFollow()).length) + ' জন', '', 'data-act="go" data-href="/following"') + '</div>' +
     '<div class="grp">পড়া ও খোঁজা</div><div class="pcard" style="padding:4px 12px">' +
     mrow('read', 'সব গল্পের তালিকা', '', '', 'data-act="go" data-href="/list/recent"') + mrow('grid', 'ক্যাটাগরি', '', '', 'data-act="go" data-href="/cat"') + mrow('bell', 'নোটিশ', '', '', 'data-act="go" data-href="/notices"') + '</div>' +
     '<div class="grp">ডিসপ্লে ও থিম</div><div class="pcard" style="padding:4px 12px">' +
@@ -2706,11 +2913,11 @@ function viewProfile() {
     mrow('folder', 'ডাউনলোড স্টোরেজ', fmtSize(storageSize()) + ' ব্যবহৃত', '', 'data-act="noop"') +
     mrow('trash', 'সব ডাউনলোড মুছুন', 'ফাইল + ডাউনলোড তালিকা', '', 'data-act="clear-dl"') + '</div>' +
     '<div class="grp">অন্যান্য</div><div class="pcard" style="padding:4px 12px">' +
-    mrow('info', 'অ্যাপ সম্পর্কে', '', '', 'data-act="go" data-href="/about"') + mrow('chat', 'যোগাযোগ করুন', '', '', 'data-act="go" data-href="/contact"') +
+    mrow('info', 'অ্যাপ সম্পর্কে', '', '', 'data-act="go" data-href="/about"') + mrow('chat', 'যোগাযোগ করুন', '', '', 'data-act="go" data-href="/contact"') + mrow('info', 'প্রাইভেসি পলিসি', '', '', 'data-act="go" data-href="/privacy"') +
     '<div class="ver"><span>ভার্সন</span><span>' + bn('2.1') + '</span></div></div>' +
     '<div class="center" style="margin-top:14px;font-weight:600">আমাদের সাথে যুক্ত থাকুন</div><div class="social"><button class="icon-btn" style="background:#1fa855;color:#fff;width:48px;height:48px" data-act="wa" aria-label="হোয়াটসঅ্যাপ">' + IC.wa + '</button></div></main>';
 }
-function profRerender() { const y = window.scrollY; setView(viewProfile()); window.scrollTo(0, y); }
+function profRerender() { if (!/^\/profile/.test(curPath)) return; const y = window.scrollY; setView(viewProfile()); window.scrollTo(0, y); }
 function toggleSaved(id) {
   const ids = getSaved(); const i = ids.indexOf(id);
   if (i >= 0) ids.splice(i, 1); else ids.push(id);
@@ -2863,10 +3070,10 @@ async function onClick(ev) {
         const ids = getSaved(); const i = ids.indexOf(d.id);
         if (i >= 0) ids.splice(i, 1); else ids.push(d.id);
         store.set('jp_saved', ids); const on = i < 0;
-        el.classList.toggle('on', on); const sp = $('span', el); if (sp) sp.textContent = on ? 'পছন্দের তালিকায় আছে' : 'পছন্দের তালিকায় যোগ করুন';
-        toast(on ? 'পছন্দের তালিকায় রাখা হয়েছে' : 'পছন্দের তালিকা থেকে সরানো হয়েছে'); break;
+        el.classList.toggle('on', on); const sp = $('span', el); if (sp) sp.textContent = on ? 'পছন্দের তালিকায় আছে' : 'পছন্দের তালিকায় যোগ করুন'; el.setAttribute('aria-label', on ? 'পছন্দের তালিকায় আছে' : 'পছন্দের তালিকায় যোগ করুন');
+        favInc(d.id, on ? 1 : -1); toast(on ? 'পছন্দের তালিকায় রাখা হয়েছে' : 'পছন্দের তালিকা থেকে সরানো হয়েছে'); break;
       }
-      case 'rm-bm': confirmDel('বুকমার্ক মুছবেন?', 'বইটি পছন্দের তালিকা থেকে মুছে যাবে।', () => { const ids = getSaved().filter((x) => x !== d.id); store.set('jp_saved', ids); toast('বুকমার্ক থেকে সরানো হয়েছে'); keepScrollOnce = true; route(); }); break;
+      case 'rm-bm': confirmDel('বুকমার্ক মুছবেন?', 'বইটি পছন্দের তালিকা থেকে মুছে যাবে।', () => { favInc(d.id, -1); const ids = getSaved().filter((x) => x !== d.id); store.set('jp_saved', ids); toast('বুকমার্ক থেকে সরানো হয়েছে'); keepScrollOnce = true; route(); }); break;
       case 'rm-all':
         showDialog({ title: 'ডাউনলোড মুছবেন?', text: 'এই বইয়ের সব ডাউনলোড করা পর্ব আপনার ফোন থেকে মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { await removeBookDownloads(d.id); toast('ডাউনলোড মুছে ফেলা হয়েছে'); keepScrollOnce = true; route(); } }); break;
       case 'share': {
@@ -2901,17 +3108,17 @@ async function onClick(ev) {
       case 'react': {
         if (el.classList.contains('busy')) break;
         const lb = $('#likeBtn'), db2 = $('#dislikeBtn'); const cur = el.classList.contains('on') ? null : d.r;
-        const toN = (id) => { const t = ($(id).textContent || '0').replace(/[০-৯]/g, (c) => '০১২৩৪৫৬৭৮৯'.indexOf(c)); return parseInt(t, 10) || 0; };
+        const toN = (id) => +($(id).dataset.n || 0); const setN = (id, n) => { const e = $(id); e.dataset.n = n; e.textContent = fmtN(n); };
         let ln = toN('#likeN'), dn = toN('#dislikeN'); const was = lb.classList.contains('on') ? 'like' : (db2.classList.contains('on') ? 'dislike' : null);
         if (was === 'like') ln = Math.max(0, ln - 1); if (was === 'dislike') dn = Math.max(0, dn - 1);
         if (cur === 'like') ln++; if (cur === 'dislike') dn++;
         // সাথে সাথে স্ক্রিনে দেখানো (সার্ভার ধীর হলেও বাটন কাজ করছে বোঝা যাবে)
-        $('#likeN').textContent = bn(ln); $('#dislikeN').textContent = bn(dn);
+        setN('#likeN', ln); setN('#dislikeN', dn);
         lb.classList.toggle('on', cur === 'like'); db2.classList.toggle('on', cur === 'dislike');
         lb.classList.add('busy'); db2.classList.add('busy');
         try {
           const r = await api('/books/' + enc(d.id) + '/react', { method: 'POST', body: { reaction: cur } });
-          if (r && r.likes != null) { $('#likeN').textContent = bn(r.likes); $('#dislikeN').textContent = bn(r.dislikes); }
+          if (r && r.likes != null) { setN('#likeN', r.likes); setN('#dislikeN', r.dislikes); }
         } catch (e) {
           const lr = store.get('jp_react', {}); lr[d.id] = cur; store.set('jp_react', lr); // অফলাইনে ফোনেই রাখা হলো
         }
@@ -2934,12 +3141,13 @@ async function onClick(ev) {
 async function handleAcct(fm) {
   if (fm !== 'acct-save') return;
   const name = $('#acName').value.trim(); if (name.length < 2) return acErr('নাম কমপক্ষে ২ অক্ষরের হতে হবে');
-  const a = getAcct() || {}; store.set('jp_acct', { name, photo: acPhoto || '', at: a.at || Date.now() }); closeSheet(); toast('প্রোফাইল সংরক্ষিত হয়েছে'); profRerender();
+  const a = getAcct() || {}; store.set('jp_acct', { name, photo: acPhoto || '', at: a.at || Date.now() }); closeSheet(); toast('প্রোফাইল সংরক্ষিত হয়েছে'); profRerender(); if (cmPend) { const p = cmPend; cmPend = null; setTimeout(() => cmOpen(p.id, p.t), 300); }
 }
 function onSubmit(ev) {
   const f = ev.target.closest('form[data-form]'); if (!f) return;
   ev.preventDefault();
   if (/^acct-/.test(f.dataset.form)) { handleAcct(f.dataset.form); return; }
+  if (f.dataset.form === 'cm-send') { cmSend(); return; }
   if (f.dataset.form === 'name') {
     const v = ($('#nameInp').value || '').trim(); if (!v) { toast('নাম খালি রাখা যাবে না'); return; }
     store.set('jp_name', v); toast('নাম পরিবর্তন হয়েছে'); keepScrollOnce = true; route(); return;
