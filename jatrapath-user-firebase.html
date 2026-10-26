@@ -1644,7 +1644,7 @@ async function wInit() {
 async function wLoadProf() {
   const ref = WR.fs.doc('authors/' + WR.user.uid); let d = await ref.get();
   if (!d.exists) {
-    const o = { name: WR.user.displayName || (WR.user.email || '').split('@')[0], email: WR.user.email || '', phone: '', photo: '', bio: '', blocked: false, createdAt: Date.now() };
+    const o = { name: WR.user.displayName || (WR.user.email || '').split('@')[0], email: WR.user.email || '', phone: '', photo: '', bio: '', blocked: false, status: 'pending', createdAt: Date.now() };
     await ref.set(o); WR.prof = o;
   } else WR.prof = d.data();
   try { const pr = WR.fs.doc('profiles/' + WR.user.uid); if (!(await pr.get()).exists) await pr.set({ name: WR.prof.name || '', photo: WR.prof.photo || '', bio: WR.prof.bio || '', followers: 0, createdAt: WR.prof.createdAt || Date.now() }); } catch (e) { /* ignore */ }
@@ -1698,6 +1698,8 @@ async function viewWriter(seg) {
   const s1 = seg[1] || ''; 
   if (!WR.user) return s1 === 'signup' ? wSignup() : wLogin();
   if (WR.prof && WR.prof.blocked) return wPage('লেখক প্যানেল', '<div class="wgate"><div class="big">⛔</div><p>আপনার লেখক অ্যাকাউন্ট বন্ধ করা আছে। যোগাযোগ করুন।</p><button class="wbtn ghost" data-w="logout">লগ আউট</button></div>', null, true);
+  if (WR.prof && WR.prof.status === 'pending') return wPage('লেখক প্যানেল', '<div class="wgate"><div class="big">⏳</div><p><b>আপনার লেখক আইডি রিভিউয়ে আছে</b></p><p>অ্যাডমিন অ্যাকাউন্টটি গ্রহণ করলে আপনি বই প্রকাশ করতে পারবেন।</p><button class="wbtn" data-w="retry">অবস্থা দেখুন</button> <button class="wbtn ghost" data-w="logout">লগ আউট</button></div>', null, true);
+  if (WR.prof && WR.prof.status === 'rejected') return wPage('লেখক প্যানেল', '<div class="wgate"><div class="big">🚫</div><p>আপনার লেখক আইডির আবেদন গ্রহণ করা হয়নি। যোগাযোগ করুন।</p><button class="wbtn ghost" data-w="logout">লগ আউট</button></div>', null, true);
   try {
     if (!s1) return await wDash();
     if (s1 === 'books') return await wBooks();
@@ -1919,7 +1921,7 @@ async function wClick(ev) {
         wSet(''); wBusy(1);
         try {
           const cr = await WR.auth.createUserWithEmailAndPassword(e, p); WR.user = cr.user; try { await cr.user.updateProfile({ displayName: n }); } catch (x) { /* ignore */ }
-          const o = { name: n, email: e, phone: m, photo: wPhoto || '', bio: '', blocked: false, createdAt: Date.now() }; await WR.fs.doc('authors/' + cr.user.uid).set(o); try { await WR.fs.doc('profiles/' + cr.user.uid).set({ name: n, photo: wPhoto || '', bio: '', followers: 0, createdAt: o.createdAt }); } catch (x) { /* ignore */ } WR.prof = o; store.set('jp_wemail', e); toast('অ্যাকাউন্ট তৈরি হয়েছে'); nav('/w', true);
+          const o = { name: n, email: e, phone: m, photo: wPhoto || '', bio: '', blocked: false, status: 'pending', createdAt: Date.now() }; await WR.fs.doc('authors/' + cr.user.uid).set(o); try { await WR.fs.doc('profiles/' + cr.user.uid).set({ name: n, photo: wPhoto || '', bio: '', followers: 0, createdAt: o.createdAt }); } catch (x) { /* ignore */ } WR.prof = o; store.set('jp_wemail', e); toast('অ্যাকাউন্ট তৈরি হয়েছে'); nav('/w', true);
         } catch (x) { wSet(wErr(x)); wBusy(0); } break;
       }
       case 'logout': showDialog({ emoji: '⚠️', title: 'আপনি কি সত্যি লগ আউট করছেন?', text: '', no: 'না', yes: 'হ্যাঁ', onYes: async () => { try { await WR.auth.signOut(); } catch (x) { /* ignore */ } WR.user = null; WR.prof = null; WR.cats = null; nav('/w', true); } }); break;
@@ -2439,7 +2441,7 @@ function startAuto(rail) {
     if (!document.body.contains(rail) || document.hidden) return;
     if (Date.now() < pauseAutoUntil) return;
     const ci = featCur(rail); featGo(rail, ci >= rail.children.length - 1 ? 0 : ci + 1);
-  }, 2200);
+  }, 1500);
   if (!(rail.nextElementSibling && rail.nextElementSibling.classList.contains('fdots'))) {
     const dots = document.createElement('div'); dots.className = 'fdots';
     dots.innerHTML = new Array(rail.children.length).fill('<i></i>').join(''); rail.after(dots);

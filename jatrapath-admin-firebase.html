@@ -136,6 +136,42 @@ nav button{position:relative}
 .pg>*:nth-child(2){animation-delay:.04s}.pg>*:nth-child(3){animation-delay:.08s}.pg>*:nth-child(4){animation-delay:.12s}
 nav button svg{transition:transform .25s}nav button.on svg{transform:translateY(-1px) scale(1.12)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== নতুন মিনিমাল UI ===== */
+:root{--bg:#0e0c10;--bg2:#131018;--cd:#17141c;--cd2:#17141c;--tx:#f3eef4;--mu:#8f8799;--pr:#ff6b8e;--ac:#d93f69;--ac2:#c2365d;--bd:#262130;--glow:#d93f6926}
+:root[data-theme=light]{--bg:#f7f4f7;--bg2:#fff;--cd:#fff;--cd2:#fff;--tx:#201826;--mu:#7b7285;--pr:#c4285a;--ac:#c4285a;--ac2:#ad2150;--bd:#e8e0ea;--glow:#c4285a1f}
+body,:root[data-theme=light] body{background-image:none!important}
+header{background:var(--bg)!important;backdrop-filter:none;border-bottom:1px solid var(--bd)}
+.logo,.hero,.btn,.big,.fc.on,.vt button.on,nav button.on,.bar i,.btn.uab{background:var(--ac)!important;box-shadow:none!important}
+.btn.s{background:transparent!important;border:1px solid var(--bd)}.btn.d{background:#c93a52!important}
+.card{background:var(--cd)!important;box-shadow:none!important;border-radius:22px}
+.hero{background:var(--cd)!important;color:var(--tx);border:1px solid var(--bd)}.hero:before,.hero:after{display:none}
+nav{left:0;right:0;bottom:0;max-width:760px;border-radius:0;border:0;border-top:1px solid var(--bd);background:var(--bg);backdrop-filter:none;box-shadow:none;padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
+nav button{border-radius:99px;margin:0 3px;font-size:.66rem}
+nav button.on{background:color-mix(in srgb,var(--ac) 22%,transparent)!important;color:var(--pr)}
+nav b.bd{position:absolute;top:2px;left:calc(50% + 6px);min-width:17px;height:17px;border-radius:9px;background:var(--ac);color:#fff;font-size:.62rem;display:grid;place-items:center;padding:0 4px;font-weight:700}
+main{padding-bottom:calc(96px + env(safe-area-inset-bottom))}#toast{bottom:calc(84px + env(safe-area-inset-bottom))}
+.srch{border-radius:16px;background:var(--cd)}
+/* স্ক্রিনশট-স্টাইল কার্ড */
+.kc{background:var(--cd);border:1px solid var(--bd);border-radius:22px;margin-bottom:14px;overflow:hidden;animation:in .3s ease both}
+.kh{display:flex;gap:14px;align-items:center;padding:14px;background:color-mix(in srgb,var(--tx) 3%,transparent)}
+.kh b{display:block;margin-bottom:6px;line-height:1.3}.kh .cv{width:52px;height:72px}
+.kr{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 16px;border-top:1px solid var(--bd)}
+.kr>span{font-size:.7rem;letter-spacing:.12em;color:var(--mu);font-weight:600;flex:none}
+.kr>b,.kr>a{font-weight:500;text-align:right;min-width:0;overflow-wrap:anywhere}.kr>a{color:var(--pr);cursor:pointer}.kr svg{width:15px;height:15px;vertical-align:-2px}
+.ka{display:flex;gap:10px;padding:12px 14px 14px;border-top:1px solid var(--bd)}
+.ka button{flex:1;font:inherit;font-weight:600;padding:10px;border-radius:99px;border:1px solid var(--bd);background:none;color:var(--tx);cursor:pointer}
+.ka .ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok);border-color:color-mix(in srgb,var(--ok) 40%,transparent)}
+.ka .x{background:color-mix(in srgb,var(--er) 14%,transparent);color:var(--er);border-color:color-mix(in srgb,var(--er) 38%,transparent)}
+.tg:before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:1px}
+.tg{background:color-mix(in srgb,var(--tx) 7%,transparent);padding:3px 11px}
+.hi{margin:2px 2px 14px}.hi small{color:var(--mu)}.hi h2{margin:0;font-size:1.5rem}
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:6px}
+.tl>div{background:var(--cd);border:1px solid var(--bd);border-radius:18px;padding:12px 4px;text-align:center;cursor:pointer;font-size:.72rem}
+.tl>div:active{transform:scale(.96)}.tl i{display:grid;place-items:center;width:38px;height:38px;margin:0 auto 6px;border-radius:13px;background:color-mix(in srgb,var(--ac) 16%,transparent);color:var(--pr)}
+.tr{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--bd);border-radius:16px;margin-bottom:8px;background:var(--cd);cursor:pointer}
+.tr i{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:color-mix(in srgb,var(--ac) 16%,transparent);color:var(--pr);flex:none}.tr b{font-weight:500}
+.alr{display:flex;justify-content:space-between;align-items:center;width:100%;font:inherit;color:var(--tx);text-align:left;border:1px solid color-mix(in srgb,var(--pr) 45%,var(--bd));background:color-mix(in srgb,var(--ac) 12%,transparent);border-radius:18px;padding:13px 16px;margin-bottom:12px;cursor:pointer}
 </style></head><body>
 <div id="app"><header><button class="ib" id="bk" onclick="back()"></button><div class="logo" id="lgo"></div><h1 id="ttl" style="flex:1"></h1><button class="ib lo" onclick="logoutDlg()" title="লগআউট" id="lob"></button></header><main id="main"></main><nav id="nav"></nav></div>
 <div id="mod"></div><div id="toast"></div>
@@ -160,7 +196,7 @@ const bk=id=>S.books.find(b=>b.id==id),ct=id=>S.cats.find(c=>c.id==id);
 /* ===== Navigation stack ===== */
 let stack=[{r:'dash',p:{}}],dirty=false,mdirty=false,modals=[],lastBack=0,V={};
 const cur=()=>stack[stack.length-1];
-const TABS=[['dash','ড্যাশবোর্ড','home'],['books','বইসমূহ','book'],['uapp','ইউজার অ্যাপ','phone'],['cats','ক্যাটাগরি','tag'],['more','আরও','grid']];
+const TABS=[['dash','হোম','home'],['books','বই','book'],['reqs','অনুরোধ','user'],['uapp','ইউজার অ্যাপ','phone'],['more','টুলস','grid']];
 const TO={uapp:'uapp',dash:'dash',books:'books',bookDetail:'books',bookForm:'books',read:'books',cats:'cats',catDetail:'cats',chs:'chs',editor:'chs'};
 function guard(f){dirty?confirmDlg('অসংরক্ষিত পরিবর্তন আছে। পরিবর্তন বাতিল করে বের হবেন?','থাকুন','বাতিল করুন',()=>{dirty=false;f()}):f()}
 const lockB=id=>{const b=bk(id);if(b&&b.ownerUid){toast('এটি লেখকের বই — অ্যাডমিন বদলাতে পারে না, শুধু পড়তে ও অনুমোদন দিতে পারে');return true}return false};
@@ -193,12 +229,17 @@ let tt;function toast(m){sync();const t=$('#toast');t.textContent=m;t.classList.
 /* ===== Render ===== */
 function draw(keep){sync();const{r,p}=cur(),v=V[r](p);$('#ttl').textContent=v.t;$('#bk').style.display=stack.length>1?'':'none';$('#lgo').style.display=stack.length>1?'none':'';
  $('#main').innerHTML=`<div class="pg">${v.h}</div>`;if(!keep)scrollTo(0,0);v.i&&v.i();
- const on=TO[r]||'more';uaShow(r=='uapp');$('#nav').innerHTML=TABS.map(([k,l,ic])=>`<button class="${k==on?'on':''}" onclick="tab('${k}')">${I(ic)}${l}</button>`).join('')}
+ const on=TO[r]||'more';uaShow(r=='uapp');navOn=on;navDraw()}
+let navOn='dash',RQ={a:[],t:0};
+const pendA=()=>RQ.a.filter(a=>a.status=='pending'),pendB=()=>S.books.filter(b=>b.ownerUid&&!b.pub&&b.st!='rejected'),reqN=()=>pendA().length+pendB().length;
+function navDraw(){const n=reqN();$('#nav').innerHTML=TABS.map(([k,l,ic])=>`<button class="${k==navOn?'on':''}" onclick="tab('${k}')">${I(ic)}${l}${k=='reqs'&&n?`<b class="bd">${bn(n)}</b>`:''}</button>`).join('')}
+async function refreshReq(){try{const q=await fs.collection('authors').get();RQ.a=q.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));RQ.a.forEach(a=>a.status=a.status||'approved');RQ.t=Date.now();navDraw()}catch(e){}}
 /* Dashboard */
-V.dash=()=>{const s=[['মোট বই',S.books.length,'book'],['প্রকাশিত',S.books.filter(b=>b.pub).length,'chk'],['খসড়া',S.books.filter(b=>!b.pub).length,'edit'],['অধ্যায়',S.chapters.length,'file'],['ক্যাটাগরি',S.cats.length,'tag']],
- rd=S.books.reduce((a,b)=>a+(b.v||0),0),lk=S.books.reduce((a,b)=>a+(b.l||0),0),hr=new Date().getHours(),gr=hr<5?'শুভ রাত্রি':hr<12?'শুভ সকাল':hr<16?'শুভ দুপুর':hr<19?'শুভ বিকাল':'শুভ সন্ধ্যা',em=(auth&&auth.currentUser&&(auth.currentUser.displayName||auth.currentUser.email||'')).split('@')[0];
- const pb=S.books.filter(b=>b.ownerUid&&!b.pub&&b.st!='rejected').length,pc=S.chapters.filter(c=>!c.pub&&bk(c.b)&&bk(c.b).ownerUid).length;
- return{t:'ড্যাশবোর্ড',i:repBan,h:`<div id="rpBan"></div>${pb||pc?`<button class="addb" style="margin:0 0 12px;display:flex;justify-content:space-between;align-items:center" onclick="FT='rev';tab('books')"><span>রিভিউয়ের অপেক্ষায়: ${bn(pb)} বই, ${bn(pc)} পর্ব</span><span>→</span></button>`:''}<div class="hero"><small>${gr}</small><h2>${esc(em||'অ্যাডমিন')}</h2><div class="hs"><div><b>${kf(rd)}</b><span>মোট পাঠ</span></div><div><b>${bn(lk)}</b><span>লাইক</span></div><div><b>${bn(S.books.filter(b=>b.pub).length)}</b><span>লাইভ বই</span></div></div></div><div class="ban" style="justify-content:space-between"><span>Firebase সংযুক্ত — লাইভ ডেটা</span><button class="ob" style="padding:4px 12px;font-size:.8rem" onclick="doSync().then(()=>location.reload())">রিফ্রেশ</button></div><div class="st">${s.map(([l,n,i])=>`<div class="card"><i>${I(i)}</i><div><b>${bn(n)}</b><small>${l}</small></div></div>`).join('')}</div>${S.books.length?`<h3>সাম্প্রতিক বই</h3><div class="strip rcs">${S.books.slice(-12).reverse().map(b=>`<div onclick="go('bookDetail',{id:${b.id}})">${cov(b)}<span>${esc(b.title)}</span></div>`).join('')}</div>`:''}<h3>দ্রুত কাজ</h3><div class="qa"><button class="btn" onclick="go('bookForm')">+ নতুন বই</button><button class="btn" onclick="pickBook()">+ নতুন অধ্যায়</button><button class="btn s" onclick="go('list',{k:'feat'})">নির্বাচিত উপন্যাস</button><button class="btn s" onclick="go('notifs')">নোটিফিকেশন</button><button class="btn uab" style="grid-column:1/-1" onclick="tab('uapp')">📱 ইউজার অ্যাপ দেখুন ও চালান</button></div><h3>সাম্প্রতিক কার্যক্রম</h3><div class="card">${S.log.slice(0,4).map(l=>`<div style="padding:7px 0;border-bottom:1px solid var(--bd)">• ${esc(l)}</div>`).join('')||'<small style="color:var(--mu)">এখনো কোনো কার্যক্রম নেই</small>'}</div>`}};
+V.dash=()=>{const rd=S.books.reduce((a,b)=>a+(b.v||0),0),lk=S.books.reduce((a,b)=>a+(b.l||0),0),hr=new Date().getHours(),gr=hr<5?'শুভ রাত্রি':hr<12?'শুভ সকাল':hr<16?'শুভ দুপুর':hr<19?'শুভ বিকাল':'শুভ সন্ধ্যা',em=(auth&&auth.currentUser&&(auth.currentUser.displayName||auth.currentUser.email||'')).split('@')[0],n=reqN(),
+ s=[['লাইভ বই',S.books.filter(b=>b.pub).length,'book'],['মোট পাঠ',kf(rd),'eye'],['লাইক',lk,'like'],['অধ্যায়',S.chapters.length,'file']],
+ q=[['নতুন বই','edit',"go('bookForm')"],['নতুন অধ্যায়','file',"pickBook()"],['নোটিফিকেশন','bell',"go('notifs')"],['পরিসংখ্যান','trend',"go('stats')"]];
+ return{t:'যাত্রাপথ',i:()=>{repBan();refreshReq().then(()=>{const e=$('#rqa');if(e){const m=reqN();e.innerHTML=m?`<button class="alr" onclick="tab('reqs')"><span>${bn(m)}টি অনুরোধ অপেক্ষায় আছে</span><span>→</span></button>`:''}})},
+ h:`<div class="hi"><small>${gr}</small><h2>${esc(em||'অ্যাডমিন')}</h2></div>${tsBar()}<div id="tsr"></div><div id="dhome"><div id="rpBan"></div><div id="rqa">${n?`<button class="alr" onclick="tab('reqs')"><span>${bn(n)}টি অনুরোধ অপেক্ষায় আছে</span><span>→</span></button>`:''}</div><div class="st">${s.map(([l,v,i])=>`<div class="card"><i>${I(i)}</i><div><b>${typeof v=='number'?bn(v):v}</b><small>${l}</small></div></div>`).join('')}</div><h3>দ্রুত কাজ</h3><div class="tl">${q.map(([l,i,f])=>`<div onclick="${f}"><i>${I(i)}</i>${l}</div>`).join('')}</div>${S.books.length?`<h3>সাম্প্রতিক বই</h3><div class="strip rcs">${S.books.slice(-12).reverse().map(b=>`<div onclick="go('bookDetail',{id:${b.id}})">${cov(b)}<span>${esc(b.title)}</span></div>`).join('')}</div>`:''}<h3>সাম্প্রতিক কার্যক্রম</h3><div class="card">${S.log.slice(0,4).map(l=>`<div style="padding:7px 0;border-bottom:1px solid var(--bd)">• ${esc(l)}</div>`).join('')||'<small style="color:var(--mu)">এখনো কোনো কার্যক্রম নেই</small>'}</div><div style="text-align:center;margin-top:10px"><button class="ob" style="font-size:.8rem;padding:6px 14px" onclick="doSync().then(()=>location.reload())">⟳ রিফ্রেশ</button></div></div>`}};
 /* Books */
 const bcardOld=b=>`<div class="card row"><div onclick="go('bookDetail',{id:${b.id}})">${cov(b)}</div><div class="fx" onclick="go('bookDetail',{id:${b.id}})"><b>${esc(b.title)}</b><small>${esc(b.author)}</small>${badge(b.pub)}</div><div class="ac"><button class="ib" onclick="go('read',{b:${b.id}})">${I('eye')}</button><button class="ib" onclick="go('bookForm',{id:${b.id}})">${I('edit')}</button><button class="ib dn" onclick="delBook(${b.id})">${I('trash')}</button></div></div>`;
 function blOld(){const q=$('#q').value.trim().toLowerCase(),s=$('#fs').value,c=$('#fc').value;const a=S.books.filter(b=>(!q||(b.title+b.author).toLowerCase().includes(q))&&(!s||(s=='p')==b.pub)&&(!c||b.cats.includes(+c)));$('#bl').innerHTML=a.length?a.map(bcard).join(''):empty('কোনো বই পাওয়া যায়নি')}
@@ -207,10 +248,10 @@ P.heart='M12 21s-8-5-8-11a5 5 0 0 1 8-3 5 5 0 0 1 8 3c0 6-8 11-8 11z';P.like='M7
 let FT='all',SO='new';const chn=b=>S.chapters.filter(c=>c.b==b.id),kf=n=>n>=1000?(n/1000).toFixed(1)+'k':n;
 const FL=[['all','সব বই',()=>true],['ep','অধ্যায়ের বই',b=>chn(b).length>0],['live','লাইভ',b=>b.pub],['rev','রিভিউ চলছে',b=>b.st=='review'&&!b.pub],['re','পুনরায় আবেদন (বই)',b=>b.st=='reapply']];
 const bst=b=>b.pub?'<span class="tg g">লাইভ</span>':b.ownerUid?(b.st=='rejected'?'<span class="tg" style="color:var(--er)">প্রত্যাখ্যাত</span>':'<span class="tg" style="color:var(--wr)">রিভিউ চলছে</span>'):'<span class="tg">খসড়া</span>';
-const bcard=b=>{const cs=chn(b),g=ct(b.cats[0])?.name;return `<div class="card"><div class="row" style="align-items:flex-start"><div onclick="go('bookDetail',{id:${b.id}})">${cov(b,'l')}</div><div class="fx" onclick="go('bookDetail',{id:${b.id}})"><b>${esc(b.title)}</b><small>${esc(b.author)}${g?' • '+esc(g):''}</small>${b.ownerUid?`<small>✍ লেখক অ্যাকাউন্ট: ${esc(b.ownerName||'')}</small>`:''}<div class="chips">${bst(b)}<span class="tg">${bn(cs.length)} টি অধ্যায়${b.done?' • সমাপ্ত':''}</span></div><small class="st2"><span>${I('eye')} ${kf(b.v||0)}</span><span>${I('like')} ${b.l||0}</span><span>${I('heart')} ${b.h||0}</span></small></div></div>${b.ownerUid?`<div class="ba" style="grid-template-columns:1fr"><button class="p" onclick="go('bchs',{id:${b.id}})">অধ্যায়সমূহ দেখুন</button></div>`:`<div class="ba"><button onclick="go('bookForm',{id:${b.id}})">এডিট</button><button class="p" onclick="go('bchs',{id:${b.id}})">অধ্যায়সমূহ</button><button class="x" onclick="delBook(${b.id})">ডিলিট</button></div>`}</div>`};
-let BV=(()=>{try{return localStorage.getItem('jp_bv')||'grid'}catch(e){return 'grid'}})();
+const bcard=b=>{const cs=chn(b),g=ct(b.cats[0])?.name||'—',o=b.ownerUid;return `<div class="kc"><div class="kh" onclick="go('bookDetail',{id:${b.id}})">${cov(b)}<div class="fx"><b>${esc(b.title)}</b><div class="chips">${bst(b)}<span class="tg">${bn(cs.length)} অধ্যায়${b.done?' • সমাপ্ত':''}</span></div></div></div>${KR('লেখক',esc(b.author||b.ownerName||'—'))}${KR('ক্যাটাগরি',esc(g))}${KR('ভিউ / লাইক',`${I('eye')} ${kf(b.v||0)} &nbsp; ${I('like')} ${b.l||0}`)}${KR('বিস্তারিত',o?'অধ্যায় দেখুন':'অধ্যায় ব্যবস্থাপনা',`go('bchs',{id:${b.id}})`)}${o?'':`<div class="ka"><button onclick="go('bookForm',{id:${b.id}})">এডিট</button><button class="x" onclick="delBook(${b.id})">ডিলিট</button></div>`}</div>`};
+let BV=(()=>{try{return localStorage.getItem('jp_bv2')||'list'}catch(e){return 'grid'}})();
 const bgc=(b,i)=>{const cs=chn(b);return `<div class="bgc" style="animation-delay:${Math.min(i,14)*35}ms" onclick="go('bookDetail',{id:${b.id}})">${b.cover?`<img src="${b.cover}" alt="" loading="lazy">`:`<div class="ph" style="background:linear-gradient(145deg,${GR[b.id%6]})">${esc(b.title.slice(0,2))}</div>`}<span class="bgs">${bst(b)}</span><span class="bgv">👁 ${kf(b.v||0)}</span><div class="bgt"><b>${esc(b.title)}</b><small>${esc(b.author||'')} • ${bn(cs.length)} অধ্যায়</small></div></div>`};
-function setBV(v){BV=v;try{localStorage.setItem('jp_bv',v)}catch(e){}document.querySelectorAll('.vt button').forEach(x=>x.classList.toggle('on',x.dataset.v==v));bl()}
+function setBV(v){BV=v;try{localStorage.setItem('jp_bv2',v)}catch(e){}document.querySelectorAll('.vt button').forEach(x=>x.classList.toggle('on',x.dataset.v==v));bl()}
 function chips(){$('#fch').innerHTML=FL.map(([k,l,f])=>`<button class="fc ${k==FT?'on':''}" onclick="FT='${k}';chips();bl()">${l} ${bn(S.books.filter(f).length)}</button>`).join('')}
 function bl(){const q=$('#q').value.trim().toLowerCase(),c=$('#fc').value;let a=S.books.filter(b=>(!q||(b.title+b.author).toLowerCase().includes(q))&&FL.find(f=>f[0]==FT)[2](b)&&(!c||b.cats.includes(+c)));
  if(SO=='new')a=a.slice().reverse();else if(SO=='az')a=a.slice().sort((x,y)=>x.title.localeCompare(y.title,'bn'));else if(SO=='pop')a=a.slice().sort((x,y)=>(y.v||0)-(x.v||0));
@@ -260,7 +301,7 @@ function saveChOld(id){const t=$('#e4').value;if(wc(t)<MIN){upd();return} // har
  Object.assign(c,{n,title:ti,text:t});log('অধ্যায় সংরক্ষিত: '+ti);toast('অধ্যায় সংরক্ষিত (খসড়া/প্রকাশ আলাদা)');dirty=false;stack[stack.length-1]={r:'editor',p:{id}};draw(true)}
 /* ===== Book form, chapter manager & rich editor (reference-style) ===== */
 P.out='M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4M16 8l4 4-4 4M20 12H9';P.eyeoff='M3 3l18 18M10.6 6.1A9.8 9.8 0 0 1 12 6c6 0 9 6 9 6a15 15 0 0 1-3.2 3.9M6.6 6.7C3.9 8.5 3 12 3 12s3 6 9 6a9.7 9.7 0 0 0 3.4-.6';Object.assign(P,{cloud:'M7 18a5 5 0 0 1-.5-9.9A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9M12 12v8M9 15l3-3 3 3',al:'M4 6h16M4 10h10M4 14h16M4 18h10',ac:'M4 6h16M7 10h10M4 14h16M7 18h10',ar:'M4 6h16M10 10h10M4 14h16M10 18h10',aj:'M4 6h16M4 10h16M4 14h16M4 18h16',ul:'M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01',ol:'M10 6h10M10 12h10M10 18h10M4 5h1v4M4 11h2l-2 3h2',un:'M9 14L4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3',re:'M15 14l5-5-5-5M20 9H10a6 6 0 0 0 0 12h3'});
-TO.bchs=TO.editor='books';
+TO.bchs=TO.editor='books';TO.cats=TO.catDetail='more';
 const ORD={1:'১ম',2:'২য়',3:'৩য়',4:'৪র্থ',5:'৫ম',6:'৬ষ্ঠ',7:'৭ম',8:'৮ম',9:'৯ম',10:'১০ম'},ord=n=>ORD[n]||bn(n)+'তম';
 const fd=t=>new Date(t).toLocaleDateString('bn-BD',{day:'numeric',month:'long',year:'numeric',weekday:'long'});
 function san(h){const d=new DOMParser().parseFromString(h,'text/html');d.body.querySelectorAll('*').forEach(e=>{if(!/^(B|I|U|STRONG|EM|FONT|SPAN|DIV|P|BR|UL|OL|LI)$/.test(e.tagName)){e.replaceWith(...e.childNodes);return}[...e.attributes].forEach(a=>{if(!['style','color','size'].includes(a.name))e.removeAttribute(a.name)})});return d.body.innerHTML}
@@ -337,7 +378,7 @@ function upv(){$('#upv').innerHTML=`<b>আপডেট ঘোষণা প্র
 function saveU(){const url=$('#u4').value.trim();if(url&&!/^https?:\/\//.test(url))return $('#fe').textContent='সঠিক URL দিন।';if(!$('#u2').value.trim())return $('#fe').textContent='ভার্সন নাম দিন।';
  S.upd={vc:$('#u1').value,vn:$('#u2').value,notes:$('#u3').value,url,min:$('#u5').value,must:$('#u6').checked};dirty=false;toast('সংরক্ষিত')}
 /* Settings */
-const ACC={r:['লাল-বেগুনি','#d6322b','#7a2cc4'],b:['নীল','#2b6fd6','#6a3cc4'],t:['টিল','#0f9b8e','#2b6fd6'],o:['কমলা','#e0701b','#c4281f']};
+const ACC={r:['গোলাপি','#d93f69','#c2365d'],b:['নীল','#2b6fd6','#6a3cc4'],t:['টিল','#0f9b8e','#2b6fd6'],o:['কমলা','#e0701b','#c4281f']};
 function setAcc(k){const a=ACC[k];document.documentElement.style.setProperty('--ac',a[1]);document.documentElement.style.setProperty('--ac2',a[2]);try{localStorage.setItem('jp_acc',k)}catch(e){}}
 function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('jp_theme',t)}catch(e){}document.querySelector('meta[name=theme-color]').content=t=='dark'?'#0d0912':'#f6f0f4'}
 try{const k=localStorage.getItem('jp_acc');if(k&&ACC[k])setAcc(k)}catch(e){}
@@ -365,7 +406,7 @@ function cmDel(bid,id){confirmDlg('এই মন্তব্যটি মুছ�
 P.user='M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c0-4 4-6 8-6s8 2 8 6';
 V.writers=()=>({t:'লেখকগণ',h:'<div id="wl"><div class="sk"></div><div class="sk"></div></div>',i:loadWriters});
 async function loadWriters(){const w=$('#wl');try{const q=await fs.collection('authors').get(),L=q.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
- const reg=L.length?L.map(a=>{const bs=S.books.filter(b=>b.ownerUid==a.id);return`<div class="card"><div class="row"><div class="cv" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--ac2))">${a.photo?`<img src="${a.photo}" alt="">`:`<span>${esc(Array.from(a.name||'ল')[0])}</span>`}</div><div class="fx"><b>${esc(a.name||'')}</b>${a.blocked?' <span class="bg wr">ব্লক</span>':''}<small>${esc(a.email||'')}</small><small>${esc(a.phone||'')}</small><small>${bn(bs.length)} টি বই • ${bn(bs.filter(b=>!b.pub).length)} টি রিভিউয়ে</small></div></div>${a.bio?`<p class="note" style="margin-top:8px">${esc(a.bio)}</p>`:''}<small class="note" style="display:block;margin:8px 0 0">🔒 নিবন্ধিত লেখক — ছবি শুধু লেখক নিজে পরিবর্তন করতে পারেন</small><div class="btns"><button class="btn ${a.blocked?'':'d'}" onclick="blockW('${a.id}',${!a.blocked})">${a.blocked?'আনব্লক করুন':'ব্লক করুন'}</button></div></div>`}).join(''):empty('এখনো কোনো নিবন্ধিত লেখক নেই');
+ const reg=L.length?L.map(a=>{const bs=S.books.filter(b=>b.ownerUid==a.id);return`<div class="card"><div class="row"><div class="cv" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--ac2))">${a.photo?`<img src="${a.photo}" alt="">`:`<span>${esc(Array.from(a.name||'ল')[0])}</span>`}</div><div class="fx"><b>${esc(a.name||'')}</b>${a.blocked?' <span class="bg wr">ব্লক</span>':''}${(a.status||'approved')=='pending'?' <span class="bg wr">অপেক্ষমাণ</span>':a.status=='rejected'?' <span class="bg wr">প্রত্যাখ্যাত</span>':''}<small>${esc(a.email||'')}</small><small>${esc(a.phone||'')}</small><small>${bn(bs.length)} টি বই • ${bn(bs.filter(b=>!b.pub).length)} টি রিভিউয়ে</small></div></div>${a.bio?`<p class="note" style="margin-top:8px">${esc(a.bio)}</p>`:''}<small class="note" style="display:block;margin:8px 0 0">🔒 নিবন্ধিত লেখক — ছবি শুধু লেখক নিজে পরিবর্তন করতে পারেন</small><div class="btns">${(a.status||'approved')!='approved'?`<button class="btn" onclick="setAuthor('${a.id}','approved')">গ্রহণ করুন</button>`:''}<button class="btn ${a.blocked?'':'d'}" onclick="blockW('${a.id}',${!a.blocked})">${a.blocked?'আনব্লক করুন':'ব্লক করুন'}</button></div></div>`}).join(''):empty('এখনো কোনো নিবন্ধিত লেখক নেই');
  w.innerHTML=`<h3 style="margin:4px 2px 10px;font-size:1rem">অ্যাডমিন-প্রকাশিত বইয়ের লেখক</h3>${adminAuthorsHtml()}<h3 style="margin:18px 2px 10px;font-size:1rem">নিবন্ধিত লেখক (রাইটার প্যানেল)</h3>${reg}`}catch(e){w.innerHTML=`<div class="card er">লোড হয়নি: ${esc(e.code||e.message)}</div>`}}
 /* Admin-added authors: grouped by name from admin's own books (no ownerUid); photo kept on each book as authorPhoto */
 function adminAuthors(){const m=new Map();S.books.filter(b=>!b.ownerUid&&(b.author||'').trim()).forEach(b=>{const n=b.author.trim();if(!m.has(n))m.set(n,{name:n,books:[],photo:''});const g=m.get(n);g.books.push(b);if(!g.photo&&b.authorPhoto)g.photo=b.authorPhoto});return[...m.values()].sort((a,b)=>a.name.localeCompare(b.name,'bn'))}
@@ -382,9 +423,26 @@ function setAuthorPhoto(i,inp){const a=adminAuthors()[i],f=inp.files[0];if(!a||!
 function rmAuthorPhoto(i){const a=adminAuthors()[i];if(!a)return;confirmDlg('লেখকের ছবি সরাবেন?','বাতিল','সরান',()=>{a.books.forEach(b=>delete b.authorPhoto);log('লেখকের ছবি সরানো: '+a.name);toast('ছবি সরানো হয়েছে');draw(true)},1)}
 function blockW(id,b){confirmDlg(b?'এই লেখককে ব্লক করবেন? সে আর বই বা পর্ব যোগ করতে পারবে না।':'লেখককে আনব্লক করবেন?','বাতিল',b?'ব্লক':'আনব্লক',async()=>{try{await fs.doc('authors/'+id).update({blocked:b});toast(b?'ব্লক করা হয়েছে':'আনব্লক করা হয়েছে');draw(true)}catch(e){toast('ব্যর্থ: '+(e.code||e.message))}},b?1:0)}
 /* More */
-V.more=()=>{const c=[[0,'পরিসংখ্যান','trend','stats'],['feat','নির্বাচিত উপন্যাস','star','list'],['w','সাপ্তাহিক জনপ্রিয়','trend','list'],['m','মাসিক জনপ্রিয়','cal','list'],['y','বাৎসরিক জনপ্রিয়','cal','list'],[0,'প্রচ্ছদ ব্যবস্থাপনা','img','covers'],[0,'লেখকগণ','user','writers'],[0,'বই রিপোর্ট','flag','reports'],[0,'পাঠকের মন্তব্য','chat','comments'],[0,'নোটিফিকেশন','bell','notifs'],[0,'ইউজার অ্যাপ দেখুন','phone','uapp'],[0,'অ্যাপ আপডেট','dl','update'],[0,'সেটিংস','gear','settings']];
- return{t:'আরও',h:`<div class="mg">${c.map(([k,l,i,r])=>`<div class="card" onclick="go('${r}',${k?`{k:'${k}'}`:'{}'})"><i>${I(i)}</i><b>${l}</b></div>`).join('')}</div>`}};
 
+/* ===== টুলস ও সার্চ ===== */
+const KR=(l,v,lk)=>`<div class="kr"><span>${l}</span>${lk?`<a onclick="${lk}">${v}</a>`:`<b>${v}</b>`}</div>`;
+const TG=[['কনটেন্ট',[['বইসমূহ','book',"tab('books')",'বই তালিকা খুঁজুন'],['নতুন বই','edit',"go('bookForm')",'বই যুক্ত প্রকাশ'],['নতুন অধ্যায়','file',"pickBook()",'পর্ব chapter লিখুন'],['ক্যাটাগরি','tag',"go('cats')",'category'],['প্রচ্ছদ ব্যবস্থাপনা','img',"go('covers')",'কভার cover ছবি'],['অডিও ম্যানেজমেন্ট','phone',"go('audio')",'audio অডিওবুক']]],
+['লেখক ও অনুরোধ',[['অনুরোধ','user',"tab('reqs')",'লেখক আইডি অ্যাকাউন্ট গ্রহণ request approve'],['লেখকগণ','user',"go('writers')",'writer author ব্লক'],['বই রিপোর্ট','flag',"go('reports')",'report অভিযোগ'],['পাঠকের মন্তব্য','chat',"go('comments')",'comment']]],
+['প্রচার',[['নির্বাচিত উপন্যাস','star',"go('list',{k:'feat'})",'featured'],['সাপ্তাহিক জনপ্রিয়','trend',"go('list',{k:'w'})",'weekly'],['মাসিক জনপ্রিয়','cal',"go('list',{k:'m'})",'monthly'],['বাৎসরিক জনপ্রিয়','cal',"go('list',{k:'y'})",'yearly'],['নোটিফিকেশন','bell',"go('notifs')",'notice ঘোষণা']]],
+['সিস্টেম',[['পরিসংখ্যান','trend',"go('stats')",'stats গ্রাফ analytics'],['ইউজার অ্যাপ','phone',"tab('uapp')",'user app'],['অ্যাপ আপডেট','dl',"go('update')",'update version'],['সেটিংস','gear',"go('settings')",'settings থিম theme']]]];
+const toolRows=q=>{q=(q||'').trim().toLowerCase();return TG.map(([g,L])=>{const r=L.filter(x=>!q||(x[0]+' '+x[3]).toLowerCase().includes(q));return r.length?`<h3>${g}</h3>`+r.map(x=>`<div class="tr" onclick="${x[2]}"><i>${I(x[1])}</i><b>${x[0]}</b></div>`).join(''):''}).join('')||empty('কোনো টুল পাওয়া যায়নি')};
+function tsr(){const q=$('#ts').value,e=$('#tsr');if(!e)return;e.innerHTML=toolRows(q);const d=$('#dhome');if(d)d.style.display=q.trim()?'none':''}
+const tsBar=()=>`<div class="srch" style="margin-bottom:14px">${I('search')}<input id="ts" placeholder="টুল খুঁজুন — যেমন: লেখক, কভার, আপডেট…" oninput="tsr()"></div>`;
+V.more=()=>({t:'সব টুলস',h:tsBar()+'<div id="tsr"></div>',i:tsr});
+/* অনুরোধ */
+let RQT='a';
+const avt=a=>`<div class="cv" style="width:52px;height:52px;border-radius:50%;background:var(--ac)">${a.photo?`<img src="${a.photo}" alt="">`:`<span>${esc(Array.from(a.name||'ল')[0])}</span>`}</div>`;
+V.reqs=()=>({t:'অনুরোধ',h:'<div id="rql"><div class="sk"></div><div class="sk"></div></div>',i:async()=>{await refreshReq();drawReq()}});
+function drawReq(){const w=$('#rql');if(!w)return;const A=pendA(),B=pendB();
+ w.innerHTML=`<div class="vt"><button class="${RQT=='a'?'on':''}" onclick="RQT='a';drawReq()">লেখক আইডি ${bn(A.length)}</button><button class="${RQT=='b'?'on':''}" onclick="RQT='b';drawReq()">বই রিভিউ ${bn(B.length)}</button></div>`+
+ (RQT=='a'?(A.length?A.map(a=>`<div class="kc"><div class="kh">${avt(a)}<div class="fx"><b>${esc(a.name||'')}</b><div class="chips"><span class="tg" style="color:var(--wr)">অপেক্ষমাণ</span></div></div></div>${KR('ইমেইল',esc(a.email||'—'))}${KR('ফোন',esc(a.phone||'—'))}${KR('আবেদন',new Date(a.createdAt||0).toLocaleDateString('bn-BD',{day:'numeric',month:'short',year:'numeric'}))}${a.bio?KR('পরিচিতি',esc(a.bio)):''}<div class="ka"><button class="ok" onclick="setAuthor('${a.id}','approved')">গ্রহণ করুন</button><button class="x" onclick="setAuthor('${a.id}','rejected')">প্রত্যাখ্যান</button></div></div>`).join(''):empty('কোনো নতুন লেখক অনুরোধ নেই'))
+ :(B.length?B.map(b=>`<div class="kc"><div class="kh" onclick="go('bookDetail',{id:${b.id}})">${cov(b)}<div class="fx"><b>${esc(b.title)}</b><div class="chips">${bst(b)}</div></div></div>${KR('লেখক',esc(b.ownerName||b.author||'—'))}${KR('ক্যাটাগরি',esc(ct(b.cats[0])?.name||'—'))}${KR('বিস্তারিত','অধ্যায় দেখুন',`go('bchs',{id:${b.id}})`)}<div class="ka"><button class="ok" onclick="approveBook(${b.id})">অনুমোদন</button><button class="x" onclick="rejectBook(${b.id})">প্রত্যাখ্যান</button></div></div>`).join(''):empty('রিভিউয়ের অপেক্ষায় কোনো বই নেই')))}
+function setAuthor(id,st){const go_=async()=>{try{await fs.doc('authors/'+id).update({status:st,reviewedAt:Date.now()});const a=RQ.a.find(x=>x.id==id);if(a)a.status=st;toast(st=='approved'?'লেখক গৃহীত — এখন বই প্রকাশ করতে পারবেন':'প্রত্যাখ্যান করা হয়েছে');navDraw();draw(true)}catch(e){toast('ব্যর্থ: '+(e.code||e.message))}};st=='approved'?go_():confirmDlg('এই লেখক আইডির আবেদন প্রত্যাখ্যান করবেন?','বাতিল','প্রত্যাখ্যান',go_)}
 
 /* ===== পরিসংখ্যান ===== */
 let STD=null,STT='w';
