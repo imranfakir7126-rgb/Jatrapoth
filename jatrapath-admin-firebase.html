@@ -382,9 +382,38 @@ function setAuthorPhoto(i,inp){const a=adminAuthors()[i],f=inp.files[0];if(!a||!
 function rmAuthorPhoto(i){const a=adminAuthors()[i];if(!a)return;confirmDlg('লেখকের ছবি সরাবেন?','বাতিল','সরান',()=>{a.books.forEach(b=>delete b.authorPhoto);log('লেখকের ছবি সরানো: '+a.name);toast('ছবি সরানো হয়েছে');draw(true)},1)}
 function blockW(id,b){confirmDlg(b?'এই লেখককে ব্লক করবেন? সে আর বই বা পর্ব যোগ করতে পারবে না।':'লেখককে আনব্লক করবেন?','বাতিল',b?'ব্লক':'আনব্লক',async()=>{try{await fs.doc('authors/'+id).update({blocked:b});toast(b?'ব্লক করা হয়েছে':'আনব্লক করা হয়েছে');draw(true)}catch(e){toast('ব্যর্থ: '+(e.code||e.message))}},b?1:0)}
 /* More */
-V.more=()=>{const c=[['feat','নির্বাচিত উপন্যাস','star','list'],['w','সাপ্তাহিক জনপ্রিয়','trend','list'],['m','মাসিক জনপ্রিয়','cal','list'],['y','বাৎসরিক জনপ্রিয়','cal','list'],[0,'প্রচ্ছদ ব্যবস্থাপনা','img','covers'],[0,'লেখকগণ','user','writers'],[0,'বই রিপোর্ট','flag','reports'],[0,'পাঠকের মন্তব্য','chat','comments'],[0,'নোটিফিকেশন','bell','notifs'],[0,'ইউজার অ্যাপ দেখুন','phone','uapp'],[0,'অ্যাপ আপডেট','dl','update'],[0,'সেটিংস','gear','settings']];
+V.more=()=>{const c=[[0,'পরিসংখ্যান','trend','stats'],['feat','নির্বাচিত উপন্যাস','star','list'],['w','সাপ্তাহিক জনপ্রিয়','trend','list'],['m','মাসিক জনপ্রিয়','cal','list'],['y','বাৎসরিক জনপ্রিয়','cal','list'],[0,'প্রচ্ছদ ব্যবস্থাপনা','img','covers'],[0,'লেখকগণ','user','writers'],[0,'বই রিপোর্ট','flag','reports'],[0,'পাঠকের মন্তব্য','chat','comments'],[0,'নোটিফিকেশন','bell','notifs'],[0,'ইউজার অ্যাপ দেখুন','phone','uapp'],[0,'অ্যাপ আপডেট','dl','update'],[0,'সেটিংস','gear','settings']];
  return{t:'আরও',h:`<div class="mg">${c.map(([k,l,i,r])=>`<div class="card" onclick="go('${r}',${k?`{k:'${k}'}`:'{}'})"><i>${I(i)}</i><b>${l}</b></div>`).join('')}</div>`}};
 
+
+/* ===== পরিসংখ্যান ===== */
+let STD=null,STT='w';
+const stIso=t=>new Date(t).toISOString().slice(0,10);
+V.stats=()=>({t:'পরিসংখ্যান',h:'<div id="stw"><div class="sk"></div><div class="sk"></div></div>',i:loadStats});
+async function loadStats(){const w=$('#stw');if(!w)return;try{
+ if(!STD||Date.now()-STD.t>30000){const q=await fs.collection('stats').get();const m={};q.docs.forEach(d=>{m[d.id]=(d.data()||{}).days||{}});STD={t:Date.now(),m}}
+ drawStats()}catch(e){w.innerHTML=`<div class="card er">লোড হয়নি: ${esc(e.code||e.message)}</div>`}}
+function stSeries(){const keys=[],lab=[];
+ if(STT=='y'){const n=new Date();for(let i=11;i>=0;i--){const d=new Date(n.getFullYear(),n.getMonth()-i,1);keys.push(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'));lab.push(['জানু','ফেব্রু','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগ','সেপ্টে','অক্টো','নভে','ডিসে'][d.getMonth()])}}
+ else{const n=STT=='m'?30:7;for(let i=n-1;i>=0;i--){const k=stIso(Date.now()-i*864e5);keys.push(k);lab.push(STT=='m'?bn(+k.slice(8)):['রবি','সোম','মঙ্গল','বুধ','বৃহঃ','শুক্র','শনি'][new Date(k+'T12:00:00').getDay()])}}
+ const per={};S.books.forEach(b=>{const D=STD.m[b.id]||{};per[b.id]=keys.map(k=>{let t=0;for(const d in D)if(STT=='y'?d.slice(0,7)==k:d==k)t+=+D[d]||0;return t})});
+ return{keys,lab,per,vals:keys.map((_,i)=>S.books.reduce((a,b)=>a+per[b.id][i],0))}}
+function stChart(L,V){const W=340,H=180,pl=10,pr=10,pt=24,pb=26,n=V.length,mx=Math.max(1,...V),bw=(W-pl-pr)/n,step=n<=12?1:5;let g=`<svg viewBox="0 0 ${W} ${H}" style="width:100%!important;height:auto!important;display:block;margin-top:8px;color:var(--mu)"><line x1="${pl}" x2="${W-pr}" y1="${H-pb}" y2="${H-pb}" stroke="currentColor" stroke-opacity=".35"/>`;
+ V.forEach((v,i)=>{const h=v/mx*(H-pt-pb),x=pl+i*bw+bw*.15,y=H-pb-h;g+=`<rect stroke="none" x="${x}" y="${y}" width="${bw*.7}" height="${Math.max(h,v>0?2:0)}" rx="3" fill="url(#stg)"/>`;
+  if(v>0&&(n<=12||i%5==0||i==n-1))g+=`<text stroke="none" x="${x+bw*.35}" y="${y-5}" text-anchor="middle" font-size="10.5" fill="currentColor">${kf(v)}</text>`;
+  if(i%step==0)g+=`<text stroke="none" x="${x+bw*.35}" y="${H-8}" text-anchor="middle" font-size="10" fill="currentColor">${L[i]}</text>`});
+ return g+'<defs><linearGradient id="stg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a7a"/><stop offset="1" stop-color="#7a2cc4"/></linearGradient></defs></svg>'}
+function drawStats(){const w=$('#stw');if(!w||!STD)return;const Z=stSeries(),tot=Z.vals.reduce((a,b)=>a+b,0),avg=Z.vals.length?tot/Z.vals.length:0;
+ const bp=S.books.map(b=>({b,v:Z.per[b.id].reduce((a,c)=>a+c,0)})).filter(x=>x.v>0).sort((x,y)=>y.v-x.v);
+ const au={};bp.forEach(x=>{const k=x.b.author||'—';au[k]=(au[k]||0)+x.v});const al=Object.keys(au).map(k=>[k,au[k]]).sort((x,y)=>y[1]-x[1]).slice(0,8);
+ const ca={};bp.forEach(x=>{const c=(ct(x.b.cats[0])||{}).name||'অন্যান্য';ca[c]=(ca[c]||0)+x.v});const cl=Object.keys(ca).map(k=>[k,ca[k]]).sort((x,y)=>y[1]-x[1]).slice(0,6);
+ const bar=(n,v,m)=>`<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;gap:8px"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${n}</span><b>${kf(v)}</b></div><div style="height:7px;border-radius:9px;background:var(--bd);margin-top:4px"><div style="height:100%;width:${Math.max(3,v/m*100)}%;border-radius:9px;background:linear-gradient(90deg,var(--ac),var(--ac2))"></div></div></div>`;
+ w.innerHTML=`<div class="vt">${[['w','৭ দিন'],['m','৩০ দিন'],['y','১২ মাস']].map(([k,l])=>`<button class="${k==STT?'on':''}" onclick="STT='${k}';drawStats()">${l}</button>`).join('')}</div>
+ <div class="hero" style="margin-bottom:12px"><small>এই সময়ে মোট পাঠ</small><h2>${bn(tot)}</h2><div class="hs"><div><b>${bn(Math.round(avg))}</b><span>গড় (${STT=='y'?'মাসে':'দিনে'})</span></div><div><b>${bn(Math.max(0,...Z.vals))}</b><span>সর্বোচ্চ</span></div><div><b>${bn(bp.length)}</b><span>সক্রিয় বই</span></div></div></div>
+ <div class="card"><b>পাঠের গ্রাফ</b>${stChart(Z.lab,Z.vals)}</div>
+ <div class="card"><b>সেরা বই</b>${bp.length?bp.slice(0,10).map(x=>bar(esc(x.b.title),x.v,bp[0].v)).join(''):'<p class="note">এই সময়ে কোনো পাঠ নেই।</p>'}</div>
+ <div class="card"><b>সেরা লেখক</b>${al.length?al.map(x=>bar(esc(x[0]),x[1],al[0][1])).join(''):'<p class="note">তথ্য নেই।</p>'}</div>
+ <div class="card"><b>ক্যাটাগরি অনুযায়ী পাঠ</b>${cl.length?cl.map(x=>bar(esc(x[0]),x[1],cl[0][1])).join(''):'<p class="note">তথ্য নেই।</p>'}</div>`}
 /* ===== ইউজার অ্যাপ (অ্যাডমিনের ভেতরেই চালানো যায়) ===== */
 P.phone='M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2';P.ext='M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5';P.rf='M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7';
 const UA_K='jp_uapp';
