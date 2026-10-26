@@ -1234,7 +1234,7 @@ function handleSync(method, full, body, user) {
     out.sort((a, b) => b.t - a.t); return out.slice(0, 60);
   }
   if (method === 'GET' && p === '/settings') return db.settings;
-  if (method === 'GET' && p === '/categories') return db.categories.map((c) => ({ name: c, count: texts().filter((b) => b.cat === c).length }));
+  if (method === 'GET' && p === '/categories') return db.categories.map((c, i) => ({ name: c, count: texts().filter((b) => b.cat === c).length, i })).sort((x, y) => ((x.count > 0 ? 0 : 1) - (y.count > 0 ? 0 : 1)) || (x.i - y.i)).map((c) => ({ name: c.name, count: c.count }));
   if (method === 'GET' && p === '/home') {
     const sections = [];
     ['featured', 'recent', 'latest', 'weekly', 'monthly', 'yearly', 'islamic'].forEach((k) => {
@@ -1541,15 +1541,25 @@ function nav(path, replace) {
 function goBack() {
   if (navStack.length) { restoreOnce = true; curPath = navStack.pop(); setUrl(curPath, true); route(); } else nav('/', true);
 }
+function goHomeFromExit() { navStack.length = 0; if (curPath !== '/') nav('/', true); else { try { window.scrollTo(0, 0); } catch (e) { /* ignore */ } } }
 function onPop(ev) {
   if (ev && ev.state && ev.state.g) {
-    if (!leaving) {
-      try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ }
-      if (exitOpen) { hideDialog(); if (curPath !== '/') { navStack.length = 0; nav('/', true); } } // সতর্কবার্তা থাকা অবস্থায় আবার ব্যাক = "না" → হোমে ফেরা
-      else askExit();
-    }
+    if (leaving) return;
+    try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ }
+    if (exitOpen) { hideDialog(); goHomeFromExit(); } // সতর্কবার্তা থাকা অবস্থায় ব্যাক = "না" → অ্যাপের হোমে ফেরা
+    else if (!$('#dlg').hidden) hideDialog();
+    else if (sheetOpen() || drawerOpen()) { closeSheet(); closeDrawer(); }
+    else if (curPath !== '/' || navStack.length) { navStack.length = 0; nav('/', true); } else askExit();
     return;
   }
+  if (ev && ev.type === 'hashchange' && ((location.hash || '#/').slice(1) || '/') === curPath) return;
+  if (ev && ev.type === 'popstate' && ev.state && ev.state.gd && ((location.hash || '#/').slice(1) || '/') === curPath) { // হোমের ভেতরের গার্ড এন্ট্রি
+    guardPad = false;
+    if (exitOpen) { hideDialog(); goHomeFromExit(); } else if (!$('#dlg').hidden) hideDialog(); else if (sheetOpen() || drawerOpen()) { closeSheet(); closeDrawer(); } else if (curPath === '/' && !navStack.length) askExit(); else goHomeFromExit();
+    return;
+  } // pushState/ব্যাকের পরের অতিরিক্ত hashchange উপেক্ষা
+  if (exitOpen) { hideDialog(); try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ } goHomeFromExit(); return; }
+  if (!$('#dlg').hidden) { hideDialog(); try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ } return; }
   if (sheetOpen() || drawerOpen()) { closeSheet(); closeDrawer(); try { history.pushState({ jp: 1 }, '', '#' + curPath); } catch (e) { /* ignore */ } return; }
   const p = (location.hash || '#/').slice(1) || '/';
   if (p === curPath) return;
@@ -2385,7 +2395,7 @@ function featGo(rail, idx) {
   const rr = rail.getBoundingClientRect(); const cr = cs[idx].getBoundingClientRect();
   const max = rail.scrollWidth - rail.clientWidth; const to = Math.max(0, Math.min(max, rail.scrollLeft + (cr.left + cr.width / 2) - (rr.left + rr.width / 2)));
   const from = rail.scrollLeft; const dist = to - from; if (Math.abs(dist) < 1) return;
-  const id = ++featAnim; const dur = Math.min(380, 280 + Math.abs(dist) * 0.06); const t0 = performance.now();
+  const id = ++featAnim; const dur = Math.min(240, 170 + Math.abs(dist) * 0.03); const t0 = performance.now();
   rail.style.scrollSnapType = 'none'; rail.style.scrollBehavior = 'auto';
   const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
   (function fr(now) {
@@ -2408,7 +2418,7 @@ function startAuto(rail) {
     if (!document.body.contains(rail) || document.hidden) return;
     if (Date.now() < pauseAutoUntil) return;
     const ci = featCur(rail); featGo(rail, ci >= rail.children.length - 1 ? 0 : ci + 1);
-  }, 1000);
+  }, 2200);
   if (!(rail.nextElementSibling && rail.nextElementSibling.classList.contains('fdots'))) {
     const dots = document.createElement('div'); dots.className = 'fdots';
     dots.innerHTML = new Array(rail.children.length).fill('<i></i>').join(''); rail.after(dots);
@@ -3319,7 +3329,6 @@ function showDialog(o) {
 const confirmDel = (title, text, fn) => showDialog({ title, text, no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: fn });
 function hideDialog() { $('#dlg').hidden = true; dlgYes = null; exitOpen = false; }
 function askExit() {
-  doExit(); return;
   showDialog({ emoji: '⚠️', title: 'আপনি কি সত্যিই বের হতে চান?', text: '', no: 'না', yes: 'হ্যাঁ', onYes: doExit });
 }
 function doExit() {
@@ -3328,7 +3337,20 @@ function doExit() {
   try { history.go(-2); } catch (e) { /* ignore */ }
   setTimeout(() => { try { window.close(); } catch (e) { /* ignore */ } leaving = false; if (!document.hidden) toast('অ্যাপ বন্ধ করতে ফোনের হোম বাটন চাপুন'); }, 600);
 }
-function initExitGuard() { try { history.replaceState({ g: 1 }, '', location.href); history.pushState({ jp: 1 }, '', location.href); } catch (e) { /* ইতিহাস বদলানো নাও যেতে পারে */ } }
+let guardPad = false;
+function padGuard() { // ক্রোম ব্যবহারকারীর স্পর্শ ছাড়া যোগ করা ইতিহাস এন্ট্রি এড়িয়ে যায়; তাই স্পর্শের সময় কয়েকটি গার্ড যোগ করা হয়
+  if (guardPad || curPath !== '/' || navStack.length || exitOpen || !$('#dlg').hidden || sheetOpen() || drawerOpen()) return;
+  guardPad = true;
+  try { for (let i = 0; i < 3; i++) history.pushState({ jp: 1, gd: 1 }, '', '#/'); } catch (e) { guardPad = false; }
+}
+function initBackBtn() {
+  ['touchend', 'click'].forEach((t) => document.addEventListener(t, padGuard, { passive: true, capture: true }));
+  try {
+    const ca = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App;
+    if (ca && ca.addListener) ca.addListener('backButton', () => { try { history.back(); } catch (e) { askExit(); } });
+  } catch (e) { /* ignore */ }
+}
+function initExitGuard() { initBackBtn(); try { history.replaceState({ g: 1 }, '', location.href); history.pushState({ jp: 1 }, '', location.href); } catch (e) { /* ইতিহাস বদলানো নাও যেতে পারে */ } }
 
 /* ---------- ক্লিক হ্যান্ডলার (একবারই যুক্ত) ---------- */
 const idbClear = () => idbDo('readwrite', (st) => st.clear());
