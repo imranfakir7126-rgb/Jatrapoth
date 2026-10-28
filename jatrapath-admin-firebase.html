@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="bn" data-theme="dark"><head><meta charset="utf-8"><meta name="theme-color" content="#0d0912"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>যাত্রাপথ অ্যাডমিন</title>
+<!DOCTYPE html><html lang="bn" data-theme="dark"><head><meta charset="utf-8"><meta name="theme-color" content="#0c0d0f"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>যাত্রাপথ অ্যাডমিন</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0d0912;--bg2:#140e1b;--cd:#1a1223;--cd2:#221730;--tx:#f4ecf7;--mu:#a596b3;--pr:#ff8a7a;--ac:#d6322b;--ac2:#7a2cc4;--bd:#2e2140;--ok:#46d39a;--er:#ff6b7d;--wr:#f0b84a;--glow:#d6322b40;color-scheme:dark}
+:root{--bg:#0c0d0f;--bg2:#140e1b;--cd:#1a1223;--cd2:#221730;--tx:#f4ecf7;--mu:#a596b3;--pr:#ff8a7a;--ac:#d6322b;--ac2:#7a2cc4;--bd:#2e2140;--ok:#46d39a;--er:#ff6b7d;--wr:#f0b84a;--glow:#d6322b40;color-scheme:dark}
 :root[data-theme=light]{--bg:#f6f0f4;--bg2:#fff;--cd:#ffffff;--cd2:#f3ebf1;--tx:#24122b;--mu:#7d6a88;--pr:#b3261e;--ac:#c4281f;--ac2:#6b2bb5;--bd:#e6d8e3;--ok:#14855a;--er:#c0283a;--wr:#9a6a00;--glow:#c4281f2e;color-scheme:light}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{font-size:var(--fs,16px)}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:'Hind Siliguri',sans-serif;line-height:1.5;background-image:radial-gradient(900px 420px at 85% -80px,#7a2cc433,transparent 70%),radial-gradient(700px 380px at -10% 0,#d6322b2b,transparent 70%);background-attachment:fixed}
@@ -174,6 +174,40 @@ main{padding-bottom:calc(96px + env(safe-area-inset-bottom))}#toast{bottom:calc(
 .alr{display:flex;justify-content:space-between;align-items:center;width:100%;font:inherit;color:var(--tx);text-align:left;border:1px solid color-mix(in srgb,var(--pr) 45%,var(--bd));background:color-mix(in srgb,var(--ac) 12%,transparent);border-radius:18px;padding:13px 16px;margin-bottom:12px;cursor:pointer}
 .btn.g{background:var(--ok)!important;color:#04150d!important}
 .ka .ok:active,.ka .x:active{transform:scale(.97)}
+
+/* ===== স্ক্রিনশট UI (শুধু ডিজাইন) ===== */
+:root{--bg:#0c0d0f;--bg2:#15171a;--cd:#1a1c20;--cd2:#1a1c20;--tx:#f2f4f6;--mu:#8a9099;--pr:#2cc4d6;--ac:#1fb6c9;--ac2:#1496a8;--bd:#2a2d33;--glow:#1fb6c933}
+:root[data-theme=light]{--bg:#f3f6f8;--pr:#0e8fa3;--ac:#1098ab;--ac2:#0d7f90;--bd:#dfe6ea}
+.logo{background:none!important;color:#e58a4c;width:34px;height:34px}.logo svg{width:26px;height:26px;stroke-width:2.2}
+header{padding-bottom:12px}header h1{font-size:1.2rem}
+header .ib.lo{border-radius:50%;border:2px solid var(--ac);background:var(--cd)}
+.card{background:#1a1c20!important;border-radius:16px}:root[data-theme=light] .card{background:#fff!important}
+.srch{border-radius:12px;background:#1e2024;border-color:var(--bd)}
+.hi small{display:block;color:var(--mu)}.hi h2{font-size:1.3rem;font-weight:600}
+.st .card{padding:14px;align-items:flex-start;gap:12px;border-radius:18px}
+.st i{width:42px;height:42px;border-radius:14px}.st b{font-size:1.5rem;font-weight:700}
+.st .card:nth-child(1) i{background:#2dbd7a2e;color:#3ddc97}.st .card:nth-child(2) i{background:#3f86f02e;color:#6aa8ff}
+.st .card:nth-child(3) i{background:#f0a0302e;color:#ffb347}.st .card:nth-child(4) i{background:#d0409f2e;color:#ff75c3}
+.tl{grid-template-columns:repeat(2,1fr);gap:10px}
+.tl>div{display:flex;align-items:center;gap:10px;text-align:left;border:0;padding:15px 12px;font-size:.95rem;font-weight:600;color:#fff;border-radius:16px}
+.tl i{margin:0;width:38px;height:38px;border-radius:50%;background:#0003;color:#fff}
+.tl>div:nth-child(1){background:linear-gradient(135deg,#1f9a63,#2dbd7a)}.tl>div:nth-child(2){background:linear-gradient(135deg,#2a5fd0,#3f86f0)}
+.tl>div:nth-child(3){background:linear-gradient(135deg,#d9791a,#f0a030)}.tl>div:nth-child(4){background:linear-gradient(135deg,#a8308f,#d0409f)}
+.pt{font-size:1.5rem;font-weight:600;margin:2px 2px 12px}.sl{display:inline-block;color:var(--pr);font-weight:600;border-bottom:2px solid var(--pr);padding-bottom:4px;margin:6px 2px 12px}
+.tgr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
+.tgr .tr{position:relative;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;min-height:96px;border:0;border-radius:18px;padding:14px;margin:0;color:#fff}
+.tgr .tr i{width:36px;height:36px;border-radius:50%;background:#ffffff2e;color:#fff}.tgr .tr b{font-weight:600;font-size:.98rem}
+.tgr .tr:after{content:'\203A';position:absolute;top:10px;right:14px;font-size:1.5rem;line-height:1;opacity:.85}
+.tgr .tr:nth-child(6n+1){background:linear-gradient(135deg,#17808c,#24b4c0)}.tgr .tr:nth-child(6n+2){background:linear-gradient(135deg,#c87612,#e8a02e)}
+.tgr .tr:nth-child(6n+3){background:linear-gradient(135deg,#278a4c,#38b568)}.tgr .tr:nth-child(6n+4){background:linear-gradient(135deg,#8e2a9c,#c23aa8)}
+.tgr .tr:nth-child(6n+5){background:linear-gradient(135deg,#243a8c,#3556c0)}.tgr .tr:nth-child(6n){background:linear-gradient(135deg,#e84a8a,#f0a030 50%,#3a8cf0)}
+.big,.btn{border-radius:12px}.big{font-size:1rem;padding:13px}
+.btn.s,.ob{border-radius:12px}.addb{border-radius:12px}
+.tg.g,.bg.ok{background:color-mix(in srgb,var(--ac) 20%,transparent);color:var(--pr)}
+.num{width:40px;height:40px;border-radius:12px;border:0;background:#ffffff0d;font-size:.95rem}
+nav{background:#0f1113;border-top:1px solid var(--bd)}:root[data-theme=light] nav{background:#fff}
+nav button{border-radius:0;margin:0;color:var(--mu)}
+nav button.on{background:none!important;color:var(--pr);font-weight:600}nav button.on svg{transform:none}
 </style></head><body>
 <div id="app"><header><button class="ib" id="bk" onclick="back()"></button><div class="logo" id="lgo"></div><h1 id="ttl" style="flex:1"></h1><button class="ib lo" onclick="logoutDlg()" title="লগআউট" id="lob"></button></header><main id="main"></main><nav id="nav"></nav></div>
 <div id="mod"></div><div id="toast"></div>
@@ -241,7 +275,7 @@ V.dash=()=>{const rd=S.books.reduce((a,b)=>a+(b.v||0),0),lk=S.books.reduce((a,b)
  s=[['লাইভ বই',S.books.filter(b=>b.pub).length,'book'],['মোট পাঠ',kf(rd),'eye'],['লাইক',lk,'like'],['অধ্যায়',S.chapters.length,'file']],
  q=[['নতুন বই','edit',"go('bookForm')"],['নতুন অধ্যায়','file',"pickBook()"],['নোটিফিকেশন','bell',"go('notifs')"],['পরিসংখ্যান','trend',"go('stats')"]];
  return{t:'যাত্রাপথ',i:()=>{repBan();refreshReq().then(()=>{const e=$('#rqa');if(e){const m=reqN();e.innerHTML=m?`<button class="alr" onclick="tab('reqs')"><span>${bn(m)}টি অনুরোধ অপেক্ষায় আছে</span><span>→</span></button>`:''}})},
- h:`<div class="hi"><small>${gr}</small><h2>${esc(em||'অ্যাডমিন')}</h2></div>${tsBar()}<div id="tsr"></div><div id="dhome"><div id="rpBan"></div><div id="rqa">${n?`<button class="alr" onclick="tab('reqs')"><span>${bn(n)}টি অনুরোধ অপেক্ষায় আছে</span><span>→</span></button>`:''}</div><div class="st">${s.map(([l,v,i])=>`<div class="card"><i>${I(i)}</i><div><b>${typeof v=='number'?bn(v):v}</b><small>${l}</small></div></div>`).join('')}</div><h3>দ্রুত কাজ</h3><div class="tl">${q.map(([l,i,f])=>`<div onclick="${f}"><i>${I(i)}</i>${l}</div>`).join('')}</div>${S.books.length?`<h3>সাম্প্রতিক বই</h3><div class="strip rcs">${S.books.slice(-12).reverse().map(b=>`<div onclick="go('bookDetail',{id:${b.id}})">${cov(b)}<span>${esc(b.title)}</span></div>`).join('')}</div>`:''}<h3>সাম্প্রতিক কার্যক্রম</h3><div class="card">${S.log.slice(0,4).map(l=>`<div style="padding:7px 0;border-bottom:1px solid var(--bd)">• ${esc(l)}</div>`).join('')||'<small style="color:var(--mu)">এখনো কোনো কার্যক্রম নেই</small>'}</div><div style="text-align:center;margin-top:10px"><button class="ob" style="font-size:.8rem;padding:6px 14px" onclick="doSync().then(()=>location.reload())">⟳ রিফ্রেশ</button></div></div>`}};
+ h:`<div class="hi"><small>${gr}</small><h2>${esc(em||'অ্যাডমিন')}</h2><small>${fd(Date.now())}</small></div>${tsBar()}<div id="tsr"></div><div id="dhome"><div id="rpBan"></div><div id="rqa">${n?`<button class="alr" onclick="tab('reqs')"><span>${bn(n)}টি অনুরোধ অপেক্ষায় আছে</span><span>→</span></button>`:''}</div><div class="st">${s.map(([l,v,i])=>`<div class="card"><i>${I(i)}</i><div><b>${typeof v=='number'?bn(v):v}</b><small>${l}</small></div></div>`).join('')}</div><h3>দ্রুত কাজ</h3><div class="tl">${q.map(([l,i,f])=>`<div onclick="${f}"><i>${I(i)}</i>${l}</div>`).join('')}</div>${S.books.length?`<h3>সাম্প্রতিক বই</h3><div class="strip rcs">${S.books.slice(-12).reverse().map(b=>`<div onclick="go('bookDetail',{id:${b.id}})">${cov(b)}<span>${esc(b.title)}</span></div>`).join('')}</div>`:''}<h3>সাম্প্রতিক কার্যক্রম</h3><div class="card">${S.log.slice(0,4).map(l=>`<div style="padding:7px 0;border-bottom:1px solid var(--bd)">• ${esc(l)}</div>`).join('')||'<small style="color:var(--mu)">এখনো কোনো কার্যক্রম নেই</small>'}</div><div style="text-align:center;margin-top:10px"><button class="ob" style="font-size:.8rem;padding:6px 14px" onclick="doSync().then(()=>location.reload())">⟳ রিফ্রেশ</button></div></div>`}};
 /* Books */
 const bcardOld=b=>`<div class="card row"><div onclick="go('bookDetail',{id:${b.id}})">${cov(b)}</div><div class="fx" onclick="go('bookDetail',{id:${b.id}})"><b>${esc(b.title)}</b><small>${esc(b.author)}</small>${badge(b.pub)}</div><div class="ac"><button class="ib" onclick="go('read',{b:${b.id}})">${I('eye')}</button><button class="ib" onclick="go('bookForm',{id:${b.id}})">${I('edit')}</button><button class="ib dn" onclick="delBook(${b.id})">${I('trash')}</button></div></div>`;
 function blOld(){const q=$('#q').value.trim().toLowerCase(),s=$('#fs').value,c=$('#fc').value;const a=S.books.filter(b=>(!q||(b.title+b.author).toLowerCase().includes(q))&&(!s||(s=='p')==b.pub)&&(!c||b.cats.includes(+c)));$('#bl').innerHTML=a.length?a.map(bcard).join(''):empty('কোনো বই পাওয়া যায়নি')}
@@ -388,9 +422,9 @@ function upv(){$('#upv').innerHTML=`<b>আপডেট ঘোষণা প্র
 function saveU(){const url=$('#u4').value.trim();if(url&&!/^https?:\/\//.test(url))return $('#fe').textContent='সঠিক URL দিন।';if(!$('#u2').value.trim())return $('#fe').textContent='ভার্সন নাম দিন।';
  S.upd={vc:$('#u1').value,vn:$('#u2').value,notes:$('#u3').value,url,min:$('#u5').value,must:$('#u6').checked};dirty=false;toast('সংরক্ষিত')}
 /* Settings */
-const ACC={r:['গোলাপি','#d93f69','#c2365d'],b:['নীল','#2b6fd6','#6a3cc4'],t:['টিল','#0f9b8e','#2b6fd6'],o:['কমলা','#e0701b','#c4281f']};
+const ACC={r:['টিল (ডিফল্ট)','#1fb6c9','#1496a8'],b:['নীল','#2b6fd6','#6a3cc4'],t:['টিল','#0f9b8e','#2b6fd6'],o:['কমলা','#e0701b','#c4281f']};
 function setAcc(k){const a=ACC[k];document.documentElement.style.setProperty('--ac',a[1]);document.documentElement.style.setProperty('--ac2',a[2]);try{localStorage.setItem('jp_acc',k)}catch(e){}}
-function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('jp_theme',t)}catch(e){}document.querySelector('meta[name=theme-color]').content=t=='dark'?'#0d0912':'#f6f0f4'}
+function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('jp_theme',t)}catch(e){}document.querySelector('meta[name=theme-color]').content=t=='dark'?'#0c0d0f':'#f6f0f4'}
 try{const k=localStorage.getItem('jp_acc');if(k&&ACC[k])setAcc(k)}catch(e){}
 V.settings=()=>{let t='dark',k='r';try{t=localStorage.getItem('jp_theme')||'dark';k=localStorage.getItem('jp_acc')||'r'}catch(e){}
  return{t:'সেটিংস',h:`<div class="ban">Firebase সংযুক্ত — লাইভ ডেটা</div><div class="card"><label class="fl">থিম<select onchange="setTheme(this.value)"><option value="dark" ${t=='dark'?'selected':''}>ডার্ক (ডিফল্ট)</option><option value="light" ${t=='light'?'selected':''}>লাইট</option></select></label><label class="fl">লেখার আকার<select onchange="document.documentElement.style.setProperty('--fs',this.value)"><option value="16px">স্বাভাবিক</option><option value="18px">বড়</option><option value="14px">ছোট</option></select></label><label class="fl">অ্যাকসেন্ট রং<select onchange="setAcc(this.value)">${Object.entries(ACC).map(([x,a])=>`<option value="${x}" ${x==k?'selected':''}>${a[0]}</option>`).join('')}</select></label></div>${permCard()}<div class="card"><b>অ্যাডমিন অ্যাপ সম্পর্কে</b><p>যাত্রাপথ বাংলা উপন্যাস — অ্যাডমিন অ্যাপ।</p></div><button class="btn d" style="width:100%" onclick="logoutDlg()">লগ আউট</button>`}};
@@ -440,10 +474,10 @@ const TG=[['কনটেন্ট',[['বইসমূহ','book',"tab('books')",
 ['লেখক ও অনুরোধ',[['অনুরোধ','user',"tab('reqs')",'লেখক আইডি অ্যাকাউন্ট গ্রহণ request approve'],['লেখকগণ','user',"go('writers')",'writer author ব্লক'],['লেখকের অনুমতি','gear',"go('audio')",'অনুমতি অডিওবুক টেক্সট বুক on off permission চালু বন্ধ'],['বই রিপোর্ট','flag',"go('reports')",'report অভিযোগ'],['পাঠকের মন্তব্য','chat',"go('comments')",'comment']]],
 ['প্রচার',[['নির্বাচিত উপন্যাস','star',"go('list',{k:'feat'})",'featured'],['সাপ্তাহিক জনপ্রিয়','trend',"go('list',{k:'w'})",'weekly'],['মাসিক জনপ্রিয়','cal',"go('list',{k:'m'})",'monthly'],['বাৎসরিক জনপ্রিয়','cal',"go('list',{k:'y'})",'yearly'],['নোটিফিকেশন','bell',"go('notifs')",'notice ঘোষণা']]],
 ['সিস্টেম',[['পরিসংখ্যান','trend',"go('stats')",'stats গ্রাফ analytics'],['ইউজার অ্যাপ','phone',"tab('uapp')",'user app'],['অ্যাপ আপডেট','dl',"go('update')",'update version'],['সেটিংস','gear',"go('settings')",'settings থিম theme']]]];
-const toolRows=q=>{q=(q||'').trim().toLowerCase();return TG.map(([g,L])=>{const r=L.filter(x=>!q||(x[0]+' '+x[3]).toLowerCase().includes(q));return r.length?`<h3>${g}</h3>`+r.map(x=>`<div class="tr" onclick="${x[2]}"><i>${I(x[1])}</i><b>${x[0]}</b></div>`).join(''):''}).join('')||empty('কোনো টুল পাওয়া যায়নি')};
+const toolRows=q=>{q=(q||'').trim().toLowerCase();return TG.map(([g,L])=>{const r=L.filter(x=>!q||(x[0]+' '+x[3]).toLowerCase().includes(q));return r.length?`<h3>${g}</h3><div class="tgr">`+r.map(x=>`<div class="tr" onclick="${x[2]}"><i>${I(x[1])}</i><b>${x[0]}</b></div>`).join('')+'</div>':''}).join('')||empty('কোনো টুল পাওয়া যায়নি')};
 function tsr(){const q=$('#ts').value,e=$('#tsr');if(!e)return;e.innerHTML=toolRows(q);const d=$('#dhome');if(d)d.style.display=q.trim()?'none':''}
 const tsBar=()=>`<div class="srch" style="margin-bottom:14px">${I('search')}<input id="ts" placeholder="টুল খুঁজুন — যেমন: লেখক, কভার, আপডেট…" oninput="tsr()"></div>`;
-V.more=()=>({t:'সব টুলস',h:tsBar()+'<div id="tsr"></div>',i:tsr});
+V.more=()=>({t:'সব টুলস',h:'<h2 class="pt">অ্যাডমিন টুলস</h2>'+tsBar()+'<div class="sl">টুল বাছাই করুন</div><div id="tsr"></div>',i:tsr});
 /* অনুরোধ */
 let RQT='a';
 const avt=a=>`<div class="cv" style="width:52px;height:52px;border-radius:50%;background:var(--ac)">${a.photo?`<img src="${a.photo}" alt="">`:`<span>${esc(Array.from(a.name||'ল')[0])}</span>`}</div>`;
