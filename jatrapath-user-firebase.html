@@ -698,6 +698,7 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .wp .wfl textarea{min-height:110px;resize:vertical;line-height:1.6}
 .wp .wfl input:focus,.wp .wfl textarea:focus,.wp .wfl select:focus{outline:0;border-color:var(--wa)}
 .wp .wfl select{appearance:auto}.wp .wfl input:disabled{opacity:.6}
+.wp .wfin{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:16px 0 4px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card)}.wp .wfin b{font-size:16px;font-weight:600;flex:1;line-height:1.4}.wp .wsw{display:flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;flex:none}.wp .wsw button{font:inherit;font-size:15px;font-weight:700;padding:8px 16px;background:transparent;color:var(--muted);border:0}.wp .wsw button.on{background:var(--wa);color:#fff}.wp .wsw button:disabled{opacity:.6}
 .wp .werr{color:#ff6b6b;font-size:14px;min-height:20px;margin:6px 2px}
 .wp .wnote{color:var(--muted);font-size:13px;margin:4px 2px 0}
 .wp .wbk{display:flex;gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);margin-bottom:12px;position:relative}
@@ -1827,29 +1828,50 @@ async function wBooks() {
   const books = await wMyBooks();
   const list = books.map((b) => '<div class="wbk"><div class="cv">' + (b.cover ? '<img src="' + esc(b.cover) + '" alt="">' : '') + '</div><div class="in"><button class="tt" data-w="go" data-href="/w/book/' + esc(b.id) + '">' + esc(b.title) + '</button>' +
     '<div class="sb">ক্যাটাগরি: ' + esc(b.cat || '—') + '</div><div class="chs">' + wChip(b) + '<span class="wchip">' + (b.done ? 'সমাপ্ত' : 'চলমান') + '</span></div>' +
-    '<div class="rw"><span class="wchip" aria-label="' + bn(b.reads || 0) + ' ভিউ">👁 ' + bn(b.reads || 0) + '</span><button class="wbtn sm" data-w="go" data-href="/w/chs/' + esc(b.id) + '">' + WI.plus + 'পর্ব যোগ</button></div></div>' +
-    (b.pub ? '' : '<button class="wdel" data-w="del-book" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '" aria-label="' + esc(b.title) + ' মুছুন">' + IC.trash + '</button>') + '</div>').join('');
+    '<div class="rw"><span class="wchip" aria-label="' + bn(b.reads || 0) + ' ভিউ">👁 ' + bn(b.reads || 0) + '</span><button class="wbtn sm ghost" style="color:#e5484d" data-w="del-book" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '">মুছুন</button><button class="wbtn sm ghost" data-w="go" data-href="/w/book/' + esc(b.id) + '">এডিট</button><button class="wbtn sm" data-w="go" data-href="/w/chs/' + esc(b.id) + '">' + WI.plus + 'পর্ব যোগ</button></div></div>' +
+    '' + '</div>').join('');
   return wPage('আমার গল্প', '<button class="wbtn" style="margin-bottom:14px" data-w="go" data-href="/w/book">' + WI.plus + 'নতুন গল্প যোগ করুন</button>' + (list || '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>'), 'books', false);
 }
 
 /* ---- অডিও আপলোড (Firebase Storage) ---- */
 const WAU_MAX = 100 * 1048576;
 async function wStorage() { if (!firebase.storage) await wLoadScript(wCdn('storage')); return WR.app.storage(); }
+/* ---- 'এটি কি বইয়ের শেষ পর্ব?' সুইচ ---- */
+function wFinRow(b, c) {
+  const on = !!(c && c.fin), off = !!b.done && !on;
+  return '<div class="wfin" id="wFin"><b>এটি কি বইয়ের শেষ পর্ব?</b><div class="wsw" role="group" aria-label="এটি কি বইয়ের শেষ পর্ব?"><button type="button" data-w="fin-on" class="' + (on ? 'on' : '') + '" aria-pressed="' + on + '"' + (off ? ' disabled' : '') + '>On</button><button type="button" data-w="fin-off" class="' + (on ? '' : 'on') + '" aria-pressed="' + (!on) + '"' + (off ? ' disabled' : '') + '>Off</button></div></div>' +
+    (on ? '<p class="wnote">এটি বইয়ের শেষ পর্ব হিসেবে চিহ্নিত — আর Off করা যাবে না।</p>' : off ? '<p class="wnote">বইটি আগেই সমাপ্ত করা হয়েছে।</p>' : '');
+}
+async function wFinishBook(E) {
+  if (!E.fin) return;
+  try { await WR.fs.doc('books/' + E.bid).update({ done: true, status: 'সমাপ্ত' }); } catch (e) { toast('বই "সমাপ্ত" করা যায়নি — অ্যাডমিনকে জানান'); }
+}
+/* প্রকাশিত বইয়ের পর্ব-তালিকা (chs / audio) পর্ব বদলালে বা মুছলে মিলিয়ে রাখা */
+async function wSyncBook(E, mode, f) {
+  if (!E.pub) return;
+  try {
+    const ref = WR.fs.doc('books/' + E.bid), d = await ref.get(); if (!d.exists) return; const x = d.data(), up = {};
+    const hit = (e) => String(e.id) === String(E.cid) || (e.id == null && e.n != null && +e.n === +E.oldN);
+    if (Array.isArray(x.chs) && x.chs.some(hit)) up.chs = mode === 'del' ? x.chs.filter((e) => !hit(e)) : x.chs.map((e) => hit(e) ? Object.assign({}, e, { n: f.n, t: f.title }) : e);
+    if (Array.isArray(x.audio) && x.audio.some(hit)) up.audio = mode === 'del' ? x.audio.filter((e) => !hit(e)) : x.audio.map((e) => hit(e) ? Object.assign({}, e, { n: f.n, title: f.title }, f.audio ? { url: f.audio } : {}) : e);
+    if (Object.keys(up).length) await ref.update(up);
+  } catch (e) { toast('বইয়ের পর্ব-তালিকা হালনাগাদ করা যায়নি — অ্যাডমিনকে জানান'); }
+}
 function wAudioEditor(b, c, nn, lock) {
   WR.audioFile = null; WR.ed.voice = true;
   const au = c ? (typeof c.audio === 'string' ? c.audio : (c.audio && c.audio.url) || '') : '';
   WR.ed.hasAudio = !!au; WR.ed.oldPath = (c && c.audioPath) || '';
   const nm = c && (c.audioName || '') ;
   const box = au ? IC.headphone + '<br><b>' + esc(nm || 'অডিও ফাইল') + '</b><br><small>' + (c.audioSize ? fmtSize(c.audioSize) + ' · ' : '') + (lock ? 'প্রকাশিত' : 'ফাইল বদলাতে চাপুন') + '</small>' : IC.headphone + '<br><b>অডিও ফাইল চুজ করুন</b><br><small>MP3, M4A, AAC, WAV • সর্বোচ্চ ' + bn(100) + ' MB</small>';
-  const body = (lock ? '<div class="wcard">এই পর্ব প্রকাশিত হয়ে গেছে, তাই এখানে বদলানো যায় না। বদলাতে অ্যাডমিনকে জানান।</div>' : '') +
-    '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) +
+  const body = (c && c.pub ? '<div class="wcard">এই পর্ব লাইভ আছে। সেভ করলে পরিবর্তন সাথে সাথে পাঠকদের কাছে দেখা যাবে।</div>' : '') +
+    '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) + wFinRow(b, c) +
     '<h2 style="margin-top:18px">অডিও ফাইল *</h2>' +
     '<button type="button" class="wcard" id="wAuBox" style="width:100%;text-align:center;min-height:130px;display:grid;place-items:center;font:inherit;color:var(--text);line-height:1.7" data-w="pick-au"' + (lock ? ' disabled' : '') + '>' + box + '</button>' +
     '<input type="file" id="wAuF" accept="audio/*,.mp3,.m4a,.aac,.wav,.ogg,.opus" hidden>' +
     '<audio id="wAuPrev" controls preload="metadata" style="width:100%;margin-top:12px;' + (au ? '' : 'display:none') + '"' + (au ? ' src="' + esc(au) + '"' : '') + '></audio>' +
     '<div id="wAuProg" style="display:none;margin-top:12px"><div style="height:8px;border-radius:8px;background:var(--line);overflow:hidden"><div id="wAuBar" style="height:100%;width:0;background:var(--pri,#c2185b);transition:width .2s"></div></div><div id="wAuPct" class="wnote" style="margin-top:6px"></div></div>' +
     '<div class="werr" id="wErr" role="alert"></div>' +
-    (lock ? '' : '<button class="wbtn" data-w="save-ch" id="wBtn">আপলোড করে সেভ করুন</button>' + (c ? '<button class="wbtn ghost" style="margin-top:10px" data-w="del-ch" data-id="' + esc(c.id) + '">এই পর্ব মুছুন</button>' : '') + '<p class="wnote">সেভ করলে পর্বটি রিভিউয়ের জন্য অ্যাডমিনের কাছে যাবে। আপলোড শেষ না হওয়া পর্যন্ত পেজ ছাড়বেন না।</p>');
+    (lock ? '' : '<button class="wbtn" data-w="save-ch" id="wBtn">আপলোড করে সেভ করুন</button>' + (c ? '<button class="wbtn ghost" style="margin-top:10px" data-w="del-ch" data-id="' + esc(c.id) + '">এই পর্ব মুছুন</button>' : '') + '<p class="wnote">' + (c && c.pub ? 'সেভ করলে পরিবর্তন লাইভ পর্বে বসে যাবে।' : 'সেভ করলে পর্বটি রিভিউয়ের জন্য অ্যাডমিনের কাছে যাবে।') + ' আপলোড শেষ না হওয়া পর্যন্ত পেজ ছাড়বেন না।</p>');
   return wPage(c ? 'পর্ব এডিট' : 'নতুন অডিও চ্যাপ্টার', body, null, true);
 }
 async function wSaveAudio() {
@@ -1859,7 +1881,7 @@ async function wSaveAudio() {
   if (!file && !E.hasAudio) return wSet('অডিও ফাইল চুজ করুন');
   wSet(''); wBusy(1);
   try {
-    const f = { n, title: ti || ('পর্ব ' + n) };
+    const f = { n, title: ti || ('পর্ব ' + n) }; if (E.fin) f.fin = true;
     if (file) {
       const st = await wStorage();
       const ext = ((file.name.split('.').pop() || 'mp3').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 5)) || 'mp3';
@@ -1875,7 +1897,8 @@ async function wSaveAudio() {
     if (E.cid) await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).update(f);
     else { const id = String(wnid()); await WR.fs.doc('books/' + E.bid + '/chapters/' + id).set(Object.assign(f, { id: +id, b: +E.bid, pub: false, type: 'voice', d: Date.now(), v: 0, ownerUid: WR.user.uid })); }
     if (file && E.oldPath) { try { const st = await wStorage(); await st.ref(E.oldPath).delete(); } catch (e) { /* ignore */ } }
-    WR.dirty = false; WR.audioFile = null; toast('অডিও পর্ব রিভিউয়ের জন্য পাঠানো হয়েছে'); goBack();
+    if (E.cid) await wSyncBook(E, 'upd', f); await wFinishBook(E);
+    WR.dirty = false; WR.audioFile = null; toast(E.pub ? 'অডিও পর্ব আপডেট হয়েছে' : 'অডিও পর্ব রিভিউয়ের জন্য পাঠানো হয়েছে'); goBack();
   } catch (x) { wSet(wErr(x)); wBusy(0); const pr = document.getElementById('wAuProg'); if (pr) pr.style.display = 'none'; }
 }
 
@@ -1885,15 +1908,15 @@ async function wBookForm(id) {
   const cats = await wCats(); let b = null;
   if (id) { b = await wBook(id); if (!b) return wPage('গল্প', '<div class="wgate"><p>গল্প পাওয়া যায়নি</p></div>', 'books'); }
   wCover = b ? (b.cover || null) : null; WR.dirty = false;
-  const lock = b && b.pub;
-  const body = (lock ? '<div class="wcard">এই গল্প লাইভ আছে। বই বদলাতে অ্যাডমিনকে জানান; আপনি নতুন পর্ব যোগ করতে পারবেন।</div>' : '') +
+  const lock = false;
+  const body = (b && b.pub ? '<div class="wcard">এই গল্প লাইভ আছে। সেভ করলে পরিবর্তন সাথে সাথে পাঠকদের কাছে দেখা যাবে।</div>' : '') +
     wFld('গল্পের নাম *', 'wb-t', b ? b.title : '', { dis: lock }) + wFld('লেখকের নাম', 'wb-a', b ? b.author : ((WR.prof && WR.prof.name) || ''), { dis: lock }) +
     (() => { const pa = !!(WR.perms && WR.perms.audio === true), pt = !(WR.perms && WR.perms.text === false), ty = b && b.type === 'voice' ? 'voice' : 'book'; return '<div class="wfl"><label for="wb-ty">বইয়ের ধরন *</label><select id="wb-ty"' + ((id || lock) ? ' disabled' : '') + '><option value="book"' + (pt ? '' : ' disabled') + (ty === 'book' ? ' selected' : '') + '>টেক্সট বুক' + (pt ? '' : ' (অ্যাডমিন সাময়িক বন্ধ রেখেছে)') + '</option><option value="voice"' + (pa ? '' : ' disabled') + (ty === 'voice' ? ' selected' : '') + '>অডিওবুক' + (pa ? '' : ' (এখনো চালু হয়নি)') + '</option></select></div>'; })() +
     '<div class="wfl"><label for="wb-c">ক্যাটাগরি *</label><select id="wb-c"' + (lock ? ' disabled' : '') + '><option value="">নির্বাচন করুন</option>' + cats.map((c) => '<option value="' + c.id + '"' + (b && (b.cats || [])[0] === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></div>' +
-    '<div class="wfl"><label for="wb-s">স্ট্যাটাস</label><select id="wb-s"' + (lock ? ' disabled' : '') + '><option value="0"' + (b && b.done ? '' : ' selected') + '>চলমান</option><option value="1"' + (b && b.done ? ' selected' : '') + '>সমাপ্ত</option></select></div>' +
+    '<div class="wfl"><label for="wb-s">স্ট্যাটাস</label><select id="wb-s"' + (lock || (b && b.done) ? ' disabled' : '') + '><option value="0"' + (b && b.done ? '' : ' selected') + '>চলমান</option><option value="1"' + (b && b.done ? ' selected' : '') + '>সমাপ্ত</option></select></div>' +
     wFld('সংক্ষিপ্ত বিবরণ (ঐচ্ছিক)', 'wb-d', b ? b.desc : '', { ta: 1, dis: lock }).replace('<textarea ', lock ? '<textarea disabled ' : '<textarea ') +
     '<h2 style="margin-top:18px">কভার ইমেজ *</h2><button type="button" class="wcard" style="width:100%;text-align:center;min-height:150px;display:grid;place-items:center;font:inherit;color:var(--text)" data-w="pick-cov"' + (lock ? ' disabled' : '') + ' aria-label="কভার ছবি নির্বাচন করুন"><span id="wCovBox">' + (wCover ? '<img src="' + esc(wCover) + '" alt="কভার" style="max-height:230px;border-radius:12px">' : WI.plus + '<br>ক্লিক করে ছবি নির্বাচন করুন') + '</span></button><input type="file" id="wCovF" accept="image/*" hidden>' +
-    '<div class="werr" id="wErr" role="alert"></div>' + (lock ? '' : '<button class="wbtn" data-w="save-book" data-id="' + esc(id) + '" id="wBtn">সেভ করুন</button><p class="wnote">সেভ করলে গল্পটি রিভিউয়ের জন্য অ্যাডমিনের কাছে যাবে। অনুমোদনের পর অ্যাপে লাইভ হবে।</p>');
+    '<div class="werr" id="wErr" role="alert"></div>' + (lock ? '' : '<button class="wbtn" data-w="save-book" data-id="' + esc(id) + '" id="wBtn">সেভ করুন</button><p class="wnote">' + (b && b.pub ? 'এই গল্প লাইভ আছে — সেভ করলে পরিবর্তন সাথে সাথে বসে যাবে।' : 'সেভ করলে গল্পটি রিভিউয়ের জন্য অ্যাডমিনের কাছে যাবে। অনুমোদনের পর অ্যাপে লাইভ হবে।') + '</p>' + (id ? '<button class="wbtn ghost" style="margin-top:10px;color:#e5484d" data-w="del-book" data-id="' + esc(id) + '" data-t="' + esc(b ? b.title : '') + '">এই গল্প মুছুন</button>' : ''));
   return wPage(id ? 'গল্প সম্পাদনা করুন' : 'গল্প যোগ করুন', body, null, true);
 }
 
@@ -1903,8 +1926,8 @@ async function wChs(bid) {
   const cs = await wChaps(bid);
   const fd = (t) => { if (!t) return ''; const d = new Date(t); return bn(d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0')); };
   const body = '<div class="wsum"><div class="cv">' + (b.cover ? '<img src="' + esc(b.cover) + '" alt="">' : '') + '</div><div class="in"><span>লেখক: ' + esc(b.author) + '</span><span>ক্যাটাগরি: ' + esc(b.cat || '—') + '</span><span>ধরণ: ' + (b.type === 'voice' ? 'অডিওবুক' : 'টেক্সট বুক') + '</span><span>স্ট্যাটাস: ' + (b.done ? 'সমাপ্ত' : 'চলমান') + '</span>' + wChip(b) + '</div></div>' +
-    '<h2>' + (b.type === 'voice' ? 'অডিও চ্যাপ্টার সমূহ' : 'টেক্সট চ্যাপ্টার সমূহ') + '</h2>' + (cs.length ? cs.map((c) => '<div class="wrow"><div class="ti">' + esc(c.title || ('পর্ব ' + bn(c.n))) + '<small>' + fd(c.d) + ' • ' + bn(c.n) + ' নং' + (c.audioName ? ' • 🎧 ' + esc(c.audioName) : '') + '</small></div>' + (c.pub ? '<span class="wchip ok">প্রকাশিত</span>' : '<span class="wchip rv">রিভিউ</span>') + '<button class="wlink" data-w="go" data-href="/w/ch/' + esc(bid) + '/' + esc(c.id) + '" aria-label="' + esc(c.title || ('পর্ব ' + c.n)) + ' এডিট">' + (c.pub ? 'দেখুন' : 'এডিট') + '</button></div>').join('') : '<div class="wgate"><p>এখনো কোনো পর্ব নেই</p></div>') +
-    (b.done ? '<p class="wnote">গল্পটি সমাপ্ত — নতুন পর্ব যোগ করতে হলে স্ট্যাটাস "চলমান" করুন।</p>' : '');
+    '<h2>' + (b.type === 'voice' ? 'অডিও চ্যাপ্টার সমূহ' : 'টেক্সট চ্যাপ্টার সমূহ') + '</h2>' + (cs.length ? cs.map((c) => '<div class="wrow"><div class="ti">' + esc(c.title || ('পর্ব ' + bn(c.n))) + '<small>' + fd(c.d) + ' • ' + bn(c.n) + ' নং' + (c.audioName ? ' • 🎧 ' + esc(c.audioName) : '') + '</small></div>' + (c.pub ? '<span class="wchip ok">প্রকাশিত</span>' : '<span class="wchip rv">রিভিউ</span>') + '<button class="wlink" data-w="go" data-href="/w/ch/' + esc(bid) + '/' + esc(c.id) + '" aria-label="' + esc(c.title || ('পর্ব ' + c.n)) + ' এডিট">' + 'এডিট</button><button class="wlink" style="color:#e5484d" data-w="del-ch-row" data-b="' + esc(bid) + '" data-id="' + esc(c.id) + '" data-fin="' + (c.fin ? 1 : 0) + '">মুছুন</button></div>').join('') : '<div class="wgate"><p>এখনো কোনো পর্ব নেই</p></div>') +
+    (b.done ? '<p class="wnote">গল্পটি সমাপ্ত — আর নতুন পর্ব যোগ করা যাবে না। আগের পর্ব এডিট বা ডিলিট করতে পারবেন।</p>' : '');
   return wPage('এপিসোড', body, null, true, b.done ? '' : '<button class="wlink" data-w="go" data-href="/w/ch/' + esc(bid) + '">নতুন চ্যাপ্টার</button>');
 }
 
@@ -1916,16 +1939,17 @@ async function wEditor(bid, cid) {
   const b = await wBook(bid); if (!b) return wPage('পর্ব', '<div class="wgate"><p>গল্প পাওয়া যায়নি</p></div>', 'books');
   const cs = await wChaps(bid); const c = cid ? cs.find((x) => x.id === cid) : null;
   if (cid && !c) return wPage('পর্ব', '<div class="wgate"><p>পর্ব পাওয়া যায়নি</p></div>', 'books');
-  const lock = !!(c && c.pub); const nn = c ? c.n : (cs.reduce((m, x) => Math.max(m, x.n || 0), 0) + 1);
+  if (!cid && b.done) return wPage('পর্ব', '<div class="wgate"><p>গল্পটি সমাপ্ত — আর নতুন পর্ব যোগ করা যাবে না</p></div>', 'books');
+  const lock = false; const nn = c ? c.n : (cs.reduce((m, x) => Math.max(m, x.n || 0), 0) + 1);
   const dr = store.get(wDraftKey(bid, cid), null); const html = dr && dr.html ? wSan(dr.html) : (c ? (c.html ? wSan(c.html) : esc(c.text || '').replace(/\n/g, '<br>')) : '');
-  WR.dirty = false; WR.ed = { bid, cid, nums: cs.filter((x) => x.id !== cid).map((x) => x.n), lock };
+  WR.dirty = false; WR.ed = { bid, cid, nums: cs.filter((x) => x.id !== cid).map((x) => x.n), lock, pub: !!(c && c.pub), oldN: c ? c.n : null, fin: false, fin0: !!(c && c.fin) };
   if (b.type === 'voice') return wAudioEditor(b, c, nn, lock);
-  const body = (lock ? '<div class="wcard">এই পর্ব প্রকাশিত হয়ে গেছে, তাই এখানে বদলানো যায় না। বদলাতে অ্যাডমিনকে জানান।</div>' : '') +
-    '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) +
+  const body = (c && c.pub ? '<div class="wcard">এই পর্ব লাইভ আছে। সেভ করলে পরিবর্তন সাথে সাথে পাঠকদের কাছে দেখা যাবে।</div>' : '') +
+    '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) + wFinRow(b, c) +
     '<div style="margin-top:16px"><div class="wtb" role="toolbar" aria-label="লেখার টুল"><button type="button" data-w="fmt" data-c="bold" aria-label="বোল্ড"><b>B</b></button><button type="button" data-w="fmt" data-c="italic" aria-label="ইটালিক"><i>I</i></button></div>' +
     '<div class="wed" id="wEd" role="textbox" aria-multiline="true" aria-label="গল্প লেখার জায়গা" ' + (lock ? '' : 'contenteditable="true"') + ' data-ph="এখানে আপনার গল্প লিখুন...">' + html + '</div></div>' +
     '<div class="wcnt"><span id="wWc" aria-live="polite"></span><span>কমপক্ষে ' + bn(MINW) + ' শব্দ</span></div><div class="werr" id="wErr" role="alert"></div>' +
-    (lock ? '' : '<button class="wbtn" data-w="save-ch" id="wBtn">সেভ করুন</button>' + (c ? '<button class="wbtn ghost" style="margin-top:10px" data-w="del-ch" data-id="' + esc(cid) + '">এই পর্ব মুছুন</button>' : '') + '<p class="wnote">সেভ করলে পর্বটি রিভিউয়ের জন্য অ্যাডমিনের কাছে যাবে।</p>');
+    (lock ? '' : '<button class="wbtn" data-w="save-ch" id="wBtn">সেভ করুন</button>' + (c ? '<button class="wbtn ghost" style="margin-top:10px" data-w="del-ch" data-id="' + esc(cid) + '">এই পর্ব মুছুন</button>' : '') + '<p class="wnote">' + (c && c.pub ? 'সেভ করলে পরিবর্তন লাইভ পর্বে বসে যাবে।' : 'সেভ করলে পর্বটি রিভিউয়ের জন্য অ্যাডমিনের কাছে যাবে।') + '</p>');
   return wPage(c ? 'পর্ব এডিট' : 'নতুন চ্যাপ্টার', body, null, true);
 }
 
@@ -1956,6 +1980,19 @@ async function wClick(ev) {
       case 'retry': WR.ready = null; WR.cache = null; route(); break;
       case 'pw': { const i = document.getElementById(el.dataset.id); if (i) i.type = i.type === 'password' ? 'text' : 'password'; break; }
       case 'pick-av': { const f = document.getElementById('wavF'); if (f) f.click(); break; }
+      case 'fin-on': {
+        const E = WR.ed; if (!E || E.fin) break; const bx = document.getElementById('wFin'); if (!bx || bx.querySelector('[data-w="fin-on"]').classList.contains('on')) break;
+        showDialog({ emoji: '⚠️', title: 'এটি কি বইয়ের শেষ পর্ব?', text: 'আপনি যদি এটি একবার On করেন, তাহলে দ্বিতীয়বার আর Off করতে পারবেন না। আপনি কি এটি On করতে চান?', no: 'না, On করব না', yes: 'হ্যাঁ, On করব', onYes: () => { E.fin = true; WR.dirty = true; const b2 = document.getElementById('wFin'); if (b2) { b2.querySelector('[data-w="fin-on"]').classList.add('on'); b2.querySelector('[data-w="fin-off"]').classList.remove('on'); } } }); break;
+      }
+      case 'del-ch-row': {
+        const bid = el.dataset.b, cid = el.dataset.id; if (el.dataset.fin === '1') { toast('বইয়ের শেষ পর্ব মুছা যাবে না — এডিট করতে পারবেন'); break; }
+        showDialog({ emoji: '⚠️', title: 'পর্ব মুছবেন?', text: 'এই পর্বটি পাঠকদের কাছ থেকেও মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { try {
+          const ref = WR.fs.doc('books/' + bid + '/chapters/' + cid), d = await ref.get(), c = d.exists ? d.data() : {};
+          await ref.delete(); await wSyncBook({ bid, cid, pub: !!c.pub, oldN: c.n }, 'del', {});
+          if (c.audioPath) { try { const st = await wStorage(); await st.ref(c.audioPath).delete(); } catch (e) { /* ignore */ } }
+          toast('মুছে ফেলা হয়েছে'); route(); } catch (x) { toast(wErr(x)); } } }); break;
+      }
+      case 'fin-off': { const bx = document.getElementById('wFin'); if (bx && bx.querySelector('[data-w="fin-on"]').classList.contains('on')) toast('একবার On করলে আর Off করা যায় না'); break; }
       case 'pick-au': { const f = document.getElementById('wAuF'); if (f) f.click(); break; }
       case 'pick-cov': { const f = document.getElementById('wCovF'); if (f) f.click(); break; }
       case 'fmt': { const e = document.getElementById('wEd'); if (e) { e.focus(); document.execCommand(el.dataset.c); wUpdBar(); WR.dirty = true; wDraft(); } break; }
@@ -1987,13 +2024,13 @@ async function wClick(ev) {
         const cat = (WR.cats.find((c) => c.id === ci) || {}).name || ''; wSet(''); wBusy(1);
         try {
           const f = { title: t, author: au || (WR.prof && WR.prof.name) || '', cat, cats: [ci], done: dn, status: dn ? 'সমাপ্ত' : 'চলমান', desc: ds, cover: wCover, type: ty };
-          if (id) { await WR.fs.doc('books/' + id).update(Object.assign(f, { st: 'review' })); toast('সংরক্ষিত হয়েছে'); WR.dirty = false; goBack(); }
+          if (id) { const cur = await wBook(id); await WR.fs.doc('books/' + id).update(cur && cur.pub ? f : Object.assign(f, { st: 'review' })); toast('সংরক্ষিত হয়েছে'); WR.dirty = false; goBack(); }
           else { const nid = String(wnid()); await WR.fs.doc('books/' + nid).set(Object.assign(f, { id: nid, pub: false, st: 'review', ownerUid: WR.user.uid, ownerName: (WR.prof && WR.prof.name) || '', createdAt: Date.now(), reads: 0, likes: 0, dislikes: 0, chs: [], audio: [] })); toast('গল্প রিভিউয়ের জন্য পাঠানো হয়েছে — এবার পর্ব যোগ করুন'); WR.dirty = false; nav('/w/chs/' + nid, true); }
         } catch (x) { wSet(wErr(x)); wBusy(0); } break;
       }
       case 'del-book': {
-        const id = el.dataset.id; showDialog({ title: 'গল্প মুছবেন?', text: '"' + el.dataset.t + '" ও এর সব পর্ব মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => {
-          try { const cs = await wChaps(id); for (const c of cs) await WR.fs.doc('books/' + id + '/chapters/' + c.id).delete(); await WR.fs.doc('books/' + id).delete(); toast('মুছে ফেলা হয়েছে'); route(); } catch (x) { toast(wErr(x)); } } }); break;
+        const id = el.dataset.id; showDialog({ emoji: '⚠️', title: 'গল্প মুছবেন?', text: '"' + el.dataset.t + '" ও এর সব পর্ব মুছে যাবে। বইটি লাইভ থাকলে পাঠকদের কাছ থেকেও চলে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => {
+          try { const cs = await wChaps(id); for (const c of cs) await WR.fs.doc('books/' + id + '/chapters/' + c.id).delete(); await WR.fs.doc('books/' + id).delete(); toast('মুছে ফেলা হয়েছে'); if (/^\/w\/book\//.test(curPath)) { WR.dirty = false; nav('/w/books', true); } else route(); } catch (x) { toast(wErr(x)); } } }); break;
       }
       case 'save-ch': {
         if (WR.ed && WR.ed.voice) { await wSaveAudio(); break; }
@@ -2001,14 +2038,16 @@ async function wClick(ev) {
         if (!(n >= 1)) return wSet('সঠিক পর্ব নম্বর দিন'); if (E.nums.includes(n)) return wSet('এই নম্বরে আরেকটি পর্ব আছে'); if (wWords(text) < MINW) return wSet('পর্ব সেভ করতে কমপক্ষে ' + bn(MINW) + ' শব্দ লিখতে হবে');
         wSet(''); wBusy(1);
         try {
-          const f = { n, title: ti || ('পর্ব ' + n), text: text.replace(/\n+/g, '\n\n'), html: wSan(ed.innerHTML) };
+          const f = { n, title: ti || ('পর্ব ' + n), text: text.replace(/\n+/g, '\n\n'), html: wSan(ed.innerHTML) }; if (E.fin) f.fin = true;
           if (E.cid) await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).update(f);
           else { const id = String(wnid()); await WR.fs.doc('books/' + E.bid + '/chapters/' + id).set(Object.assign(f, { id: +id, b: +E.bid, pub: false, audio: null, d: Date.now(), v: 0, ownerUid: WR.user.uid })); }
-          store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast('পর্ব রিভিউয়ের জন্য পাঠানো হয়েছে'); goBack();
+          if (E.cid) await wSyncBook(E, 'upd', f); await wFinishBook(E);
+          store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast(E.pub ? 'পর্ব আপডেট হয়েছে' : 'পর্ব রিভিউয়ের জন্য পাঠানো হয়েছে'); goBack();
         } catch (x) { wSet(wErr(x)); wBusy(0); } break;
       }
       case 'del-ch': {
-        const E = WR.ed; showDialog({ title: 'পর্ব মুছবেন?', text: 'এই পর্বটি মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { try { await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).delete(); if (E.oldPath) { try { const st = await wStorage(); await st.ref(E.oldPath).delete(); } catch (e) { /* ignore */ } } store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast('মুছে ফেলা হয়েছে'); goBack(); } catch (x) { toast(wErr(x)); } } }); break;
+        const E = WR.ed; if (E.fin0) { toast('বইয়ের শেষ পর্ব মুছা যাবে না — এডিট করতে পারবেন'); break; }
+        showDialog({ emoji: '⚠️', title: 'পর্ব মুছবেন?', text: E.pub ? 'এই পর্বটি পাঠকদের কাছ থেকেও মুছে যাবে।' : 'এই পর্বটি মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { try { await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).delete(); await wSyncBook(E, 'del', {}); if (E.oldPath) { try { const st = await wStorage(); await st.ref(E.oldPath).delete(); } catch (e) { /* ignore */ } } store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast('মুছে ফেলা হয়েছে'); goBack(); } catch (x) { toast(wErr(x)); } } }); break;
       }
     }
   } catch (x) { console.warn(x); toast(wErr(x)); }
