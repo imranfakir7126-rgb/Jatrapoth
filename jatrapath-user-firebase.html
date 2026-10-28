@@ -1280,7 +1280,6 @@ function handleSync(method, full, body, user) {
     let list = q.get('audio') ? db.books.filter((b) => !isText(b)) : texts(); const cat = q.get('cat'); const s = (q.get('q') || '').trim().toLowerCase(); const ids = q.get('ids');
     if (cat) list = list.filter((b) => b.cat === cat);
     const au = q.get('author'); if (au) { const tg = keyToCanon(au); list = list.filter((b) => canonKey(b) === tg); }
-    if (q.get('audio')) list = list.filter((b) => b.audio.length > 0);
     if (ids) { const set = ids.split(',').filter(Boolean); list = list.filter((b) => set.indexOf(b.id) >= 0); }
     if (s) list = list.filter((b) => b.title.toLowerCase().indexOf(s) >= 0 || b.author.toLowerCase().indexOf(s) >= 0 || b.cat.toLowerCase().indexOf(s) >= 0);
     return pubList(list);
@@ -1833,6 +1832,53 @@ async function wBooks() {
   return wPage('আমার গল্প', '<button class="wbtn" style="margin-bottom:14px" data-w="go" data-href="/w/book">' + WI.plus + 'নতুন গল্প যোগ করুন</button>' + (list || '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>'), 'books', false);
 }
 
+/* ---- অডিও আপলোড (Firebase Storage) ---- */
+const WAU_MAX = 100 * 1048576;
+async function wStorage() { if (!firebase.storage) await wLoadScript(wCdn('storage')); return WR.app.storage(); }
+function wAudioEditor(b, c, nn, lock) {
+  WR.audioFile = null; WR.ed.voice = true;
+  const au = c ? (typeof c.audio === 'string' ? c.audio : (c.audio && c.audio.url) || '') : '';
+  WR.ed.hasAudio = !!au; WR.ed.oldPath = (c && c.audioPath) || '';
+  const nm = c && (c.audioName || '') ;
+  const box = au ? IC.headphone + '<br><b>' + esc(nm || 'অডিও ফাইল') + '</b><br><small>' + (c.audioSize ? fmtSize(c.audioSize) + ' · ' : '') + (lock ? 'প্রকাশিত' : 'ফাইল বদলাতে চাপুন') + '</small>' : IC.headphone + '<br><b>অডিও ফাইল চুজ করুন</b><br><small>MP3, M4A, AAC, WAV • সর্বোচ্চ ' + bn(100) + ' MB</small>';
+  const body = (lock ? '<div class="wcard">এই পর্ব প্রকাশিত হয়ে গেছে, তাই এখানে বদলানো যায় না। বদলাতে অ্যাডমিনকে জানান।</div>' : '') +
+    '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) +
+    '<h2 style="margin-top:18px">অডিও ফাইল *</h2>' +
+    '<button type="button" class="wcard" id="wAuBox" style="width:100%;text-align:center;min-height:130px;display:grid;place-items:center;font:inherit;color:var(--text);line-height:1.7" data-w="pick-au"' + (lock ? ' disabled' : '') + '>' + box + '</button>' +
+    '<input type="file" id="wAuF" accept="audio/*,.mp3,.m4a,.aac,.wav,.ogg,.opus" hidden>' +
+    '<audio id="wAuPrev" controls preload="metadata" style="width:100%;margin-top:12px;' + (au ? '' : 'display:none') + '"' + (au ? ' src="' + esc(au) + '"' : '') + '></audio>' +
+    '<div id="wAuProg" style="display:none;margin-top:12px"><div style="height:8px;border-radius:8px;background:var(--line);overflow:hidden"><div id="wAuBar" style="height:100%;width:0;background:var(--pri,#c2185b);transition:width .2s"></div></div><div id="wAuPct" class="wnote" style="margin-top:6px"></div></div>' +
+    '<div class="werr" id="wErr" role="alert"></div>' +
+    (lock ? '' : '<button class="wbtn" data-w="save-ch" id="wBtn">আপলোড করে সেভ করুন</button>' + (c ? '<button class="wbtn ghost" style="margin-top:10px" data-w="del-ch" data-id="' + esc(c.id) + '">এই পর্ব মুছুন</button>' : '') + '<p class="wnote">সেভ করলে পর্বটি রিভিউয়ের জন্য অ্যাডমিনের কাছে যাবে। আপলোড শেষ না হওয়া পর্যন্ত পেজ ছাড়বেন না।</p>');
+  return wPage(c ? 'পর্ব এডিট' : 'নতুন অডিও চ্যাপ্টার', body, null, true);
+}
+async function wSaveAudio() {
+  const E = WR.ed, n = +wv('wc-n'), ti = wv('wc-t'), file = WR.audioFile;
+  if (!(n >= 1)) return wSet('সঠিক পর্ব নম্বর দিন');
+  if (E.nums.includes(n)) return wSet('এই নম্বরে আরেকটি পর্ব আছে');
+  if (!file && !E.hasAudio) return wSet('অডিও ফাইল চুজ করুন');
+  wSet(''); wBusy(1);
+  try {
+    const f = { n, title: ti || ('পর্ব ' + n) };
+    if (file) {
+      const st = await wStorage();
+      const ext = ((file.name.split('.').pop() || 'mp3').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 5)) || 'mp3';
+      const path = 'audio/' + WR.user.uid + '/' + E.bid + '/' + Date.now() + '.' + ext;
+      const ref = st.ref(path), task = ref.put(file, { contentType: file.type || 'audio/mpeg' });
+      const pr = document.getElementById('wAuProg'); if (pr) pr.style.display = 'block';
+      await new Promise((ok, no) => task.on('state_changed', (sn) => {
+        const p = Math.round(sn.bytesTransferred / sn.totalBytes * 100); const b2 = document.getElementById('wAuBar'), t2 = document.getElementById('wAuPct');
+        if (b2) b2.style.width = p + '%'; if (t2) t2.textContent = 'আপলোড হচ্ছে ' + bn(p) + '%';
+      }, no, ok));
+      f.audio = await ref.getDownloadURL(); f.audioPath = path; f.audioName = file.name; f.audioSize = file.size;
+    }
+    if (E.cid) await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).update(f);
+    else { const id = String(wnid()); await WR.fs.doc('books/' + E.bid + '/chapters/' + id).set(Object.assign(f, { id: +id, b: +E.bid, pub: false, type: 'voice', d: Date.now(), v: 0, ownerUid: WR.user.uid })); }
+    if (file && E.oldPath) { try { const st = await wStorage(); await st.ref(E.oldPath).delete(); } catch (e) { /* ignore */ } }
+    WR.dirty = false; WR.audioFile = null; toast('অডিও পর্ব রিভিউয়ের জন্য পাঠানো হয়েছে'); goBack();
+  } catch (x) { wSet(wErr(x)); wBusy(0); const pr = document.getElementById('wAuProg'); if (pr) pr.style.display = 'none'; }
+}
+
 /* ---- গল্প যোগ/সম্পাদনা ---- */
 let wCover = null;
 async function wBookForm(id) {
@@ -1857,7 +1903,7 @@ async function wChs(bid) {
   const cs = await wChaps(bid);
   const fd = (t) => { if (!t) return ''; const d = new Date(t); return bn(d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0')); };
   const body = '<div class="wsum"><div class="cv">' + (b.cover ? '<img src="' + esc(b.cover) + '" alt="">' : '') + '</div><div class="in"><span>লেখক: ' + esc(b.author) + '</span><span>ক্যাটাগরি: ' + esc(b.cat || '—') + '</span><span>ধরণ: ' + (b.type === 'voice' ? 'অডিওবুক' : 'টেক্সট বুক') + '</span><span>স্ট্যাটাস: ' + (b.done ? 'সমাপ্ত' : 'চলমান') + '</span>' + wChip(b) + '</div></div>' +
-    '<h2>টেক্সট চ্যাপ্টার সমূহ</h2>' + (cs.length ? cs.map((c) => '<div class="wrow"><div class="ti">' + esc(c.title || ('পর্ব ' + bn(c.n))) + '<small>' + fd(c.d) + ' • ' + bn(c.n) + ' নং</small></div>' + (c.pub ? '<span class="wchip ok">প্রকাশিত</span>' : '<span class="wchip rv">রিভিউ</span>') + '<button class="wlink" data-w="go" data-href="/w/ch/' + esc(bid) + '/' + esc(c.id) + '" aria-label="' + esc(c.title || ('পর্ব ' + c.n)) + ' এডিট">' + (c.pub ? 'দেখুন' : 'এডিট') + '</button></div>').join('') : '<div class="wgate"><p>এখনো কোনো পর্ব নেই</p></div>') +
+    '<h2>' + (b.type === 'voice' ? 'অডিও চ্যাপ্টার সমূহ' : 'টেক্সট চ্যাপ্টার সমূহ') + '</h2>' + (cs.length ? cs.map((c) => '<div class="wrow"><div class="ti">' + esc(c.title || ('পর্ব ' + bn(c.n))) + '<small>' + fd(c.d) + ' • ' + bn(c.n) + ' নং' + (c.audioName ? ' • 🎧 ' + esc(c.audioName) : '') + '</small></div>' + (c.pub ? '<span class="wchip ok">প্রকাশিত</span>' : '<span class="wchip rv">রিভিউ</span>') + '<button class="wlink" data-w="go" data-href="/w/ch/' + esc(bid) + '/' + esc(c.id) + '" aria-label="' + esc(c.title || ('পর্ব ' + c.n)) + ' এডিট">' + (c.pub ? 'দেখুন' : 'এডিট') + '</button></div>').join('') : '<div class="wgate"><p>এখনো কোনো পর্ব নেই</p></div>') +
     (b.done ? '<p class="wnote">গল্পটি সমাপ্ত — নতুন পর্ব যোগ করতে হলে স্ট্যাটাস "চলমান" করুন।</p>' : '');
   return wPage('এপিসোড', body, null, true, b.done ? '' : '<button class="wlink" data-w="go" data-href="/w/ch/' + esc(bid) + '">নতুন চ্যাপ্টার</button>');
 }
@@ -1873,6 +1919,7 @@ async function wEditor(bid, cid) {
   const lock = !!(c && c.pub); const nn = c ? c.n : (cs.reduce((m, x) => Math.max(m, x.n || 0), 0) + 1);
   const dr = store.get(wDraftKey(bid, cid), null); const html = dr && dr.html ? wSan(dr.html) : (c ? (c.html ? wSan(c.html) : esc(c.text || '').replace(/\n/g, '<br>')) : '');
   WR.dirty = false; WR.ed = { bid, cid, nums: cs.filter((x) => x.id !== cid).map((x) => x.n), lock };
+  if (b.type === 'voice') return wAudioEditor(b, c, nn, lock);
   const body = (lock ? '<div class="wcard">এই পর্ব প্রকাশিত হয়ে গেছে, তাই এখানে বদলানো যায় না। বদলাতে অ্যাডমিনকে জানান।</div>' : '') +
     '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) +
     '<div style="margin-top:16px"><div class="wtb" role="toolbar" aria-label="লেখার টুল"><button type="button" data-w="fmt" data-c="bold" aria-label="বোল্ড"><b>B</b></button><button type="button" data-w="fmt" data-c="italic" aria-label="ইটালিক"><i>I</i></button></div>' +
@@ -1909,6 +1956,7 @@ async function wClick(ev) {
       case 'retry': WR.ready = null; WR.cache = null; route(); break;
       case 'pw': { const i = document.getElementById(el.dataset.id); if (i) i.type = i.type === 'password' ? 'text' : 'password'; break; }
       case 'pick-av': { const f = document.getElementById('wavF'); if (f) f.click(); break; }
+      case 'pick-au': { const f = document.getElementById('wAuF'); if (f) f.click(); break; }
       case 'pick-cov': { const f = document.getElementById('wCovF'); if (f) f.click(); break; }
       case 'fmt': { const e = document.getElementById('wEd'); if (e) { e.focus(); document.execCommand(el.dataset.c); wUpdBar(); WR.dirty = true; wDraft(); } break; }
       case 'login': {
@@ -1948,6 +1996,7 @@ async function wClick(ev) {
           try { const cs = await wChaps(id); for (const c of cs) await WR.fs.doc('books/' + id + '/chapters/' + c.id).delete(); await WR.fs.doc('books/' + id).delete(); toast('মুছে ফেলা হয়েছে'); route(); } catch (x) { toast(wErr(x)); } } }); break;
       }
       case 'save-ch': {
+        if (WR.ed && WR.ed.voice) { await wSaveAudio(); break; }
         const E = WR.ed, ed = document.getElementById('wEd'), text = (ed.innerText || '').replace(/ /g, ' ').trim(), n = +wv('wc-n'), ti = wv('wc-t');
         if (!(n >= 1)) return wSet('সঠিক পর্ব নম্বর দিন'); if (E.nums.includes(n)) return wSet('এই নম্বরে আরেকটি পর্ব আছে'); if (wWords(text) < MINW) return wSet('পর্ব সেভ করতে কমপক্ষে ' + bn(MINW) + ' শব্দ লিখতে হবে');
         wSet(''); wBusy(1);
@@ -1959,7 +2008,7 @@ async function wClick(ev) {
         } catch (x) { wSet(wErr(x)); wBusy(0); } break;
       }
       case 'del-ch': {
-        const E = WR.ed; showDialog({ title: 'পর্ব মুছবেন?', text: 'এই পর্বটি মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { try { await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).delete(); store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast('মুছে ফেলা হয়েছে'); goBack(); } catch (x) { toast(wErr(x)); } } }); break;
+        const E = WR.ed; showDialog({ title: 'পর্ব মুছবেন?', text: 'এই পর্বটি মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { try { await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).delete(); if (E.oldPath) { try { const st = await wStorage(); await st.ref(E.oldPath).delete(); } catch (e) { /* ignore */ } } store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast('মুছে ফেলা হয়েছে'); goBack(); } catch (x) { toast(wErr(x)); } } }); break;
       }
     }
   } catch (x) { console.warn(x); toast(wErr(x)); }
@@ -1972,6 +2021,15 @@ document.addEventListener('change', async (e) => {
   const t = e.target; if (!t || !t.files || !t.files[0]) return;
   try {
     if (t.id === 'wavF') { wPhoto = await wImg(t.files[0], 220, .78); const bx = document.getElementById('wavBox'); if (bx) { const cam = bx.querySelector('.cam'); bx.innerHTML = '<img src="' + wPhoto + '" alt="">'; bx.append(cam); } WR.dirty = true; }
+    if (t.id === 'wAuF') {
+      const fl = t.files[0]; t.value = '';
+      if (!(/^audio\//.test(fl.type) || /\.(mp3|m4a|aac|wav|ogg|opus|flac)$/i.test(fl.name))) return toast('শুধু অডিও ফাইল দিন');
+      if (fl.size > WAU_MAX) return toast('ফাইল সর্বোচ্চ ১০০ MB হতে পারবে');
+      WR.audioFile = fl; WR.dirty = true;
+      const bx = document.getElementById('wAuBox'); if (bx) bx.innerHTML = IC.headphone + '<br><b>' + esc(fl.name) + '</b><br><small>' + fmtSize(fl.size) + ' · বদলাতে আবার চাপুন</small>';
+      const pv = document.getElementById('wAuPrev'); if (pv) { try { if (pv.dataset.u) URL.revokeObjectURL(pv.dataset.u); } catch (e) { /* ignore */ } pv.dataset.u = URL.createObjectURL(fl); pv.src = pv.dataset.u; pv.style.display = 'block'; }
+      wSet('');
+    }
     if (t.id === 'wCovF') { wCover = await wImg(t.files[0], 360, .72); const bx = document.getElementById('wCovBox'); if (bx) bx.innerHTML = '<img src="' + wCover + '" alt="কভার" style="max-height:230px;border-radius:12px">'; WR.dirty = true; }
   } catch (x) { toast('ছবি পড়া যায়নি'); }
 });
@@ -2281,7 +2339,7 @@ async function route() {
   try {
     let html;
     if (page === 'home') { loadingView(); html = await viewHome(); }
-    else if (page === 'audio') { html = viewAudioSoon(); }
+    else if (page === 'audio') { loadingView(); html = seg[1] ? await viewAudioBook(seg[1]) : await viewAudio(); }
     else if (page === 'feed') { nav('/audio', true); return; }
     else if (page === 'episodes') { loadingView(); html = await viewEpisodes(); }
     else if (page === 'list') { loadingView(); html = await viewList(seg[1], params.get('status') || 'সব'); }
@@ -2290,7 +2348,7 @@ async function route() {
     else if (page === 'book') { loadingView(); html = await viewBook(seg[1]); }
     else if (page === 'read') { loadingView(); html = await viewReader(seg[1], parseInt(seg[2], 10)); }
     else if (page === 'lib') { loadingView(); html = await viewLibrary(params.get('tab') || 'dl', params.get('k') || 'all'); }
-    else if (page === 'alist') { nav('/audio', true); return; }
+    else if (page === 'alist') { loadingView(); html = await viewAList(seg[1]); }
     else if (false) { loadingView(); html = seg[1] ? await viewAudioBook(seg[1]) : await viewAudio(); }
     else if (page === 'author') { loadingView(); html = await viewAuthor(seg[1]); }
     else if (page === 'authors') { loadingView(); html = await viewAuthors(); }
@@ -2325,7 +2383,7 @@ function afterRender(page, seg, params) {
   if (page === 'audio' && seg[1]) apIcon();
   if (page === 'profile') refreshTime();
   if (page === 'goals') fillGoalBooks();
-  if (page === 'audio') audioSoonTick();
+  if (page === 'audio' && !seg[1] && $('#aH')) audioSoonTick();
   if (page === 'read') sleepLabel();
   if (page === 'w') wAfter(seg);
   if (page === 'book') fillAuthorAv();
@@ -3096,7 +3154,7 @@ async function viewAudio() {
     if (!books.length) throw e;
   }
   let h = headerTab() + '<main class="page">';
-  if (!books.length) return h + '<div class="empty">এখনো কোনো অডিও উপন্যাস যোগ করা হয়নি।</div></main>';
+  if (!books.length) return viewAudioSoon();
   const newest = books.slice().sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
   const pop = books.slice().sort((a, b) => (b.reads || 0) - (a.reads || 0));
   h += '<div class="rail feat" id="audioFeat">' + books.filter((b) => b.featured).concat(books.filter((b) => !b.featured)).slice(0, 5).map(audioFeat).join('') + '</div>';
@@ -3111,14 +3169,20 @@ async function viewAudioBook(id) {
   const dlmap = getAdl()[id] || {};
   let eps = (b.audio || []).map((a) => ({ n: a.n, title: a.title, url: a.url }));
   if (offline) eps = eps.filter((x) => dlmap[x.n]).map((x) => Object.assign({}, x, { url: '' }));
-  else { const ac = getAcache(); ac[id] = { id, title: b.title, author: b.author, cover: b.cover, cat: b.cat, status: b.status, audioCount: eps.length, audio: eps.map((x) => ({ n: x.n, title: x.title })) }; store.set('jp_acache', ac); }
+  else {
+    try { // লেখকের জমা দেওয়া ও অনুমোদিত অডিও পর্ব
+      const qs = await window.__JPFS.collection('books/' + id + '/chapters').where('pub', '==', true).get();
+      qs.forEach((d) => { const x = d.data(); const u = typeof x.audio === 'string' ? x.audio : (x.audio && x.audio.url) || ''; if (u && !eps.some((e) => e.n === x.n)) eps.push({ n: x.n, title: x.title || ('পর্ব ' + bn(x.n)), url: u }); });
+      eps.sort((a, b2) => a.n - b2.n);
+    } catch (e) { /* ignore */ }
+    const ac = getAcache(); ac[id] = { id, title: b.title, author: b.author, cover: b.cover, cat: b.cat, status: b.status, audioCount: eps.length, audio: eps.map((x) => ({ n: x.n, title: x.title })) }; store.set('jp_acache', ac); }
   ap = { id, title: b.title, eps, idx: -1 };
   if (!offline) addHist(id);
   const saved = getSaved().indexOf(id) >= 0;
   let h = headerPage(b.title, true) + '<main class="page"><div class="detail">' + coverImg(b) + '<div class="di"><h1>' + esc(b.title) + '</h1><div class="au">' + ic('pen') + esc(b.author) + '</div>' +
     '<div class="pr">' + (b.cat ? '<span class="pill">' + esc(b.cat) + '</span>' : '') + statusPill(b.status) + demoPill(b) + '</div>' +
     '<button class="bm' + (saved ? ' on' : '') + '" data-act="bm" data-id="' + esc(id) + '" id="bmBtn">' + IC.save + '<span>' + (saved ? 'পছন্দের তালিকায় আছে' : 'পছন্দের তালিকায় যোগ করুন') + '</span></button></div></div>';
-  if (!eps.length) return h + '<div class="empty">' + (offline ? 'অফলাইনে শোনার মতো কোনো ডাউনলোড করা পর্ব নেই।' : 'এই বইয়ের অডিও পর্ব এখনো যোগ করা হয়নি।') + '</div></main>';
+  if (!eps.length) return h + '<div class="empty">' + (offline ? 'অফলাইনে শোনার মতো কোনো ডাউনলোড করা পর্ব নেই।' : 'এই অডিওবুকের পর্ব খুব শীঘ্রই যোগ হবে।') + '</div></main>';
   h += '<div class="player"><div class="pt" id="apTitle">একটি পর্ব বেছে নিন</div><div class="ps">' + esc(b.title) + '</div>' +
     '<div class="seekrow"><span id="apCur">০:০০</span><input type="range" id="apSeek" min="0" max="1000" value="0" aria-label="অডিওর অবস্থান"><span id="apDur">০:০০</span></div>' +
     '<div class="pctl"><button id="apPrev" data-act="aprev" aria-label="আগের পর্ব">' + IC.prev + '</button><button class="big" id="apPlay" data-act="aplay-cur" aria-label="চালান">' + IC.play + '</button><button id="apNext" data-act="anext" aria-label="পরের পর্ব">' + IC.next + '</button></div></div>' +
