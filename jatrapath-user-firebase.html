@@ -249,7 +249,7 @@ html:not([data-theme=dark]) .freshb{color:var(--red2)}
 .rnav .btn{flex:1}.rnav .btn[disabled]{opacity:.4;pointer-events:none}
 .rfoot{position:fixed;bottom:0;left:0;right:0;z-index:25;background:var(--rbg);max-width:760px;margin:0 auto;padding:8px 16px calc(8px + env(safe-area-inset-bottom));color:var(--rtext)}
 .rprog{height:3px;border-radius:2px;background:rgba(128,128,128,.35);overflow:hidden}
-.rprog u{display:block;height:100%;width:0;background:var(--red);text-decoration:none}
+.rprog u{display:block;height:100%;width:100%;background:var(--red);text-decoration:none;transform-origin:0 50%;transform:scaleX(0);will-change:transform}
 .rpct{font-size:11.5px;text-align:center;margin:6px 0 4px;opacity:.85}
 .rbtns{display:flex;justify-content:space-between}
 .rbtns button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:13px;font-weight:600;padding:2px 0}
@@ -822,6 +822,42 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .acirc .nm{font-size:12.5px;line-height:1.25;max-width:76px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .asoon{display:flex;flex-direction:column;align-items:center;text-align:center;padding:48px 18px}.aring{width:120px;height:120px;border-radius:50%;background:rgba(196,38,44,.14);display:grid;place-items:center;margin-bottom:22px}.adot{width:78px;height:78px;border-radius:50%;background:#b8284a;display:grid;place-items:center;color:#fff}.adot svg{width:34px;height:34px}.asoon h2{margin:0 0 8px;font-size:22px}.asoon p{margin:0 0 22px;opacity:.75;line-height:1.7;max-width:300px}.acd{display:flex;gap:12px}.acd div{width:76px;padding:12px 0;border-radius:14px;background:rgba(127,127,127,.12)}.acd b{display:block;font-size:22px}.acd span{font-size:12px;opacity:.7}.aopen{margin-top:18px;font-size:13px;opacity:.75}
 .rtabs{display:none!important}
+
+/* ===== কমিউনিটি ===== */
+.cmw{padding-bottom:96px}
+.cmttl{font-size:20px;margin:14px 4px 12px}
+.cmopts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.cmopts button{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border-radius:16px;background:var(--card);border:1px solid var(--line);color:var(--text);font-weight:700;font-size:15px;line-height:1.4;text-align:center}
+.cmopts button svg{width:26px;height:26px;color:var(--pur-soft)}
+.cmopts button.on{border-color:var(--pur)}
+.cmcomp{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:16px}
+.cmch{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.cmch b{flex:1;text-align:center;font-size:16px;padding-left:40px}
+.cmch button{color:var(--muted);font-weight:600;padding:4px 6px}
+.cmcomp textarea{width:100%;min-height:110px;background:transparent;border:0;border-bottom:2px solid #3aa68c;color:var(--text);font:inherit;font-size:17px;padding:8px 2px;resize:none;outline:0}
+.cmcnt{text-align:right;color:var(--muted);font-size:12px;margin-top:4px}
+.cmcomp h4{margin:14px 0 10px;font-size:16px}
+.cmcols{display:flex;gap:8px;justify-content:space-between}
+.cmcols button{flex:1;aspect-ratio:1;max-width:66px;border-radius:50%;color:#fff;font-weight:700;font-size:13px}
+.cmcols button.on{outline:3px solid var(--pur-soft);outline-offset:3px}
+.cmsend{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:14px;background:var(--pur);color:#fff;font-weight:700;font-size:16px}.cmsend:disabled{opacity:.6}
+.cmsend svg{width:20px;height:20px}
+.cmnote{display:block;text-align:center;color:var(--muted);margin-top:8px}
+.cmx{margin:6px 4px 12px;padding-left:10px;border-left:4px solid #b3343f;font-size:17px}
+.cmp{border-radius:18px;padding:16px;margin-bottom:14px;color:#fff;box-shadow:0 6px 16px -8px rgba(0,0,0,.5)}
+.cmh{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.cmav{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.25);display:grid;place-items:center;font-weight:800;font-size:19px;flex:0 0 auto}
+.cmn b{display:block;font-size:16px}.cmn small{opacity:.8}
+.cmt{white-space:pre-wrap;word-break:break-word;font-size:17px;line-height:1.7;margin:0 0 14px}
+.cma{display:flex;gap:8px;justify-content:space-between}
+.cma button{display:flex;align-items:center;gap:6px;color:#fff;background:rgba(255,255,255,.18);padding:8px 14px;border-radius:20px;font-weight:600}
+.cma button.on{background:#fff;color:#222}
+.cma svg{width:20px;height:20px}
+.cmsheet{padding:6px 16px 20px}.cmsheet h3{margin:6px 0 12px}
+.cmcl{max-height:42vh;overflow:auto;margin-bottom:12px}
+.cmci{padding:10px 0;border-bottom:1px solid var(--line)}.cmci b{font-size:14px}.cmci small{color:var(--muted);margin-left:8px}.cmci p{margin:4px 0 0;white-space:pre-wrap;word-break:break-word}
+.cmsheet textarea{width:100%;background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit;resize:none;margin-bottom:10px}
+.fcard .frow .fbtn{padding:7px 16px;gap:5px}.fcard .frow .fbtn svg{width:16px;height:16px}
 </style>
 
 <style id="jp-v3">
@@ -947,7 +983,7 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 <div id="mini" class="mini" hidden></div>
 <nav id="nav" class="nav" aria-label="প্রধান নেভিগেশন">
   <button data-act="go" data-href="/" data-nav="home"><span class="ico" data-i="home"></span><b>হোম</b></button>
-  <button data-act="go" data-href="/audio" data-nav="audio"><span class="ico" data-i="headphone"></span><b>অডিও</b></button>
+  <button data-act="go" data-href="/community" data-nav="community"><span class="ico" data-i="post"></span><b>পোস্ট</b></button>
   <button data-act="go" data-href="/cat" data-nav="cat"><span class="ico" data-i="grid"></span><b>ক্যাটাগরি</b></button>
   <button data-act="go" data-href="/lib" data-nav="lib"><span class="ico" data-i="lib"></span><b>লাইব্রেরি</b></button>
 </nav>
@@ -1084,18 +1120,6 @@ function toneWav(notes, perNote) {
 }
 // ডেমো অডিও বই (৫টি) — প্রতিটি বইতে ৫০টি পরীক্ষামূলক অধ্যায়। এগুলো বাস্তব উপন্যাসের অডিও নয়।
 const SCALE = [262, 294, 330, 349, 392, 440, 494, 523];
-const AUDIO_BOOKS = [
-  { title: 'অন্ধকারের কণ্ঠস্বর', author: 'ডেমো লেখক তানভীর', cat: 'থ্রিলার', status: 'চলমান', color: ['#1d2b3a', '#a63d40'], ch: 50, days: 1,
-    desc: 'রাতের নিস্তব্ধতায় ভেসে আসা এক অচেনা কণ্ঠের নমুনা অডিও থ্রিলার।', titles: ['প্রথম ডাক', 'অচেনা নম্বর', 'ফাঁদ', 'শেষ সংকেত'] },
-  { title: 'মেঘের ওপারে', author: 'ডেমো লেখক সুমাইয়া', cat: 'রোমান্টিক', status: 'সমাপ্ত', color: ['#3b4f7a', '#d9a066'], ch: 50, days: 3,
-    desc: 'দুই শহরের দুটি মনের মেঘ-রোদ্দুরের নমুনা অডিও প্রেমকাহিনি।', titles: ['প্রথম বৃষ্টি', 'চিঠির উত্তর', 'দূরত্ব', 'ফেরা'] },
-  { title: 'দাদুর গল্পের ঝুলি', author: 'ডেমো লেখক নাজমা', cat: 'পারিবারিক', status: 'সমাপ্ত', color: ['#5b7a3b', '#e8d9a8'], ch: 50, days: 5,
-    desc: 'উঠানে বসে দাদুর বলা গল্পগুলোর নমুনা অডিও সংকলন।', titles: ['গল্পের শুরু', 'চাঁদের বুড়ি', 'ঘুমের আগে'] },
-  { title: 'আলোর পথযাত্রী', author: 'ডেমো লেখক আব্দুল্লাহ', cat: 'ইসলামিক', status: 'চলমান', color: ['#1f5c4a', '#e6d8a0'], ch: 50, days: 2,
-    desc: 'সততা ও ধৈর্যের পথে এক পথচারীর নমুনা অডিও কাহিনি।', titles: ['ভোরের আজান', 'পথের পরীক্ষা', 'সত্যের স্বাদ', 'শান্তির ঠিকানা'] },
-  { title: 'নিশুতি রাতের সুর', author: 'ডেমো লেখক মাসুদ', cat: 'ভৌতিক', status: 'চলমান', color: ['#2b2233', '#7a5c8e'], ch: 50, days: 6,
-    desc: 'পুরোনো বাড়ির নিশুতি রাতের অদ্ভুত সুরের নমুনা অডিও গল্প।', titles: ['ভাঙা সিঁড়ি', 'জানালার আলো', 'সুরের উৎস'] }
-];
 
 function build() {
   const now = Date.now(); const DAY = 86400000;
@@ -1120,16 +1144,6 @@ function build() {
       publishedAt: new Date(now - b.days * DAY).toISOString(), reads: total,
       likes: 3 + (i * 5) % 17, dislikes: (i * 3) % 4, chapters,
       type: 'text', audio: [] });
-  });
-  AUDIO_BOOKS.forEach((b, i) => {
-    const id = 'a' + (2001 + i); const audio = [];
-    for (let n = 1; n <= 50; n++) {
-      const notes = []; for (let j = 0; j < 8; j++) notes.push(SCALE[(i * 3 + n * 2 + j * 5 + (j % 3)) % SCALE.length]);
-      audio.push({ n, title: 'অধ্যায় ' + bn(n) + ' — ' + b.titles[(n - 1) % b.titles.length], demo: true, notes });
-    }
-    books.push({ id, type: 'audio', title: b.title, author: b.author, cat: b.cat, status: b.status, desc: b.desc, colors: b.color, cover: null, featured: false, demo: true,
-      publishedAt: new Date(now - b.days * DAY).toISOString(), reads: 0, likes: 0, dislikes: 0, chapters: [], audio });
-    stats[id] = {};
   });
   return {
     categories: CATEGORIES,
@@ -1278,7 +1292,7 @@ function handleSync(method, full, body, user) {
     return { key, title, filter: FILTERABLE.indexOf(key) >= 0, books };
   }
   if (method === 'GET' && p === '/books') {
-    let list = q.get('audio') ? db.books.filter((b) => !isText(b)) : texts(); const cat = q.get('cat'); const s = (q.get('q') || '').trim().toLowerCase(); const ids = q.get('ids');
+    let list = texts(); const cat = q.get('cat'); const s = (q.get('q') || '').trim().toLowerCase(); const ids = q.get('ids');
     if (cat) list = list.filter((b) => b.cat === cat);
     const au = q.get('author'); if (au) { const tg = keyToCanon(au); list = list.filter((b) => canonKey(b) === tg); }
     if (ids) { const set = ids.split(',').filter(Boolean); list = list.filter((b) => set.indexOf(b.id) >= 0); }
@@ -1324,7 +1338,7 @@ async function loadDb() {
   const g = (q) => q.get(); const C = (n) => fs.collection(n);
   const [cs, bs, ns, ss, cf] = await Promise.all([g(C('categories')), g(C('books').where('pub', '==', true)), g(C('notices')), g(C('stats')), g(C('config'))]);
   const cfg = {}; cf.forEach((d) => { cfg[d.id] = d.data(); }); const stats = {}; ss.forEach((d) => { stats[d.id] = d.data().days || {}; });
-  const books = bs.docs.map((d) => { const x = d.data(); const voice = x.type === 'voice';
+  const books = bs.docs.filter((d) => d.data().type !== 'voice').map((d) => { const x = d.data(); const voice = false;
     return { id: d.id, title: x.title || '', author: x.author || '', authorId: x.ownerUid || '', authorPhoto: x.authorPhoto || '', cat: x.cat || '', status: x.status || 'চলমান', desc: x.desc || '', cover: x.cover || null, featured: !!x.featured,
       publishedAt: x.publishedAt || new Date().toISOString(), reads: x.reads || 0, likes: x.likes || 0, dislikes: x.dislikes || 0, favs: x.favs || 0, cmts: x.cmts || 0, type: voice ? 'audio' : 'text',
       chapters: voice ? [] : (x.chs || []).filter((c) => c.p).sort((a, b) => a.n - b.n).map((c) => ({ n: c.n, cid: c.id, title: c.t, d: c.d || 0 })),
@@ -1411,6 +1425,7 @@ const IC = {
   search: P('<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>'),
   home: P('<path d="M4 11l8-7 8 7"/><path d="M6 10v9a1 1 0 001 1h3v-5h4v5h3a1 1 0 001-1v-9"/>'),
   episodes: P('<rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/>'),
+  post: P('<path d="M4 5h16v11H9l-5 4z"/><path d="M12 8v5M9.5 10.5h5"/>'),
   headphone: P('<path d="M4 17v-5a8 8 0 0116 0v5"/><path d="M4 17a2 2 0 002 2h1v-6H6a2 2 0 00-2 2zM20 17a2 2 0 01-2 2h-1v-6h1a2 2 0 012 2z"/>'),
   lib: P('<rect x="4" y="3" width="4" height="18" rx="1"/><rect x="10" y="3" width="4" height="18" rx="1"/><path d="M16.5 5l3.5 1-3.6 14-3.4-1z"/>'),
   download: P('<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>'),
@@ -1833,9 +1848,6 @@ async function wBooks() {
   return wPage('আমার গল্প', '<button class="wbtn" style="margin-bottom:14px" data-w="go" data-href="/w/book">' + WI.plus + 'নতুন গল্প যোগ করুন</button>' + (list || '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>'), 'books', false);
 }
 
-/* ---- অডিও আপলোড (Firebase Storage) ---- */
-const WAU_MAX = 100 * 1048576;
-async function wStorage() { if (!firebase.storage) await wLoadScript(wCdn('storage')); return WR.app.storage(); }
 /* ---- 'এটি কি বইয়ের শেষ পর্ব?' সুইচ ---- */
 function wFinRow(b, c) {
   const on = !!(c && c.fin), off = !!b.done && !on;
@@ -1857,51 +1869,6 @@ async function wSyncBook(E, mode, f) {
     if (Object.keys(up).length) await ref.update(up);
   } catch (e) { toast('বইয়ের পর্ব-তালিকা হালনাগাদ করা যায়নি — অ্যাডমিনকে জানান'); }
 }
-function wAudioEditor(b, c, nn, lock) {
-  WR.audioFile = null; WR.ed.voice = true;
-  const au = c ? (typeof c.audio === 'string' ? c.audio : (c.audio && c.audio.url) || '') : '';
-  WR.ed.hasAudio = !!au; WR.ed.oldPath = (c && c.audioPath) || '';
-  const nm = c && (c.audioName || '') ;
-  const box = au ? IC.headphone + '<br><b>' + esc(nm || 'অডিও ফাইল') + '</b><br><small>' + (c.audioSize ? fmtSize(c.audioSize) + ' · ' : '') + (lock ? 'প্রকাশিত' : 'ফাইল বদলাতে চাপুন') + '</small>' : IC.headphone + '<br><b>অডিও ফাইল চুজ করুন</b><br><small>MP3, M4A, AAC, WAV • সর্বোচ্চ ' + bn(100) + ' MB</small>';
-  const body = (c && c.pub ? '<div class="wcard">এই পর্ব লাইভ আছে। সেভ করলে পরিবর্তন সাথে সাথে পাঠকদের কাছে দেখা যাবে।</div>' : '') +
-    '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) + wFinRow(b, c) +
-    '<h2 style="margin-top:18px">অডিও ফাইল *</h2>' +
-    '<button type="button" class="wcard" id="wAuBox" style="width:100%;text-align:center;min-height:130px;display:grid;place-items:center;font:inherit;color:var(--text);line-height:1.7" data-w="pick-au"' + (lock ? ' disabled' : '') + '>' + box + '</button>' +
-    '<input type="file" id="wAuF" accept="audio/*,.mp3,.m4a,.aac,.wav,.ogg,.opus" hidden>' +
-    '<audio id="wAuPrev" controls preload="metadata" style="width:100%;margin-top:12px;' + (au ? '' : 'display:none') + '"' + (au ? ' src="' + esc(au) + '"' : '') + '></audio>' +
-    '<div id="wAuProg" style="display:none;margin-top:12px"><div style="height:8px;border-radius:8px;background:var(--line);overflow:hidden"><div id="wAuBar" style="height:100%;width:0;background:var(--pri,#c2185b);transition:width .2s"></div></div><div id="wAuPct" class="wnote" style="margin-top:6px"></div></div>' +
-    '<div class="werr" id="wErr" role="alert"></div>' +
-    (lock ? '' : '<button class="wbtn" data-w="save-ch" id="wBtn">আপলোড করে সেভ করুন</button>' + (c ? '<button class="wbtn ghost" style="margin-top:10px" data-w="del-ch" data-id="' + esc(c.id) + '">এই পর্ব মুছুন</button>' : '') + '<p class="wnote">' + (c && c.pub ? 'সেভ করলে পরিবর্তন লাইভ পর্বে বসে যাবে।' : 'সেভ করলে পর্বটি রিভিউয়ের জন্য অ্যাডমিনের কাছে যাবে।') + ' আপলোড শেষ না হওয়া পর্যন্ত পেজ ছাড়বেন না।</p>');
-  return wPage(c ? 'পর্ব এডিট' : 'নতুন অডিও চ্যাপ্টার', body, null, true);
-}
-async function wSaveAudio() {
-  const E = WR.ed, n = +wv('wc-n'), ti = wv('wc-t'), file = WR.audioFile;
-  if (!(n >= 1)) return wSet('সঠিক পর্ব নম্বর দিন');
-  if (E.nums.includes(n)) return wSet('এই নম্বরে আরেকটি পর্ব আছে');
-  if (!file && !E.hasAudio) return wSet('অডিও ফাইল চুজ করুন');
-  wSet(''); wBusy(1);
-  try {
-    const f = { n, title: ti || ('পর্ব ' + n) }; if (E.fin) f.fin = true;
-    if (file) {
-      const st = await wStorage();
-      const ext = ((file.name.split('.').pop() || 'mp3').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 5)) || 'mp3';
-      const path = 'audio/' + WR.user.uid + '/' + E.bid + '/' + Date.now() + '.' + ext;
-      const ref = st.ref(path), task = ref.put(file, { contentType: file.type || 'audio/mpeg' });
-      const pr = document.getElementById('wAuProg'); if (pr) pr.style.display = 'block';
-      await new Promise((ok, no) => task.on('state_changed', (sn) => {
-        const p = Math.round(sn.bytesTransferred / sn.totalBytes * 100); const b2 = document.getElementById('wAuBar'), t2 = document.getElementById('wAuPct');
-        if (b2) b2.style.width = p + '%'; if (t2) t2.textContent = 'আপলোড হচ্ছে ' + bn(p) + '%';
-      }, no, ok));
-      f.audio = await ref.getDownloadURL(); f.audioPath = path; f.audioName = file.name; f.audioSize = file.size;
-    }
-    if (E.cid) await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).update(f);
-    else { const id = String(wnid()); await WR.fs.doc('books/' + E.bid + '/chapters/' + id).set(Object.assign(f, { id: +id, b: +E.bid, pub: false, type: 'voice', d: Date.now(), v: 0, ownerUid: WR.user.uid })); }
-    if (file && E.oldPath) { try { const st = await wStorage(); await st.ref(E.oldPath).delete(); } catch (e) { /* ignore */ } }
-    if (E.cid) await wSyncBook(E, 'upd', f); await wFinishBook(E);
-    WR.dirty = false; WR.audioFile = null; toast(E.pub ? 'অডিও পর্ব আপডেট হয়েছে' : 'অডিও পর্ব রিভিউয়ের জন্য পাঠানো হয়েছে'); goBack();
-  } catch (x) { wSet(wErr(x)); wBusy(0); const pr = document.getElementById('wAuProg'); if (pr) pr.style.display = 'none'; }
-}
-
 /* ---- গল্প যোগ/সম্পাদনা ---- */
 let wCover = null;
 async function wBookForm(id) {
@@ -1911,7 +1878,6 @@ async function wBookForm(id) {
   const lock = false;
   const body = (b && b.pub ? '<div class="wcard">এই গল্প লাইভ আছে। সেভ করলে পরিবর্তন সাথে সাথে পাঠকদের কাছে দেখা যাবে।</div>' : '') +
     wFld('গল্পের নাম *', 'wb-t', b ? b.title : '', { dis: lock }) + wFld('লেখকের নাম', 'wb-a', b ? b.author : ((WR.prof && WR.prof.name) || ''), { dis: lock }) +
-    (() => { const pa = !!(WR.perms && WR.perms.audio === true), pt = !(WR.perms && WR.perms.text === false), ty = b && b.type === 'voice' ? 'voice' : 'book'; return '<div class="wfl"><label for="wb-ty">বইয়ের ধরন *</label><select id="wb-ty"' + ((id || lock) ? ' disabled' : '') + '><option value="book"' + (pt ? '' : ' disabled') + (ty === 'book' ? ' selected' : '') + '>টেক্সট বুক' + (pt ? '' : ' (অ্যাডমিন সাময়িক বন্ধ রেখেছে)') + '</option><option value="voice"' + (pa ? '' : ' disabled') + (ty === 'voice' ? ' selected' : '') + '>অডিওবুক' + (pa ? '' : ' (এখনো চালু হয়নি)') + '</option></select></div>'; })() +
     '<div class="wfl"><label for="wb-c">ক্যাটাগরি *</label><select id="wb-c"' + (lock ? ' disabled' : '') + '><option value="">নির্বাচন করুন</option>' + cats.map((c) => '<option value="' + c.id + '"' + (b && (b.cats || [])[0] === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></div>' +
     '<div class="wfl"><label for="wb-s">স্ট্যাটাস</label><select id="wb-s"' + (lock || (b && b.done) ? ' disabled' : '') + '><option value="0"' + (b && b.done ? '' : ' selected') + '>চলমান</option><option value="1"' + (b && b.done ? ' selected' : '') + '>সমাপ্ত</option></select></div>' +
     wFld('সংক্ষিপ্ত বিবরণ (ঐচ্ছিক)', 'wb-d', b ? b.desc : '', { ta: 1, dis: lock }).replace('<textarea ', lock ? '<textarea disabled ' : '<textarea ') +
@@ -1925,8 +1891,8 @@ async function wChs(bid) {
   const b = await wBook(bid); if (!b) return wPage('পর্ব', '<div class="wgate"><p>গল্প পাওয়া যায়নি</p></div>', 'books');
   const cs = await wChaps(bid);
   const fd = (t) => { if (!t) return ''; const d = new Date(t); return bn(d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0')); };
-  const body = '<div class="wsum"><div class="cv">' + (b.cover ? '<img src="' + esc(b.cover) + '" alt="">' : '') + '</div><div class="in"><span>লেখক: ' + esc(b.author) + '</span><span>ক্যাটাগরি: ' + esc(b.cat || '—') + '</span><span>ধরণ: ' + (b.type === 'voice' ? 'অডিওবুক' : 'টেক্সট বুক') + '</span><span>স্ট্যাটাস: ' + (b.done ? 'সমাপ্ত' : 'চলমান') + '</span>' + wChip(b) + '</div></div>' +
-    '<h2>' + (b.type === 'voice' ? 'অডিও চ্যাপ্টার সমূহ' : 'টেক্সট চ্যাপ্টার সমূহ') + '</h2>' + (cs.length ? cs.map((c) => '<div class="wrow"><div class="ti">' + esc(c.title || ('পর্ব ' + bn(c.n))) + '<small>' + fd(c.d) + ' • ' + bn(c.n) + ' নং' + (c.audioName ? ' • 🎧 ' + esc(c.audioName) : '') + '</small></div>' + (c.pub ? '<span class="wchip ok">প্রকাশিত</span>' : '<span class="wchip rv">রিভিউ</span>') + '<button class="wlink" data-w="go" data-href="/w/ch/' + esc(bid) + '/' + esc(c.id) + '" aria-label="' + esc(c.title || ('পর্ব ' + c.n)) + ' এডিট">' + 'এডিট</button><button class="wlink" style="color:#e5484d" data-w="del-ch-row" data-b="' + esc(bid) + '" data-id="' + esc(c.id) + '" data-fin="' + (c.fin ? 1 : 0) + '">মুছুন</button></div>').join('') : '<div class="wgate"><p>এখনো কোনো পর্ব নেই</p></div>') +
+  const body = '<div class="wsum"><div class="cv">' + (b.cover ? '<img src="' + esc(b.cover) + '" alt="">' : '') + '</div><div class="in"><span>লেখক: ' + esc(b.author) + '</span><span>ক্যাটাগরি: ' + esc(b.cat || '—') + '</span><span>ধরণ: ' + 'টেক্সট বুক' + '</span><span>স্ট্যাটাস: ' + (b.done ? 'সমাপ্ত' : 'চলমান') + '</span>' + wChip(b) + '</div></div>' +
+    '<h2>' + 'টেক্সট চ্যাপ্টার সমূহ' + '</h2>' + (cs.length ? cs.map((c) => '<div class="wrow"><div class="ti">' + esc(c.title || ('পর্ব ' + bn(c.n))) + '<small>' + fd(c.d) + ' • ' + bn(c.n) + ' নং' + (c.audioName ? ' • 🎧 ' + esc(c.audioName) : '') + '</small></div>' + (c.pub ? '<span class="wchip ok">প্রকাশিত</span>' : '<span class="wchip rv">রিভিউ</span>') + '<button class="wlink" data-w="go" data-href="/w/ch/' + esc(bid) + '/' + esc(c.id) + '" aria-label="' + esc(c.title || ('পর্ব ' + c.n)) + ' এডিট">' + 'এডিট</button><button class="wlink" style="color:#e5484d" data-w="del-ch-row" data-b="' + esc(bid) + '" data-id="' + esc(c.id) + '" data-fin="' + (c.fin ? 1 : 0) + '">মুছুন</button></div>').join('') : '<div class="wgate"><p>এখনো কোনো পর্ব নেই</p></div>') +
     (b.done ? '<p class="wnote">গল্পটি সমাপ্ত — আর নতুন পর্ব যোগ করা যাবে না। আগের পর্ব এডিট বা ডিলিট করতে পারবেন।</p>' : '');
   return wPage('এপিসোড', body, null, true, b.done ? '' : '<button class="wlink" data-w="go" data-href="/w/ch/' + esc(bid) + '">নতুন চ্যাপ্টার</button>');
 }
@@ -1943,7 +1909,6 @@ async function wEditor(bid, cid) {
   const lock = false; const nn = c ? c.n : (cs.reduce((m, x) => Math.max(m, x.n || 0), 0) + 1);
   const dr = store.get(wDraftKey(bid, cid), null); const html = dr && dr.html ? wSan(dr.html) : (c ? (c.html ? wSan(c.html) : esc(c.text || '').replace(/\n/g, '<br>')) : '');
   WR.dirty = false; WR.ed = { bid, cid, nums: cs.filter((x) => x.id !== cid).map((x) => x.n), lock, pub: !!(c && c.pub), oldN: c ? c.n : null, fin: false, fin0: !!(c && c.fin) };
-  if (b.type === 'voice') return wAudioEditor(b, c, nn, lock);
   const body = (c && c.pub ? '<div class="wcard">এই পর্ব লাইভ আছে। সেভ করলে পরিবর্তন সাথে সাথে পাঠকদের কাছে দেখা যাবে।</div>' : '') +
     '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) + wFinRow(b, c) +
     '<div style="margin-top:16px"><div class="wtb" role="toolbar" aria-label="লেখার টুল"><button type="button" data-w="fmt" data-c="bold" aria-label="বোল্ড"><b>B</b></button><button type="button" data-w="fmt" data-c="italic" aria-label="ইটালিক"><i>I</i></button></div>' +
@@ -1989,11 +1954,9 @@ async function wClick(ev) {
         showDialog({ emoji: '⚠️', title: 'পর্ব মুছবেন?', text: 'এই পর্বটি পাঠকদের কাছ থেকেও মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { try {
           const ref = WR.fs.doc('books/' + bid + '/chapters/' + cid), d = await ref.get(), c = d.exists ? d.data() : {};
           await ref.delete(); await wSyncBook({ bid, cid, pub: !!c.pub, oldN: c.n }, 'del', {});
-          if (c.audioPath) { try { const st = await wStorage(); await st.ref(c.audioPath).delete(); } catch (e) { /* ignore */ } }
           toast('মুছে ফেলা হয়েছে'); route(); } catch (x) { toast(wErr(x)); } } }); break;
       }
       case 'fin-off': { const bx = document.getElementById('wFin'); if (bx && bx.querySelector('[data-w="fin-on"]').classList.contains('on')) toast('একবার On করলে আর Off করা যায় না'); break; }
-      case 'pick-au': { const f = document.getElementById('wAuF'); if (f) f.click(); break; }
       case 'pick-cov': { const f = document.getElementById('wCovF'); if (f) f.click(); break; }
       case 'fmt': { const e = document.getElementById('wEd'); if (e) { e.focus(); document.execCommand(el.dataset.c); wUpdBar(); WR.dirty = true; wDraft(); } break; }
       case 'login': {
@@ -2033,7 +1996,6 @@ async function wClick(ev) {
           try { const cs = await wChaps(id); for (const c of cs) await WR.fs.doc('books/' + id + '/chapters/' + c.id).delete(); await WR.fs.doc('books/' + id).delete(); toast('মুছে ফেলা হয়েছে'); if (/^\/w\/book\//.test(curPath)) { WR.dirty = false; nav('/w/books', true); } else route(); } catch (x) { toast(wErr(x)); } } }); break;
       }
       case 'save-ch': {
-        if (WR.ed && WR.ed.voice) { await wSaveAudio(); break; }
         const E = WR.ed, ed = document.getElementById('wEd'), text = (ed.innerText || '').replace(/ /g, ' ').trim(), n = +wv('wc-n'), ti = wv('wc-t');
         if (!(n >= 1)) return wSet('সঠিক পর্ব নম্বর দিন'); if (E.nums.includes(n)) return wSet('এই নম্বরে আরেকটি পর্ব আছে'); if (wWords(text) < MINW) return wSet('পর্ব সেভ করতে কমপক্ষে ' + bn(MINW) + ' শব্দ লিখতে হবে');
         wSet(''); wBusy(1);
@@ -2047,7 +2009,7 @@ async function wClick(ev) {
       }
       case 'del-ch': {
         const E = WR.ed; if (E.fin0) { toast('বইয়ের শেষ পর্ব মুছা যাবে না — এডিট করতে পারবেন'); break; }
-        showDialog({ emoji: '⚠️', title: 'পর্ব মুছবেন?', text: E.pub ? 'এই পর্বটি পাঠকদের কাছ থেকেও মুছে যাবে।' : 'এই পর্বটি মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { try { await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).delete(); await wSyncBook(E, 'del', {}); if (E.oldPath) { try { const st = await wStorage(); await st.ref(E.oldPath).delete(); } catch (e) { /* ignore */ } } store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast('মুছে ফেলা হয়েছে'); goBack(); } catch (x) { toast(wErr(x)); } } }); break;
+        showDialog({ emoji: '⚠️', title: 'পর্ব মুছবেন?', text: E.pub ? 'এই পর্বটি পাঠকদের কাছ থেকেও মুছে যাবে।' : 'এই পর্বটি মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { try { await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).delete(); await wSyncBook(E, 'del', {}); store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast('মুছে ফেলা হয়েছে'); goBack(); } catch (x) { toast(wErr(x)); } } }); break;
       }
     }
   } catch (x) { console.warn(x); toast(wErr(x)); }
@@ -2060,15 +2022,6 @@ document.addEventListener('change', async (e) => {
   const t = e.target; if (!t || !t.files || !t.files[0]) return;
   try {
     if (t.id === 'wavF') { wPhoto = await wImg(t.files[0], 220, .78); const bx = document.getElementById('wavBox'); if (bx) { const cam = bx.querySelector('.cam'); bx.innerHTML = '<img src="' + wPhoto + '" alt="">'; bx.append(cam); } WR.dirty = true; }
-    if (t.id === 'wAuF') {
-      const fl = t.files[0]; t.value = '';
-      if (!(/^audio\//.test(fl.type) || /\.(mp3|m4a|aac|wav|ogg|opus|flac)$/i.test(fl.name))) return toast('শুধু অডিও ফাইল দিন');
-      if (fl.size > WAU_MAX) return toast('ফাইল সর্বোচ্চ ১০০ MB হতে পারবে');
-      WR.audioFile = fl; WR.dirty = true;
-      const bx = document.getElementById('wAuBox'); if (bx) bx.innerHTML = IC.headphone + '<br><b>' + esc(fl.name) + '</b><br><small>' + fmtSize(fl.size) + ' · বদলাতে আবার চাপুন</small>';
-      const pv = document.getElementById('wAuPrev'); if (pv) { try { if (pv.dataset.u) URL.revokeObjectURL(pv.dataset.u); } catch (e) { /* ignore */ } pv.dataset.u = URL.createObjectURL(fl); pv.src = pv.dataset.u; pv.style.display = 'block'; }
-      wSet('');
-    }
     if (t.id === 'wCovF') { wCover = await wImg(t.files[0], 360, .72); const bx = document.getElementById('wCovBox'); if (bx) bx.innerHTML = '<img src="' + wCover + '" alt="কভার" style="max-height:230px;border-radius:12px">'; WR.dirty = true; }
   } catch (x) { toast('ছবি পড়া যায়নি'); }
 });
@@ -2101,7 +2054,13 @@ function a11yFix(root) {
   } catch (e) { /* ignore */ }
 }
 let a11yT = 0;
-new MutationObserver(() => { if (a11yT) return; a11yT = requestAnimationFrame(() => { a11yT = 0; a11yFix(document.body); }); }).observe(document.body, { childList: true, subtree: true });
+let a11yQ = new Set();
+new MutationObserver((ms) => {
+  // শুধু নতুন যোগ হওয়া অংশ স্ক্যান হবে (টাইমার/পার্সেন্ট বদলালে পুরো পেজ নয়) — স্ক্রলে ল্যাগ কমে
+  ms.forEach((m) => m.addedNodes.forEach((n) => { if (n.nodeType === 1) a11yQ.add(n); }));
+  if (a11yT || !a11yQ.size) return;
+  a11yT = requestAnimationFrame(() => { a11yT = 0; const q = Array.from(a11yQ); a11yQ = new Set(); q.forEach((n) => { if (n.isConnected) a11yFix(n); }); });
+}).observe(document.body, { childList: true, subtree: true });
 document.addEventListener('keydown', (e) => {
   if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.getAttribute && e.target.getAttribute('role') === 'button' && e.target.dataset && e.target.dataset.act && !/^(BUTTON|A|INPUT)$/.test(e.target.tagName)) { e.preventDefault(); e.target.click(); }
 });
@@ -2364,22 +2323,22 @@ document.addEventListener('click', (e) => {
 async function route() {
   try { hlClose(); } catch (e) { /* ignore */ }
   const token = ++renderToken;
-  clearAuto(); clearInterval(window.__aT); audioStop(); speakStop(); wakeOff(); closeSheet(); closeDrawer();
+  clearAuto(); speakStop(); wakeOff(); closeSheet(); closeDrawer();
   const { seg, params } = parseHash();
   const page = seg[0] || 'home';
   if (page !== 'read') { try { sleepClear(); } catch (e) { /* ignore */ } }
   if (navigator.onLine !== false) offShow(false);
   document.body.classList.toggle('reading', page === 'read'); document.body.classList.remove('lmode', 'chrome-off'); clearTimeout(chromeT);
   document.body.style.overflow = ''; document.body.style.position = ''; document.documentElement.style.overflow = '';
-  const isTab = page === 'home' || page === 'audio' || page === 'lib' || (page === 'cat' && !seg[1]);
+  const isTab = page === 'home' || page === 'community' || page === 'lib' || (page === 'cat' && !seg[1]);
   document.body.classList.toggle('sub', !isTab);
   if (!isTab) { $('#mini').hidden = true; document.body.classList.remove('has-mini'); }
   setNavActive(isTab ? page : '');
   try {
     let html;
     if (page === 'home') { loadingView(); html = await viewHome(); }
-    else if (page === 'audio') { loadingView(); html = seg[1] ? await viewAudioBook(seg[1]) : await viewAudio(); }
-    else if (page === 'feed') { nav('/audio', true); return; }
+    else if (page === 'community') { loadingView(); html = await viewCommunity(); }
+    else if (page === 'feed' || page === 'audio' || page === 'alist') { nav('/community', true); return; }
     else if (page === 'episodes') { loadingView(); html = await viewEpisodes(); }
     else if (page === 'list') { loadingView(); html = await viewList(seg[1], params.get('status') || 'সব'); }
     else if (page === 'cat') { loadingView(); html = seg[1] ? await viewCategory(seg[1], params.get('status') || 'সব') : await viewCategories(); }
@@ -2387,8 +2346,6 @@ async function route() {
     else if (page === 'book') { loadingView(); html = await viewBook(seg[1]); }
     else if (page === 'read') { loadingView(); html = await viewReader(seg[1], parseInt(seg[2], 10)); }
     else if (page === 'lib') { loadingView(); html = await viewLibrary(params.get('tab') || 'dl', params.get('k') || 'all'); }
-    else if (page === 'alist') { loadingView(); html = await viewAList(seg[1]); }
-    else if (false) { loadingView(); html = seg[1] ? await viewAudioBook(seg[1]) : await viewAudio(); }
     else if (page === 'author') { loadingView(); html = await viewAuthor(seg[1]); }
     else if (page === 'authors') { loadingView(); html = await viewAuthors(); }
     else if (page === 'following') { html = headerPage('ফলো করা লেখক', true) + '<main class="page">' + followedHtml() + '</main>'; }
@@ -2419,10 +2376,9 @@ function afterRender(page, seg, params) {
     const inp = $('#qInput'); if (inp) { inp.focus(); const v = inp.value; inp.setSelectionRange(v.length, v.length); }
     runSearch(params.get('q') || '');
   }
-  if (page === 'audio' && seg[1]) apIcon();
   if (page === 'profile') refreshTime();
   if (page === 'goals') fillGoalBooks();
-  if (page === 'audio' && !seg[1] && $('#aH')) audioSoonTick();
+  if (page === 'community') cmAfter();
   if (page === 'read') sleepLabel();
   if (page === 'w') wAfter(seg);
   if (page === 'book') fillAuthorAv();
@@ -2450,11 +2406,11 @@ const statusPill = (s) => s ? '<span class="pill ' + (s === 'সমাপ্ত'
 const demoPill = (b) => (b.demo ? '<span class="pill demo">ডেমো</span>' : '');
 const ratingOf = (b) => { const t = (b.likes || 0) + (b.dislikes || 0); return t ? (b.likes / t) * 5 : 0; };
 const ratingTxt = (b) => bn(ratingOf(b).toFixed(1));
-function coverImg(b, extra) { return '<div class="cover"><img src="' + esc(b.cover) + '" alt="' + esc(b.title) + '" loading="lazy">' + (extra || '') + '</div>'; }
+function coverImg(b, extra) { return '<div class="cover"><img src="' + esc(b.cover) + '" alt="' + esc(b.title) + '" loading="lazy" decoding="async">' + (extra || '') + '</div>'; }
 function statLine(b) { return '<div class="stats"><span><b class="star">★</b>' + ratingTxt(b) + '</span><i class="sep"></i><span>' + ic('eye') + fmtN(b.reads || 0) + ' পঠিত</span></div>'; }
 const VER = '<svg class="vtick" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1d9bf0"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function bcard(b, badge) {
-  const act = (b.chapterCount === 0 && b.audioCount > 0) ? 'abook' : 'book';
+  const act = 'book';
   return '<div class="bcard" data-act="' + act + '" data-id="' + esc(b.id) + '">' + (badge ? '<span class="newb">' + badge + '</span>' : '') + coverImg(b) +
     '<div class="bi"><div class="bt">বই: ' + esc(b.title) + '</div><div class="ba">লেখক: ' + esc(b.author) + VER + '</div>' +
     (b.cat ? '<div class="ba">ধরন: ' + esc(b.cat) + '</div>' : '') +
@@ -2465,13 +2421,13 @@ const CARD = (b, badge) => (getLayout() === 'list' ? bcard(b, badge) : pcard(b, 
 const shelfOpen = () => '<div class="rail">';
 const lim = (a) => a;
 function pcard(b, badge) {
-  const act = (b.chapterCount === 0 && b.audioCount > 0) ? 'abook' : 'book';
-  return '<div class="bkc" data-act="' + act + '" data-id="' + esc(b.id) + '"><img src="' + esc(b.cover) + '" alt="' + esc(b.title) + '" loading="lazy">' +
+  const act = 'book';
+  return '<div class="bkc" data-act="' + act + '" data-id="' + esc(b.id) + '"><img src="' + esc(b.cover) + '" alt="' + esc(b.title) + '" loading="lazy" decoding="async">' +
     '<span class="bkv">' + ic('eye') + fmtN(b.reads || 0) + '</span>' + (badge ? '<span class="bkn">' + badge + '</span>' : '') +
     '<div class="bkt"><b>' + esc(b.title) + '</b><span>' + esc(b.author) + VER + '</span></div></div>';
 }
 function gcard(b, audio) {
-  const act = (b.chapterCount === 0 && b.audioCount > 0) || audio ? 'abook' : 'book';
+  const act = 'book';
   return '<div class="gcard" data-act="' + act + '" data-id="' + esc(b.id) + '">' + coverImg(b, (audio || b.audioCount > 0 && !b.chapterCount) ? '<span class="hp">' + IC.headphone + '</span>' : '') +
     '<div class="gt">' + esc(b.title) + '</div><div class="ga">' + esc(b.author) + '</div><div class="gm">' + ic(audio ? 'headphone' : 'eye') + fmtN(b.reads || 0) + (audio ? ' প্লে' : ' পঠিত') + '</div></div>';
 }
@@ -2486,10 +2442,10 @@ function secTitle(t, href) {
 
 /* ---------- হোম ---------- */
 function featCard(b, i) {
-  const audioOnly = !b.chapterCount && b.audioCount > 0;
-  const read = b.chapterCount > 0 ? '<button class="fbtn" data-act="read-book" data-id="' + esc(b.id) + '">পড়ুন</button>' : '';
-  const listen = read ? '' : '<button class="fbtn' + (read ? ' alt' : '') + '" data-act="listen-book" data-id="' + esc(b.id) + '" data-audio="' + (b.audioCount > 0 ? 1 : 0) + '">' + (audioOnly ? IC.headphone : IC.listen) + 'পড়ুন</button>';
-  return '<div class="fcard" data-act="' + (audioOnly ? 'abook' : 'book') + '" data-id="' + esc(b.id) + '">' + coverImg(b) +
+  const has = b.chapterCount > 0;
+  const read = has ? '<button class="fbtn" data-act="read-book" data-id="' + esc(b.id) + '">পড়ুন</button>' : '';
+  const listen = has ? '<button class="fbtn alt" data-act="listen-book" data-id="' + esc(b.id) + '" aria-label="শুনুন">' + IC.headphone + 'শুনুন</button>' : '';
+  return '<div class="fcard" data-act="book" data-id="' + esc(b.id) + '">' + coverImg(b) +
     '<span class="rank">#' + bn((i || 0) + 1) + '</span><div class="finfo"><div class="ft">' + esc(b.title) + '</div><div class="fa">' + esc(b.author) + '</div><div class="fs">' + ic('eye') + fmtN(b.reads || 0) + (b.status ? ' • ' + esc(b.status) : '') + (b.cat ? ' • ' + esc(b.cat) : '') + '</div><div class="frow">' + read + listen + '<button class="fav' + (getSaved().indexOf(b.id) >= 0 ? ' on' : '') + '" data-act="fav-q" data-id="' + esc(b.id) + '" aria-label="পছন্দের তালিকা">' + IC.save + '</button></div></div></div>';
 }
 const SEC_TITLES = { recent: 'নতুন বই' };
@@ -2562,11 +2518,6 @@ async function viewList(key, status) {
   const books = st === 'সব' ? data.books : data.books.filter((b) => b.status === st);
   return headerPage(SEC_TITLES[key] || data.title || 'তালিকা', true, fltBtn('/list/' + enc(key), st)) + '<main class="page">' +
     booksBlock(books, 'এই তালিকায় কোনো বই পাওয়া যায়নি।') + '</main>';
-}
-async function viewAList(kind) {
-  const all = await api('/books?audio=1');
-  const list = kind === 'pop' ? all.slice().sort((a, b) => b.reads - a.reads) : all.slice().sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
-  return headerPage(kind === 'pop' ? 'জনপ্রিয় অডিওবুকসমূহ' : 'নতুন অডিওবুকসমূহ', true) + '<main class="page">' + booksBlock(list, 'কোনো অডিওবুক নেই।', true) + '</main>';
 }
 
 /* ---------- ক্যাটাগরি ---------- */
@@ -2673,7 +2624,7 @@ function feedPost(x) {
   let desc = (b.desc || '').replace(/\s+/g, ' ').trim(); if (desc.length > 200) desc = desc.slice(0, 200).replace(/\s+\S*$/, '') + '…';
   const open = au ? 'data-act="abook"' : 'data-act="book"'; const isNew = Date.now() - Date.parse(b.publishedAt) < 7 * 86400000;
   return '<article class="post pz" style="--hue:' + hue + '"><div class="pzh"><span class="pzbg" style="background-image:url(\'' + esc(b.cover) + '\')"></span><span class="pzov"></span>' +
-    '<div class="pzin"><button class="pzc" ' + open + ' data-id="' + esc(b.id) + '" aria-label="' + esc(b.title) + '"><img src="' + esc(b.cover) + '" alt="' + esc(b.title) + '" loading="lazy">' + (isNew ? '<span class="pzn">নতুন</span>' : '') + '</button>' +
+    '<div class="pzin"><button class="pzc" ' + open + ' data-id="' + esc(b.id) + '" aria-label="' + esc(b.title) + '"><img src="' + esc(b.cover) + '" alt="' + esc(b.title) + '" loading="lazy" decoding="async">' + (isNew ? '<span class="pzn">নতুন</span>' : '') + '</button>' +
     '<div class="pzt"><div class="pzbd">' + (au ? '<span class="pzk">🎧 অডিও</span>' : '') + (b.cat ? '<span class="pzk">' + esc(b.cat) + '</span>' : '') + statusPill(b.status) + '</div>' +
     '<b class="pzti">' + esc(b.title) + '</b><div class="pzau"><span class="pzav" style="background:hsl(' + hue + ',50%,38%)">' + esc(i) + '</span><span class="pzan">' + esc(b.author) + '</span></div>' +
     '<div class="pzst"><span>' + ic('eye') + '<i data-reads>' + fmtN(b.reads || 0) + '</i></span>' + (b.chapterCount ? '<span>' + IC.read + bn(b.chapterCount) + ' অধ্যায়</span>' : '') + '<span class="pzd">' + fmtDate(b.publishedAt) + '</span></div></div></div></div>' +
@@ -2820,13 +2771,13 @@ async function viewReader(bookId, n) {
     '<div class="rnav"><button class="btn ghost" ' + (c.prev ? 'data-act="read" data-id="' + esc(bookId) + '" data-n="' + c.prev + '"' : 'disabled') + '>‹ আগের অধ্যায়</button>' +
     '<button class="btn" ' + (c.next ? 'data-act="read" data-id="' + esc(bookId) + '" data-n="' + c.next + '"' : 'disabled') + '>পরের অধ্যায় ›</button></div>' +
     '<div class="spk-bar" id="spkBar" hidden><button data-act="spk-prev" aria-label="আগের অনুচ্ছেদ">' + IC.prev + '</button><button id="spkPlay" data-act="spk-pp" aria-label="বিরতি">' + IC.pause + '</button><button data-act="spk-next" aria-label="পরের অনুচ্ছেদ">' + IC.next + '</button><div class="st" id="spkSt"></div><button data-act="spk-stop" aria-label="বন্ধ">' + IC.close + '</button></div>' +
-    '<div class="rfoot"><div class="rprog"><u id="rprogU" style="width:' + pct + '%"></u></div><div class="rpct" id="rpct" aria-hidden="true"></div>' +
+    '<div class="rfoot"><div class="rprog"><u id="rprogU" style="transform:scaleX(' + (pct / 100) + ')"></u></div><div class="rpct" id="rpct" aria-hidden="true"></div>' +
     '<div class="rbtns"><button data-act="drawer-open"><span data-i="grid"></span>অধ্যায়</button><button id="autoBtn" data-act="r-auto" class="' + (getRS().auto ? 'on' : '') + '"><span data-i="play"></span>অটো</button><button data-act="rs-open"><span data-i="gear"></span>সেটিং</button></div></div>';
 }
 /* রিডারের কন্ট্রোল: ঢোকার ২ সেকেন্ড পর লুকায়, লেখায় ট্যাপ করলে আবার আসে */
 let chromeT = null;
 const inRead = () => document.body.classList.contains('reading') && !document.body.classList.contains('lmode');
-function chromeShow(ms) { document.body.classList.remove('chrome-off'); clearTimeout(chromeT); if (ms) chromeT = setTimeout(chromeHide, ms); }
+function chromeShow(ms) { document.body.classList.remove('chrome-off'); clearTimeout(chromeT); /* নিজে থেকে লুকানো বন্ধ — শুধু লেখায় ট্যাপ করলে লুকায়/আসে */ }
 function chromeHide() { if (A11Y || !inRead() || sheetOpen() || drawerOpen()) return; document.body.classList.add('chrome-off'); }
 function rptxt() { return bn(rd ? cpOf(rd.id, rd.n) : 0) + '% পড়া • সময়: ' + fmtTime(rd ? ctOf(rd.id, rd.n) : 0); }
 function refreshRT() {
@@ -2848,23 +2799,35 @@ function afterReader(listen) {
   setTimeout(() => { if (!rd || !document.body.classList.contains('reading')) return; if (document.documentElement.scrollHeight - window.innerHeight <= 2) { const pr = getCP(); (pr[rd.id] = pr[rd.id] || {})[rd.n] = 100; store.set('jp_cprog', pr); markDone(rd.id, rd.n); refreshRT(); } }, 400);
   if (r.auto) startAutoRead();
   if (r.wake) wakeOn();
-  if (listen) { setTimeout(() => speakStart(), 350); } else chromeShow(2000);
+  if (listen) { setMode('listen'); setTimeout(() => speakStart(), 350); } else chromeShow(0);
 }
 function applyFontCompat() { applyRS(); }
 
 /* অগ্রগতি */
-let progT = 0; let lastSel = '';
-function onScrollProgress() {
-  if (!document.body.classList.contains('reading') || !rd) return;
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = max <= 0 ? 100 : Math.max(0, Math.min(100, Math.round((window.scrollY / max) * 100)));
-  const u = $('#rprogU'); if (u) u.style.width = pct + '%';
-  const now = Date.now(); if (now - progT < 500) return; progT = now;
+let progT = 0; let lastSel = ''; let progRaf = 0, progSave = 0, progMax = 0, progPct = 0;
+function progMeasure() { progMax = document.documentElement.scrollHeight - window.innerHeight; }
+function progFlush() {
+  progSave = 0; if (!document.body.classList.contains('reading') || !rd) return;
+  const pct = progPct;
   const pr = store.get('jp_prog', {}); pr[rd.id] = { n: rd.n, pct }; store.set('jp_prog', pr);
   const cp = getCP(); (cp[rd.id] = cp[rd.id] || {})[rd.n] = pct; store.set('jp_cprog', cp);
   if (pct >= 95) markDone(rd.id, rd.n);
   refreshRT();
 }
+function onScrollProgress() {
+  if (progRaf) return;
+  progRaf = requestAnimationFrame(() => {
+    progRaf = 0; if (!document.body.classList.contains('reading') || !rd) return;
+    if (!progMax) progMeasure();
+    progPct = progMax <= 0 ? 100 : Math.max(0, Math.min(100, Math.round((window.scrollY / progMax) * 100)));
+    const u = $('#rprogU'); if (u) u.style.transform = 'scaleX(' + (progPct / 100) + ')';
+    // ভারী সেভ স্ক্রলের সময় নয় — স্ক্রল থামলে (বা প্রতি ২ সেকেন্ডে একবার)
+    clearTimeout(progSave); progSave = setTimeout(progFlush, 600);
+    const now = Date.now(); if (now - progT > 2000) { progT = now; clearTimeout(progSave); progFlush(); }
+  });
+}
+window.addEventListener('resize', () => { progMax = 0; }, { passive: true });
+window.addEventListener('pagehide', () => { try { progFlush(); } catch (e) { /* ignore */ } });
 
 /* অটো স্ক্রল (রিডার) ও স্ক্রিন অন */
 function startAutoRead() {
@@ -3069,7 +3032,7 @@ async function viewAbout() {
   const st = await api('/settings');
   return headerPage('অ্যাপ সম্পর্কে', true) + '<main class="page"><div class="info-card center"><img class="about-logo" src="data:image/jpeg;base64,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" alt="যাত্রাপথ"><h3 style="margin:0">যাত্রাপথ বাংলা উপন্যাস</h3><div class="meta" style="justify-content:center">সংস্করণ ১.০</div></div>' +
     '<div class="info-card">' + esc(st.about) + '</div>' +
-    '<div class="info-card"><b>এই অ্যাপে যা পাবেন</b><ul style="margin:6px 0 0;padding-left:20px"><li>বাংলা উপন্যাস অধ্যায় ধরে ধরে পড়া</li><li>অধ্যায় ডাউনলোড করে অফলাইনে পড়া</li><li>অডিও উপন্যাস শোনা ও পর্ব ডাউনলোড</li><li>নিজের লাইব্রেরি, লাইট ও ডার্ক থিম</li></ul></div></main>';
+    '<div class="info-card"><b>এই অ্যাপে যা পাবেন</b><ul style="margin:6px 0 0;padding-left:20px"><li>বাংলা উপন্যাস অধ্যায় ধরে ধরে পড়া</li><li>অধ্যায় ডাউনলোড করে অফলাইনে পড়া</li><li>বই পড়ে শোনানো (শুনুন সুবিধা)</li><li>নিজের লাইব্রেরি, লাইট ও ডার্ক থিম</li></ul></div></main>';
 }
 function waLink(num) { let d = String(num).replace(/\D/g, ''); if (d.charAt(0) === '0') d = '88' + d; return 'https://wa.me/' + d; }
 async function viewContact() {
@@ -3080,10 +3043,8 @@ async function viewContact() {
 }
 /* ---------- অডিও ---------- */
 // অডিও ট্যাবে শুধু বইয়ের তালিকা। অধ্যায় (পর্ব) ও প্লেয়ার থাকে বইয়ের ভেতরে। ডাউনলোড হয় পর্ব ধরে ধরে, পুরো বই নয়।
-const player = new Audio(); player.preload = 'none';
-let ap = null; let apBlobUrl = null;
-const getAdl = () => store.get('jp_adl', {});
-const getAcache = () => store.get('jp_acache', {});
+const getAdl = () => ({});
+const getAcache = () => ({});
 const fmtT = (x) => { if (!isFinite(x) || x < 0) x = 0; const m = Math.floor(x / 60); const r = Math.floor(x % 60); return bn(m) + ':' + bn(r < 10 ? '0' + r : r); };
 function idb() {
   return new Promise((res, rej) => {
@@ -3098,136 +3059,106 @@ const idbPut = (k, v) => idbDo('readwrite', (st) => st.put(v, k));
 const idbGet = (k) => idbDo('readonly', (st) => st.get(k));
 const idbDel = (k) => idbDo('readwrite', (st) => st.delete(k));
 
-function audioStop() {
-  try { player.pause(); } catch (e) { /* ignore */ }
-  if (apBlobUrl) { try { URL.revokeObjectURL(apBlobUrl); } catch (e) { /* ignore */ } apBlobUrl = null; }
-  try { player.removeAttribute('src'); player.load(); } catch (e) { /* ignore */ }
-  ap = null;
+
+
+
+/* ---------- কমিউনিটি (পাঠকদের পোস্ট ও মতামত) ---------- */
+const CM_BG = { red: ['লাল', '#e53935', '#b71c1c'], blue: ['নীল', '#1e88e5', '#1565c0'], orange: ['কমলা', '#fb8c00', '#e65100'], purple: ['বেগুনি', '#7e57c2', '#5e35b1'], pink: ['গোলাপী', '#ec407a', '#c2185b'] };
+const cmBgCss = (k) => { const c = CM_BG[k] || CM_BG.purple; return 'background:linear-gradient(135deg,' + c[1] + ',' + c[2] + ')'; };
+let cmPosts = [], cmSel = 'purple', cmBusy = false, cmCur = null, cmCms = [];
+const cmMyR = () => store.get('jp_preact', {});
+function cmCard(p) {
+  const r = cmMyR()[p.id] || ''; const id = esc(p.id);
+  return '<article class="cmp" style="' + cmBgCss(p.bg) + '"><div class="cmh"><span class="cmav">' + avInit(p.name) + '</span><div class="cmn"><b>' + esc(p.name || 'অতিথি পাঠক') + '</b><small>' + cmDate(p.at) + '</small></div></div>' +
+    '<p class="cmt">' + esc(p.text) + '</p><div class="cma">' +
+    '<button class="' + (r === 'like' ? 'on' : '') + '" data-cm="react" data-r="like" data-id="' + id + '" aria-label="পছন্দ">' + IC.like + '<span>' + fmtN(p.likes || 0) + '</span></button>' +
+    '<button class="' + (r === 'dislike' ? 'on' : '') + '" data-cm="react" data-r="dislike" data-id="' + id + '" aria-label="অপছন্দ">' + IC.dislike + '<span>' + fmtN(p.dislikes || 0) + '</span></button>' +
+    '<button data-cm="comments" data-id="' + id + '" aria-label="মন্তব্য">' + IC.chat + '<span>' + fmtN(p.cmts || 0) + '</span></button>' +
+    '<button data-cm="share" data-id="' + id + '" aria-label="শেয়ার">' + IC.share + '<span>শেয়ার</span></button></div></article>';
 }
-function apTick() {
-  if (!ap) return; const sk = $('#apSeek'); if (!sk) return;
-  const d = player.duration;
-  if (isFinite(d) && d > 0) sk.value = Math.round(player.currentTime / d * 1000);
-  $('#apCur').textContent = fmtT(player.currentTime); $('#apDur').textContent = fmtT(d);
+function cmDraw() {
+  const w = $('#cmFeed'); if (!w) return;
+  w.innerHTML = cmPosts.length ? cmPosts.map(cmCard).join('') : '<div class="empty">এখনো কোনো পোস্ট নেই। প্রথম পোস্টটি আপনি করুন।</div>';
 }
-function apIcon() {
-  if (!ap) return;
-  const b = $('#apPlay'); if (b) b.innerHTML = player.paused ? IC.play : IC.pause;
-  $$('.aep').forEach((row) => { const i = +row.dataset.idx; const on = i === ap.idx; row.classList.toggle('cur', on); const pb = $('.play', row); if (pb) pb.innerHTML = on && !player.paused ? IC.pause : IC.play; });
-  const t = $('#apTitle'); if (t) t.textContent = ap.idx >= 0 ? ap.eps[ap.idx].title : 'একটি পর্ব বেছে নিন';
-  const pv = $('#apPrev'); if (pv) pv.disabled = ap.idx <= 0;
-  const nx = $('#apNext'); if (nx) nx.disabled = ap.idx < 0 || ap.idx >= ap.eps.length - 1;
-}
-async function playEp(i) {
-  if (!ap || i < 0 || i >= ap.eps.length) return;
-  if (i === ap.idx && player.getAttribute('src')) { if (player.paused) player.play().catch(() => {}); else player.pause(); return; }
-  const ep = ap.eps[i]; let src = ep.url;
-  if ((getAdl()[ap.id] || {})[ep.n]) {
-    try { const blob = await idbGet(ap.id + ':' + ep.n); if (blob) { if (apBlobUrl) URL.revokeObjectURL(apBlobUrl); apBlobUrl = URL.createObjectURL(blob); src = apBlobUrl; } } catch (e) { /* অনলাইন লিংক ব্যবহার হবে */ }
-  }
-  if (!src || (src === ep.url && navigator.onLine === false)) { toast('অফলাইনে শুধু ডাউনলোড করা পর্ব শোনা যায়'); return; }
-  ap.idx = i; player.src = src; $('#apSeek') && ($('#apSeek').value = 0); apIcon();
-  try { await player.play(); } catch (e) { toast('অডিও চালু করা যায়নি'); }
-  apIcon();
-}
-function epRow(ep, i) {
-  const have = !!((getAdl()[ap.id] || {})[ep.n]);
-  return '<div class="aep" data-idx="' + i + '"><button class="play" data-act="aplay" data-idx="' + i + '" aria-label="চালান">' + IC.play + '</button>' +
-    '<div class="txt"><div class="at">' + esc(ep.title) + '</div><div class="as">' + (have ? 'ডাউনলোড করা, অফলাইনে শোনা যাবে' : 'অনলাইনে শোনা যাবে') + '</div></div>' +
-    (have ? '<button class="adl done" data-act="adel" data-n="' + ep.n + '" aria-label="ডাউনলোড মুছুন">' + IC.check + 'মুছুন</button>'
-      : '<button class="adl" data-act="adl" data-n="' + ep.n + '" aria-label="ডাউনলোড">' + IC.download + 'ডাউনলোড</button>') + '</div>';
-}
-function renderEps() { const box = $('#apList'); if (!box || !ap) return; box.innerHTML = ap.eps.map(epRow).join(''); apIcon(); }
-async function apDownload(n, btn) {
-  const ep = ap.eps.find((e) => e.n === n); if (!ep) return;
-  if (!ep.url) { toast('অফলাইনে নতুন পর্ব ডাউনলোড করা যায় না'); return; }
-  btn.disabled = true; btn.textContent = 'নামছে…';
+async function cmLoad() {
+  const w = $('#cmFeed'); if (!w) return;
+  try { await ensure(); } catch (e) { /* ignore */ }
+  const f = SFB(); if (!f) { w.innerHTML = '<div class="empty">লোড করা যায়নি। ইন্টারনেট দেখুন।</div>'; return; }
   try {
-    const res = await fetch(ep.url); if (!res.ok) throw new Error('fail');
-    const blob = await res.blob(); await idbPut(ap.id + ':' + n, blob);
-    const dl = getAdl(); (dl[ap.id] = dl[ap.id] || {})[n] = blob.size || 1; store.set('jp_adl', dl);
-    toast('"' + ep.title + '" ডাউনলোড হয়েছে');
-  } catch (e) { toast('ডাউনলোড করা যায়নি। ইন্টারনেট ও স্টোরেজ দেখুন'); }
-  if (ap) renderEps();
+    const q = await f.collection('posts').where('pub', '==', true).get();
+    cmPosts = q.docs.map((d) => Object.assign({ id: d.id }, d.data())).sort((a, b) => (b.at || 0) - (a.at || 0)).slice(0, 100); cmDraw();
+  } catch (e) { w.innerHTML = '<div class="empty">লোড করা যায়নি। ইন্টারনেট দেখুন।</div>'; }
 }
-async function apRemove(n) {
-  try { await idbDel(ap.id + ':' + n); } catch (e) { /* ignore */ }
-  const dl = getAdl(); if (dl[ap.id]) { delete dl[ap.id][n]; if (!Object.keys(dl[ap.id]).length) delete dl[ap.id]; store.set('jp_adl', dl); }
-  toast('ডাউনলোড মুছে ফেলা হয়েছে'); renderEps();
+function viewCommunity() {
+  return headerTab() + '<main class="page cmw"><h2 class="cmttl">কমিউনিটি ডিসকাশন</h2>' +
+    '<div class="cmopts"><button data-cm="write">' + IC.pen + '<span>পোস্ট লিখুন</span></button><button data-cm="view">' + IC.chat + '<span>পাঠকদের মন্তব্য দেখুন</span></button></div>' +
+    '<div id="cmCompose"></div><h3 class="cmx" id="cmExp">এক্সপ্লোর</h3><div id="cmFeed"><div class="empty">লোড হচ্ছে…</div></div></main>';
 }
-function apNext(auto) { if (ap && ap.idx < ap.eps.length - 1) playEp(ap.idx + 1); else if (auto) apIcon(); }
-player.addEventListener('timeupdate', apTick);
-player.addEventListener('loadedmetadata', apTick);
-player.addEventListener('durationchange', apTick);
-player.addEventListener('play', apIcon);
-player.addEventListener('pause', apIcon);
-player.addEventListener('ended', () => apNext(true));
-player.addEventListener('error', () => { if (ap && player.getAttribute('src')) toast('অডিও চালানো যায়নি। অফলাইনে শুধু ডাউনলোড করা পর্ব চলে'); });
-
-
-/* ---------- অডিও ট্যাব: শীঘ্রই আসছে ---------- */
-function viewAudioSoon() {
-  return headerTab() + '<main class="page"><div class="asoon"><div class="aring"><div class="adot">' + IC.headphone + '</div></div>' +
-    '<h2>অডিওবুক আসছে শীঘ্রই</h2><p>আমরা এখনও অডিওবুক সাজাচ্ছি। কিছুদিন পর আমরা নতুন অডিওবুক নিয়ে ফিরব।</p>' +
-    '<div class="acd"><div><b id="aH">০০</b><span>ঘণ্টা</span></div><div><b id="aM">০০</b><span>মিনিট</span></div><div><b id="aS">০০</b><span>সেকেন্ড</span></div></div>' +
-    '<div class="aopen" id="aOpen"></div></div></main>';
+function cmAfter() { cmLoad(); }
+function cmComposeHtml() {
+  return '<section class="cmcomp"><div class="cmch"><b>নতুন পোস্ট লিখুন</b><button data-cm="cancel">বাতিল</button></div>' +
+    '<textarea id="cmTxt" maxlength="500" rows="4" placeholder="আপনার উপন্যাস সম্পর্কে কিছু লিখুন..." aria-label="পোস্ট লিখুন"></textarea><div class="cmcnt"><span id="cmN">০/৫০০</span></div>' +
+    '<h4>কালার ব্যাকগ্রাউন্ড নির্বাচন করুন</h4><div class="cmcols">' + Object.keys(CM_BG).map((k) => '<button type="button" data-cm="color" data-v="' + k + '" class="' + (k === cmSel ? 'on' : '') + '" style="' + cmBgCss(k) + '">' + CM_BG[k][0] + '</button>').join('') + '</div>' +
+    '<p class="acerr" id="cmErr" role="alert"></p><button class="bigbtn cmsend" data-cm="send">' + IC.share + 'শেয়ার পোস্ট</button><small class="cmnote">(অ্যাডমিনের অনুমোদনের জন্য যাবে)</small></section>';
 }
-async function audioSoonTick() {
-  let at = 0;
-  try { const d = await window.__JPFS.collection('config').doc('audio').get(); if (d.exists) at = +d.data().launchAt || 0; } catch (e) { /* ignore */ }
-  const p2 = (n) => bn(String(n).padStart(2, '0'));
-  const o = $('#aOpen'); if (o && at > Date.now()) o.textContent = 'খুলবে ' + new Date(at).toLocaleString('bn-BD', { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' });
-  const tick = () => { const h = $('#aH'); if (!h) { clearInterval(window.__aT); return; } const t = Math.max(0, Math.floor((at - Date.now()) / 1000)); h.textContent = p2(Math.floor(t / 3600)); $('#aM').textContent = p2(Math.floor(t % 3600 / 60)); $('#aS').textContent = p2(t % 60); };
-  tick(); clearInterval(window.__aT); window.__aT = setInterval(tick, 1000);
+async function cmSend() {
+  const err = (m) => { const e = $('#cmErr'); if (e) e.textContent = m; };
+  const t = (($('#cmTxt') || {}).value || '').trim(); if (t.length < 5) return err('কিছু লিখুন (কমপক্ষে ৫ অক্ষর)');
+  try { await ensure(); } catch (e) { /* ignore */ }
+  const f = SFB(); if (!f) return err('ইন্টারনেট সংযোগ নেই'); if (cmBusy) return; cmBusy = true;
+  const btn = $('[data-cm=send]'); if (btn) btn.disabled = true; const a = getAcct();
+  try {
+    await f.collection('posts').add({ name: (a && a.name) || 'অতিথি পাঠক', uid: myUid(), text: t.slice(0, 500), bg: cmSel, st: 'review', pub: false, at: Date.now(), likes: 0, dislikes: 0, cmts: 0 });
+    toast('পোস্ট অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে'); const c = $('#cmCompose'); if (c) c.innerHTML = '';
+  } catch (e) { err('পোস্ট পাঠানো যায়নি। ইন্টারনেট দেখুন, তারপর আবার চেষ্টা করুন'); if (btn) btn.disabled = false; }
+  cmBusy = false;
 }
-/* ---------- অডিও ট্যাব ও অডিও বই ---------- */
-function audioFeat(b) {
-  return '<div class="fcard" data-act="abook" data-id="' + esc(b.id) + '">' + coverImg(b) + '<div class="finfo"><div class="ft">' + esc(b.title) + '</div><div class="fa">লেখক: ' + esc(b.author) + '</div>' +
-    '<div class="frow"><button class="fbtn" data-act="abook" data-id="' + esc(b.id) + '">' + IC.headphone + 'শুনুন</button></div></div></div>';
+function cmReact(id, r) {
+  const p = cmPosts.find((x) => x.id === id); if (!p) return; const m = cmMyR(); const old = m[id] || ''; const nw = old === r ? '' : r;
+  const key = (k) => (k === 'like' ? 'likes' : 'dislikes'); const up = {};
+  if (old) { up[key(old)] = SINC(-1); p[key(old)] = Math.max(0, (p[key(old)] || 0) - 1); }
+  if (nw) { up[key(nw)] = SINC(1); p[key(nw)] = (p[key(nw)] || 0) + 1; }
+  if (nw) m[id] = nw; else delete m[id]; store.set('jp_preact', m); cmDraw();
+  const f = SFB(); if (f) f.doc('posts/' + id).update(up).catch(() => {});
 }
-async function viewAudio() {
-  let books;
-  try { books = await api('/books?audio=1'); }
-  catch (e) { // অফলাইন: শুধু যেসব বইয়ের পর্ব ডাউনলোড করা আছে
-    const dl = getAdl(); const ac = getAcache(); books = Object.keys(dl).map((id) => ac[id]).filter(Boolean).map((c) => Object.assign({ chapterCount: 0, audioCount: Object.keys(dl[c.id]).length, status: '', cat: '', reads: 0, publishedAt: '' }, c));
-    if (!books.length) throw e;
-  }
-  let h = headerTab() + '<main class="page">';
-  if (!books.length) return viewAudioSoon();
-  const newest = books.slice().sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
-  const pop = books.slice().sort((a, b) => (b.reads || 0) - (a.reads || 0));
-  h += '<div class="rail feat" id="audioFeat">' + books.filter((b) => b.featured).concat(books.filter((b) => !b.featured)).slice(0, 5).map(audioFeat).join('') + '</div>';
-  h += secTitle('নতুন অডিওবুক', '/alist/new') + '<div class="rail g3">' + newest.slice(0, 10).map((b) => gcard(b, true)).join('') + '</div>';
-  h += secTitle('জনপ্রিয় অডিওবুক', '/alist/pop') + '<div class="rail g3">' + pop.slice(0, 10).map((b) => gcard(b, true)).join('') + '</div>';
-  return h + '</main>';
+function cmShare(id) {
+  const p = cmPosts.find((x) => x.id === id); if (!p) return; const txt = p.text + '\n— ' + (p.name || 'অতিথি পাঠক') + ' (যাত্রাপথ)';
+  if (navigator.share) { navigator.share({ text: txt }).catch(() => {}); return; }
+  try { navigator.clipboard.writeText(txt).then(() => toast('কপি হয়েছে'), () => toast('শেয়ার করা যায়নি')); } catch (e) { toast('শেয়ার করা যায়নি'); }
 }
-async function viewAudioBook(id) {
-  let b; let offline = false;
-  try { b = await api('/books/' + enc(id)); }
-  catch (e) { const c = getAcache()[id]; if (!c) throw e; b = c; offline = true; }
-  const dlmap = getAdl()[id] || {};
-  let eps = (b.audio || []).map((a) => ({ n: a.n, title: a.title, url: a.url }));
-  if (offline) eps = eps.filter((x) => dlmap[x.n]).map((x) => Object.assign({}, x, { url: '' }));
-  else {
-    try { // লেখকের জমা দেওয়া ও অনুমোদিত অডিও পর্ব
-      const qs = await window.__JPFS.collection('books/' + id + '/chapters').where('pub', '==', true).get();
-      qs.forEach((d) => { const x = d.data(); const u = typeof x.audio === 'string' ? x.audio : (x.audio && x.audio.url) || ''; if (u && !eps.some((e) => e.n === x.n)) eps.push({ n: x.n, title: x.title || ('পর্ব ' + bn(x.n)), url: u }); });
-      eps.sort((a, b2) => a.n - b2.n);
-    } catch (e) { /* ignore */ }
-    const ac = getAcache(); ac[id] = { id, title: b.title, author: b.author, cover: b.cover, cat: b.cat, status: b.status, audioCount: eps.length, audio: eps.map((x) => ({ n: x.n, title: x.title })) }; store.set('jp_acache', ac); }
-  ap = { id, title: b.title, eps, idx: -1 };
-  if (!offline) addHist(id);
-  const saved = getSaved().indexOf(id) >= 0;
-  let h = headerPage(b.title, true) + '<main class="page"><div class="detail">' + coverImg(b) + '<div class="di"><h1>' + esc(b.title) + '</h1><div class="au">' + ic('pen') + esc(b.author) + '</div>' +
-    '<div class="pr">' + (b.cat ? '<span class="pill">' + esc(b.cat) + '</span>' : '') + statusPill(b.status) + demoPill(b) + '</div>' +
-    '<button class="bm' + (saved ? ' on' : '') + '" data-act="bm" data-id="' + esc(id) + '" id="bmBtn">' + IC.save + '<span>' + (saved ? 'পছন্দের তালিকায় আছে' : 'পছন্দের তালিকায় যোগ করুন') + '</span></button></div></div>';
-  if (!eps.length) return h + '<div class="empty">' + (offline ? 'অফলাইনে শোনার মতো কোনো ডাউনলোড করা পর্ব নেই।' : 'এই অডিওবুকের পর্ব খুব শীঘ্রই যোগ হবে।') + '</div></main>';
-  h += '<div class="player"><div class="pt" id="apTitle">একটি পর্ব বেছে নিন</div><div class="ps">' + esc(b.title) + '</div>' +
-    '<div class="seekrow"><span id="apCur">০:০০</span><input type="range" id="apSeek" min="0" max="1000" value="0" aria-label="অডিওর অবস্থান"><span id="apDur">০:০০</span></div>' +
-    '<div class="pctl"><button id="apPrev" data-act="aprev" aria-label="আগের পর্ব">' + IC.prev + '</button><button class="big" id="apPlay" data-act="aplay-cur" aria-label="চালান">' + IC.play + '</button><button id="apNext" data-act="anext" aria-label="পরের পর্ব">' + IC.next + '</button></div></div>' +
-    '<div class="panel"><h3>পর্বসমূহ (' + bn(eps.length) + ')</h3><div id="apList">' + eps.map(epRow).join('') + '</div></div></main>';
-  return h;
+function cmSheetHtml() {
+  const l = cmCms === null ? '<div class="empty">লোড করা যায়নি।</div>' : cmCms.length ? cmCms.map((c) => '<div class="cmci"><b>' + esc(c.name || 'অতিথি পাঠক') + '</b><small>' + cmDate(c.at) + '</small><p>' + esc(c.text) + '</p></div>').join('') : '<div class="empty">এখনো কোনো মন্তব্য নেই।</div>';
+  return '<div class="grab"></div><div class="cmsheet"><h3>মন্তব্য' + (cmCms ? ' (' + bn(cmCms.length) + ')' : '') + '</h3><div class="cmcl" id="cmCl">' + l + '</div>' +
+    '<textarea id="cmCt" maxlength="300" rows="2" placeholder="আপনার মন্তব্য লিখুন..." aria-label="মন্তব্য"></textarea><p class="acerr" id="cmCe" role="alert"></p><button class="bigbtn" data-cm="cm-send">পাঠান</button></div>';
 }
+async function cmOpenCm(id) {
+  cmCur = id; cmCms = []; openSheet(cmSheetHtml()); const f = SFB();
+  try { const q = await f.collection('posts/' + id + '/comments').orderBy('at', 'desc').limit(100).get(); cmCms = q.docs.map((d) => Object.assign({ id: d.id }, d.data())); } catch (e) { cmCms = null; }
+  const sh = $('#sheet'); if (sh && sh.querySelector('.cmsheet')) { openSheet(cmSheetHtml()); }
+}
+async function cmCmSend() {
+  const err = (m) => { const e = $('#cmCe'); if (e) e.textContent = m; };
+  const t = (($('#cmCt') || {}).value || '').trim(); if (!t) return err('মন্তব্য লিখুন');
+  const f = SFB(); if (!f || !cmCur) return err('ইন্টারনেট সংযোগ নেই'); const a = getAcct(); const id = cmCur;
+  const c = { name: (a && a.name) || 'অতিথি পাঠক', uid: myUid(), text: t.slice(0, 300), at: Date.now() };
+  try {
+    await f.collection('posts/' + id + '/comments').add(c); f.doc('posts/' + id).update({ cmts: SINC(1) }).catch(() => {});
+    if (!cmCms) cmCms = []; cmCms.unshift(c); const p = cmPosts.find((x) => x.id === id); if (p) p.cmts = (p.cmts || 0) + 1; cmDraw(); openSheet(cmSheetHtml()); toast('মন্তব্য যোগ হয়েছে');
+  } catch (e) { err('মন্তব্য পাঠানো যায়নি'); }
+}
+document.addEventListener('input', (e) => { if (e.target && e.target.id === 'cmTxt') { const n = $('#cmN'); if (n) n.textContent = bn(e.target.value.length) + '/৫০০'; } });
+document.addEventListener('click', (ev) => {
+  const el = ev.target.closest('[data-cm]'); if (!el) return; const a = el.dataset.cm;
+  if (a === 'write') { const c = $('#cmCompose'); if (!c) return; c.innerHTML = cmComposeHtml(); $$('.cmopts button').forEach((b) => b.classList.toggle('on', b === el)); const t = $('#cmTxt'); if (t) t.focus(); c.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  else if (a === 'view') { const c = $('#cmCompose'); if (c) c.innerHTML = ''; $$('.cmopts button').forEach((b) => b.classList.toggle('on', b === el)); const x = $('#cmExp'); if (x) x.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  else if (a === 'cancel') { const c = $('#cmCompose'); if (c) c.innerHTML = ''; $$('.cmopts button').forEach((b) => b.classList.remove('on')); }
+  else if (a === 'color') { cmSel = el.dataset.v; $$('.cmcols button').forEach((b) => b.classList.toggle('on', b === el)); }
+  else if (a === 'send') cmSend();
+  else if (a === 'react') cmReact(el.dataset.id, el.dataset.r);
+  else if (a === 'comments') cmOpenCm(el.dataset.id);
+  else if (a === 'cm-send') cmCmSend();
+  else if (a === 'share') cmShare(el.dataset.id);
+});
 
 /* ---------- লাইব্রেরি ---------- */
 const fmtSize = (n) => (n >= 1048576 ? bn((n / 1048576).toFixed(1)) + ' MB' : bn(Math.max(1, Math.round(n / 1024))) + ' KB');
@@ -3250,7 +3181,7 @@ async function viewLibrary(tab, kind) {
       const eN = dl[id] ? Object.keys(dl[id]).length : 0; const aN = adl[id] ? Object.keys(adl[id]).length : 0;
       if (kind === 'ebook' && !eN) return; if (kind === 'audio' && !aN) return;
       const b = cache[id] || ac[id] || { id, title: ((dl[id] && Object.values(dl[id])[0]) || {}).bookTitle || 'বই', author: '', cover: '/api/books/' + id + '/cover.svg' };
-      const act = (!eN && aN) ? 'abook' : 'book'; n++;
+      const act = 'book'; n++;
       h += libItem(b, bn(eN + aN) + 'টি পর্ব · অফলাইনে', '<span class="saved-pill">✓ সংরক্ষিত</span><button class="trash" data-act="rm-all" data-id="' + esc(id) + '" aria-label="মুছুন">' + IC.trash + '</button>', act);
     });
     if (!n) h += '<div class="empty">কোনো ডাউনলোড নেই। বইয়ের পেজ থেকে পর্বের পাশের ডাউনলোড বাটন চাপুন।</div>';
@@ -3258,19 +3189,19 @@ async function viewLibrary(tab, kind) {
     const ids = getSaved(); let books = [];
     if (ids.length) { try { books = await api('/books?ids=' + enc(ids.join(','))); } catch (e) { const c = getCache(); books = ids.map((i) => c[i]).filter(Boolean); } }
     books = books.filter(ok);
-    h += books.length ? books.map((b) => libItem(b, (b.cat ? esc(b.cat) : '') + (b.status ? ' · ' + esc(b.status) : ''), '<button class="trash" data-act="rm-bm" data-id="' + esc(b.id) + '" aria-label="সরান">' + IC.trash + '</button>', (b.chapterCount === 0 && b.audioCount > 0) ? 'abook' : 'book')).join('')
+    h += books.length ? books.map((b) => libItem(b, (b.cat ? esc(b.cat) : '') + (b.status ? ' · ' + esc(b.status) : ''), '<button class="trash" data-act="rm-bm" data-id="' + esc(b.id) + '" aria-label="সরান">' + IC.trash + '</button>', 'book')).join('')
       : '<div class="empty">কোনো বুকমার্ক নেই। বইয়ের পেজ থেকে "পছন্দের তালিকায় যোগ করুন" চাপুন।</div>';
   } else if (tab === 'lt') {
     const ids = getLater(); let books = [];
     if (ids.length) { try { books = await api('/books?ids=' + enc(ids.join(','))); } catch (e) { const c = getCache(); books = ids.map((i) => c[i]).filter(Boolean); } }
-    h += books.length ? books.map((b) => libItem(b, (b.cat ? esc(b.cat) : '') + (b.status ? ' · ' + esc(b.status) : ''), '<button class="trash" data-act="rm-later" data-id="' + esc(b.id) + '" aria-label="সরান">' + IC.trash + '</button>', (b.chapterCount === 0 && b.audioCount > 0) ? 'abook' : 'book')).join('')
+    h += books.length ? books.map((b) => libItem(b, (b.cat ? esc(b.cat) : '') + (b.status ? ' · ' + esc(b.status) : ''), '<button class="trash" data-act="rm-later" data-id="' + esc(b.id) + '" aria-label="সরান">' + IC.trash + '</button>', 'book')).join('')
       : '<div class="empty">"পরে পড়ব" তালিকা খালি। বইয়ের পেজের ⋮ মেনু থেকে বই রাখুন।</div>';
   } else {
     const hist = store.get('jp_hist', []); const cache = getCache(); const ac = getAcache(); const pr = store.get('jp_prog', {}); let n = 0;
     hist.forEach((x) => {
       const b = cache[x.id] || ac[x.id]; if (!b) return; const bb = Object.assign({ chapterCount: 0, audioCount: 0 }, b); if (!ok(bb)) return; n++;
       const p = pr[x.id]; const audioOnly = !bb.chapterCount && bb.audioCount > 0;
-      h += libItem(b, audioOnly ? 'অডিও শোনা হয়েছে' : (p ? 'শেষ পড়া: অধ্যায় ' + bn(p.n) + ' · ' + bn(p.pct) + '%' : 'খোলা হয়েছে'), '', audioOnly ? 'abook' : 'book');
+      h += libItem(b, audioOnly ? 'অডিও শোনা হয়েছে' : (p ? 'শেষ পড়া: অধ্যায় ' + bn(p.n) + ' · ' + bn(p.pct) + '%' : 'খোলা হয়েছে'), '', 'book');
     });
     if (!n) h += '<div class="empty">এখনো কোনো ইতিহাস নেই।</div>';
   }
@@ -3494,7 +3425,6 @@ function sleepTick() {
   if (Date.now() >= sleepAt) {
     sleepClear();
     try { speakStop(); } catch (x) { /* ignore */ }
-    try { player.pause(); } catch (x) { /* ignore */ }
     toast('ঘুমানোর টাইমার শেষ — শোনা বন্ধ হয়েছে'); return;
   }
   sleepLabel();
@@ -3613,7 +3543,6 @@ async function onClick(ev) {
         nav('/book/' + enc(d.id)); break;
       }
       case 'listen-book': {
-        if (d.audio === '1') { nav('/audio/' + enc(d.id)); break; }
         const b = await api('/books/' + enc(d.id)); if (!b.chapters.length) { toast('শোনার মতো অধ্যায় নেই'); break; }
         const last = (store.get('jp_last', {}))[b.id]; const n = last && b.chapters.some((c) => c.n === last) ? last : b.chapters[0].n;
         nav('/read/' + enc(b.id) + '/' + n + '?listen=1'); break;
@@ -3711,12 +3640,6 @@ async function onClick(ev) {
       case 'clear-sh': confirmDel('সার্চ হিস্ট্রি মুছবেন?', 'আপনার সব সার্চ হিস্ট্রি মুছে যাবে।', () => { store.set('jp_sh', []); toast('সার্চ হিস্ট্রি মুছে ফেলা হয়েছে'); keepScrollOnce = true; route(); }); break;
       case 'clear-dl':
         showDialog({ title: 'সব ডাউনলোড মুছবেন?', text: 'ডাউনলোড করা সব অধ্যায় ও অডিও পর্ব মুছে যাবে।', no: 'না', yes: 'হ্যাঁ, মুছুন', onYes: async () => { store.set('jp_dl', {}); store.set('jp_adl', {}); try { await idbClear(); } catch (e) { /* ignore */ } toast('সব ডাউনলোড মুছে ফেলা হয়েছে'); keepScrollOnce = true; route(); } }); break;
-      case 'aplay': playEp(+d.idx); break;
-      case 'aplay-cur': if (ap) playEp(ap.idx >= 0 ? ap.idx : 0); break;
-      case 'aprev': if (ap && ap.idx > 0) playEp(ap.idx - 1); break;
-      case 'anext': apNext(false); break;
-      case 'adl': await apDownload(+d.n, el); break;
-      case 'adel': confirmDel('ডাউনলোড মুছবেন?', 'এই অডিও পর্বের ডাউনলোড মুছে যাবে।', () => apRemove(+d.n)); break;
       case 'copy': {
         try { await navigator.clipboard.writeText(d.v); toast('নম্বর কপি হয়েছে'); } catch (e) { toast('নম্বরটি: ' + d.v); }
         break;
@@ -3725,7 +3648,6 @@ async function onClick(ev) {
       case 'dlg-yes': { const f = dlgYes; hideDialog(); if (f) f(); break; }
       case 'mini-close': store.set('jp_minihide', d.key); renderMini('x'); break;
       case 'book': nav('/book/' + enc(d.id)); break;
-      case 'abook': nav('/audio/' + enc(d.id)); break;
       case 'read': nav('/read/' + enc(d.id) + '/' + d.n); break;
       case 'to-book': { const top = navStack[navStack.length - 1] || ''; if (top === '/book/' + enc(d.id)) goBack(); else nav('/book/' + enc(d.id)); break; }
       case 'react': {
@@ -3780,7 +3702,6 @@ function onSubmit(ev) {
 let inputT = null;
 function onInput(ev) {
   const id = ev.target.id;
-  if (id === 'apSeek') { if (isFinite(player.duration) && player.duration > 0) player.currentTime = ev.target.value / 1000 * player.duration; return; }
   if (id === 'rsRate') { setRS('rate', +ev.target.value); return; }
   if (id === 'rsAs') { setRS('aspeed', +ev.target.value); return; }
   if (id === 'lSeek') { const e = $('#lCur'); if (e) e.textContent = bn(ev.target.value); return; }
