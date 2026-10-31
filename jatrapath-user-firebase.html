@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#121212">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;700&family=Tiro+Bangla&display=swap">
 <title>যাত্রাপথ বাংলা উপন্যাস</title>
@@ -991,6 +992,7 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .vipc{background:linear-gradient(135deg,rgba(245,179,1,.18),rgba(245,179,1,.05));border:1px solid rgba(245,179,1,.5);border-radius:18px;padding:14px;margin:12px 0}
 .vipc h3{margin:0 0 8px;font-size:15px;display:flex;align-items:center;gap:6px}.vipc .vr{margin-top:8px;font-size:13px}.vipc .vb{height:7px;border-radius:4px;background:rgba(128,128,128,.25);overflow:hidden;margin-top:4px}.vipc .vb i{display:block;height:100%;background:linear-gradient(90deg,#f5b301,#ffe08a)}
 .vipc textarea{width:100%;min-height:70px;margin-top:10px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);padding:10px;font:inherit;box-sizing:border-box}
+.contw{position:relative}.contx{position:absolute;top:-4px;right:-4px;width:28px;height:28px;border-radius:50%;background:var(--card2);border:1px solid var(--line);color:var(--muted);font-size:13px;display:grid;place-items:center;z-index:2}
 .cont{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px;margin:6px 0 12px;text-align:left;width:100%}
 .cont img{width:54px;height:76px;object-fit:cover;border-radius:8px;flex:0 0 auto}
 .cont .ci{flex:1;min-width:0}.cont small{color:var(--muted);display:block}.cont b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15.5px}
@@ -1003,6 +1005,93 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .wbar{height:8px;border-radius:4px;background:rgba(128,128,128,.25);overflow:hidden;margin:4px 0 2px}.wbar i{display:block;height:100%;background:#3b82f6}
 .wsr{padding:8px 0;border-bottom:1px solid rgba(128,128,128,.2);font-size:14px}.wsr small{opacity:.7}
 .rpt-r{display:block;width:100%;text-align:left;padding:13px 6px;border-bottom:1px solid var(--line);font-size:15.5px}
+
+/* ---- বইয়ের পেজ: স্ক্রিনশট অনুযায়ী লেআউট ---- */
+.detail{align-items:flex-start;border-radius:20px}
+.detail .bdesc{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--muted);-webkit-line-clamp:2}
+.detail .bdesc b{display:block;color:#e8c79a;font-size:14px;margin-bottom:1px}
+.detail .vws{font-size:14px;color:var(--muted)}.detail .vws b{color:var(--text)}
+.bkbtns{display:flex;gap:10px;margin:14px 0 4px}
+.bkbtns .btn{flex:1;min-height:50px;border-radius:12px;font-size:17px;font-weight:700;position:relative;overflow:hidden}
+.bkbtns .btn.pur{background:linear-gradient(180deg,#9a1536,#7a0f2a)!important;color:#fff!important;border:0}
+.bkbtns .cpb{position:absolute;left:0;bottom:0;height:5px;background:#e3c59a;border-radius:0 3px 3px 0;transition:width .5s ease}
+.bkbtns .dlall{background:var(--card)!important;border:1px solid var(--line)!important;color:var(--text)!important}
+.bkbtns .dlall.fin,.bkbtns .dlall.busy{color:#fff!important}
+.rxrow{display:flex;justify-content:space-between;gap:4px;margin:12px 0 6px;padding-top:12px;border-top:1px solid #4a1f2b}
+.rx{flex:1;min-width:44px;min-height:60px;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--muted);font-size:13px;border-radius:12px;padding:6px 2px;transition:color .2s,background-color .2s}
+.rx .rxi{color:#e8c79a}.rx[data-r="dislike"] .rxi{color:#c0394f}
+.rx .rxi svg{width:26px;height:26px}
+.rx.on{color:var(--text);background:rgba(232,199,154,.12)}.rx.on svg{fill:currentColor}
+.rx.busy{opacity:.6;pointer-events:none}
+.btabs{border-bottom:0;margin-top:10px}
+.btabs button{font-size:18px;min-height:48px;border-bottom:0;margin-bottom:0;position:relative;transition:color .2s}
+.btabs button.on{color:var(--text)}
+.btabs button.on::after{content:"";position:absolute;left:32%;right:32%;bottom:4px;height:3px;border-radius:2px;background:var(--chbar,#9a1536)}
+.bpanel{background:none;border:0;padding:0;margin-top:8px}
+.bpanel .ch{background:var(--card);border:1px solid var(--line);color:var(--text);box-shadow:none;border-radius:14px;padding:0 4px 0 0;margin-bottom:10px;min-height:58px;transition:background-color .2s,border-color .2s}
+.bpanel .ch.rd,.bpanel .ch.cur{box-shadow:none;border-color:var(--chbar,#9a1536)}
+.bpanel .chm{padding:9px 6px 9px 10px;min-height:58px}
+.bpanel .chn,.bpanel .ch.rd .chn{width:38px;height:38px;border-radius:50%;background:var(--chbar,#8e1233);color:#fff}
+.bpanel .cht b{font-size:17px;font-weight:600;color:var(--text)}
+.chs{flex:0 0 auto;font-size:14px;color:#e8c79a;display:flex;align-items:center}
+.chs svg{width:22px;height:22px}.chs.play svg{width:26px;height:26px;fill:currentColor}
+.bpanel .chdl{width:44px;height:44px;background:none;color:var(--muted)}.bpanel .chdl.done{background:none;color:#e8c79a}
+.contbar{position:fixed;left:0;right:0;bottom:0;z-index:35;max-width:720px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:72px;padding:0 20px 0 0;padding-bottom:env(safe-area-inset-bottom);background:var(--cbar,#a8465b);color:#fff;border-radius:24px 24px 0 0;box-shadow:0 -4px 18px rgba(0,0,0,.35);overflow:hidden;transition:filter .2s}
+.contbar:active{filter:brightness(1.1)}
+.cbp{align-self:stretch;display:grid;place-items:center;min-width:76px;padding:0 14px;background:rgba(255,255,255,.2);border-radius:0 26px 26px 0;font-size:19px;font-weight:700}
+.cbl{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:600}
+.cbl svg{width:22px;height:22px;fill:currentColor}
+body.bookpg .app{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+html:has(body.bookpg){scroll-padding-bottom:120px}
+/* ---- অ্যাক্সেসিবিলিটি ও স্মুথনেস ---- */
+:where(button,[role=button],[role=tab],a,input,textarea,select,[tabindex]):focus-visible{outline:3px solid #ffd479;outline-offset:2px}
+button{transition:scale .12s ease}
+button:not(:disabled):active{scale:.97}
+@media (prefers-reduced-motion:reduce){.bpanel *,.rx,.bkbtns *,.contbar,button{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}button:not(:disabled):active{scale:1}}
+@media (prefers-contrast:more){.bpanel .ch{border-color:currentColor}.contbar{background:#7d2438}}
+.chh,.rvsh{margin:16px 2px 8px;font-size:18px;font-weight:700}
+.rx.thxs .rxi{color:inherit;font-size:19px;line-height:26px;height:26px;display:flex;align-items:center;gap:4px}.rx.thxs .rxi b{font-size:14px;color:var(--text)}
+.rx.thxs.on{color:#ff8fb0}
+.detail{padding:10px;gap:10px;margin:2px 0 8px}
+.detail .cover{width:84px;flex:0 0 84px}
+.detail h1{font-size:17px}
+.detail .achip{font-size:14px}.detail .achip .ava{width:28px;height:28px;flex:0 0 28px}
+.detail .bdesc{margin-top:4px;font-size:12.5px;-webkit-line-clamp:1}.detail .bdesc b{display:inline;font-size:12.5px;margin-right:4px}
+.detail .pr{margin:4px 0 2px;font-size:13.5px}.detail .vws{font-size:13px}
+.bkbtns{margin:8px 0 2px;gap:8px}.bkbtns .btn{min-height:42px;font-size:15px;border-radius:10px}
+.rxrow{margin:6px 0 2px;padding-top:6px;gap:2px}
+.rx{min-height:46px;gap:1px;font-size:12px;padding:2px}.rx .rxi svg{width:21px;height:21px}
+.rx.thxs .rxi{height:21px;line-height:21px;font-size:16px}
+.chh,.rvsh{margin:8px 2px 6px;font-size:16px}
+.bpanel .ch{min-height:46px;margin-bottom:6px;border-radius:12px}
+.bpanel .chm{min-height:46px;padding:5px 6px 5px 8px}
+.bpanel .chn,.bpanel .ch.rd .chn{width:32px;height:32px;font-size:14px}
+.bpanel .cht b{font-size:15px}.chs{font-size:13px}
+.bpanel .chdl{width:40px;height:40px}
+.contbar{min-height:56px}.cbp{min-width:64px;font-size:16px}.cbl{font-size:16px}
+body.bookpg .app{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+html:has(body.bookpg){scroll-padding-bottom:76px}
+.rvbtn{width:100%;display:flex;justify-content:space-between;align-items:center;min-height:48px;padding:0 16px;margin:10px 0 4px;border-radius:12px;background:var(--card);border:1px solid var(--line);font-weight:700;font-size:15px;color:var(--text)}
+.rvbtn .rvch svg{width:20px;height:20px;transition:transform .2s}.rvbtn.open .rvch svg{transform:rotate(90deg)}
+.rvsheet{--text:#f2f2f2;--card:#2a2a2d;--card2:#2a2a2d;--line:#3a3a3e;--muted:#a6a6a6;color:#f2f2f2}.rvsheet h3{margin:6px 2px 10px;font-size:18px}
+.rx[data-s="rv-open"] .rxi{font-size:19px;line-height:21px;height:21px}
+.chhd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0 8px;border-top:1px solid #4a1f2b;padding-top:10px}
+.chhd .chh{margin:0;font-size:17px}
+.rxmini{margin:0;padding:0;border:0;gap:8px;flex:0 0 auto}
+.rxmini .rx{position:relative;flex:0 0 auto;width:40px;min-width:40px;height:40px;min-height:40px;border-radius:50%;background:var(--card2);padding:0;justify-content:center;align-items:center;gap:0}
+.rxmini .rx .rxi{display:grid;place-items:center;font-style:normal;font-size:17px;line-height:1}.rxmini .rx .rxi svg{width:19px;height:19px}
+.rxmini .rx.on{background:var(--red);color:#fff}.rxmini .rx.on .rxi{color:#fff}
+.bdg{position:absolute;top:-6px;right:-5px;background:var(--red);color:#fff;font-size:10.5px;font-weight:700;font-style:normal;padding:1px 5px;border-radius:10px;min-width:18px;text-align:center;line-height:1.35}.bdg[hidden]{display:none}
+.bpanel .ch{min-height:44px;margin-bottom:6px}.bpanel .chm{min-height:44px;padding:4px 6px 4px 8px}.bpanel .chn,.bpanel .ch.rd .chn{width:30px;height:30px;font-size:13.5px}.bpanel .chdl{width:38px;height:38px}
+@media (min-width:900px){
+  .app,body.reading .app{max-width:none}
+  .page{padding:10px clamp(20px,4vw,64px) 16px}
+  .nav,.contbar{max-width:none}
+  .detail .cover{width:130px;flex:0 0 130px}.detail h1{font-size:22px}
+  .bkbtns{max-width:560px}
+  .chlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:0 14px}
+  .bpanel .ch{margin-bottom:8px}
+}
 </style>
 </head>
 <body>
@@ -2129,6 +2218,22 @@ document.addEventListener('click', (e) => {
 }, true);
 function wAfter(seg) { if (seg[1] === 'ch') wUpdBar(); }
 
+/* ---------- মোবাইলে ফুল স্ক্রিন ---------- */
+(function () {
+  const de = document.documentElement;
+  const isFs = () => !!(document.fullscreenElement || document.webkitFullscreenElement);
+  const enter = () => { if (isFs() || sessionStorage.getItem('jp_fs_off') === '1') return; const r = de.requestFullscreen || de.webkitRequestFullscreen; if (!r) return; try { const p = r.call(de, { navigationUI: 'hide' }); if (p && p.catch) p.catch(() => {}); } catch (e) { /* ignore */ } };
+  // ব্রাউজার শর্ত: ফুল স্ক্রিনের জন্য ইউজারের প্রথম ট্যাপ লাগে
+  const once = () => { enter(); };
+  document.addEventListener('click', once, { once: true, passive: true });
+  document.addEventListener('touchend', once, { once: true, passive: true });
+  // ইউজার নিজে ফুল স্ক্রিন থেকে বের হলে আর জোর করে ঢোকানো হবে না; অ্যাপ আবার খুললে আবার চালু হবে
+  let fsWas = false;
+  const chg = () => { if (isFs()) { fsWas = true; sessionStorage.removeItem('jp_fs_off'); } else if (fsWas) { fsWas = false; sessionStorage.setItem('jp_fs_off', '1'); } };
+  document.addEventListener('fullscreenchange', chg); document.addEventListener('webkitfullscreenchange', chg);
+  window.jpFullscreen = () => { sessionStorage.removeItem('jp_fs_off'); enter(); };
+})();
+
 /* ---------- অ্যাক্সেসিবিলিটি (TalkBack) ---------- */
 let A11Y = store.get('jp_a11y', false) === true;
 const A11Y_LBL = { book: 'বই খুলুন', abook: 'বই খুলুন' };
@@ -2432,7 +2537,7 @@ async function route() {
   const page = seg[0] || 'home';
   if (page !== 'read') { try { sleepClear(); } catch (e) { /* ignore */ } }
   if (navigator.onLine !== false) offShow(false);
-  document.body.classList.toggle('reading', page === 'read'); document.body.classList.remove('lmode', 'chrome-off'); clearTimeout(chromeT);
+  document.body.classList.toggle('reading', page === 'read'); document.body.classList.toggle('bookpg', page === 'book'); document.body.classList.remove('lmode', 'chrome-off'); clearTimeout(chromeT);
   document.body.style.overflow = ''; document.body.style.position = ''; document.documentElement.style.overflow = '';
   const isTab = page === 'home' || page === 'community' || page === 'lib' || (page === 'cat' && !seg[1]);
   document.body.classList.toggle('sub', !isTab);
@@ -2564,8 +2669,9 @@ function badgeCheck() {
 }
 async function contCard(all) {
   try { const hist = store.get('jp_hist', []); const pr = store.get('jp_prog', {});
-    for (const x of hist) { const p = pr[x.id]; const b = all.find((k) => k.id === x.id); if (!b || !p || p.pct >= 98) continue;
-      return '<button class="cont" data-act="read" data-id="' + esc(b.id) + '" data-n="' + p.n + '"><img src="' + esc(b.cover) + '" alt=""><span class="ci"><small>পড়া চালিয়ে যান</small><b>' + esc(b.title) + '</b><small>অধ্যায় ' + bn(p.n) + ' · ' + bn(p.pct) + '% পড়া হয়েছে</small><span class="pb"><i style="width:' + p.pct + '%"></i></span></span><span class="go">পড়ুন</span></button>'; }
+    const dx = store.get('jp_contx', []);
+    for (const x of hist) { const p = pr[x.id]; const b = all.find((k) => k.id === x.id); if (!b || !p || p.pct >= 98 || dx.indexOf(x.id) >= 0) continue;
+      return '<div class="contw"><button class="cont" data-act="read" data-id="' + esc(b.id) + '" data-n="' + p.n + '"><img src="' + esc(b.cover) + '" alt=""><span class="ci"><small>পড়া চালিয়ে যান</small><b>' + esc(b.title) + '</b><small>অধ্যায় ' + bn(p.n) + ' · ' + bn(p.pct) + '% পড়া হয়েছে</small><span class="pb"><i style="width:' + p.pct + '%"></i></span></span><span class="go">পড়ুন</span></button><button class="contx" data-act="cont-x" data-id="' + esc(b.id) + '" aria-label="সরিয়ে দিন">✕</button></div>'; }
   } catch (e) { /* ignore */ } return '';
 }
 function forYou(all) {
@@ -2812,8 +2918,29 @@ async function viewEpisodes() {
 }
 
 /* ---------- ইতিহাস ও অগ্রগতি ---------- */
-function addHist(id) { const h = store.get('jp_hist', []).filter((x) => x.id !== id); h.unshift({ id, at: Date.now() }); store.set('jp_hist', h.slice(0, 60)); }
+function addHist(id) { try { const dx = store.get('jp_contx', []).filter((k) => k !== id); store.set('jp_contx', dx); } catch (e) { /* ignore */ } const h = store.get('jp_hist', []).filter((x) => x.id !== id); h.unshift({ id, at: Date.now() }); store.set('jp_hist', h.slice(0, 60)); }
 function cpOf(id, n) { return ((getCP()[id] || {})[n]) || 0; }
+
+const fmtV = (n) => (n >= 100000 ? bn((n / 100000).toFixed(1).replace(/\.0$/, '')) + ' লাখ+' : fmtN(n));
+/* বইয়ের পেজ — সহজ ব্যবহার ও অ্যাক্সেসিবিলিটি */
+function openRv(id, n) {
+  openSheet('<div class="rvsheet"><div class="grab"></div><h3>রিভিউ ও রেটিং (<span id="rvCnt">' + bn(n || 0) + '</span>)</h3><div id="tabRv"></div></div>');
+  rvLoad(id);
+}
+function syncRx() { $$('.rxrow .rx[aria-pressed]').forEach((b) => b.setAttribute('aria-pressed', b.classList.contains('on'))); }
+document.addEventListener('click', (e) => {
+  const x = e.target.closest('[data-s="rv-open"],[data-s="rx-off"],.rxrow .rx,.btabs [role=tab]'); if (!x) return;
+  if (x.dataset.s === 'rv-open') { openRv(x.dataset.id, +(x.querySelector('b') || {}).textContent || 0); return; }
+  if (x.dataset.s === 'rx-off') { const d = $('.bkbtns .dlall'); if (d) d.click(); else toast('ডাউনলোড করার মতো অধ্যায় নেই'); return; }
+  if (x.getAttribute('role') === 'tab') $$('.btabs [role=tab]').forEach((t) => { t.tabIndex = t === x ? 0 : -1; });
+  else [150, 900].forEach((ms) => setTimeout(syncRx, ms));
+});
+document.addEventListener('keydown', (e) => {
+  const t = e.target.closest && e.target.closest('.btabs [role=tab]'); if (!t || !/^(ArrowLeft|ArrowRight|Home|End)$/.test(e.key)) return;
+  const tabs = $$('.btabs [role=tab]'); let i = tabs.indexOf(t);
+  i = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+  e.preventDefault(); tabs[i].focus(); tabs[i].click();
+});
 
 /* ---------- বইয়ের বিস্তারিত ---------- */
 async function viewBook(id) {
@@ -2830,25 +2957,37 @@ async function viewBook(id) {
   const startN = last && b.chapters.some((c) => c.n === last) ? last : firstN;
   const votes = (b.likes || 0) + (b.dislikes || 0);
   let h = headerPage(b.title, true, '<button class="icon-btn bmh' + (saved ? ' on' : '') + '" data-act="bm" data-id="' + esc(b.id) + '" id="bmBtn" aria-label="' + (saved ? 'পছন্দের তালিকায় আছে' : 'পছন্দের তালিকায় যোগ করুন') + '">' + IC.save + '</button><button class="icon-btn" data-s="book-menu" data-id="' + esc(b.id) + '" data-t="' + esc(b.title) + '" aria-label="আরও অপশন">' + P('<circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/>') + '</button>') + '<main class="page">' +
-    '<div class="detail">' + coverImg(b) + '<div class="di"><h1><span class="lbl">বইটির নাম:</span> ' + esc(b.title) + '</h1>' + authorChip(b) +
-    ((b.desc || '').trim() ? '<div class="bdesc"><b>বিস্তারিত:</b> ' + esc(b.desc.trim()) + '</div>' : '') +
-    '<div class="pr"><b class="dh">ধরণ :</b> <span>' + esc(b.cat) + '</span>' + statusPill(b.status) + demoPill(b) + '</div>' +
-    '<div class="bstats"><div><small>ভিউ</small><b id="readsN">' + fmtN(b.reads || 0) + '</b></div><div><small>পছন্দ</small><b id="likeN" data-n="' + (b.likes || 0) + '">' + fmtN(b.likes || 0) + '</b></div><div><small>অপছন্দ</small><b id="dislikeN" data-n="' + (b.dislikes || 0) + '">' + fmtN(b.dislikes || 0) + '</b></div></div></div></div>';
+    `<div class="detail">${coverImg(b)}<div class="di"><h1><span class="lbl">বইটির নাম:</span> ${esc(b.title)}</h1>${authorChip(b)}` +
+    ((b.desc || '').trim() ? `<div class="bdesc"><b>সারসংক্ষেপ</b>${esc(b.desc.trim())}</div>` : '') +
+    `<div class="pr"><b class="dh">ধরন:</b> <span>${esc(b.cat)}</span>${statusPill(b.status)}${demoPill(b)}</div>` +
+    `<div class="vws">ভিউ: <b id="readsN">${fmtV(b.reads || 0)}</b></div></div></div>`;
+  const totCh = b.chapters.length; let sumP = 0;
+  b.chapters.forEach((c) => { sumP += isDone(b.id, c.n) ? 100 : Math.min(100, cpOf(b.id, c.n) || 0); });
+  const bpct = totCh ? Math.round(sumP / totCh) : 0;
+  const contLbl = (last && startN === last) || bpct > 0 ? 'পড়া চালিয়ে যান' : 'পড়া শুরু করুন';
   if (startN != null) { const allDl = b.chapters.length && b.chapters.every((c) => dl[c.n]);
-    h += '<div class="startrow"><button class="btn pur" data-act="read" data-id="' + esc(b.id) + '" data-n="' + startN + '">' + (last && startN === last ? 'পড়া চালিয়ে যান' : 'পড়া শুরু করুন') + '</button>' +
-    '<button class="btn dlall' + (allDl ? ' fin' : '') + '"' + (allDl ? ' disabled' : '') + ' data-act="dl-all" data-id="' + esc(b.id) + '"><span class="dlf" style="width:' + (allDl ? 100 : 0) + '%"></span><span class="dlt">' + (allDl ? IC.check + 'ডাউনলোড হয়েছে' : 'অফলাইনে ডাউনলোড') + '</span></button></div>'; }
-  { const th = store.get('jp_thanks', {})[b.id]; h += '<button class="thx' + (th ? ' on' : '') + '" data-act="thanks" data-id="' + esc(b.id) + '" aria-label="লেখককে ধন্যবাদ">❤️ <span>' + (th ? 'ধন্যবাদ জানানো হয়েছে' : 'লেখককে ধন্যবাদ জানান') + '</span> · <b id="thxN" data-n="' + (b.thanks || 0) + '">' + fmtN(b.thanks || 0) + '</b></button>'; }
-  h += '<div class="btabs" role="tablist"><button role="tab" class="on" data-s="btab" data-v="ch">অধ্যায়সমূহ (' + bn(b.chapters.length) + ')</button><button role="tab" data-s="btab" data-v="rv" data-id="' + esc(b.id) + '">রিভিউ (<span id="rvCnt">' + bn(b.cmts || 0) + '</span>)</button></div><div class="panel" id="tabCh"><div class="phd"><h3>সব অধ্যায়</h3><div class="pbt"><button class="cbt' + (b.myReaction === 'like' ? ' on' : '') + '" data-act="react" data-r="like" data-id="' + esc(b.id) + '" id="likeBtn" aria-label="পছন্দ করুন">' + IC.like + '</button><button class="cbt' + (b.myReaction === 'dislike' ? ' on' : '') + '" data-act="react" data-r="dislike" data-id="' + esc(b.id) + '" id="dislikeBtn" aria-label="অপছন্দ করুন">' + IC.dislike + '</button></div></div>';
+    h += `<div class="bkbtns"><button class="btn pur" data-act="read" data-id="${esc(b.id)}" data-n="${startN}"><span>${contLbl}</span><i class="cpb" style="width:${bpct}%" aria-hidden="true"></i></button>` +
+      `<button class="btn dlall${allDl ? ' fin' : ''}"${allDl ? ' disabled' : ''} data-act="dl-all" data-id="${esc(b.id)}"><span class="dlf" style="width:${allDl ? 100 : 0}%"></span><span class="dlt">${allDl ? IC.check + 'ডাউনলোড হয়েছে' : 'ডাউনলোড'}</span></button></div>`; }
+  const rxOn = (k) => b.myReaction === k; const thk = store.get('jp_thanks', {})[b.id];
+  const rxHtml = `<div class="rxrow rxmini" role="group" aria-label="বইয়ের প্রতিক্রিয়া">` +
+    `<button class="rx${rxOn('like') ? ' on' : ''}" id="likeBtn" data-act="react" data-r="like" data-id="${esc(b.id)}" aria-pressed="${rxOn('like')}" aria-label="পছন্দ করুন"><i class="rxi">${IC.like}</i><b class="bdg" id="likeN" data-n="${b.likes || 0}">${fmtN(b.likes || 0)}</b></button>` +
+    `<button class="rx thxs${thk ? ' on' : ''}" data-act="thanks" data-id="${esc(b.id)}" aria-label="লেখককে ধন্যবাদ জানান"><i class="rxi">❤️</i><b class="bdg" id="thxN" data-n="${b.thanks || 0}">${fmtN(b.thanks || 0)}</b></button>` +
+    `<button class="rx${rxOn('dislike') ? ' on' : ''}" id="dislikeBtn" data-act="react" data-r="dislike" data-id="${esc(b.id)}" aria-pressed="${rxOn('dislike')}" aria-label="ডিজলাইক"><i class="rxi">${IC.dislike}</i><b class="bdg" id="dislikeN" data-n="${b.dislikes || 0}" hidden>${fmtN(b.dislikes || 0)}</b></button>` +
+    `<button class="rx" data-s="rv-open" data-id="${esc(b.id)}" aria-haspopup="dialog" aria-label="রিভিউ ও রেটিং"><i class="rxi">⭐</i><b class="bdg">${bn(b.cmts || 0)}</b></button></div>`;
+  h += `<div class="panel bpanel" id="tabCh"><div class="chhd"><h3 class="chh">সূচিপত্র (${bn(totCh)}টি পর্ব)</h3>${rxHtml}</div><div class="chlist" role="list">`;
   if (!b.chapters.length) h += '<div class="empty">এই বইয়ে এখনো কোনো অধ্যায় যোগ করা হয়নি।</div>';
   b.chapters.forEach((c) => {
-    const p = cpOf(b.id, c.n); const fin = isDone(b.id, c.n); const tm = ctOf(b.id, c.n); const cur = last === c.n; const st = cur ? ' rd' : '';
-    const sub = (fin && !cur) ? '✓ পড়া শেষ' + (tm ? ' • ' + fmtTime(tm) : '') : cur ? 'পড়ছেন' + (p ? ' • ' + bn(p) + '%' : '') + (tm ? ' • ' + fmtTime(tm) : '') : (p || tm) ? 'পড়া হয়েছে' + (p ? ' • ' + bn(p) + '%' : '') : 'পড়তে শুরু করুন';
-    const done = !!dl[c.n]; const dt = c.at ? fmtD(c.at) : '';
-    h += '<div class="ch' + st + '"><button class="chm" data-act="read" data-id="' + esc(b.id) + '" data-n="' + c.n + '"><span class="chn">' + bn(c.n) + '</span><span class="cht"><b>' + esc(c.title) + '</b><small>' + (dt ? dt + ' • ' : '') + sub + '</small></span></button>' +
-      '<button class="chdl' + (done ? ' done' : '') + '"' + (done ? ' disabled' : '') + ' data-act="dl-ch" data-id="' + esc(b.id) + '" data-n="' + c.n + '" aria-label="ডাউনলোড">' + (done ? IC.check : IC.download) + '</button></div>';
+    const p = cpOf(b.id, c.n); const fin = isDone(b.id, c.n); const tm = ctOf(b.id, c.n); const cur = last === c.n; const done = !!dl[c.n];
+    let mark = '', sl = '';
+    if (cur) { mark = `<span class="chs play" aria-hidden="true">${IC.play}</span>`; sl = 'পড়ছেন'; }
+    else if (fin) { mark = `<span class="chs ok" aria-hidden="true">${IC.check}</span>`; sl = 'পড়া শেষ'; }
+    else if (p || tm) { mark = '<span class="chs rdl" aria-hidden="true">পড়া হয়েছে</span>'; sl = 'পড়া হয়েছে'; }
+    h += `<div class="ch${cur ? ' rd' : ''}${fin ? ' fin' : ''}" role="listitem"><button class="chm" data-act="read" data-id="${esc(b.id)}" data-n="${c.n}" aria-label="অধ্যায় ${bn(c.n)}: ${esc(c.title)}${sl ? ', ' + sl : ''}"><span class="chn" aria-hidden="true">${bn(c.n)}</span><span class="cht"><b>${esc(c.title)}</b></span>${mark}</button>` +
+      `<button class="chdl${done ? ' done' : ''}"${done ? ' disabled' : ''} data-act="dl-ch" data-id="${esc(b.id)}" data-n="${c.n}" aria-label="${esc(c.title)} ${done ? 'ডাউনলোড করা আছে' : 'ডাউনলোড করুন'}">${done ? IC.check : IC.download}</button></div>`;
   });
   cacheBook(b);
-  return h + '</div><div class="panel" id="tabRv" hidden></div></main>';
+  const bar = startN != null ? `<button class="contbar" data-act="read" data-id="${esc(b.id)}" data-n="${startN}" aria-label="${contLbl}, বইয়ের ${bn(bpct)}% পড়া হয়েছে"><span class="cbp" aria-hidden="true">${bn(bpct)}%</span><span class="cbl" aria-hidden="true">${contLbl} ${IC.play}</span></button>` : '';
+  return h + `</div></div></main>` + bar;
 }
 function cacheBook(b) {
   const c = getCache();
@@ -3835,7 +3974,7 @@ async function onClick(ev) {
       case 'sh-del': confirmDel('সার্চ মুছবেন?', 'এই সার্চটি হিস্ট্রি থেকে মুছে যাবে।', () => { store.set('jp_sh', store.get('jp_sh', []).filter((x) => x !== d.q)); runSearch(''); }); break;
       case 'sh-clear': confirmDel('সার্চ হিস্ট্রি মুছবেন?', 'আপনার সব সার্চ হিস্ট্রি মুছে যাবে।', () => { store.set('jp_sh', []); runSearch(''); }); break;
       case 'back': goBack(); break;
-      case 'thanks': { const m = store.get('jp_thanks', {}); if (m[d.id]) { toast('আপনি আগেই ধন্যবাদ জানিয়েছেন ❤️'); break; } m[d.id] = 1; store.set('jp_thanks', m); const f = SFB(); if (f) f.doc('books/' + d.id).update({ thanks: SINC(1) }).catch(() => {}); el.classList.add('on'); const sp = el.querySelector('span'); if (sp) sp.textContent = 'ধন্যবাদ জানানো হয়েছে'; const nn = $('#thxN'); if (nn) nn.textContent = fmtN((+nn.dataset.n || 0) + 1); toast('লেখককে ধন্যবাদ পাঠানো হয়েছে ❤️'); break; }
+      case 'thanks': { const m = store.get('jp_thanks', {}); if (m[d.id]) { toast('আপনি আগেই ধন্যবাদ জানিয়েছেন ❤️'); break; } m[d.id] = 1; store.set('jp_thanks', m); const f = SFB(); if (f) f.doc('books/' + d.id).update({ thanks: SINC(1) }).catch(() => {}); el.classList.add('on'); const sp = el.querySelector('span'); if (sp) sp.textContent = el.classList.contains('rx') ? 'ধন্যবাদ ✓' : 'ধন্যবাদ জানানো হয়েছে'; const nn = $('#thxN'); if (nn) nn.textContent = fmtN((+nn.dataset.n || 0) + 1); toast('লেখককে ধন্যবাদ পাঠানো হয়েছে ❤️'); break; }
       case 'fc-open': await fcOpen(); break;
       case 'fc-tog': { const v = d.v, i = fcSel.indexOf(v); if (i >= 0) fcSel.splice(i, 1); else fcSel.push(v); el.classList.toggle('on', i < 0); const ic_ = el.querySelector('i'); if (ic_) ic_.innerHTML = i < 0 ? IC.check : ''; break; }
       case 'fc-save': store.set('jp_favcats', fcSel.slice()); closeSheet(); fcChip = 'সব'; toast(fcSel.length ? 'পছন্দের ক্যাটাগরি সেভ হয়েছে' : 'পছন্দের তালিকা খালি করা হয়েছে'); route(); break;
@@ -3945,6 +4084,7 @@ async function onClick(ev) {
       case 'rem-off': store.set('jp_rem', { on: false, t: getRem().t }); closeSheet(); remSchedule(); profRerender(); toast('রিমাইন্ডার বন্ধ'); break;
       case 'rem-go': { const x = $('#remB'); if (x) x.remove(); const l = store.get('jp_lastbook', null); if (l && l.id) nav('/read/' + enc(l.id) + '/' + l.n); else nav('/'); break; }
       case 'rem-x': { const x = $('#remB'); if (x) x.remove(); break; }
+      case 'cont-x': { const dx = store.get('jp_contx', []); if (dx.indexOf(d.id) < 0) dx.push(d.id); store.set('jp_contx', dx); route(); break; }
       case 'notif-toggle': {
         if (notifOn()) { store.set('jp_notif', false); toast('নোটিফিকেশন বন্ধ হয়েছে'); }
         else { let ok = false; try { if (window.Notification) { ok = Notification.permission === 'granted' || (await Notification.requestPermission()) === 'granted'; } } catch (e) { ok = false; } store.set('jp_notif', ok); toast(ok ? 'নোটিফিকেশন চালু হয়েছে' : 'অনুমতি পাওয়া যায়নি — অ্যাপের ভেতরে জানানো চলবে'); }
