@@ -768,8 +768,8 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .wp .wpw input{padding-right:50px}
 .detail .achip{display:flex;width:100%;justify-content:flex-start}.detail .achip .an{flex:1;text-align:left}
 .achip{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(176,34,48,.32),rgba(176,34,48,.14))!important;border:1px solid rgba(232,77,115,.45)!important}
-.achip::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:38%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-20deg);animation:achsh .9s ease-in-out infinite;pointer-events:none}
-@keyframes achsh{0%{left:-60%}55%,100%{left:130%}}
+.achip::after{content:'';position:absolute;top:0;bottom:0;left:0;width:36%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:translateX(-160%) skewX(-20deg);animation:achsh 2.2s ease-in-out infinite;pointer-events:none;will-change:transform}
+@keyframes achsh{0%{transform:translateX(-160%) skewX(-20deg)}55%,100%{transform:translateX(420%) skewX(-20deg)}}
 .auth2 .aprow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:6px 2px 14px}.apinfo{flex:1;min-width:0}
 .apinfo h2{margin:0 0 12px;font-size:26px;font-weight:800;display:flex;align-items:center;gap:6px;flex-wrap:wrap;word-break:break-word}
 .apst{display:flex;gap:22px}.apst span{display:flex;flex-direction:column;font-size:14px;color:var(--muted)}.apst b{font-size:20px;color:var(--text)}
@@ -796,7 +796,6 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 .gopt{display:flex;align-items:center;gap:16px;padding:14px 4px;width:100%;text-align:left;font-size:17px;color:var(--text)}.gopt i{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);flex:0 0 auto}.gopt.on i{border-color:#ff7fa6;background:radial-gradient(circle,#ff7fa6 45%,transparent 50%)}
 .gsave{width:100%;padding:16px;border-radius:14px;background:#f0a7b8;color:#222;font-weight:700;margin-top:10px}
 
-@media (prefers-reduced-motion:reduce){.achip::after{animation:none;display:none}}
 .achip{display:inline-flex;align-items:center;gap:8px;max-width:100%;margin-top:8px;padding:5px 10px 5px 5px;border-radius:999px;background:var(--card2);border:1px solid var(--line);color:var(--text);font-weight:600;font-size:15px}
 .achip .ava,.sav{width:32px;height:32px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;overflow:hidden;background:var(--red);color:#fff;font-weight:700}
 .achip .ava img,.sav img{width:100%;height:100%;object-fit:cover}
@@ -982,6 +981,28 @@ html[data-theme=dark]{--wa:#d3a8ff;--wa-on:#26103d;--wa-soft:rgba(211,168,255,.1
 /* বইয়ের বিবরণ পেজে কভার ফ্লেক্সে টেনে লম্বা হতো */
 .detail .cover{align-self:flex-start;height:auto;aspect-ratio:2/3}
 .detail .cover img{height:100%}
+/* ===== নতুন ফিচার ===== */
+.offbn{display:flex;align-items:center;gap:10px;margin:8px 0 12px;padding:12px 14px;border-radius:14px;background:rgba(196,38,44,.16);border:1px solid rgba(196,38,44,.35);font-weight:600}
+.offbn svg{width:22px;height:22px;flex:0 0 auto;color:#f0a53a}.offbn span{flex:1;font-size:14px}.offbn button{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--red,#e8445a)}
+.vip{display:inline-flex;align-items:center;gap:3px;vertical-align:middle;margin-left:5px;padding:2px 8px 2px 6px;border-radius:999px;font-size:11px;font-weight:800;color:#4a2f00;background:linear-gradient(120deg,#f9d976,#f5b301 45%,#ffe9a0 60%,#e8a200);box-shadow:0 1px 6px rgba(245,179,1,.45);position:relative;overflow:hidden;flex:0 0 auto;line-height:1.5;white-space:nowrap}
+.vip svg{width:12px;height:12px}
+.vip::after{content:'';position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);transform:translateX(-160%) skewX(-20deg);animation:achsh 2.6s ease-in-out infinite}
+.vrow .vip{margin:8px 0 0}.acard .vip{margin:4px 0 0}.apinfo h2 .vip{font-size:12px}.vs:empty{display:none}
+.vipc{background:linear-gradient(135deg,rgba(245,179,1,.18),rgba(245,179,1,.05));border:1px solid rgba(245,179,1,.5);border-radius:18px;padding:14px;margin:12px 0}
+.vipc h3{margin:0 0 8px;font-size:15px;display:flex;align-items:center;gap:6px}.vipc .vr{margin-top:8px;font-size:13px}.vipc .vb{height:7px;border-radius:4px;background:rgba(128,128,128,.25);overflow:hidden;margin-top:4px}.vipc .vb i{display:block;height:100%;background:linear-gradient(90deg,#f5b301,#ffe08a)}
+.vipc textarea{width:100%;min-height:70px;margin-top:10px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);padding:10px;font:inherit;box-sizing:border-box}
+.cont{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px;margin:6px 0 12px;text-align:left;width:100%}
+.cont img{width:54px;height:76px;object-fit:cover;border-radius:8px;flex:0 0 auto}
+.cont .ci{flex:1;min-width:0}.cont small{color:var(--muted);display:block}.cont b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15.5px}
+.cont .go{background:var(--pur);color:#fff;border-radius:20px;padding:9px 16px;font-weight:700;font-size:14px;flex:0 0 auto}
+.cont .pb{height:4px;border-radius:2px;background:rgba(128,128,128,.3);margin-top:6px;overflow:hidden}.cont .pb i{display:block;height:100%;background:var(--red)}
+.bdgs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 16px}
+.bdg{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 6px;text-align:center;font-size:12.5px;line-height:1.4}
+.bdg span{display:block;font-size:30px;margin-bottom:4px}.bdg.off{opacity:.38;filter:grayscale(1)}
+.thx{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:8px 0;padding:11px;border-radius:14px;background:var(--card2);border:1px solid var(--line);font-weight:700;color:var(--text)}.thx.on{background:#fde4ec;color:#c2185b;border-color:#f3a6c0}
+.wbar{height:8px;border-radius:4px;background:rgba(128,128,128,.25);overflow:hidden;margin:4px 0 2px}.wbar i{display:block;height:100%;background:#3b82f6}
+.wsr{padding:8px 0;border-bottom:1px solid rgba(128,128,128,.2);font-size:14px}.wsr small{opacity:.7}
+.rpt-r{display:block;width:100%;text-align:left;padding:13px 6px;border-bottom:1px solid var(--line);font-size:15.5px}
 </style>
 </head>
 <body>
@@ -1230,7 +1251,7 @@ function coverUri(b) {
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 function pub(b, full) {
-  const o = { id: b.id, title: b.title, author: b.author, authorId: b.authorId || '', authorPhoto: b.authorPhoto || '', cat: b.cat, status: b.status, desc: b.desc, cover: coverUri(b), featured: b.featured, demo: !!b.demo, publishedAt: b.publishedAt, reads: b.reads, likes: b.likes, dislikes: b.dislikes, favs: b.favs || 0, cmts: b.cmts || 0, chapterCount: b.chapters.length, audioCount: b.audio.length, type: b.type || 'text' };
+  const o = { id: b.id, title: b.title, author: b.author, authorId: b.authorId || '', authorPhoto: b.authorPhoto || '', cat: b.cat, status: b.status, desc: b.desc, cover: coverUri(b), featured: b.featured, demo: !!b.demo, publishedAt: b.publishedAt, reads: b.reads, likes: b.likes, dislikes: b.dislikes, favs: b.favs || 0, cmts: b.cmts || 0, thanks: b.thanks || 0, chapterCount: b.chapters.length, audioCount: b.audio.length, type: b.type || 'text' };
   if (full) {
     o.chapters = b.chapters.map((c) => ({ n: c.n, title: c.title, at: c.d ? new Date(c.d).toISOString() : b.publishedAt }));
     o.audio = b.audio.map((a) => ({ n: a.n, title: a.title, demo: !!a.demo, url: a.src || toneUrl(a.notes) }));
@@ -1238,6 +1259,14 @@ function pub(b, full) {
   return o;
 }
 const find = (id) => db.books.find((b) => b.id === id);
+/* ---------- সার্চ: ছোটখাটো বানান ভুলেও খুঁজে পায় ---------- */
+const fzNorm = (t) => String(t || '').toLowerCase().replace(/[‌‍\s\-_.,:;!?'"()]+/g, ' ').trim();
+function fzLev(a, b) { if (Math.abs(a.length - b.length) > 1) return 9; const m = a.length, n = b.length; let p = []; for (let j = 0; j <= n; j++) p[j] = j; for (let i = 1; i <= m; i++) { const c = [i]; for (let j = 1; j <= n; j++) c[j] = Math.min(p[j] + 1, c[j - 1] + 1, p[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); p = c; } return p[n]; }
+function fzMatch(q, b) {
+  const hay = fzNorm(b.title + ' ' + b.author + ' ' + b.cat + ' ' + (b.desc || '')); const nq = fzNorm(q); if (!nq) return true;
+  if (hay.indexOf(nq) >= 0 || hay.replace(/ /g, '').indexOf(nq.replace(/ /g, '')) >= 0) return true;
+  const words = hay.split(' '); return nq.split(' ').every((t) => hay.indexOf(t) >= 0 || (t.length >= 3 && words.some((w) => w.length >= 3 && fzLev(t, w) <= 1)));
+}
 const isText = (b) => (b.type || 'text') !== 'audio';
 const texts = () => db.books.filter(isText);
 const toneMemo = {};
@@ -1312,7 +1341,7 @@ function handleSync(method, full, body, user) {
     if (cat) list = list.filter((b) => b.cat === cat);
     const au = q.get('author'); if (au) { const tg = keyToCanon(au); list = list.filter((b) => canonKey(b) === tg); }
     if (ids) { const set = ids.split(',').filter(Boolean); list = list.filter((b) => set.indexOf(b.id) >= 0); }
-    if (s) list = list.filter((b) => b.title.toLowerCase().indexOf(s) >= 0 || b.author.toLowerCase().indexOf(s) >= 0 || b.cat.toLowerCase().indexOf(s) >= 0);
+    if (s) list = list.filter((b) => fzMatch(s, b));
     return pubList(list);
   }
   if ((r = /^\/books\/([\w-]+)$/.exec(p)) && method === 'GET') {
@@ -1356,22 +1385,33 @@ async function loadDb() {
   const cfg = {}; cf.forEach((d) => { cfg[d.id] = d.data(); }); const stats = {}; ss.forEach((d) => { stats[d.id] = d.data().days || {}; });
   const books = bs.docs.filter((d) => d.data().type !== 'voice').map((d) => { const x = d.data(); const voice = false;
     return { id: d.id, title: x.title || '', author: x.author || '', authorId: x.ownerUid || '', authorPhoto: x.authorPhoto || '', cat: x.cat || '', status: x.status || 'চলমান', desc: x.desc || '', cover: x.cover || null, featured: !!x.featured,
-      publishedAt: x.publishedAt || new Date().toISOString(), reads: x.reads || 0, likes: x.likes || 0, dislikes: x.dislikes || 0, favs: x.favs || 0, cmts: x.cmts || 0, type: voice ? 'audio' : 'text',
-      chapters: voice ? [] : (x.chs || []).filter((c) => c.p).sort((a, b) => a.n - b.n).map((c) => ({ n: c.n, cid: c.id, title: c.t, d: c.d || 0 })),
+      publishedAt: x.publishedAt || new Date().toISOString(), reads: x.reads || 0, likes: x.likes || 0, dislikes: x.dislikes || 0, favs: x.favs || 0, cmts: x.cmts || 0, thanks: x.thanks || 0, type: voice ? 'audio' : 'text',
+      chapters: voice ? [] : (x.chs || []).filter((c) => c.p && (!c.sc || c.sc <= Date.now())).sort((a, b) => a.n - b.n).map((c) => ({ n: c.n, cid: c.id, title: c.t, d: c.d || 0 })),
       audio: (x.audio || []).filter((a) => a.p).sort((a, b) => a.n - b.n).map((a) => ({ n: a.n, title: a.title, src: a.url })) }; });
   const home = [];
   db = { categories: cs.docs.map((d) => d.data().name), books, stats, reactions: {}, lists: cfg.lists || {}, settings: Object.assign({}, window.JP_SEEDLIB.DEFAULT_SETTINGS, cfg.settings || {}),
     notices: ns.docs.map((d) => Object.assign({ id: d.id }, d.data())), config: { homeSections: home } };
   const lr = LS.get('jp_react'), rs = LS.get('jp_rsync');
   books.forEach((b) => { INCL[b.id] = rs[b.id] || null; if (b.id in lr) { adjR(b, INCL[b.id], lr[b.id] || null); INCL[b.id] = lr[b.id] || null; db.reactions[b.id] = { [uid0]: lr[b.id] }; } });
-  T0 = Date.now();
+  T0 = Date.now(); window.__stale = false; window.__hasData = true; snapSave();
 }
+/* অফলাইন স্ন্যাপশট: শেষবার পাওয়া বইয়ের তালিকা ফোনে রাখা হয়, ইন্টারনেট না থাকলে সেটাই দেখানো হয় */
+function snapSave() {
+  try { const o = { t: Date.now(), categories: db.categories, settings: db.settings, lists: db.lists, notices: db.notices, books: db.books.map((b) => Object.assign({}, b, { content: undefined })), stats: {} };
+    localStorage.setItem('jp_dbsnap', JSON.stringify(o)); } catch (e) { try { localStorage.removeItem('jp_dbsnap'); } catch (x) { /* ignore */ } }
+}
+function snapLoad() {
+  try { const o = JSON.parse(localStorage.getItem('jp_dbsnap') || 'null'); if (!o || !o.books || !o.books.length) return false;
+    db = { categories: o.categories || [], books: o.books, stats: {}, reactions: {}, lists: o.lists || {}, settings: o.settings || {}, notices: o.notices || [], config: { homeSections: [] } };
+    window.__stale = true; window.__hasData = true; T0 = Date.now() - 50000; return true; } catch (e) { return false; }
+}
+window.__jpFresh = () => { T0 = 0; };
 const withTimeout = (p, ms) => new Promise((ok, no) => { const t = setTimeout(() => no(new Error('network timeout')), ms); p.then((v) => { clearTimeout(t); ok(v); }, (e) => { clearTimeout(t); no(e); }); });
 function ensure() {
   if (db && Date.now() - T0 < 60000) return Promise.resolve();
-  if (!db && typeof navigator !== 'undefined' && navigator.onLine === false) return Promise.reject(new Error('network offline'));
+  if (typeof navigator !== 'undefined' && navigator.onLine === false) { if (db) return Promise.resolve(); if (snapLoad()) return Promise.resolve(); return Promise.reject(new Error('network offline')); }
   LP = LP || withTimeout(loadDb(), 15000).finally(() => { LP = null; });
-  return LP.catch((e) => { if (db) return; throw e; });
+  return LP.catch((e) => { if (db) return; if (snapLoad()) return; throw e; });
 }
 async function handle(method, full, body, user) {
   uid0 = user; await ensure(); const p = new URL(full, 'http://x').pathname; let r, b;
@@ -1529,7 +1569,7 @@ const getRS = () => Object.assign({}, RS_DEF, store.get('jp_rs', {}));
 // একবারের মাইগ্রেশন: আগে সেভ হওয়া পুরনো সবুজ ডিফল্ট বদলে লাল করা হবে (এরপর নিজে বাছলে সেটাই থাকবে)
 try { if (!store.get('jp_chbar_red', false)) { const o = store.get('jp_rs', null); if (o && o.chbar === 'green') { o.chbar = 'red'; store.set('jp_rs', o); } store.set('jp_chbar_red', true); } } catch (e) { /* ignore */ }
 function setRS(k, v) { const r = getRS(); r[k] = v; store.set('jp_rs', r); applyRS(); }
-const RBG = { white: ['#ffffff', '#1b1917'], dark: ['#121212', '#ececec'], cream: ['#f6ecd2', '#3b2a20'], blue: ['#e6eefc', '#1c2a44'], pink: ['#fbe9ef', '#4a2230'], mint: ['#e3f4ea', '#1d3a2b'] };
+const RBG = { white: ['#ffffff', '#1b1917'], dark: ['#121212', '#ececec'], cream: ['#f6ecd2', '#3b2a20'], blue: ['#e6eefc', '#1c2a44'], pink: ['#fbe9ef', '#4a2230'], mint: ['#e3f4ea', '#1d3a2b'], night: ['#1b1510', '#d8c5a0'], sepia: ['#f1e4c8', '#4a3a26'] };
 const FONTS = { sans: ["'Noto Sans Bengali','Hind Siliguri',sans-serif", 'সান্স'], serif: ["'Noto Serif Bengali','Kalpurush',serif", 'সেরিফ'], kal: ["'Kalpurush','SolaimanLipi','Noto Sans Bengali',sans-serif", 'কালপুরুষ'] };
 const curTheme = () => (store.get('jp_theme', 'dark') === 'light' ? 'light' : 'dark');
 const CHB = { red: ['লাল', '#b71c1c'], green: ['সবুজ', '#2f5a55'], blue: ['নীল', '#2b5797'], purple: ['বেগুনি', '#5d3fa8'], orange: ['কমলা', '#b8651b'], pink: ['গোলাপি', '#a33a6d'] };
@@ -1739,6 +1779,7 @@ async function viewWriter(seg) {
   try {
     if (!s1) return await wDash();
     if (s1 === 'books') return await wBooks();
+    if (s1 === 'stats') return await wStats();
     if (s1 === 'profile') return wProfile();
     if (s1 === 'likes') return await wLikes(seg[2]);
     if (s1 === 'graphs') return await wGraphs(seg[2]);
@@ -1825,6 +1866,26 @@ async function wGraphs(tab) {
     '<div class="wchart" role="img" aria-label="' + cap + 'র ভিউ: ' + S.labels.map((l, i) => l + ' ' + bn(S.vals[i])).join(', ') + '">' + wLine(S.labels, S.vals) + '</div>' +
     '<h2 class="wh2">শীর্ষ গল্প</h2>' + (top.length ? top.map((t) => '<div class="wtop"><div class="cv">' + (t.b.cover ? '<img src="' + esc(t.b.cover) + '" alt="">' : '') + '</div><div class="in"><b>' + esc(t.b.title) + '</b><div class="bar"><i style="width:' + Math.round(t.v / tmx * 100) + '%"></i></div></div><span class="v">' + bn(t.v) + ' ভিউ</span></div>').join('') : '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>'), null, true);
 }
+const wIsVip = () => !!(WR.prof && WR.prof.vip === true);
+async function wVip(D) {
+  let rq = null; try { const a = await WR.fs.doc('authors/' + WR.user.uid).get(); if (a.exists) WR.prof.vip = a.data().vip === true; const r = await WR.fs.doc('vipreqs/' + WR.user.uid).get(); rq = r.exists ? r.data() : null; } catch (e) { /* ignore */ }
+  if (wIsVip()) return '<div class="vipc"><h3>' + VIPB + '</h3><div style="font-size:13px;line-height:1.7">আপনি ভিআইপি রাইটার। আপনার বই ও পর্ব অ্যাডমিন রিভিউ ছাড়াই সরাসরি প্রকাশ হবে। পর্ব কোন সময়ে প্রকাশ হবে তা পর্ব লেখার পাতায় নির্ধারণ করতে পারবেন।</div></div>';
+  const f = (D.prof && D.prof.followers) || 0, v = D.tv || 0, l = D.tl || 0, ok = f >= VIP_F && v >= VIP_V && l >= VIP_L, pc = (a, b) => Math.min(100, Math.round(a * 100 / b));
+  const bar = (lb, a, b) => '<div class="vr">' + lb + ': ' + bn(a) + ' / ' + bn(b) + '<div class="vb"><i style="width:' + pc(a, b) + '%"></i></div></div>';
+  let h = '<div class="vipc"><h3>' + VIPB + ' হতে আবেদন</h3><div style="font-size:13px;color:var(--muted);line-height:1.6">' + bn(VIP_V) + ' ভিউ, ' + bn(VIP_F) + ' ফলোয়ার ও ' + bn(VIP_L) + ' লাইক হলে আবেদন করা যায়। অনুমোদন পেলে ব্যাজ পাবেন আর বই ও পর্ব সরাসরি প্রকাশ করতে পারবেন।</div>' + bar('ভিউ', v, VIP_V) + bar('ফলোয়ার', f, VIP_F) + bar('লাইক', l, VIP_L);
+  if (rq && rq.status === 'new') h += '<div class="vr" style="font-weight:700">⏳ আপনার আবেদন অ্যাডমিনের কাছে জমা আছে।</div>';
+  else if (ok) h += (rq && rq.status === 'rejected' ? '<div class="vr" style="color:#e5484d">আগের আবেদন গ্রহণ করা হয়নি। চাইলে আবার আবেদন করুন।</div>' : '') + '<textarea id="wv-note" maxlength="300" placeholder="অ্যাডমিনকে কিছু জানাতে চাইলে লিখুন (ঐচ্ছিক)"></textarea><button class="wbtn" style="margin-top:10px" data-w="vip-send">আবেদন জমা দিন</button>';
+  else h += '<div class="vr" style="color:var(--muted)">শর্ত পূরণ হলে এখানে আবেদনের বাটন আসবে।</div>';
+  return h + '</div>';
+}
+async function wVipChapter(E, cid, f) {
+  const ref = WR.fs.doc('books/' + E.bid), d = await ref.get(); if (!d.exists) return; const x = d.data();
+  const ent = { id: +cid, n: f.n, t: f.title, p: true, w: wWords(f.text), d: Date.now(), sc: f.sc || 0 };
+  const chs = Array.isArray(x.chs) ? x.chs.slice() : [], i = chs.findIndex((e) => String(e.id) === String(cid));
+  if (i >= 0) chs[i] = Object.assign({}, chs[i], ent, { d: chs[i].d || ent.d }); else chs.push(ent);
+  const up = { chs }; if (!x.pub) { up.pub = true; up.st = 'live'; } if (!x.publishedAt) up.publishedAt = new Date().toISOString();
+  await ref.update(up);
+}
 async function wDash() {
   const D = await wLoad(), books = D.books, S = wSeries(D, 'w'), week = S.vals.reduce((a, b) => a + b, 0), nm = (WR.prof && WR.prof.name) || 'লেখক';
   const out = '<button class="icon-btn" data-w="go" data-href="/w/likes/cm" aria-label="মন্তব্য">' + WI.chat + '</button><button class="icon-btn" data-w="logout" aria-label="লগ আউট">' + WI.out + '</button>';
@@ -1835,10 +1896,21 @@ async function wDash() {
     '</div>' +
     '<div class="wgrid">' + tile(WI.book, '#3b82f6', bn(books.length), 'মোট বই', '/w/books') + tile(WI.user, '#8b5cf6', fmtN(D.prof.followers || 0), 'ফলোয়ার') +
     tile(WI.graph, '#10b981', bn(D.tc), 'মোট পর্ব') + tile(WI.like, '#f43f5e', fmtN(D.tl), 'লাইক ও প্রতিক্রিয়া', '/w/likes') +
-    tile(WI.chat, '#f59e0b', bn(D.cms.length), 'মন্তব্য', '/w/likes/cm') + tile(WI.flag, '#ef4444', bn(D.rps.length), 'রিপোর্ট', '/w/likes/rp') + '</div>' +
-    '<div class="wact"><button class="wbtn ghost" data-w="go" data-href="/w/graphs">' + WI.graph + 'গ্রাফ</button><button class="wbtn ghost" data-w="go" data-href="/w/likes">' + WI.like + 'লাইক ও কমেন্ট</button></div>' +
+    tile(WI.chat, '#f59e0b', bn(D.cms.length), 'মন্তব্য', '/w/likes/cm') + tile(WI.flag, '#ef4444', bn(D.rps.length), 'রিপোর্ট', '/w/likes/rp') + '</div>' + await wVip(D) +
+    '<div class="wact"><button class="wbtn ghost" data-w="go" data-href="/w/graphs">' + WI.graph + 'গ্রাফ</button><button class="wbtn ghost" data-w="go" data-href="/w/likes">' + WI.like + 'লাইক ও কমেন্ট</button></div><div class="wact"><button class="wbtn ghost" data-w="go" data-href="/w/stats">' + WI.graph + 'পর্ব পরিসংখ্যান</button></div>' +
     '<h2 class="wh2">সাম্প্রতিক গল্প</h2>' + (recent || '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>') +
     '<button class="wbtn" data-w="go" data-href="/w/book">' + WI.plus + 'নতুন গল্প যোগ করুন</button>', 'dash', false, out);
+}
+
+/* ---- পর্ব ভিত্তিক পরিসংখ্যান ---- */
+async function wStats() {
+  const books = await wMyBooks(); let body = '';
+  for (const b of books) {
+    const cs = (await wChaps(b.id)).filter((c) => c.pub); const mx = Math.max(1, ...cs.map((c) => c.v || 0)); let prev = null;
+    body += '<h2 class="wh2">' + esc(b.title) + '</h2><div class="wsr"><small>ভিউ ' + bn(b.reads || 0) + ' · লাইক ' + bn(b.likes || 0) + ' · মন্তব্য ' + bn(b.cmts || 0) + ' · ধন্যবাদ ❤️ ' + bn(b.thanks || 0) + '</small></div>' +
+      (cs.length ? cs.map((c) => { const v = c.v || 0; const drop = prev ? Math.round((1 - v / Math.max(1, prev)) * 100) : 0; const row = '<div class="wsr"><b>পর্ব ' + bn(c.n) + '</b> <small>' + esc(c.title || '') + '</small><div class="wbar"><i style="width:' + Math.round(v / mx * 100) + '%"></i></div><small>পাঠক ' + bn(v) + (prev && drop > 30 ? ' · আগের পর্বের চেয়ে ' + bn(drop) + '% কম 🔻' : '') + '</small></div>'; prev = v; return row; }).join('') : '<div class="wgate"><p>প্রকাশিত পর্ব নেই</p></div>');
+  }
+  return wPage('পর্ব ভিত্তিক পরিসংখ্যান', '<div class="wsub">কোন পর্বে কত পাঠক এলো, আর কোথায় পাঠক কমছে</div>' + (body || '<div class="wgate"><p>এখনো কোনো গল্প নেই</p></div>'), null, true);
 }
 
 /* ---- লাইক, মন্তব্য ও রিপোর্ট ---- */
@@ -1882,7 +1954,7 @@ async function wSyncBook(E, mode, f) {
   try {
     const ref = WR.fs.doc('books/' + E.bid), d = await ref.get(); if (!d.exists) return; const x = d.data(), up = {};
     const hit = (e) => String(e.id) === String(E.cid) || (e.id == null && e.n != null && +e.n === +E.oldN);
-    if (Array.isArray(x.chs) && x.chs.some(hit)) up.chs = mode === 'del' ? x.chs.filter((e) => !hit(e)) : x.chs.map((e) => hit(e) ? Object.assign({}, e, { n: f.n, t: f.title }) : e);
+    if (Array.isArray(x.chs) && x.chs.some(hit)) up.chs = mode === 'del' ? x.chs.filter((e) => !hit(e)) : x.chs.map((e) => hit(e) ? Object.assign({}, e, { n: f.n, t: f.title, sc: f.sc || 0 }) : e);
     if (Array.isArray(x.audio) && x.audio.some(hit)) up.audio = mode === 'del' ? x.audio.filter((e) => !hit(e)) : x.audio.map((e) => hit(e) ? Object.assign({}, e, { n: f.n, title: f.title }, f.audio ? { url: f.audio } : {}) : e);
     if (Object.keys(up).length) await ref.update(up);
   } catch (e) { toast('বইয়ের পর্ব-তালিকা হালনাগাদ করা যায়নি — অ্যাডমিনকে জানান'); }
@@ -1928,7 +2000,7 @@ async function wEditor(bid, cid) {
   const dr = store.get(wDraftKey(bid, cid), null); const html = dr && dr.html ? wSan(dr.html) : (c ? (c.html ? wSan(c.html) : esc(c.text || '').replace(/\n/g, '<br>')) : '');
   WR.dirty = false; WR.ed = { bid, cid, nums: cs.filter((x) => x.id !== cid).map((x) => x.n), lock, pub: !!(c && c.pub), oldN: c ? c.n : null, fin: false, fin0: !!(c && c.fin) };
   const body = (c && c.pub ? '<div class="wcard">এই পর্ব লাইভ আছে। সেভ করলে পরিবর্তন সাথে সাথে পাঠকদের কাছে দেখা যাবে।</div>' : '') +
-    '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) + wFinRow(b, c) +
+    '<div class="wfl"><label for="wc-n">পর্ব নম্বর</label><input id="wc-n" type="number" inputmode="numeric" min="1" value="' + nn + '"' + (lock ? ' disabled' : '') + '></div>' + wFld('শিরোনাম (ঐচ্ছিক)', 'wc-t', c ? c.title : '', { dis: lock }) + '<div class="wfl"><label for="wc-sc">প্রকাশের সময় (ঐচ্ছিক — অনুমোদনের পর এই সময়ে পাঠকদের কাছে আসবে)</label><input id="wc-sc" type="datetime-local" value="' + (c && c.sc ? new Date(c.sc - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16) : '') + '"></div>' + wFinRow(b, c) +
     '<div style="margin-top:16px"><div class="wtb" role="toolbar" aria-label="লেখার টুল"><button type="button" data-w="fmt" data-c="bold" aria-label="বোল্ড"><b>B</b></button><button type="button" data-w="fmt" data-c="italic" aria-label="ইটালিক"><i>I</i></button></div>' +
     '<div class="wed" id="wEd" role="textbox" aria-multiline="true" aria-label="গল্প লেখার জায়গা" ' + (lock ? '' : 'contenteditable="true"') + ' data-ph="এখানে আপনার গল্প লিখুন...">' + html + '</div></div>' +
     '<div class="wcnt"><span id="wWc" aria-live="polite"></span><span>কমপক্ষে ' + bn(MINW) + ' শব্দ</span></div><div class="werr" id="wErr" role="alert"></div>' +
@@ -1999,14 +2071,19 @@ async function wClick(ev) {
         const n = wv('wp-n'), m = wv('wp-m').replace(/[\s-]/g, ''), bi = wv('wp-b'); if (!n) return wSet('নাম লিখুন'); if (m && !/^(\+?88)?01\d{9}$/.test(m)) return wSet('সঠিক মোবাইল নাম্বার দিন');
         wBusy(1); try { const o = { name: n, phone: m, bio: bi, photo: wPhoto || '' }; await WR.fs.doc('authors/' + WR.user.uid).update(o); try { await WR.fs.doc('profiles/' + WR.user.uid).set({ name: n, photo: wPhoto || '', bio: bi }, { merge: true }); } catch (x) { /* ignore */ } Object.assign(WR.prof, o); wSet('প্রোফাইল আপডেট হয়েছে', true); toast('প্রোফাইল আপডেট হয়েছে'); } catch (x) { wSet(wErr(x)); } wBusy(0); break;
       }
+      case 'vip-send': {
+        const D = await wLoad(), f = (D.prof && D.prof.followers) || 0, v = D.tv || 0, l = D.tl || 0;
+        if (!(f >= VIP_F && v >= VIP_V && l >= VIP_L)) { toast('শর্ত এখনো পূরণ হয়নি'); break; }
+        try { await WR.fs.doc('vipreqs/' + WR.user.uid).set({ uid: WR.user.uid, name: (WR.prof && WR.prof.name) || '', followers: f, views: v, likes: l, note: ((document.getElementById('wv-note') || {}).value || '').slice(0, 300), status: 'new', at: Date.now() }); toast('আবেদন জমা হয়েছে'); route(); } catch (x) { toast(wErr(x)); } break;
+      }
       case 'save-book': {
         const id = el.dataset.id, t = wv('wb-t'), au = wv('wb-a'), ci = +wv('wb-c'), dn = wv('wb-s') === '1', ds = wv('wb-d');
         const ty = (document.getElementById('wb-ty') || {}).value || 'book'; if (!id) { if (ty === 'voice' && !(WR.perms && WR.perms.audio === true)) return wSet('অডিওবুক দেওয়ার অনুমতি এখন বন্ধ আছে'); if (ty === 'book' && WR.perms && WR.perms.text === false) return wSet('টেক্সট বুক প্রকাশ সাময়িকভাবে বন্ধ আছে'); } if (!t) return wSet('গল্পের নাম লিখুন'); if (!ci) return wSet('ক্যাটাগরি নির্বাচন করুন'); if (!wCover) return wSet('কভার ছবি দিন');
         const cat = (WR.cats.find((c) => c.id === ci) || {}).name || ''; wSet(''); wBusy(1);
         try {
           const f = { title: t, author: au || (WR.prof && WR.prof.name) || '', cat, cats: [ci], done: dn, status: dn ? 'সমাপ্ত' : 'চলমান', desc: ds, cover: wCover, type: ty };
-          if (id) { const cur = await wBook(id); await WR.fs.doc('books/' + id).update(cur && cur.pub ? f : Object.assign(f, { st: 'review' })); toast('সংরক্ষিত হয়েছে'); WR.dirty = false; goBack(); }
-          else { const nid = String(wnid()); await WR.fs.doc('books/' + nid).set(Object.assign(f, { id: nid, pub: false, st: 'review', ownerUid: WR.user.uid, ownerName: (WR.prof && WR.prof.name) || '', createdAt: Date.now(), reads: 0, likes: 0, dislikes: 0, chs: [], audio: [] })); toast('গল্প রিভিউয়ের জন্য পাঠানো হয়েছে — এবার পর্ব যোগ করুন'); WR.dirty = false; nav('/w/chs/' + nid, true); }
+          if (id) { const cur = await wBook(id); await WR.fs.doc('books/' + id).update(cur && cur.pub ? f : wIsVip() ? Object.assign(f, { pub: true, st: 'live' }) : Object.assign(f, { st: 'review' })); toast('সংরক্ষিত হয়েছে'); WR.dirty = false; goBack(); }
+          else { const nid = String(wnid()); await WR.fs.doc('books/' + nid).set(Object.assign(f, wIsVip() ? { pub: true, st: 'live', publishedAt: new Date().toISOString() } : { pub: false, st: 'review' }, { id: nid, ownerUid: WR.user.uid, ownerName: (WR.prof && WR.prof.name) || '', createdAt: Date.now(), reads: 0, likes: 0, dislikes: 0, chs: [], audio: [] })); toast(wIsVip() ? 'গল্প তৈরি হয়েছে — এবার পর্ব যোগ করুন' : 'গল্প রিভিউয়ের জন্য পাঠানো হয়েছে — এবার পর্ব যোগ করুন'); WR.dirty = false; nav('/w/chs/' + nid, true); }
         } catch (x) { wSet(wErr(x)); wBusy(0); } break;
       }
       case 'del-book': {
@@ -2018,11 +2095,12 @@ async function wClick(ev) {
         if (!(n >= 1)) return wSet('সঠিক পর্ব নম্বর দিন'); if (E.nums.includes(n)) return wSet('এই নম্বরে আরেকটি পর্ব আছে'); if (wWords(text) < MINW) return wSet('পর্ব সেভ করতে কমপক্ষে ' + bn(MINW) + ' শব্দ লিখতে হবে');
         wSet(''); wBusy(1);
         try {
-          const f = { n, title: ti || ('পর্ব ' + n), text: text.replace(/\n+/g, '\n\n'), html: wSan(ed.innerHTML) }; if (E.fin) f.fin = true;
+          const f = { n, title: ti || ('পর্ব ' + n), text: text.replace(/\n+/g, '\n\n'), html: wSan(ed.innerHTML) }; if (E.fin) f.fin = true; { const sv = wv('wc-sc'); f.sc = sv ? new Date(sv).getTime() : 0; }
+          const vip = wIsVip(); let ncid = E.cid; if (vip) { f.pub = true; if (!E.cid) f.pa = Date.now(); }
           if (E.cid) await WR.fs.doc('books/' + E.bid + '/chapters/' + E.cid).update(f);
-          else { const id = String(wnid()); await WR.fs.doc('books/' + E.bid + '/chapters/' + id).set(Object.assign(f, { id: +id, b: +E.bid, pub: false, audio: null, d: Date.now(), v: 0, ownerUid: WR.user.uid })); }
-          if (E.cid) await wSyncBook(E, 'upd', f); await wFinishBook(E);
-          store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast(E.pub ? 'পর্ব আপডেট হয়েছে' : 'পর্ব রিভিউয়ের জন্য পাঠানো হয়েছে'); goBack();
+          else { const id = String(wnid()); ncid = id; await WR.fs.doc('books/' + E.bid + '/chapters/' + id).set(Object.assign(f, { id: +id, b: +E.bid, pub: vip, audio: null, d: Date.now(), v: 0, ownerUid: WR.user.uid })); }
+          if (vip) await wVipChapter(E, ncid, f); else if (E.cid) await wSyncBook(E, 'upd', f); await wFinishBook(E);
+          store.del(wDraftKey(E.bid, E.cid)); WR.dirty = false; toast(vip ? (f.sc && f.sc > Date.now() ? 'পর্ব নির্ধারিত সময়ে প্রকাশ হবে' : 'পর্ব প্রকাশিত হয়েছে') : E.pub ? 'পর্ব আপডেট হয়েছে' : 'পর্ব রিভিউয়ের জন্য পাঠানো হয়েছে'); goBack();
         } catch (x) { wSet(wErr(x)); wBusy(0); } break;
       }
       case 'del-ch': {
@@ -2102,9 +2180,10 @@ async function getProfile(uid) {
 const avInit = (n) => esc(Array.from((n || 'ল').trim() || 'ল')[0]);
 const avBox = (photo, name, cls) => '<span class="sav ' + (cls || '') + '">' + (photo ? '<img src="' + esc(photo) + '" alt="">' : avInit(name)) + '</span>';
 function authorChip(b) {
-  return '<button class="achip" data-s="author" data-k="' + esc(akey(b)) + '" aria-label="লেখক ' + esc(b.author) + ' — লেখকের পেজ দেখুন"><span class="ava" data-aid="' + esc(b.authorId || '') + '">' + (b.authorPhoto && !b.authorId ? '<img src="' + esc(b.authorPhoto) + '" alt="">' : avInit(b.author)) + '</span><span class="an">' + esc(b.author) + '</span>' + VER + '<span class="ch">' + IC.chev + '</span></button>';
+  return '<button class="achip" data-s="author" data-k="' + esc(akey(b)) + '" aria-label="লেখক ' + esc(b.author) + ' — লেখকের পেজ দেখুন"><span class="ava" data-aid="' + esc(b.authorId || '') + '">' + (b.authorPhoto && !b.authorId ? '<img src="' + esc(b.authorPhoto) + '" alt="">' : avInit(b.author)) + '</span><span class="an">' + esc(b.author) + '</span>' + VER + '<span class="ch">' + IC.chev + '</span></button><div class="vs vrow" data-vu="' + esc(b.authorId || '') + '"></div>';
 }
 async function fillAuthorAv() {
+  fillVip();
   const el = $('.achip .ava[data-aid]'); if (!el || !el.dataset.aid) return;
   const p = await getProfile(el.dataset.aid); if (p && p.photo && el.isConnected) el.innerHTML = '<img src="' + esc(p.photo) + '" alt="">';
 }
@@ -2118,7 +2197,7 @@ async function viewAuthor(key) {
   const p = await getProfile(uid); window.__auP = p;
   const reads = list.reduce((a, b) => a + (b.reads || 0), 0), likes = list.reduce((a, b) => a + (b.likes || 0), 0);
   const fol = isFollow(key);
-  return headerPage('লেখক', true) + '<main class="page auth2"><div class="aprow"><div class="apinfo"><h2>' + esc(name) + VER + '</h2>' +
+  return headerPage('লেখক', true) + '<main class="page auth2"><div class="aprow"><div class="apinfo"><h2>' + esc(name) + VER + '<span class="vs" data-vu="' + esc(uid) + '"></span></h2>' +
     '<div class="apst"><span><b id="folN">' + bn(Math.max(0, (p && p.followers) || 0)) + '</b>ফলোয়ার</span><span><b>' + fmtN(likes) + '</b>লাইক</span><span><b>' + fmtN(reads) + '</b>ভিউ</span></div>' +
     '<div class="aptot"><b>' + bn(list.length) + '</b> মোট বই</div></div>' + avBox((p && p.photo) || (list.find((b) => b.authorPhoto) || {}).authorPhoto, name, 'big') + '</div>' +
     '<button class="folbtn wide' + (fol ? ' on' : '') + '" data-s="follow" data-k="' + esc(key) + '" data-n="' + esc(name) + '" aria-pressed="' + fol + '">' + (fol ? '✓ ফলো করছেন' : '+ ফলো করুন') + '</button>' +
@@ -2153,11 +2232,18 @@ function authorsOf(books) {
   const m = {}; books.forEach((b) => { if (!b.author) return; const k = akey(b); const o = (m[k] = m[k] || { k, n: String(b.author).trim(), id: '', c: 0, ph: '' }); if (b.authorId && !o.id) o.id = b.authorId; if (b.authorPhoto && !o.ph) o.ph = b.authorPhoto; o.c++; });
   return Object.keys(m).map((k) => m[k]).sort((a, b) => b.c - a.c);
 }
+/* ---- ভিআইপি রাইটার: অ্যাডমিন অনুমোদন দিলে profiles/{uid}.vip = true ---- */
+const VIP_F = 200, VIP_V = 5000, VIP_L = 500;
+const VIPB = '<span class="vip" title="VIP Writer" aria-label="VIP Writer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5L3 8z" fill="#4a2f00"/></svg>VIP Writer</span>';
+async function fillVip() {
+  for (const el of $$('[data-vu]:not([data-vd])')) { el.dataset.vd = 1; const u = el.dataset.vu; if (!u) continue; const p = await getProfile(u); if (p && p.vip === true && el.isConnected) el.innerHTML = VIPB; }
+}
 async function fillListAv() {
+  fillVip();
   const els = $$('[data-aid]'); for (const el of els) { const id = el.dataset.aid; if (!id) continue; const p = await getProfile(id); if (!el.isConnected) continue; if (el.classList.contains('sav') && p && p.photo) el.innerHTML = '<img src="' + esc(p.photo) + '" alt="">'; else if (el.classList.contains('fol') && p) el.textContent = fmtN(p.followers || 0); }
 }
 function authRail(list) {
-  return '<div class="arail">' + list.map((a) => '<button class="acard" data-s="author" data-k="' + esc(a.k) + '" aria-label="লেখক ' + esc(a.n) + '"><span class="top"></span><span class="sav big" data-aid="' + esc(a.id) + '">' + (a.ph && !a.id ? '<img src="' + esc(a.ph) + '" alt="">' : avInit(a.n)) + '</span><span class="nm">' + esc(a.n) + '</span><span class="st">' + IC.read + bn(a.c) + ' গল্প' + (a.id ? ' <i>•</i> ' + IC.user + '<b class="fol" data-aid="' + esc(a.id) + '">০</b>' : '') + '</span></button>').join('') + '</div>';
+  return '<div class="arail">' + list.map((a) => '<button class="acard" data-s="author" data-k="' + esc(a.k) + '" aria-label="লেখক ' + esc(a.n) + '"><span class="top"></span><span class="sav big" data-aid="' + esc(a.id) + '">' + (a.ph && !a.id ? '<img src="' + esc(a.ph) + '" alt="">' : avInit(a.n)) + '</span><span class="nm">' + esc(a.n) + '</span><span class="vs" data-vu="' + esc(a.id) + '"></span><span class="st">' + IC.read + bn(a.c) + ' গল্প' + (a.id ? ' <i>•</i> ' + IC.user + '<b class="fol" data-aid="' + esc(a.id) + '">০</b>' : '') + '</span></button>').join('') + '</div>';
 }
 async function viewAuthors() {
   const all = await api('/books'); const list = authorsOf(all);
@@ -2326,7 +2412,7 @@ function viewGoals() {
     '<div class="gprog"><div class="gpl"><span>' + (online ? '🌐 ' : '📴 ') + (tab === 'd' ? 'আজকের অগ্রগতি' : 'এই সময়ের অগ্রগতি') + '</span><span>' + msg + '</span></div><div class="gpb"><i style="width:' + (pr * 100).toFixed(1) + '%"></i></div></div>' +
     '<div class="gft"><span>দৈনিক লক্ষ্য: ' + bn(g) + ' মিনিট</span><button data-act="goal-open">🎯 লক্ষ্য নির্ধারণ করুন</button></div></div>' +
     '<div class="gc1 gcc">' + goalChart(ser, gm) + '</div>' +
-    '<h3 class="gh">শীর্ষ বই</h3>' + books + '</main>';
+    badgesHtml() + '<h3 class="gh">শীর্ষ বই</h3>' + books + '</main>';
 }
 function fillGoalBooks() {
   const rows = $$('.gbk[data-bid]'); const miss = rows.filter((r) => !((getCache()[r.dataset.bid] || {}).title)).map((r) => r.dataset.bid);
@@ -2385,6 +2471,7 @@ async function route() {
     else window.scrollTo(0, 0);
     renderMini(page);
     afterRender(page, seg, params);
+    if (window.__hasData && navigator.onLine === false) offShow(false);
   } catch (e) {
     if (token !== renderToken) return;
     console.warn(e);
@@ -2392,7 +2479,7 @@ async function route() {
   }
 }
 function afterRender(page, seg, params) {
-  if (page === 'home') { startAuto($('#featuredRail')); updateBell(); }
+  if (page === 'home') { startAuto($('#featuredRail')); updateBell(); if (!window.__epChk) { window.__epChk = 1; newEpCheck(); } badgeCheck(); }
   if (page === 'search') {
     const inp = $('#qInput'); if (inp) { inp.focus(); const v = inp.value; inp.setSelectionRange(v.length, v.length); }
     runSearch(params.get('q') || '');
@@ -2404,6 +2491,7 @@ function afterRender(page, seg, params) {
   if (page === 'read') sleepLabel();
   if (page === 'w') wAfter(seg);
   if (page === 'book') fillAuthorAv();
+  if (page === 'author') fillVip();
   if (page === 'home' || page === 'authors') fillListAv();
   if (page === 'read') afterReader(params.get('listen') === '1');
 }
@@ -2462,6 +2550,32 @@ function secTitle(t, href) {
   return '<div class="sec-title"><h3>' + esc(t) + '</h3>' + (href ? '<button class="more" data-act="go" data-href="' + href + '">সব দেখুন</button>' : '') + '</div>';
 }
 
+/* ---------- হোম: চালিয়ে যান, আপনার জন্য, ব্যাজ ---------- */
+function doneCount() { const d = getDone(); let n = 0; Object.keys(d).forEach((k) => { n += Object.keys(d[k] || {}).length; }); return n; }
+function totalSecs() { const t = store.get('jp_time', {}); let n = 0; Object.keys(t).forEach((k) => { n += +t[k] || 0; }); return n; }
+const BADGES = [['🔥', '৩ দিন টানা পড়া', () => streakInfo() >= 3], ['🔥', '৭ দিন টানা পড়া', () => streakInfo() >= 7], ['🏆', '৩০ দিন টানা পড়া', () => streakInfo() >= 30],
+  ['📖', 'প্রথম অধ্যায় শেষ', () => doneCount() >= 1], ['📚', '১০টি অধ্যায় শেষ', () => doneCount() >= 10], ['🎓', '৫০টি অধ্যায় শেষ', () => doneCount() >= 50],
+  ['⏱️', '১ ঘণ্টা পড়া', () => totalSecs() >= 3600], ['⌛', '১০ ঘণ্টা পড়া', () => totalSecs() >= 36000], ['⭐', '৫টি বই বুকমার্ক', () => getSaved().length >= 5]];
+function badgesHtml() { return '<h3 class="gh">ব্যাজ</h3><div class="bdgs">' + BADGES.map((b) => '<div class="bdg' + (b[2]() ? '' : ' off') + '"><span>' + b[0] + '</span>' + b[1] + '</div>').join('') + '</div>'; }
+function badgeCheck() {
+  try { const seen = store.get('jp_bdg', []); const now = []; BADGES.forEach((b, i) => { if (b[2]()) now.push(i); });
+    const nw = now.filter((i) => seen.indexOf(i) < 0); if (nw.length && seen.length + 0 >= 0) { store.set('jp_bdg', now); if (store.get('jp_bdginit', false)) toast('🎉 নতুন ব্যাজ পেয়েছেন: ' + BADGES[nw[0]][1]); else store.set('jp_bdginit', true); }
+    else if (!store.get('jp_bdginit', false)) store.set('jp_bdginit', true); } catch (e) { /* ignore */ }
+}
+async function contCard(all) {
+  try { const hist = store.get('jp_hist', []); const pr = store.get('jp_prog', {});
+    for (const x of hist) { const p = pr[x.id]; const b = all.find((k) => k.id === x.id); if (!b || !p || p.pct >= 98) continue;
+      return '<button class="cont" data-act="read" data-id="' + esc(b.id) + '" data-n="' + p.n + '"><img src="' + esc(b.cover) + '" alt=""><span class="ci"><small>পড়া চালিয়ে যান</small><b>' + esc(b.title) + '</b><small>অধ্যায় ' + bn(p.n) + ' · ' + bn(p.pct) + '% পড়া হয়েছে</small><span class="pb"><i style="width:' + p.pct + '%"></i></span></span><span class="go">পড়ুন</span></button>'; }
+  } catch (e) { /* ignore */ } return '';
+}
+function forYou(all) {
+  const fav = getFC(); const hist = store.get('jp_hist', []).map((x) => x.id); let cats = fav.slice();
+  if (!cats.length) { const cnt = {}; hist.forEach((id) => { const b = all.find((k) => k.id === id); if (b && b.cat) cnt[b.cat] = (cnt[b.cat] || 0) + 1; }); cats = Object.keys(cnt).sort((a, b) => cnt[b] - cnt[a]).slice(0, 2); }
+  if (!cats.length) return '';
+  const l = all.filter((b) => cats.indexOf(b.cat) >= 0 && hist.indexOf(b.id) < 0).slice(0, 12); if (l.length < 2) return '';
+  return secTitle('আপনার জন্য', '/favcat') + shelfOpen() + l.map((b) => CARD(b)).join('') + '</div>';
+}
+
 /* ---------- হোম ---------- */
 function featCard(b, i) {
   const has = b.chapterCount > 0;
@@ -2471,14 +2585,21 @@ function featCard(b, i) {
     '<span class="rank">#' + bn((i || 0) + 1) + '</span><div class="finfo"><div class="ft">' + esc(b.title) + '</div><div class="fa">' + esc(b.author) + '</div><div class="fs">' + ic('eye') + fmtN(b.reads || 0) + (b.status ? ' • ' + esc(b.status) : '') + (b.cat ? ' • ' + esc(b.cat) : '') + '</div><div class="frow">' + read + listen + '<button class="fav' + (getSaved().indexOf(b.id) >= 0 ? ' on' : '') + '" data-act="fav-q" data-id="' + esc(b.id) + '" aria-label="পছন্দের তালিকা">' + IC.save + '</button></div></div></div>';
 }
 const SEC_TITLES = { recent: 'নতুন বই' };
+function offBanner() {
+  if (!(window.__stale || navigator.onLine === false)) return '';
+  return '<div class="offbn" role="status"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3L1 21h22L12 3zm1 15h-2v-2h2v2zm0-4h-2V9h2v5z"/></svg><span>আপনি অফলাইনে আছেন। পুরনো ডাটা দেখানো হচ্ছে।</span><button data-act="off-retry" aria-label="আবার চেষ্টা করুন"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg></button></div>';
+}
 async function viewHome() {
   const [data, cats] = await Promise.all([api('/home'), api('/categories').catch(() => [])]);
-  let h = headerTab() + '<main class="page home">';
+  let h = headerTab() + '<main class="page home">' + offBanner();
   if (data.sections.every((s) => !s.books.length)) return h + '<div class="empty" style="margin-top:16px">এখনো কোনো বই যোগ করা হয়নি।</div></main>';
+  let allB = []; try { allB = await api('/books'); } catch (e) { /* ignore */ }
+  h += await contCard(allB);
   const feat = data.sections.find((x) => x.key === 'featured');
   if (feat) h += feat.books.length ? '<div class="rail feat" id="featuredRail">' + feat.books.map((b, i) => featCard(b, i)).join('') + '</div>' : '<div class="empty">নির্বাচিত উপন্যাস এখনো ঠিক করা হয়নি।</div>';
   const rec = data.sections.find((x) => x.key === 'recent');
   if (rec && rec.books.length) h += secTitle(SEC_TITLES.recent || rec.title, '/list/recent') + '' + shelfOpen() + lim(rec.books).map((b) => CARD(b)).join('') + '</div>';
+  h += forYou(allB);
   let authBlk = ''; try { const ab = await api('/books'); const al = authorsOf(ab); if (al.length) authBlk = secTitle('জনপ্রিয় লেখক', '/authors') + authRail(al.slice(0, 12)); } catch (e) { /* ignore */ }
   const secs = data.sections.filter((x) => x.key !== 'recent' && x.key !== 'featured'); const midI = Math.floor(secs.length / 2); let sk = 0;
   if (!secs.length) h += authBlk;
@@ -2716,6 +2837,7 @@ async function viewBook(id) {
   if (startN != null) { const allDl = b.chapters.length && b.chapters.every((c) => dl[c.n]);
     h += '<div class="startrow"><button class="btn pur" data-act="read" data-id="' + esc(b.id) + '" data-n="' + startN + '">' + (last && startN === last ? 'পড়া চালিয়ে যান' : 'পড়া শুরু করুন') + '</button>' +
     '<button class="btn dlall' + (allDl ? ' fin' : '') + '"' + (allDl ? ' disabled' : '') + ' data-act="dl-all" data-id="' + esc(b.id) + '"><span class="dlf" style="width:' + (allDl ? 100 : 0) + '%"></span><span class="dlt">' + (allDl ? IC.check + 'ডাউনলোড হয়েছে' : 'অফলাইনে ডাউনলোড') + '</span></button></div>'; }
+  { const th = store.get('jp_thanks', {})[b.id]; h += '<button class="thx' + (th ? ' on' : '') + '" data-act="thanks" data-id="' + esc(b.id) + '" aria-label="লেখককে ধন্যবাদ">❤️ <span>' + (th ? 'ধন্যবাদ জানানো হয়েছে' : 'লেখককে ধন্যবাদ জানান') + '</span> · <b id="thxN" data-n="' + (b.thanks || 0) + '">' + fmtN(b.thanks || 0) + '</b></button>'; }
   h += '<div class="btabs" role="tablist"><button role="tab" class="on" data-s="btab" data-v="ch">অধ্যায়সমূহ (' + bn(b.chapters.length) + ')</button><button role="tab" data-s="btab" data-v="rv" data-id="' + esc(b.id) + '">রিভিউ (<span id="rvCnt">' + bn(b.cmts || 0) + '</span>)</button></div><div class="panel" id="tabCh"><div class="phd"><h3>সব অধ্যায়</h3><div class="pbt"><button class="cbt' + (b.myReaction === 'like' ? ' on' : '') + '" data-act="react" data-r="like" data-id="' + esc(b.id) + '" id="likeBtn" aria-label="পছন্দ করুন">' + IC.like + '</button><button class="cbt' + (b.myReaction === 'dislike' ? ' on' : '') + '" data-act="react" data-r="dislike" data-id="' + esc(b.id) + '" id="dislikeBtn" aria-label="অপছন্দ করুন">' + IC.dislike + '</button></div></div>';
   if (!b.chapters.length) h += '<div class="empty">এই বইয়ে এখনো কোনো অধ্যায় যোগ করা হয়নি।</div>';
   b.chapters.forEach((c) => {
@@ -3011,6 +3133,17 @@ async function openDrawer() {
   $('#drawerWrap').hidden = false; const cur = $('#drawer .cur'); if (cur) cur.scrollIntoView({ block: 'center' });
 }
 /* ---------- নোটিশ, অ্যাপ সম্পর্কে, যোগাযোগ ---------- */
+const notifOn = () => store.get('jp_notif', false) === true;
+async function newEpCheck() {
+  try {
+    const seen = store.get('jp_epseen', 0); const now = Date.now(); store.set('jp_epseen', now); if (!seen) return;
+    const eps = await api('/episodes'); const all = await api('/books'); const bk = {}; all.forEach((b) => { bk[b.id] = akey(b); });
+    const fol = getFollow(), sv = getSaved(); const nw = eps.filter((e) => Date.parse(e.at) > seen && (fol[bk[e.bookId]] || sv.indexOf(e.bookId) >= 0));
+    if (!nw.length) return; const e0 = nw[0]; const msg = nw.length === 1 ? e0.bookTitle + ' — নতুন পর্ব: ' + e0.title : bn(nw.length) + 'টি নতুন পর্ব এসেছে (' + e0.bookTitle + ' সহ)';
+    toast(msg);
+    if (notifOn() && window.Notification && Notification.permission === 'granted') { try { new Notification('যাত্রাপথ — নতুন পর্ব', { body: msg }); } catch (er) { /* ignore */ } }
+  } catch (e) { /* ignore */ }
+}
 async function updateBell() {
   try {
     const list = await api('/notices'); const seen = store.get('jp_noticeseen', 0);
@@ -3093,6 +3226,14 @@ const CX_BG = { red: ['লাল', '#e53935', '#b71c1c'], blue: ['নীল', '#
 const cxBgCss = (k) => { const c = CX_BG[k] || CX_BG.purple; return 'background:linear-gradient(135deg,' + c[1] + ',' + c[2] + ')'; };
 const CX_FLT = [['all', 'সব পোস্ট'], ['today', 'আজকের পোস্ট'], ['yday', 'কালকের পোস্ট'], ['week', 'সাপ্তাহিক পোস্ট'], ['month', 'মাসিক পোস্ট'], ['latest', 'আজকের লেটেস্ট পোস্ট']];
 let cxEditP = null, cxPosts = [], cxSel = 'purple', cxFlt = 'all', cxEdit = null, cxBusy = false, cxCur = null, cxCms = [], cxReply = null, cxMode = 'feed';
+let cxMe = myUid();
+function cxLoadAuth() {
+  return new Promise((ok, no) => { if (firebase.auth) return ok(); const t = ['https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js', 'https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-auth-compat.js']; let i = 0;
+    (function go() { const el = document.createElement('script'); el.src = t[i]; el.onload = () => ok(); el.onerror = () => { el.remove(); if (++i < t.length) go(); else no(new Error('auth')); }; document.head.append(el); })(); });
+}
+async function cxAuth() {
+  try { if (!window.firebase) return false; await cxLoadAuth(); const a = firebase.auth(); if (a.currentUser) cxMe = a.currentUser.uid; else { const r = await a.signInAnonymously(); cxMe = r.user.uid; } return true; } catch (e) { return false; }
+}
 const cxMyR = () => store.get('jp_preact', {});
 const cxMyCm = () => store.get('jp_mycm', []);
 const cxHue = (s) => { let h = 0; String(s || '').split('').forEach((c) => { h = (h * 31 + c.charCodeAt(0)) % 360; }); return h; };
@@ -3107,10 +3248,10 @@ function cxFiltered() {
 }
 function cxFltHtml() { return CX_FLT.map((f) => '<button data-cx="flt" data-v="' + f[0] + '" class="' + (cxFlt === f[0] ? 'on' : '') + '">' + f[1] + '</button>').join(''); }
 function cxCard(p) {
-  const r = cxMyR()[p.id] || ''; const id = esc(p.id); const mine = p.uid === myUid(); const nm = p.name || 'অতিথি পাঠক';
+  const r = cxMyR()[p.id] || ''; const id = esc(p.id); const mine = p.uid === cxMe; const nm = p.name || 'অতিথি পাঠক';
   const badge = mine ? (p.pub ? '<span class="cxbd ok">প্রকাশিত</span>' : p.st === 'rejected' ? '<span class="cxbd">বাতিল হয়েছে</span>' : '<span class="cxbd">অনুমোদনের অপেক্ষায়</span>') : '';
   return '<article class="cxc"><div class="cxh"><span class="cxav" style="background:hsl(' + cxHue(nm) + ',45%,42%)">' + avInit(nm) + '</span><div class="cxn"><b>' + esc(nm) + '</b><small>' + cmDate(p.at) + '</small></div>' + badge +
-    (mine ? '<button class="cxmn" data-cx="menu" data-id="' + id + '" aria-label="পোস্টের অপশন">⋮</button>' : '') + '</div>' +
+    '<button class="cxmn" data-cx="' + (mine ? 'menu' : 'rpt') + '" data-id="' + id + '" aria-label="পোস্টের অপশন">⋮</button>' + '</div>' +
     '<div class="cxq" style="' + cxBgCss(p.bg) + '"><p>' + esc(p.text) + '</p></div><div class="cxa">' +
     '<button class="' + (r === 'like' ? 'on' : '') + '" data-cx="react" data-r="like" data-id="' + id + '" aria-label="পছন্দ">' + IC.like + '<span>' + fmtN(p.likes || 0) + '</span></button>' +
     '<button class="' + (r === 'dislike' ? 'on' : '') + '" data-cx="react" data-r="dislike" data-id="' + id + '" aria-label="অপছন্দ">' + IC.dislike + '<span>' + fmtN(p.dislikes || 0) + '</span></button>' +
@@ -3122,7 +3263,7 @@ function cxDraw() {
   w.innerHTML = l.length ? l.map(cxCard).join('') : '<div class="empty">' + (cxMode === 'mine' ? 'আপনি এখনো কোনো পোস্ট করেননি।' : cxFlt === 'all' ? 'এখনো কোনো পোস্ট নেই। প্রথম পোস্টটি আপনি করুন।' : 'এই সময়ের কোনো পোস্ট নেই।') + '</div>';
   const f = $('#cxFlt'); if (f) f.innerHTML = cxFltHtml();
 }
-async function cxFs() { try { await ensure(); } catch (e) { /* ignore */ } return SFB(); }
+async function cxFs() { try { await api('/categories'); } catch (e) { /* ignore */ } await cxAuth(); return SFB(); }
 async function cxLoad() {
   const w = $('#cxFeed'); if (!w) return; const f = await cxFs();
   if (!f) { w.innerHTML = '<div class="empty">লোড করা যায়নি। ইন্টারনেট দেখুন।</div>'; return; }
@@ -3132,7 +3273,7 @@ async function cxLoad() {
 async function cxMyLoad() {
   cxMode = 'mine'; const w = $('#cxFeed'); if (!w) return; const f = await cxFs();
   if (!f) { w.innerHTML = '<div class="empty">লোড করা যায়নি। ইন্টারনেট দেখুন।</div>'; return; }
-  try { const q = await f.collection('posts').where('uid', '==', myUid()).get(); cxPosts = q.docs.map((d) => Object.assign({ id: d.id }, d.data())); cxDraw(); }
+  try { const q = await f.collection('posts').where('uid', '==', cxMe).get(); cxPosts = q.docs.map((d) => Object.assign({ id: d.id }, d.data())); cxDraw(); }
   catch (e) { w.innerHTML = '<div class="empty">লোড করা যায়নি। ইন্টারনেট দেখুন।</div>'; }
 }
 function viewCommunity() {
@@ -3161,7 +3302,7 @@ async function cxSend() {
       await f.doc('posts/' + cxEdit).update({ text: t.slice(0, 500), bg: cxSel, st: 'review', pub: false });
       toast('পোস্ট আপডেট হয়েছে — আবার অনুমোদনের জন্য গেছে'); cxEdit = null; cxEditP = null;
     } else {
-      await f.collection('posts').add({ name: (a && a.name) || 'অতিথি পাঠক', uid: myUid(), text: t.slice(0, 500), bg: cxSel, st: 'review', pub: false, at: Date.now(), likes: 0, dislikes: 0, cmts: 0 });
+      await f.collection('posts').add({ name: (a && a.name) || 'অতিথি পাঠক', uid: cxMe, text: t.slice(0, 500), bg: cxSel, st: 'review', pub: false, at: Date.now(), likes: 0, dislikes: 0, cmts: 0 });
       toast('পোস্ট অ্যাডমিনের অনুমোদনের জন্য পাঠানো হয়েছে');
     }
     const c = $('#cxCompose'); if (c) c.innerHTML = ''; $$('.cxopts button').forEach((b) => b.classList.remove('on')); cxLoad();
@@ -3184,6 +3325,13 @@ function cxShare(id) {
 function cxMenu(id) {
   openSheet('<div class="grab"></div><div class="cxsheet"><button class="cxmo" data-cx="edit" data-id="' + esc(id) + '">' + IC.pen + 'পোস্ট এডিট করুন</button><button class="cxmo dl" data-cx="del" data-id="' + esc(id) + '">' + IC.trash + 'পোস্ট মুছে ফেলুন</button></div>');
 }
+const CX_RPT = ['অশোভন বা আপত্তিকর ভাষা', 'স্প্যাম বা বিজ্ঞাপন', 'ভুল বা বিভ্রান্তিকর তথ্য', 'অন্য কারণ'];
+function cxRptMenu(id) { openSheet('<div class="grab"></div><div class="cxsheet"><h3>পোস্ট রিপোর্ট করুন</h3>' + CX_RPT.map((r) => '<button class="rpt-r" data-cx="rptsend" data-id="' + esc(id) + '" data-r="' + esc(r) + '">' + esc(r) + '</button>').join('') + '</div>'); }
+async function cxRptSend(id, r) {
+  closeSheet(); const done = store.get('jp_prpt', {}); if (done[id]) return toast('আপনি এই পোস্ট আগেই রিপোর্ট করেছেন');
+  const f = await cxFs(); if (!f) return toast('ইন্টারনেট সংযোগ নেই'); const p = cxPosts.find((x) => x.id === id) || {}; const a = getAcct(); const rid = 'pr' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  try { await f.doc('reports/' + rid).set({ id: rid, bookId: 'post:' + id, bookTitle: 'পোস্ট: ' + String(p.text || '').slice(0, 50), reason: r, text: String(p.text || '').slice(0, 300), status: 'new', createdAt: Date.now(), reporter: (a && a.name) || 'অতিথি', ownerUid: '' }); done[id] = 1; store.set('jp_prpt', done); toast('রিপোর্ট পাঠানো হয়েছে, ধন্যবাদ'); } catch (e) { toast('রিপোর্ট পাঠানো যায়নি'); }
+}
 function cxDel(id) {
   closeSheet(); confirmDel('পোস্ট মুছবেন?', 'পোস্টটি ও এর সব মন্তব্য মুছে যাবে।', async () => {
     const f = await cxFs(); if (!f) return toast('ইন্টারনেট সংযোগ নেই');
@@ -3194,7 +3342,7 @@ function cxDel(id) {
   });
 }
 function cxSheetHtml() {
-  const p = cxPosts.find((x) => x.id === cxCur) || {}; const me = myUid();
+  const p = cxPosts.find((x) => x.id === cxCur) || {}; const me = cxMe;
   const item = (c, rp) => '<div class="cxci' + (rp ? ' rp' : '') + '"><b>' + esc(c.name || 'অতিথি পাঠক') + '</b>' + (c.uid && c.uid === p.uid ? '<span class="cxtag">লেখক</span>' : '') + '<small>' + cmDate(c.at) + '</small>' + (c.rn ? '<div><small style="margin:0">↪ ' + esc(c.rn) + '-কে উত্তর</small></div>' : '') + '<p>' + esc(c.text) + '</p>' +
     '<div class="cxcb"><button data-cx="reply" data-cid="' + esc(rp ? c.rp : c.id) + '" data-n="' + esc(c.name || 'অতিথি পাঠক') + '">উত্তর দিন</button>' + (c.uid === me ? '<button class="dl" data-cx="cdel" data-cid="' + esc(c.id) + '">মুছুন</button>' : '') + '</div></div>';
   let l;
@@ -3217,7 +3365,7 @@ async function cxCmSend() {
   const err = (m) => { const e = $('#cxCe'); if (e) e.textContent = m; };
   const t = (($('#cxCt') || {}).value || '').trim(); if (!t) return err('মন্তব্য লিখুন');
   const f = SFB(); if (!f || !cxCur) return err('ইন্টারনেট সংযোগ নেই'); const a = getAcct(); const id = cxCur;
-  const c = { name: (a && a.name) || 'অতিথি পাঠক', uid: myUid(), text: t.slice(0, 300), at: Date.now() }; if (cxReply) { c.rp = cxReply.id; c.rn = cxReply.n; }
+  const c = { name: (a && a.name) || 'অতিথি পাঠক', uid: cxMe, text: t.slice(0, 300), at: Date.now() }; if (cxReply) { c.rp = cxReply.id; c.rn = cxReply.n; }
   try {
     const ref = await f.collection('posts/' + id + '/comments').add(c); f.doc('posts/' + id).update({ cmts: SINC(1) }).catch(() => {});
     c.id = ref.id; if (!cxCms) cxCms = []; cxCms.unshift(c); const p = cxPosts.find((x) => x.id === id); if (p) p.cmts = (p.cmts || 0) + 1;
@@ -3256,6 +3404,8 @@ document.addEventListener('click', (ev) => {
   else if (a === 'menu') cxMenu(el.dataset.id);
   else if (a === 'edit') { closeSheet(); cxEdit = el.dataset.id; cxEditP = cxPosts.find((x) => x.id === cxEdit) || null; if (curPath === '/community') cxOpenCompose(); else nav('/community'); }
   else if (a === 'del') cxDel(el.dataset.id);
+  else if (a === 'rpt') cxRptMenu(el.dataset.id);
+  else if (a === 'rptsend') cxRptSend(el.dataset.id, el.dataset.r);
   else if (a === 'reply') { cxReply = { id: el.dataset.cid, n: el.dataset.n }; openSheet(cxSheetHtml()); const t = $('#cxCt'); if (t) t.focus(); }
   else if (a === 'rcancel') { cxReply = null; openSheet(cxSheetHtml()); }
   else if (a === 'cdel') cxCmDel(cxCur, el.dataset.cid, () => openSheet(cxSheetHtml()));
@@ -3287,12 +3437,25 @@ const AD = { last: 0, opened: false, chN: 0 };
 function adsOK() { try { const a = window.AppMintAds; if (!a) return false; const c = a.config(); return !!(c && c.control === 'developer' && c.formats && c.formats.interstitial); } catch (e) { return false; } }
 function adShow(why, gap) {
   try {
-    if (!adsOK()) return; const a = window.AppMintAds;
     if (Date.now() - AD.last < (gap == null ? 60000 : gap)) return; // বারবার নয় — ন্যূনতম বিরতি
+    if (!adsOK()) { if (!window.AppMintAds && adPreview()) { AD.last = Date.now(); adFake(why); } return; }
+    const a = window.AppMintAds;
     if (!a.isReady('interstitial')) { a.load('interstitial'); return; }
     AD.last = Date.now();
     a.show('interstitial').then(() => { try { a.load('interstitial'); } catch (e) { /* ignore */ } }).catch(() => {});
   } catch (e) { /* বিজ্ঞাপনে সমস্যা হলে অ্যাপ চলবে */ }
+}
+// শুধু প্রিভিউয়ের জন্য: লিংকের শেষে ?adtest=1 দিলে (অথবা অ্যাপের বাইরে ব্রাউজারে) অ্যাড কোথায় আসবে তার নমুনা দেখায়। আসল অ্যাপে (AppMintAds থাকলে) আসল টেস্ট অ্যাড আসে।
+const adPreview = () => /[?&]adtest=1/.test(location.search + location.hash) || store.get('jp_adtest', false) === true;
+function adFake(why) {
+  if ($('#adFake')) return; const L = { open: 'অ্যাপ খোলার অ্যাড', chapter: 'অধ্যায়ে ঢোকার অ্যাড', download: 'ডাউনলোডের অ্যাড', back: 'অধ্যায় থেকে বেরোনোর অ্যাড' };
+  const d = document.createElement('div'); d.id = 'adFake'; d.setAttribute('data-ad', why);
+  d.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#0b1020;color:#e6ecff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center';
+  d.innerHTML = '<div style="position:absolute;top:14px;left:14px;font-size:12px;background:#fbbf24;color:#222;padding:3px 10px;border-radius:10px;font-weight:700">টেস্ট বিজ্ঞাপন (Test Ad)</div>' +
+    '<div style="width:min(86%,320px);background:#fff;color:#222;border-radius:16px;padding:22px 16px"><div style="font-size:12px;color:#888">Advertisement</div><div style="font-size:20px;font-weight:800;margin:10px 0">নমুনা পূর্ণ-পর্দার অ্যাড</div><div style="font-size:14px;color:#555;line-height:1.6">আসল অ্যাপে এখানে Google AdMob-এর টেস্ট অ্যাড আসবে।</div><div style="margin-top:14px;background:#d6336c;color:#fff;border-radius:10px;padding:10px;font-weight:700">খুলুন ›</div></div>' +
+    '<div style="font-size:14px;opacity:.85">কখন এসেছে: <b>' + (L[why] || why) + '</b></div><button id="adFakeX" disabled style="margin-top:6px;padding:10px 26px;border-radius:22px;background:#6366f1;color:#fff;font-weight:700;opacity:.5">৩</button>';
+  document.body.appendChild(d); let n = 3; const b = d.querySelector('#adFakeX');
+  const t = setInterval(() => { n--; if (n > 0) b.textContent = bn(n); else { clearInterval(t); b.disabled = false; b.style.opacity = 1; b.textContent = 'বন্ধ করুন ✕'; b.onclick = () => d.remove(); } }, 1000);
 }
 function adInit() { try { if (adsOK()) window.AppMintAds.load('interstitial'); } catch (e) { /* ignore */ } }
 
@@ -3517,7 +3680,7 @@ function viewProfile() {
     accRow('layout', 'card', 'বইয়ের ডিসপ্লে প্রিভিউ', lay === 'grid' ? 'গ্রিড ভিউ' : 'কার্ড ভিউ', layOpts) +
     accRow('chbar', 'palette', 'অধ্যায়ের বার কালার', CHB[cbk][0], chbOpts) +
     mrow('bell', 'রোজ পড়ার রিমাইন্ডার', getRem().on ? 'রোজ ' + remFmt(getRem().t) : 'বন্ধ আছে', '', 'data-act="rem-open"') +
-    mrow('play', 'বটম প্লেয়ার চালু রাখুন', '', '<span class="sw' + (store.get('jp_minion', true) !== false ? ' on' : '') + '"></span>', 'data-act="mini-toggle"') + '</div>' +
+    mrow('bell', 'নতুন পর্বের নোটিফিকেশন', 'ফলো করা লেখক/বুকমার্ক বইয়ের নতুন পর্ব এলে জানাবে', '<span class="sw' + (notifOn() ? ' on' : '') + '"></span>', 'data-act="notif-toggle"') + mrow('play', 'বটম প্লেয়ার চালু রাখুন', '', '<span class="sw' + (store.get('jp_minion', true) !== false ? ' on' : '') + '"></span>', 'data-act="mini-toggle"') + '</div>' +
     '<div class="grp">স্টোরেজ</div><div class="pcard" style="padding:4px 12px">' +
     mrow('trash', 'ক্যাশ মুছুন', 'ছবি ও বইয়ের তথ্যের অস্থায়ী কপি', '', 'data-act="clear-cache"') +
     mrow('search', 'সার্চ হিস্ট্রি মুছুন', bn(store.get('jp_sh', []).length) + 'টি অনুসন্ধান ইতিহাস', '', 'data-act="clear-sh"') +
@@ -3672,13 +3835,14 @@ async function onClick(ev) {
       case 'sh-del': confirmDel('সার্চ মুছবেন?', 'এই সার্চটি হিস্ট্রি থেকে মুছে যাবে।', () => { store.set('jp_sh', store.get('jp_sh', []).filter((x) => x !== d.q)); runSearch(''); }); break;
       case 'sh-clear': confirmDel('সার্চ হিস্ট্রি মুছবেন?', 'আপনার সব সার্চ হিস্ট্রি মুছে যাবে।', () => { store.set('jp_sh', []); runSearch(''); }); break;
       case 'back': goBack(); break;
+      case 'thanks': { const m = store.get('jp_thanks', {}); if (m[d.id]) { toast('আপনি আগেই ধন্যবাদ জানিয়েছেন ❤️'); break; } m[d.id] = 1; store.set('jp_thanks', m); const f = SFB(); if (f) f.doc('books/' + d.id).update({ thanks: SINC(1) }).catch(() => {}); el.classList.add('on'); const sp = el.querySelector('span'); if (sp) sp.textContent = 'ধন্যবাদ জানানো হয়েছে'; const nn = $('#thxN'); if (nn) nn.textContent = fmtN((+nn.dataset.n || 0) + 1); toast('লেখককে ধন্যবাদ পাঠানো হয়েছে ❤️'); break; }
       case 'fc-open': await fcOpen(); break;
       case 'fc-tog': { const v = d.v, i = fcSel.indexOf(v); if (i >= 0) fcSel.splice(i, 1); else fcSel.push(v); el.classList.toggle('on', i < 0); const ic_ = el.querySelector('i'); if (ic_) ic_.innerHTML = i < 0 ? IC.check : ''; break; }
       case 'fc-save': store.set('jp_favcats', fcSel.slice()); closeSheet(); fcChip = 'সব'; toast(fcSel.length ? 'পছন্দের ক্যাটাগরি সেভ হয়েছে' : 'পছন্দের তালিকা খালি করা হয়েছে'); route(); break;
       case 'fc-chip': fcChip = d.v; route(); break;
       case 'bell': nav('/notices'); break;
       case 'retry': route(); break;
-      case 'off-retry': if (navigator.onLine === false) { toast('এখনো ইন্টারনেট নেই'); } else { offShow(false); route(); } break;
+      case 'off-retry': if (navigator.onLine === false) { toast('এখনো ইন্টারনেট নেই'); } else { offShow(false); if (window.__jpFresh) window.__jpFresh(); route(); } break;
       case 'off-lib': offSkip = true; offShow(false); nav('/lib'); break;
       case 'noop': break;
       case 'sheet-close': closeSheet(); break;
@@ -3781,6 +3945,10 @@ async function onClick(ev) {
       case 'rem-off': store.set('jp_rem', { on: false, t: getRem().t }); closeSheet(); remSchedule(); profRerender(); toast('রিমাইন্ডার বন্ধ'); break;
       case 'rem-go': { const x = $('#remB'); if (x) x.remove(); const l = store.get('jp_lastbook', null); if (l && l.id) nav('/read/' + enc(l.id) + '/' + l.n); else nav('/'); break; }
       case 'rem-x': { const x = $('#remB'); if (x) x.remove(); break; }
+      case 'notif-toggle': {
+        if (notifOn()) { store.set('jp_notif', false); toast('নোটিফিকেশন বন্ধ হয়েছে'); }
+        else { let ok = false; try { if (window.Notification) { ok = Notification.permission === 'granted' || (await Notification.requestPermission()) === 'granted'; } } catch (e) { ok = false; } store.set('jp_notif', ok); toast(ok ? 'নোটিফিকেশন চালু হয়েছে' : 'অনুমতি পাওয়া যায়নি — অ্যাপের ভেতরে জানানো চলবে'); }
+        keepScrollOnce = true; route(); break; }
       case 'mini-toggle': store.set('jp_minion', store.get('jp_minion', true) === false); keepScrollOnce = true; route(); break;
       case 'clear-cache': confirmDel('ক্যাশ মুছবেন?', 'সংরক্ষিত ক্যাশ ডেটা মুছে যাবে।', () => { store.del('jp_cache'); store.del('jp_acache'); store.del('jp_minihide'); toast('ক্যাশ মুছে ফেলা হয়েছে'); }); break;
       case 'clear-sh': confirmDel('সার্চ হিস্ট্রি মুছবেন?', 'আপনার সব সার্চ হিস্ট্রি মুছে যাবে।', () => { store.set('jp_sh', []); toast('সার্চ হিস্ট্রি মুছে ফেলা হয়েছে'); keepScrollOnce = true; route(); }); break;
@@ -3794,7 +3962,7 @@ async function onClick(ev) {
       case 'dlg-yes': { const f = dlgYes; hideDialog(); if (f) f(); break; }
       case 'mini-close': store.set('jp_minihide', d.key); renderMini('x'); break;
       case 'book': nav('/book/' + enc(d.id)); break;
-      case 'read': if (/^\/read\//.test(curPath) && navigator.onLine !== false) adShow('chapter', 90000); nav('/read/' + enc(d.id) + '/' + d.n); break;
+      case 'read': if (navigator.onLine !== false) adShow('chapter', 90000); nav('/read/' + enc(d.id) + '/' + d.n); break;
       case 'to-book': { setTimeout(() => adShow('back', 45000), 350); const top = navStack[navStack.length - 1] || ''; if (top === '/book/' + enc(d.id)) goBack(); else nav('/book/' + enc(d.id)); break; }
       case 'react': {
         if (el.classList.contains('busy')) break;
@@ -3872,10 +4040,10 @@ function offShow(on) { const o = $('#offscr'); if (o) o.hidden = !on; document.b
 function offCheck() {
   const pg = (parseHash().seg[0] || 'home');
   const needsNet = !(pg === 'read' || pg === 'lib' || pg === 'profile');
-  if (navigator.onLine === false) { if (needsNet && !offSkip) offShow(true); } else { offSkip = false; offShow(false); }
+  if (navigator.onLine === false) { if (needsNet && !offSkip && !window.__hasData) offShow(true); } else { offSkip = false; offShow(false); }
 }
 window.addEventListener('offline', () => { offSkip = false; offCheck(); });
-window.addEventListener('online', () => { const was = $('#offscr') && !$('#offscr').hidden; offSkip = false; offShow(false); toast('ইন্টারনেট ফিরে এসেছে'); if (was) route(); });
+window.addEventListener('online', () => { const was = ($('#offscr') && !$('#offscr').hidden) || window.__stale; offSkip = false; offShow(false); toast('ইন্টারনেট ফিরে এসেছে'); if (was) { if (window.__jpFresh) window.__jpFresh(); route(); } });
 
 /* ---------- ত্রুটি ধরা ---------- */
 window.addEventListener('error', (e) => { console.error(e.error || e.message); const t = $('#toast'); if (t) toast('একটি সমস্যা হয়েছে, আবার চেষ্টা করুন'); });
@@ -3945,6 +4113,9 @@ trObs.observe(document.body, { childList: true, subtree: true, characterData: tr
 document.documentElement.lang = store.get('jp_lang', 'bn');
 retr(document.body);
 })();
+</script>
+<script>
+try { if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); } catch (e) {}
 </script>
 </body>
 </html>
